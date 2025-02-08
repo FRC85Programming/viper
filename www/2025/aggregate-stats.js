@@ -16,6 +16,15 @@ function aggregateStats(scout, aggregate, apiScores, subjective, pit, eventStats
 		return"-"
 	}
 
+
+	function getPreferredAlgaePlace(processor,net){
+		var m=Math.max(processor,net)
+		if (m==0)return"-"
+		if(m==net)return"Net"
+		if(m==processor)return"Pro"
+		return"-"
+	}
+
 	var pointValues={
 		auto_leave:3,
 		auto_l1:3,
@@ -66,7 +75,7 @@ function aggregateStats(scout, aggregate, apiScores, subjective, pit, eventStats
 	scout.auto_algae_ground=scout.auto_algae_mark_1+scout.auto_algae_mark_2+scout.auto_algae_mark_3
 	scout.algae_ground=scout.auto_algae_ground+scout.tele_algae_ground
 	scout.algae_net=scout.auto_algae_net+scout.tele_algae_net
-	scout.algae_opponent_net=scout.auto_algae_opponent_net+scout.tele_algae_opponent_net
+	scout.algae_opponent_net=scout.tele_algae_opponent_net
 	scout.algae_opponent_processor=scout.auto_algae_opponent_processor+scout.tele_algae_opponent_processor
 	scout.algae_processor=scout.auto_algae_processor+scout.tele_algae_processor
 	scout.algae_upper=scout.auto_algae_upper+scout.tele_algae_upper
@@ -79,13 +88,14 @@ function aggregateStats(scout, aggregate, apiScores, subjective, pit, eventStats
 	scout.coral_level_3=scout.auto_coral_level_3+scout.tele_coral_level_3
 	scout.coral_level_4=scout.auto_coral_level_4+scout.tele_coral_level_4
 	scout.preferred_coral_level=getPreferredCoralLevel(scout.coral_level_1,scout.coral_level_2,scout.coral_level_3,scout.coral_level_4)
+	scout.preferred_algae_place=getPreferredAlgaePlace(scout.algae_processor,scout.algae_net)
 	scout.coral_station_1=scout.auto_coral_station_1+scout.tele_coral_station_1
 	scout.coral_station_2=scout.auto_coral_station_2+scout.tele_coral_station_2
 	scout.auto_coral_station=scout.auto_coral_station_1+scout.auto_coral_station_2
 	scout.tele_coral_station=scout.tele_coral_station_1+scout.tele_coral_station_2
 	scout.coral_station=scout.auto_coral_station+scout.tele_coral_station
 	scout.auto_coral_collect=scout.auto_coral_ground+scout.auto_coral_station
-	scout.tele_coral_collect=scout.tele_coral_ground+scout.tele_coral_station
+	scout.tele_coral_collect=scout.tele_coral_ground+scout.tele_coral_station+scout.tele_coral_theft
 	scout.coral_collect=scout.auto_coral_collect+scout.tele_coral_collect
 	scout.auto_algae_collect_reef=scout.auto_algae_upper+scout.auto_algae_lower
 	scout.auto_algae_removed_reef=scout.auto_algae_lower_removed+scout.auto_algae_upper_removed
@@ -95,7 +105,8 @@ function aggregateStats(scout, aggregate, apiScores, subjective, pit, eventStats
 	scout.tele_algae_collect_reef=scout.tele_algae_upper+scout.tele_algae_lower
 	scout.tele_algae_removed_reef=scout.tele_algae_lower_removed+scout.tele_algae_upper_removed
 	scout.tele_algae_reef=scout.tele_algae_collect_reef+scout.tele_algae_removed_reef
-	scout.tele_algae_collect=scout.tele_algae_reef+scout.tele_algae_ground
+	scout.tele_algae_collect=scout.tele_algae_reef+scout.tele_algae_ground+scout.tele_algae_theft
+	scout.tele_theft=scout.tele_coral_theft+scout.tele_algae_theft
 	scout.tele_collect=scout.tele_coral_collect+scout.tele_algae_collect
 	scout.algae_collect_reef=scout.auto_algae_collect_reef+scout.tele_algae_collect_reef
 	scout.algae_removed_reef=scout.auto_algae_removed_reef+scout.tele_algae_removed_reef
@@ -111,6 +122,9 @@ function aggregateStats(scout, aggregate, apiScores, subjective, pit, eventStats
 	scout.algae_place=scout.auto_algae_place+scout.tele_algae_place
 	scout.coral_place=scout.auto_coral_place+scout.tele_coral_place
 	scout.place=scout.auto_place+scout.tele_place
+	scout.algae_litter=scout.algae_removed_reef+scout.algae_drop-scout.algae_ground
+	scout.coral_litter=scout.coral_drop-scout.coral_ground
+	scout.litter=scout.algae_litter+scout.coral_litter
 
 	scout.auto_leave_score=pointValues.auto_leave*scout.auto_leave
 	scout.auto_coral_level_1_score=pointValues.auto_l1*scout.auto_coral_level_1
@@ -118,7 +132,6 @@ function aggregateStats(scout, aggregate, apiScores, subjective, pit, eventStats
 	scout.auto_coral_level_3_score=pointValues.auto_l3*scout.auto_coral_level_3
 	scout.auto_coral_level_4_score=pointValues.auto_l4*scout.auto_coral_level_4
 	scout.auto_algae_processor_score=pointValues.processor*scout.auto_algae_processor
-	scout.auto_algae_opponent_net_score=-pointValues.net*scout.auto_algae_processor
 	scout.auto_algae_net_score=pointValues.net*scout.auto_algae_net
 	scout.auto_algae_opponent_processor_score=(pointValues
 	.net-pointValues.processor)*scout.auto_algae_opponent_processor
@@ -136,7 +149,7 @@ function aggregateStats(scout, aggregate, apiScores, subjective, pit, eventStats
 	scout.deep_score=pointValues.deep*scout.deep
 	scout.cage_score=scout.shallow_score+scout.deep_score
 	scout.end_game_score=scout.park_score+scout.cage_score
-	scout.auto_algae_processor_net_score=scout.auto_algae_processor_score + scout.auto_algae_opponent_net_score
+	scout.auto_algae_processor_net_score=scout.auto_algae_processor_score
 	scout.auto_algae_score=scout.auto_algae_processor_net_score+scout.auto_algae_opponent_processor_score+scout.auto_algae_net_score
 	scout.auto_coral_score=scout.auto_coral_level_1_score+scout.auto_coral_level_2_score+scout.auto_coral_level_3_score+scout.auto_coral_level_4_score
 	scout.tele_algae_processor_net_score=scout.tele_algae_processor_score + scout.tele_algae_opponent_net_score
@@ -147,7 +160,7 @@ function aggregateStats(scout, aggregate, apiScores, subjective, pit, eventStats
 	scout.coral_level_3_score=scout.auto_coral_level_3_score+scout.tele_coral_level_3_score
 	scout.coral_level_4_score=scout.auto_coral_level_4_score+scout.tele_coral_level_4_score
 	scout.algae_processor_score=scout.auto_algae_processor_score+scout.tele_algae_processor_score
-	scout.algae_opponent_net_score=scout.auto_algae_opponent_net_score+scout.tele_algae_opponent_net_score
+	scout.algae_opponent_net_score=scout.tele_algae_opponent_net_score
 	scout.algae_net_score=scout.auto_algae_net_score+scout.tele_algae_net_score
 	scout.algae_opponent_processor_score=scout.auto_algae_opponent_processor_score+scout.tele_algae_opponent_processor_score
 	scout.algae_score=scout.auto_algae_score+scout.tele_algae_score
@@ -174,6 +187,7 @@ function aggregateStats(scout, aggregate, apiScores, subjective, pit, eventStats
 	aggregate.max_score=Math.max(aggregate.max_score||0,scout.score)
 	aggregate.min_score=Math.min(aggregate.min_score===undefined?999:aggregate.min_score,scout.score)
 	aggregate.preferred_coral_level=getPreferredCoralLevel(aggregate.coral_level_1,aggregate.coral_level_2,aggregate.coral_level_3,aggregate.coral_level_4)
+	aggregate.preferred_algae_place=getPreferredAlgaePlace(aggregate.algae_processor,aggregate.algae_net)
 
 	if(scout.algae_processor&&/^[1-9][0-9]*$/.test(scout.opponent_human_player_team)){
 		var hpTeam = parseInt(scout.opponent_human_player_team),
@@ -187,6 +201,12 @@ function aggregateStats(scout, aggregate, apiScores, subjective, pit, eventStats
 		hpAggregate.human_player_accuracy=hpAggregate.human_player_algae_received>0?hpAggregate.human_player_net/hpAggregate.human_player_algae_received:0
 	}
 	if (scout.old &&(typeof scout.old.score=='undefined'))scout.old=null
+
+	pit.auto_paths = []
+	for (var i=1; i<=9; i++){
+		var path = pit[`auto_${i}_path`]
+		if (path) pit.auto_paths.push(path)
+	}
 }
 
 var statInfo={
@@ -214,14 +234,13 @@ var statInfo={
 		whiteboard_start: 35.8,
 		whiteboard_end: 50,
 		whiteboard_char: "□",
-		whiteboard_us: true,
-		whiteboard_invert: true
+		whiteboard_us: true
 	},
 	auto_leave:{
 		name: "Left the Start Line During Auto",
 		type: "%",
 		timeline_stamp: "L",
-		timeline_fill: "#BB0",
+		timeline_fill: "#888",
 		timeline_outline: "#888"
 	},
 	auto_leave_score:{
@@ -246,90 +265,149 @@ var statInfo={
 	auto_algae_drop:{
 		name: "Algae Dropped in Auto",
 		type: "avg",
+		timeline_stamp: "X",
+		timeline_fill: "#4eb0a4",
+		timeline_outline: "#4eb0a4"
 	},
 	auto_algae_lower:{
 		name: "Algae Collected from Lower Reef in Auto",
 		type: "avg",
+		timeline_stamp: "R",
+		timeline_fill: "#4eb0a4",
+		timeline_outline: "#222"
 	},
 	auto_algae_lower_removed:{
 		name: "Algae Knocked Off Lower Reef in Auto",
 		type: "avg",
+		timeline_stamp: "↓",
+		timeline_fill: "#4eb0a4",
+		timeline_outline: "#222"
 	},
 	auto_algae_mark_1:{
 		name: "Algae Collected from Mark 1 in Auto",
 		type: "%",
+		timeline_stamp: "G",
+		timeline_fill: "#4eb0a4",
+		timeline_outline: "#222"
 	},
 	auto_algae_mark_2:{
 		name: "Algae Collected from Mark 2 in Auto",
 		type: "%",
+		timeline_stamp: "G",
+		timeline_fill: "#4eb0a4",
+		timeline_outline: "#222"
 	},
 	auto_algae_mark_3:{
 		name: "Algae Collected from Mark 3 in Auto",
 		type: "%",
+		timeline_stamp: "G",
+		timeline_fill: "#4eb0a4",
+		timeline_outline: "#222"
 	},
 	auto_algae_net:{
 		name: "Algae Placed in Net by Robot in Auto",
 		type: "avg",
-	},
-	auto_algae_opponent_net:{
-		name: "Algae Thrown in Net by Opponent Human Player in Auto",
-		type: "avg",
+		timeline_stamp: "N",
+		timeline_fill: "#4eb0a4",
+		timeline_outline: "#4eb0a4"
 	},
 	auto_algae_opponent_processor:{
 		name: "Algae Placed in the Opponent's Processor in Auto",
 		type: "avg",
+		timeline_stamp: "O",
+		timeline_fill: "#4eb0a4",
+		timeline_outline: "#4eb0a4"
 	},
 	auto_algae_processor:{
 		name: "Algae Placed in the Processor in Auto",
 		type: "avg",
+		timeline_stamp: "P",
+		timeline_fill: "#4eb0a4",
+		timeline_outline: "#4eb0a4"
 	},
 	auto_algae_upper:{
 		name: "Algae Collected from Upper Reef in Auto",
 		type: "avg",
+		timeline_stamp: "R",
+		timeline_fill: "#4eb0a4",
+		timeline_outline: "#222"
 	},
 	auto_algae_upper_removed:{
 		name: "Algae Knocked Off Upper Reef in Auto",
 		type: "avg",
+		timeline_stamp: "↓",
+		timeline_fill: "#4eb0a4",
+		timeline_outline: "#222"
 	},
 	auto_coral_drop:{
 		name: "Coral Dropped in Auto",
 		type: "avg",
+		timeline_stamp: "X",
+		timeline_fill: "#FFF",
+		timeline_outline: "#222"
 	},
 	auto_coral_mark_1:{
 		name: "Coral Collected from Mark 1 in Auto",
 		type: "%",
+		timeline_stamp: "G",
+		timeline_fill: "#FFF",
+		timeline_outline: "#222"
 	},
 	auto_coral_mark_2:{
 		name: "Coral Collected from Mark 2 in Auto",
 		type: "%",
+		timeline_stamp: "G",
+		timeline_fill: "#FFF",
+		timeline_outline: "#222"
 	},
 	auto_coral_mark_3:{
 		name: "Coral Collected from Mark 3 in Auto",
 		type: "%",
+		timeline_stamp: "G",
+		timeline_fill: "#FFF",
+		timeline_outline: "#222"
 	},
 	auto_coral_level_1:{
 		name: "Level 1 Coral Placed During Auto",
-		type: "avg"
+		type: "avg",
+		timeline_stamp: "1",
+		timeline_fill: "#FFF",
+		timeline_outline: "#AAA"
 	},
 	auto_coral_level_2:{
 		name: "Level 2 Coral Placed During Auto",
-		type: "avg"
+		type: "avg",
+		timeline_stamp: "2",
+		timeline_fill: "#FFF",
+		timeline_outline: "#AAA"
 	},
 	auto_coral_level_3:{
 		name: "Level 3 Coral Placed During Auto",
-		type: "avg"
+		type: "avg",
+		timeline_stamp: "3",
+		timeline_fill: "#FFF",
+		timeline_outline: "#AAA"
 	},
 	auto_coral_level_4:{
 		name: "Level 4 Coral Placed During Auto",
-		type: "avg"
+		type: "avg",
+		timeline_stamp: "4",
+		timeline_fill: "#FFF",
+		timeline_outline: "#AAA"
 	},
 	auto_coral_station_1:{
 		name: "Coral Collected from Station 1 in Auto",
 		type: "avg",
+		timeline_stamp: "S",
+		timeline_fill: "#FFF",
+		timeline_outline: "#222"
 	},
 	auto_coral_station_2:{
 		name: "Coral Collected from Station 1 in Auto",
 		type: "avg",
+		timeline_stamp: "S",
+		timeline_fill: "#FFF",
+		timeline_outline: "#222"
 	},
 	auto_coral_place:{
 		name: "Coral Placed During Auto",
@@ -362,9 +440,6 @@ var statInfo={
 	tele_drop:{
 		name: "Scoring Elements Dropped in Teleop",
 		type: "avg",
-		timeline_stamp: "D",
-		timeline_fill: "#000",
-		timeline_outline: "#808"
 	},
 	tele_place:{
 		name: "Scoring Elements Placed During Teleop",
@@ -421,74 +496,128 @@ var statInfo={
 	tele_algae_drop:{
 		name: "Algae Dropped in Teleop",
 		type: "avg",
+		timeline_stamp: "X",
+		timeline_fill: "#4eb0a4",
+		timeline_outline: "#4eb0a4"
 	},
 	tele_algae_ground:{
 		name: "Algae Collected from Ground in Teleop",
 		type: "avg",
+		timeline_stamp: "G",
+		timeline_fill: "#4eb0a4",
+		timeline_outline: "#222"
 	},
 	tele_algae_lower:{
 		name: "Algae Collected from Lower Reef in Teleop",
 		type: "",
+		timeline_stamp: "R",
+		timeline_fill: "#4eb0a4",
+		timeline_outline: "#222"
 	},
 	tele_algae_lower_removed:{
 		name: "Algae Knocked Off Lower Reef in Teleop",
 		type: "avg",
+		timeline_stamp: "↓",
+		timeline_fill: "#4eb0a4",
+		timeline_outline: "#222"
 	},
 	tele_algae_net:{
 		name: "Algae Placed in Net by Robot in Teleop",
 		type: "avg",
+		timeline_stamp: "N",
+		timeline_fill: "#4eb0a4",
+		timeline_outline: "#4eb0a4"
 	},
 	tele_algae_opponent_net:{
 		name: "Algae Thrown in Net by Opponent Human Player in Teleop",
 		type: "avg",
+		timeline_stamp: "H",
+		timeline_fill: "#888",
+		timeline_outline: "#888"
 	},
 	tele_algae_opponent_processor:{
 		name: "Algae Placed in the Opponent's Processor in Teleop",
 		type: "avg",
+		timeline_stamp: "O",
+		timeline_fill: "#4eb0a4",
+		timeline_outline: "#4eb0a4"
 	},
 	tele_algae_processor:{
 		name: "Algae Placed in the Processor in Teleop",
 		type: "avg",
+		timeline_stamp: "P",
+		timeline_fill: "#4eb0a4",
+		timeline_outline: "#4eb0a4"
 	},
 	tele_algae_upper:{
 		name: "Algae Collected from Upper Reef in Teleop",
 		type: "avg",
+		timeline_stamp: "R",
+		timeline_fill: "#4eb0a4",
+		timeline_outline: "#222"
 	},
 	tele_algae_upper_removed:{
 		name: "Algae Knocked Off Upper Reef in Teleop",
 		type: "avg",
+		timeline_stamp: "↓",
+		timeline_fill: "#4eb0a4",
+		timeline_outline: "#222"
 	},
 	tele_coral_drop:{
 		name: "Coral Dropped in Teleop",
 		type: "avg",
+		timeline_stamp: "X",
+		timeline_fill: "#FFF",
+		timeline_outline: "#222"
 	},
 	tele_coral_ground:{
 		name: "Coral Collected from Ground in Teleop",
 		type: "avg",
+		timeline_stamp: "G",
+		timeline_fill: "#FFF",
+		timeline_outline: "#222"
 	},
 	tele_coral_level_1:{
 		name: "Level 1 Coral Placed During Teleop",
 		type: "avg",
+		timeline_stamp: "1",
+		timeline_fill: "#FFF",
+		timeline_outline: "#AAA"
 	},
 	tele_coral_level_2:{
 		name: "Level 2 Coral Placed During Teleop",
 		type: "avg",
+		timeline_stamp: "2",
+		timeline_fill: "#FFF",
+		timeline_outline: "#AAA"
 	},
 	tele_coral_level_3:{
 		name: "Level 3 Coral Placed During Teleop",
 		type: "avg",
+		timeline_stamp: "3",
+		timeline_fill: "#FFF",
+		timeline_outline: "#AAA"
 	},
 	tele_coral_level_4:{
 		name: "Level 4 Coral Placed During Teleop",
 		type: "avg",
+		timeline_stamp: "4",
+		timeline_fill: "#FFF",
+		timeline_outline: "#AAA"
 	},
 	tele_coral_station_1:{
 		name: "Coral Collected from Station 1 in Teleop",
 		type: "avg",
+		timeline_stamp: "S",
+		timeline_fill: "#FFF",
+		timeline_outline: "#222"
 	},
 	tele_coral_station_2:{
 		name: "Coral Collected from Station 2 in Teleop",
 		type: "avg",
+		timeline_stamp: "S",
+		timeline_fill: "#FFF",
+		timeline_outline: "#222"
 	},
 	algae_collect:{
 		name: 'Algae Collected',
@@ -580,10 +709,6 @@ var statInfo={
 	},
 	auto_algae_net_score:{
 		name: 'Algae Net Score in Auto',
-		type: 'avg'
-	},
-	auto_algae_opponent_net_score:{
-		name: 'Algae Opponent Net Score in Auto',
 		type: 'avg'
 	},
 	auto_algae_opponent_processor_score:{
@@ -850,6 +975,10 @@ var statInfo={
 		name: 'Preferred Coral Level',
 		type: 'text'
 	},
+	preferred_algae_place:{
+		name: 'Preferred Algae Placement',
+		type: 'text'
+	},
 	human_player_algae_received:{
 		name: 'Human Player Shots',
 		type: 'total'
@@ -861,14 +990,67 @@ var statInfo={
 	human_player_accuracy:{
 		name: 'Human Player Accuracy',
 		type: 'ratio'
-	}
+	},
+	algae_litter:{
+		name: 'Algae Litter',
+		type: 'avg',
+		good: 'low',
+	},
+	coral_litter:{
+		name: 'Coral Litter',
+		type: 'avg',
+		good: 'low',
+	},
+	litter:{
+		name: 'Litter',
+		type: 'avg',
+		good: 'low',
+	},
+	auto_paths:{
+		name: "Auto Paths",
+		type: "pathlist",
+		aspect_ratio: .916,
+		whiteboard_start: 0,
+		whiteboard_end: 50,
+		whiteboard_us: true,
+		source: "pit"
+	},
+	tele_algae_theft:{
+		name: 'Algae Theft in Teleop',
+		type: '%',
+		timeline_stamp: "T",
+		timeline_fill: "#4eb0a4",
+		timeline_outline: "#222"
+	},
+	tele_coral_theft:{
+		name: 'Coral Theft in Teleop',
+		type: '%',
+		timeline_stamp: "T",
+		timeline_fill: "#FFF",
+		timeline_outline: "#222"
+	},
+	tele_theft:{
+		name: 'Theft in Teleop',
+		type: '%'
+	},
 }
 
-
 var teamGraphs={
-	"Match Score":{
-		graph:"bar",
-		data:["score"]
+	"Game Stage":{
+		graph:"stacked",
+		data:["auto_score","tele_score","end_game_score"],
+	},
+	"Match Timeline":{
+		graph:"timeline",
+		data:['timeline']
+	},
+	"Scoring Element Cycles":{
+		graph:"stacked",
+		data:["algae_place","coral_place"],
+	},
+	"Scoring Locations":{
+		graph:"stacked",
+		data:["algae_processor","algae_net","coral_level_1","coral_level_2","coral_level_3","coral_level_4"],
 	},
 }
 
@@ -905,18 +1087,25 @@ var matchPredictorSections={
 
 var whiteboardStamps=[]
 
+var fieldRotationalSymmetry=true
+
 window.whiteboard_aspect_ratio=2.18
 
 var whiteboardStats=[
 	"score",
 	"auto_score",
+	"tele_score",
+	"end_game_score",
 	"algae_place",
+	"preferred_algae_place",
+	"algae_litter",
 	"coral_place",
 	"preferred_coral_level",
+	"coral_litter",
 	"human_player_accuracy",
 	"human_player_algae_received",
-	"algae_removed_reef",
 	"auto_start",
+	"auto_paths",
 ]
 
 // https://www.postman.com/firstrobotics/workspace/frc-fms-public-published-workspace/example/13920602-f345156c-f083-4572-8d4a-bee22a3fdea1
@@ -929,25 +1118,6 @@ function showPitScouting(el,team){
 		if (dat.team_name) el.append($("<p>").text("Team name: " + dat.team_name))
 		if (dat.team_location) el.append($("<p>").text("Location: " + dat.team_location))
 		if (dat.bot_name) el.append($("<p>").text("Bot name: " + dat.bot_name))
-		el.append($("<h4>").text("Autos"))
-		var list=$("<ul>")
-		for (var i=1; i<=9; i++){
-			var desc=dat[`auto_${i}_description`]||""
-			var tested=dat[`auto_${i}_testing`]||'no'
-			if (tested == 'no') tested=($('<span style=color:red>').text("Not tested"))
-			if (tested == 'practice') tested=($('<span style=color:yellow>').text("Tested in practice only"))
-			if (tested == 'match') tested=($('<span style=color:green>').text("Test in a match"))
-			if (desc.length) list.append($('<li style=white-space:pre-wrap>').append(tested).append(": ").append(desc))
-		}
-		el.append(list)
-
-		el.append('<h4>Capabilities</h4>')
-		list=$("<ul>")
-		list.append((dat.notes_amp?$('<li>'):$('<li style=text-decoration:line-through>')).text("Amp"))
-		list.append((dat.notes_speaker?$('<li>'):$('<li style=text-decoration:line-through>')).text("Speaker"))
-		list.append((dat.notes_trap?$('<li>'):$('<li style=text-decoration:line-through>')).text("Trap"))
-		list.append((dat.onstage?$('<li>'):$('<li style=text-decoration:line-through>')).text("Onstage"))
-		el.append(list)
 
 		el.append($("<h4>").text("Robot"))
 		list=$("<ul>")

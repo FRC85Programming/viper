@@ -14,6 +14,11 @@ $(document).ready(function(){
 		matchStartTime = 0
 		return true
 	})
+	window.onShowPitScouting = window.onShowPitScouting || []
+	window.onShowPitScouting.push(function(){
+		setTimeout(drawAutos,0)
+		return true
+	})
 
 	window.onInputChanged = window.onInputChanged || []
 	window.onInputChanged.push(inputChanged)
@@ -22,11 +27,10 @@ $(document).ready(function(){
 
 		toggleScoringElements()
 
-		if(!input.closest('.auto,.teleop').length) return
+		if(!input.closest('.auto,.teleop,#no-show-area').length) return
 
 		var leave=$('[name="auto_leave"]')
-		if (input.closest('.auto')&&input.attr('name')!='auto_leave'&&!leave.is(':checked')){
-			console.log(input)
+		if (input.closest('.auto').length&&input.attr('name')!='auto_leave'&&!leave.is(':checked')){
 			leave.prop('checked',true)
 			inputChanged(leave,0)
 		}
@@ -100,20 +104,21 @@ $(document).ready(function(){
 	}
 
 	function moveFloaterToPercentCoordinates(mapImage, isRotated, coordinates, floatingImage){
-		var c = getPixelCoordinates(mapImage, true, coordinates, floatingImage, false)
+		var c = getPixelCoordinates(mapImage, true, coordinates, floatingImage, true, true)
 		if (!c) return
 		floatingImage.style.left=c.x+"px"
 		floatingImage.style.top=c.y+"px"
 	}
 
-	function getPercentCoordinates(event, mapImage, isRotated){
+	function getPercentCoordinates(event, mapImage, flipX, flipY, rotated){
 		var d = mapImage.getBoundingClientRect(),
 		x = event.clientX - d.left,
 		y = event.clientY - d.top,
 		px = Math.min(99,Math.max(1,Math.round(100 * x / d.width))),
 		py =  Math.min(99,Math.max(1,Math.round(100 * y / d.height)))
-		if (!isRotated) py = 100 - py
-		if (isRotated) px = 100 - px
+		if (flipY) py = 100 - py
+		if (flipX) px = 100 - px
+		if (rotated) [py,px] = [px,py]
 		return px+"x"+py
 	}
 
@@ -121,7 +126,7 @@ $(document).ready(function(){
 		var mi = document.getElementById('start-area'),
 		fi = document.getElementById('robot-starting-position'),
 		ir = "none"==(""+getComputedStyle($('#start-area')[0]).transform),
-		co = getPercentCoordinates(e,mi,ir)
+		co = getPercentCoordinates(e,mi,ir,ir,true)
 		moveFloaterToPercentCoordinates(mi,ir,co,fi)
 		$('#auto-start-input').val(co)
 	}
@@ -182,6 +187,48 @@ $(document).ready(function(){
 	})
 	toggleScoringElements()
 
+	function getAutoPath(startNew){
+		var chosen
+		$('.auto-path').each(function(p){
+			var p = $(this)
+			if (!chosen) chosen = p
+			if (p.val()) chosen = p
+			if (startNew && chosen.val() && !p.val()) chosen = p
+		})
+		return chosen
+	}
+
+	var startNewAutoPath = false
+
+	$('#auto-paths').click(function(e){
+		var path = getAutoPath(startNewAutoPath),
+		val = path.val()
+		if (val) val += " "
+		val += getPercentCoordinates(e, this, true, false)
+		path.val(val)
+		drawAutos()
+		startNewAutoPath = false
+	})
+
+	$('#auto-path-next').click(function(){
+		startNewAutoPath = true
+		return false
+	})
+
+	$('#auto-path-undo').click(function(){
+		var path = getAutoPath()
+		path.val(path.val().replace(/ ?[^ ]+$/,""))
+		drawAutos()
+		return false
+	})
+
+	function drawAutos(){
+		var canvas = $('#auto-paths')[0]
+		sizeAndClearCanvas(canvas)
+		$('.auto-path').each(function(){
+			drawPath(canvas,$(this).attr('data-color'),$(this).val(),true,false)
+		})
+	}
 
 	function proceedToTeleBlink(){
 		$('#to-tele-button').toggleClass('pulse-bg', matchStartTime>0 && (new Date().getTime()-matchStartTime)>=AUTO_MS)

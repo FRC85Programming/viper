@@ -3,6 +3,8 @@
 var matchId=(location.hash.match(/^\#(?:(?:.*\&)?(?:(?:match)\=))?([a-z0-9]+)(?:\&.*)?$/)||["",""])[1],
 myTeamsStats
 
+var maxWhiteboardDimension=0
+
 $(document).ready(function() {
 	var statsConfig = new StatsConfig({
 		statsConfigKey:`${eventYear}WhiteboardStats`,
@@ -108,7 +110,11 @@ $(document).ready(function() {
 		var h3W=statsW-70,
 		statsP=vert?'top':'left',
 		statsO=vert?fieldH+10:fieldW+10
+		maxWhiteboardDimension=Math.max(fieldW,fieldH)
 		$('#field,#fieldBG,#fieldDraw').css('width',`${fieldW}px`).css('height',`${fieldH}px`)
+		sketcher.sketchable('handler', function(node, data){
+			data.sketch.size(fieldW,fieldH)
+		})
 		$('#stats').css('width',`${statsW}px`).css('max-width',`${statsW}px`).css(statsP, statsO)
 		$('h3').css('width',`${h3W}px`)
 		$('body').css('overflow-y',vert?'visible':'hidden')
@@ -193,20 +199,24 @@ $(document).ready(function() {
 				name = info.name||field
 				if (!info.whiteboard_end){
 					row = $("<tr>")
-					var best=info.good=='low'?99999999:0
+					var best=info.good=='low'?99999999:-99999999,
+					worst=-best
 					teamList.forEach(function(team,i){
 						var val = getTeamValue(field,team)
 						if (info.good=='low'){
-							if (val<best&&val>0)best=val
+							if (val<best)best=val
+							if (val>worst)worst=val
 						} else {
 							if (val>best)best=val
+							if (val<worst)worst=val
 						}
 					})
+					if (worst==best)best=99999999
 					teamList.forEach(function(team,i){
 						var color = (i<BOT_POSITIONS.length/2)?"red":"blue",
 						val = getTeamValue(field,team),
 						dispVal = val
-						if(/^(%|fraction)$/.test(info.type)) dispVal += "%"
+						if(/^(%|fraction|ratio)$/.test(info.type)&&(typeof dispVal==='number')) dispVal += "%"
 						row.append($(`<td class="${color}TeamBG">`).addClass(val==best?"best":"").text(dispVal))
 					})
 					row.append($('<th>').text(name))
@@ -263,7 +273,7 @@ $(document).ready(function() {
 							canvas[0].width = canvas[0].clientWidth
 							canvas[0].height = canvas[0].clientHeight
 							;(data||[]).forEach(path=>{
-								drawPath(canvas, style[1], path)
+								drawPath(canvas, style[1], path, !atBottom && window.fieldRotationalSymmetry)
 							})
 						} else {
 							;(data||"").split(" ").forEach(coordinates=>{
@@ -272,7 +282,7 @@ $(document).ready(function() {
 								if (m && m.length){
 									[left, top] = m.slice(1).map(x=>parseInt(x)/100)
 									if (invert)[left, top] = [top, left]
-									if (rotated) left = 1 - left
+									if (!atBottom && window.fieldRotationalSymmetry) left = 1 - left
 									var point = $('<div class=overlay>').html(char).css(...style)
 									whiteboard.append(point)
 									var pointBounds = point[0].getBoundingClientRect()
@@ -328,7 +338,7 @@ $(document).ready(function() {
 			if (statInfo[field].type == '%') return Math.round(100 * (stats[field]||0) / stats['count'])
 		}
 		if (stats[field] == null) return ""
-		if (statInfo[field].type == 'ratio') return Math.round(100 * (stats[field]))+"%"
+		if (statInfo[field].type == 'ratio') return Math.round(100 * (stats[field]))
 		return stats[field]
 	}
 
@@ -362,20 +372,21 @@ $(document).ready(function() {
 				if (img.length){
 					data.options.graphics.fillStyle = '#fff0' // transparent
 					data.options.graphics.strokeStyle = '#fff0'
-					data.options.graphics.lineWidth = 3
+					data.options.graphics.lineWidth = maxWhiteboardDimension/400
+					data.options.graphics.firstPointSize = 0
 					data.sketch.pencil()
 					var bounds = $('#fieldDraw')[0].getBoundingClientRect()
 					data.sketch.drawImage(img.attr('src'), evt.clientX - bounds.left, evt.clientY - bounds.top)
 				} else if (pen.attr('data-type') == 'eraser'){
 					// Set the brush in eraser mode.
-					data.options.graphics.lineWidth = 20
+					data.options.graphics.lineWidth = maxWhiteboardDimension/40
 					data.options.graphics.fillStyle = '#ffff'
 					data.options.graphics.strokeStyle = '#ffff'
 					data.sketch.eraser()
 				} else {
 					// Set the brush in pencil mode.
-					data.options.graphics.lineWidth = 3
-					data.options.graphics.firstPointSize = 3
+					data.options.graphics.lineWidth = maxWhiteboardDimension/400
+					data.options.graphics.firstPointSize = 0
 					var color = pen.css('color')
 					data.options.graphics.fillStyle = color
 					data.options.graphics.strokeStyle = color
@@ -384,10 +395,6 @@ $(document).ready(function() {
 			}
 		}
 	})
-	sketcher.sketchable('handler', function(node, data){
-		data.sketch.size(Math.floor(node.innerWidth()), Math.floor(node.innerHeight()))
-	})
-
 	function setCursorImage() {
 		var pen = $('button.pen.selected'),
 		img = pen.find('img'),
