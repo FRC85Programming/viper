@@ -1,6 +1,10 @@
 Event Creation by Data Entry Instructions
 ========================
 
+###
+
+[Back](/about.html)
+
 ## Creating an event with data entry
 
 When you get to an event, you are often handed a paper with the event schedule on it. You can enter this data into the app to be able to scout the event.

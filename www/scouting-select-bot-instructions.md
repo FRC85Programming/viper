@@ -1,6 +1,10 @@
 Scouting Bot Selection Instructions
 ========================
 
+###
+
+[Back](/about.html)
+
 ### Selecting a bot
 
 You will be recording the actions of one of the robots competing in each match. Each scouter collects data for a different bot. You need to choose a bot to scout based on its color (red vs blue) and its position in the schedule. Your scouting device should be assigned to scout a particular color and position. The button for the bot last scouted will be highlighted. If no button is highlighted, talk to the other scouters and work out which person will be scouting each bot.

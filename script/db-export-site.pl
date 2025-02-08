@@ -34,13 +34,13 @@ if (scalar(@$data)){
 	close $fh;
 
 	if ($data->[0]->[2]){
-		die "Error opening $file for writing: $!" if (!open $fh, ">:raw", "$dir/background.png");
+		die "Error opening $file for writing: $!" if (!open $fh, ">:raw", "$dir/Bob85bg.png");
 		print $fh $data->[0]->[2];
 		close $fh;
 	}
 
 	if ($data->[0]->[3]){
-		die "Error opening $file for writing: $!" if (!open $fh, ">:raw", "$dir/logo.png");
+		die "Error opening $file for writing: $!" if (!open $fh, ">:raw", "$dir/Bob85Logo.png");
 		print $fh $data->[0]->[3];
 		close $fh;
 	}

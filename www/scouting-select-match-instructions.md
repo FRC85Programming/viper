@@ -1,6 +1,10 @@
 Scouting Match Selection Instructions
 ========================
 
+###
+
+[Back](/about.html)
+
 ## Selecting a match
 
 The list of matches shows the teams in the bot position that you are scouting.

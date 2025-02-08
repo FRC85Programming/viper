@@ -1,3 +1,10 @@
+Scouting Instructions
+========================
+
+###
+
+[Back](/about.html)
+
 ## Scouting Instructions
 
 Watch your robot and record its actions by clicking on the corresponding buttons. The icons used for actions are:

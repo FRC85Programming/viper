@@ -1,6 +1,10 @@
 Bot Photos Instructions
 ========================
 
+###
+
+[Back](/about.html)
+
 ## Bot Photos Instructions
 
 Once the photos page is open, unplug the device (tablet, or phone) from the scouting briefcase. You can go visit all the teams and take pictures of bots while leaving the page open. When you are done, come back and plug back in before pressing the "Upload all" button.

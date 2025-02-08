@@ -89,7 +89,7 @@ print "<!DOCTYPE html>
 <script src=/jquery.min.js></script>
 <script src=/main.js></script>
 <script src=/local.js></script>
-<link rel=icon type=image/png href=/logo.png>
+<link rel=icon type=image/png href=/Bob85Logo.png>
 <meta http-equiv=refresh content='3; url=$return'></head>
 <body>
 <h1>Configuration Saved</h1>
