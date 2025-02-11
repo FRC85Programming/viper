@@ -58,3 +58,29 @@ html{padding:0}
 img.count{max-width:4em}
 .teleop img.count{max-width:4em}
 img.ReefLevels{max-width:9em}
+
+:root {
+	--main-bg-color:#466c86;
+	--main-fg-color:#DDD;
+	--main-border-color:#09090953;
+	--section-bg-color:#333;
+	--link-color:#fefe00;
+	--link-visited-color:#fefe00;
+	--red-team-color:rgb(144, 0, 0);
+	--blue-team-color:rgb(0, 0, 127);
+	--winner-color:rgb(165, 238, 102);
+	--button-bg-color:#dcdcdc;
+	--button-fg-color:#333;
+	--button-selected-bg-color:rgba(106, 199, 106, 0.693);
+	--button-disabled-decoration-color:rgb(219, 101, 101);
+	--highlight-bg-color:rgba(190, 201, 190, 0);
+	--highlight-fg-color:rgb(255, 255, 255);
+	--lowlight-bg-color:#333;
+	--focus-bg-color:rgb(196, 179, 97);
+	--translucent-hide-color:#333D;
+}
+
+
+/** Your own custom background image (Create the image and uncomment the rule)**/
+
+html{background-image:url('Bob85Logo2.png');background-size:33vw auto}
