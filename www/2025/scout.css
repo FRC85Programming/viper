@@ -1,8 +1,8 @@
 #scouting{max-width:60em;margin:0 auto}
 #scouting>div>table{border-collapse:collapse;border:1px solid var(--main-border-color);margin-bottom:3vmin;width:100%}
-#scouting>div>table>tbody>tr>th{border:1px solid var(--main-border-color);font-size:200%}
-#scouting>div>table>tbody>tr>td{border:1px solid var(--main-border-color);overflow:hidden;text-align:center;padding:.4em;font-weight:bold; margin-bottom:0;vertical-align:top;width:25%;vertical-align:middle}
-#scouting .num {display:block;font-size:125%;margin:0 auto;font-weight:bold}
+#scouting>div>table>tbody>tr>th{border:1px solid var(--main-border-color);font-size:100%}
+#scouting>div>table>tbody>tr>td{border:1px solid var(--main-border-color);overflow:hidden;text-align:center;padding:.4em;font-weight:bold; margin-bottom:0;vertical-align:top;width:15%;vertical-align:middle}
+#scouting .num {display:block;font-size:150%;margin:0 auto;font-weight:bold}
 
 .orientLeft .bigimg, body.leftField.redTeam #start-area,body.rightField.blueTeam #start-area,body.leftField.redTeam .scout-locations,body.rightField.blueTeam .scout-locations,body.leftField.redTeam .scout-locations > *,body.rightField.blueTeam .scout-locations > * {transform:rotate(180deg)}
 
@@ -19,8 +19,8 @@
 @media (min-height:401px) and (max-height:600px){.scout-locations{max-height:70vh}}
 @media (min-height:601px) and (max-height:800px){.scout-locations{max-height:77vh}}
 .scout-locations button{background-color:#0008;border-color:#0008}
-.redTeam .scout-locations{background:url(scout-red.png) no-repeat center center / 100% 100%}
-.blueTeam .scout-locations{background:url(scout-blue.png) no-repeat center center / 100% 100%}
+/*.redTeam .scout-locations{background:url(scout-red.png) no-repeat center center / 100% 100%}
+.blueTeam .scout-locations{background:url(scout-blue.png) no-repeat center center / 100% 100%}*/
 .scout-locations > button{height:14%;position:absolute;min-width:0;aspect-ratio:1;display:inline-block}
 .reef-scout{position:absolute;height:56%;aspect-ratio:1}
 .reef-scout > *{height:25%;position:absolute;min-width:0;aspect-ratio:1;display:inline-block}
@@ -30,11 +30,10 @@
 .blueTeam .scout-locations .label{background-color:var(--blue-team-color)}
 
 html{padding:0}
-.end-game{margin-bottom:50vh}
+.end-game{margin-bottom:30vh}
 #select-bot button{font-size:100%}
-
-.algae{background:#99ddd5;font-size:80%}
-.coral{background:white;font-size:80%}
+.algae{background:#82dcd2;color:black}
+.coral{background:white;color:black;}
 .collection{color:rgb(5, 58, 0)}
 .placement{color:rgb(0, 23, 69)}
 
@@ -56,3 +55,6 @@ html{padding:0}
 }
 
 #auto-paths {min-width:10em;width:60%;max-width:40em;height:auto;aspect-ratio:.916;background:url('auto-area-blue.png');background-size:cover}
+img.count{max-width:4em}
+.teleop img.count{max-width:4em}
+img.ReefLevels{max-width:9em}

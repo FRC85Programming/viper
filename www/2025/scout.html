@@ -19,8 +19,6 @@
 <script src=/local.js></script>
 <link rel=preload as=image href=start-area-blue.png>
 <link rel=preload as=image href=start-area-red.png>
-<link rel=preload as=image href=scout-red.png>
-<link rel=preload as=image href=scout-blue.png>
 <link rel=preload as=image href=algae-collec.png>
 <link rel=preload as=image href=algae-drop.png>
 <link rel=preload as=image href=algae-place.png>
@@ -29,6 +27,7 @@
 <link rel=preload as=image href=coral-drop.png>
 <link rel=preload as=image href=coral-place.png>
 <link rel=preload as=image href=reef.png>
+<link rel=preload as=image href=ReefLevels-ClearBG.png>
 <link rel=icon type=image/png href=/Bob85Logo.png>
 </head>
 
@@ -94,43 +93,264 @@
 	</div>
 
 	<div class="prematch tab-content">
-		<table><tr><td colspan=2>
-			<h1>Viper</h1>
-			<div>
-				<button class=showInstructions>Instructions</button>
-				<button id=teamBtn>Team # Correction</button>
-				<button id=matchBtn>Choose Match</button>
-				<button class=robotBtn>Change Robot</button>
-				<button class=fieldRotateBtn>Rotate Field</button>
-				<iframe class="instructions lightBoxFullContent" src=scouting-instructions.html></iframe>
-			</div>
-			<input type=hidden name=event>
-			<input type=hidden name=match>
-			<input type=hidden name=team>
-			<input type=hidden name=timeline id=timeline>
-		</td></tr><tr><td class=subheader>
-			Click team <span class=team></span>'s starting position.
-		</td><td class="subheader teamColorBG" style=height:3%>
-			Team <span class=team></span>
-		</td></tr><tr><td rowspan=4>
-			<div id=start-area><div id=robot-starting-position></div></div>
-			<input id=auto-start-input type=hidden name=auto_start>
-		</td><td>
-			<label><input type=checkbox data-element=coral data-provides=1 name=coral_preload value=1><span>Preloaded Coral</span></label>
-		</td></tr><tr><td id=no-show-area>
-			<label><input type=checkbox name=no_show value=1><span>No Show</span></label>
-		</td></tr><tr><td class="subheader otherTeamBG">
-			What is the team number of the OPPONENT's human player at the processor?
-		</td></tr><tr><td id=choose-opponent>
-			<input type=text name=opponent_human_player_team placeholder=99999 size=5 style=width:4em>
+		<table>
+			<tr>
+				<td colspan=2>
+				<h1>Viper</h1>
+				<div>
+					<button class=showInstructions>
+						Instructions
+					</button>
+					<button id=teamBtn>
+						Team # Correction
+					</button>
+					<button id=matchBtn>
+						Choose Match
+					</button>
+					<button class=robotBtn>
+						Change Robot
+					</button>
+					<button class=fieldRotateBtn>
+						Rotate Field
+					</button>
+					<iframe class="instructions lightBoxFullContent" src=scouting-instructions.html></iframe>
+				</div>
+				<input type=hidden name=event>
+				<input type=hidden name=match>
+				<input type=hidden name=team>
+				<input type=hidden name=timeline id=timeline>
+				</td>
+			</tr>
+			<tr>
+				<td class=subheader>
+					Click team <span class=team></span>'s starting position.
+				</td>
+				<td class="subheader teamColorBG" style=height:3%>
+					Team <span class=team></span>
+				</td>
+			</tr>
+			<tr>
+				<td rowspan=4>
+				<div id=start-area>
+				<div id=robot-starting-position>
+				</div>
+				</div>
+				<input id=auto-start-input type=hidden name=auto_start>
+				</td>
+				<td style="vertical-align: top; height: 50px">
+					<div class="colorBar coral">
+					</div>
+					<div>
+					Does <span class=team></span> have a Preloaded Coral in their bot?
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td id=preload>
+				<label>
+					<input type=checkbox data-element=coral data-provides=1 name=coral_preload value=1>
+					<span>Preloaded Coral</span>
+				</label>
+			</td>
+		</tr>
+		<tr>
+			<td style="vertical-align: top; height: 50px">
+				<div class="colorBar teamColorBG">
+				</div>
+				<div>
+				Is <span class=team></span> on the field?
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td id=no_show>
+				<label>
+					<input type=checkbox name=no_show value=1>
+					<span>No Show</span>
+				</label>
 		</td></tr><tr><td colspan=2>
-			<button style=float:right class=tab-button data-content=auto>Auto »</button>
+			<button style=float:right class=tab-button data-content=auto>
+				Auto »
+			</button>
 		</td></tr></table>
 
 	</div>
 
 	<div class="auto tab-content">
-		<table class=field-table><tr><td colspan=5>
+		<table>
+			<colgroup>
+				<col span="2" style="width: 10%">
+				<col span="1" style="width: 20%">
+				<col span="1" style="width: 20%">
+				<col span="1" style="width: 10%">
+			</colgroup>
+			<tbody>
+				<tr style="height:30px">
+					<th class=subheader colspan=2 style="width:15%">
+						Algae Scoring
+					</th>
+					<th class=subheader>
+						Game Piece Collection
+					</th>
+					<th class=subheader colspan=2 style="width:20%">
+						Coral Scoring
+					</th>
+				</tr>
+				<tr style="height: 90px">
+					<td class="equalWidth" colspan=2>
+						<div class="colorBar algae">
+
+						</div>
+						<div>
+							<img class=count src=/count_up.svg>
+						</div>
+						<div>
+							Removed from Reef<br>
+							<input type=text class=num value=0 name=tele_algae_removed size=2 disabled max=6>
+						</div>
+						<div>
+							<img class=count src=/count_down.svg>
+						</div>
+					</td>
+					<td rowspan=2 class=algae>
+						<div>
+							<img class=count src=/count_up.svg >
+						</div>
+						<div>
+							Algae Acquired<br>
+							<input type=text class=num value=0 name=tele_algae_pickup size=2 disabled>
+						</div>
+						<div>
+							<img class=count src=/count_down.svg>
+						</div>
+					</td>
+					<td rowspan=4>
+						<div>
+							<img class=ReefLevels src=ReefLevels-ClearBG.png>
+						</div>
+					</td>
+					<td class="equalWidth">
+						<div>
+							<img class="count placement" src=/count_up.svg>
+						</div>
+						<div>
+							L4<br>
+							<input type=text class=num value=0 name=tele_coral_level_4 size=2 disabled max=12>
+						</div>
+						<div>
+							<img class=count src=/count_down.svg>
+						</div>
+					</td>
+				</tr>
+				<tr style="height: 90px">
+					<td class="equalWidth" colspan=2>
+						<div class="colorBar otherTeamBG">
+
+						</div>
+						<div>
+							<img class=count src=/count_up.svg>
+						</div>
+						<div>
+							Processor<br>
+							<input type=text class=num value=0 name=tele_algae_processor size=2 disabled>
+						</div>
+						<div>
+							<img class=count src=/count_down.svg>
+						</div>
+					</td>
+					<td class="equalWidth">
+						<div>
+							<img class="count placement" src=/count_up.svg>
+						</div>
+						<div>
+							L3<br>
+							<input type=text class=num value=0 name=tele_coral_level_3 size=2 disabled max=12>
+						</div>
+						<div>
+							<img class=count src=/count_down.svg>
+						</div>
+					</td>
+				</tr>
+				<tr style="height: 90px">
+					<td class="equalWidth" colspan=2>
+						<div class="colorBar teamColorBG">
+
+						</div>
+						<div>
+							<img class=count src=/count_up.svg>
+						</div>
+						<div>
+							Net (By Robot)<br>
+							<input type=text class=num value=0 name=tele_algae_net size=2 disabled>
+						</div>
+						<div>
+							<img class=count src=/count_down.svg>
+						</div>
+					</td>
+					<td rowspan=2 class=coral>
+						<div>
+							<img class=count src=/count_up.svg>
+						</div>
+						<div>
+							Coral Acquired<br>
+							<input type=text class=num value=0 name=tele_coral_pickup size=2 disabled>
+						</div>
+						<div>
+							<img class=count src=/count_down.svg>
+						</div>
+					</td>
+					<td class="equalWidth">
+						<div>
+							<img class=count src=/count_up.svg>
+						</div>
+						<div>
+							L2<br>
+							<input type=text class=num value=0 name=tele_coral_level_2 size=2 disabled max=12>
+						</div>
+						<div>
+							<img class=count src=/count_down.svg>
+						</div>
+					</td>
+				</tr>
+				<tr style="height: 90px">
+					<td class="team teamColorBG" colspan=2 rowspan=2>
+						<div>
+
+						</div>
+					</td>
+					<td class="equalWidth">
+						<div>
+							<img class=count src=/count_up.svg>
+						</div>
+						<div>
+							L1 (Trough)<br>
+							<input type=text class=num value=0 name=tele_coral_level_1 size=2 disabled>
+						</div>
+						<div>
+							<img class=count src=/count_down.svg>
+						</div>
+				</td>
+				</tr>
+				<tr>
+					<td>
+						<label>
+							<input type=checkbox name=auto_leave value=1>
+							<span>Leave Starting Line</span>
+						</label>
+					</td>
+					<td>
+						<button class=undo>
+							Undo
+						</button>
+					</td>
+					<td>
+						<button id=to-tele-button class=tab-button data-content=teleop>
+							Teleop »
+						</button>
+					</td>
+				</tr>
+			</table>
+		<!--<table class=field-table><tr><td colspan=5>
 			<div class=scout-locations>
 				<button class=count data-input=auto_coral_drop style=right:30%;bottom:1%><img src=coral-drop.png></button>
 				<button class=count data-input=auto_algae_drop style="right:45%;bottom:1%"><img src=algae-drop.png></button>
@@ -244,19 +464,20 @@
 				Event
 			</td></tr></thead>
 			<tbody class=timeline></tbody>
-		</table>
+		</table> -->
 	</div>
 
 	<div class="teleop tab-content">
-		<table class=field-table><tr><td colspan=4>
-			<div class=scout-locations>style=>
+			<!--<tr><td colspan=4>
+			<div class=scout-locations>-->
+				<!--
 				<button class=count data-input=tele_coral_drop style=right:30%;bottom:1%><img src=coral-drop.png></button>
 				<button class=count data-input=tele_algae_drop style="right:45%;bottom:1%"><img src=algae-drop.png></button>
 				<button class=count data-input=tele_algae_theft style="left:9%;bottom:30%"><img src=algae-collect.png></button>
 				<button class=count data-input=tele_coral_theft style=left:9%;top:30%><img src=coral-collect.png></button>
 				<button class=count data-input=tele_coral_station_1 style="right:5%;top:3%"><img src=coral-collect.png></button>
 				<button class=count data-input=tele_coral_station_2 style="right:5%;bottom:3%"><img src=coral-collect.png></button>
-				<button class=count data-input=tele_algae_processor style="left:43%;top:0.5%"><img src=algae-place.png></button>
+				<button class=count data-input=tele_algae_processor style="left:tele_algae_processor43%;top:0.5%"><img src=algae-place.png></button>
 				<button class=count data-input=tele_algae_opponent_processor style="left:5%;bottom:0.5%"><img src=algae-place.png></button>
 				<button class=count data-input=tele_algae_net style="left:24%;bottom:20%"><img src=algae-place.png></button>
 				<button class=count data-input=tele_algae_opponent_net style="left:24%;top:20%"><img src=algae-place.png></button>
@@ -275,6 +496,7 @@
 					<button class=count data-input=tele_algae_upper style="left:50%;bottom:62.5%"><img src=algae-collect.png></button>
 					<button class=count data-input=tele_algae_lower_removed style="left:75%;bottom:37.5%"><img src=algae-remove.png></button>
 					<button class=count data-input=tele_algae_lower style="left:50%;bottom:37.5%"><img src=algae-collect.png></button>
+
 				</div>
 			</div>
 		</td></tr><tr><td class="team teamColorBG">
@@ -356,51 +578,307 @@
 				Event
 			</td></tr></thead>
 			<tbody class=timeline></tbody>
-		</table>
+		-->
+	<table>
+	<colgroup>
+		<col span="2" style="width: 10%">
+		<col span="1" style="width: 20%">
+		<col span="1" style="width: 20%">
+		<col span="1" style="width: 10%">
+	</colgroup>
+	<tbody>
+		<tr style="height:30px">
+			<th class=subheader colspan=2 style="width:15%">
+				Algae Scoring
+			</th>
+			<th class=subheader>
+				Game Piece Collection
+			</th>
+			<th class=subheader colspan=2 style="width:20%">
+				Coral Scoring
+			</th>
+		</tr>
+		<tr style="height: 90px">
+			<td class="equalWidth" colspan=2>
+				<div class="colorBar algae">
+
+				</div>
+				<div>
+					<img class=count src=/count_up.svg>
+				</div>
+				<div>
+					Removed from Reef<br>
+					<input type=text class=num value=0 name=tele_algae_removed size=2 disabled max=6>
+				</div>
+				<div>
+					<img class=count src=/count_down.svg>
+				</div>
+			</td>
+			<td rowspan=2 class=algae>
+				<div>
+					<img class=count src=/count_up.svg >
+				</div>
+				<div>
+					Algae Acquired<br>
+					<input type=text class=num value=0 name=tele_algae_pickup size=2 disabled>
+				</div>
+				<div>
+					<img class=count src=/count_down.svg>
+				</div>
+			</td>
+			<td rowspan=4>
+				<div>
+					<img class=ReefLevels src=ReefLevels-ClearBG.png>
+				</div>
+			</td>
+			<td class="equalWidth">
+				<div>
+					<img class="count placement" src=/count_up.svg>
+				</div>
+				<div>
+					L4<br>
+					<input type=text class=num value=0 name=tele_coral_level_4 size=2 disabled max=12>
+				</div>
+				<div>
+					<img class=count src=/count_down.svg>
+				</div>
+			</td>
+		</tr>
+		<tr style="height: 90px">
+			<td class="equalWidth" colspan=2>
+				<div class="colorBar otherTeamBG">
+
+				</div>
+				<div>
+					<img class=count src=/count_up.svg>
+				</div>
+				<div>
+					Processor<br>
+					<input type=text class=num value=0 name=tele_algae_processor size=2 disabled>
+				</div>
+				<div>
+					<img class=count src=/count_down.svg>
+				</div>
+			</td>
+			<td class="equalWidth">
+				<div>
+					<img class="count placement" src=/count_up.svg>
+				</div>
+				<div>
+					L3<br>
+					<input type=text class=num value=0 name=tele_coral_level_3 size=2 disabled max=12>
+				</div>
+				<div>
+					<img class=count src=/count_down.svg>
+				</div>
+			</td>
+		</tr>
+		<tr style="height: 90px">
+			<td class="equalWidth" colspan=2>
+				<div class="colorBar teamColorBG">
+
+				</div>
+				<div>
+					<img class=count src=/count_up.svg>
+				</div>
+				<div>
+					Net (By Robot)<br>
+					<input type=text class=num value=0 name=tele_algae_net size=2 disabled>
+				</div>
+				<div>
+					<img class=count src=/count_down.svg>
+				</div>
+			</td>
+			<td rowspan=2 class=coral>
+				<div>
+					<img class=count src=/count_up.svg>
+				</div>
+				<div>
+					Coral Acquired<br>
+					<input type=text class=num value=0 name=tele_coral_pickup size=2 disabled>
+				</div>
+				<div>
+					<img class=count src=/count_down.svg>
+				</div>
+			</td>
+			<td class="equalWidth">
+				<div>
+					<img class=count src=/count_up.svg>
+				</div>
+				<div>
+					L2<br>
+					<input type=text class=num value=0 name=tele_coral_level_2 size=2 disabled max=12>
+				</div>
+				<div>
+					<img class=count src=/count_down.svg>
+				</div>
+			</td>
+		</tr>
+		<tr style="height: 90px">
+			<td class="team teamColorBG" colspan=2 rowspan=2>
+				<div>
+
+				</div>
+			</td>
+			<td class="equalWidth">
+				<div>
+					<img class=count src=/count_up.svg>
+				</div>
+				<div>
+					L1 (Trough)<br>
+					<input type=text class=num value=0 name=tele_coral_level_1 size=2 disabled>
+				</div>
+				<div>
+					<img class=count src=/count_down.svg>
+				</div>
+		</td>
+		</tr>
+		<tr>
+			<td colspan=2>
+				<button class=undo>
+					Undo
+				</button>
+			</td>
+			<td colspan=1 class="equalWidth">
+				<button class=tab-button data-content=end-game>
+					End Game »
+				</button>
+			</td>
+		</tr>
+	</tbody>
+	</table>
 	</div>
 
 	<div class="end-game tab-content">
-		<table><tr><td class=subheader>
-			Barge
-		</td></tr><tr><td>
-
-			<fieldset>
-				<legend>Is <span class=team></span>'s robot in the <span class=teamColor></span> barge zone?</legend>
-				<label><input type=radio name=end_game_position value=parked><span>Parked</span></label>
-				<label><input type=radio name=end_game_position value=shallow><span>Hanging from a shallow cage</span></label>
-				<label><input type=radio name=end_game_position value=deep><span>Hanging from a deep cage</span></label>
-			</fieldset>
-			<fieldset>
-				<legend>If not off the ground on a cage:</legend>
-				<label><input type=checkbox name=end_game_climb_fail value=1><span>Robot attempted to climb, but failed</span></label>
-			</fieldset>
-
-		</td></tr><tr><td class=subheader>
-			Gameplay
-		</td></tr><tr><td>
-			<fieldset class=full>
-				<legend>During the match:</legend>
-				<div><label><input type=checkbox name=defense value=1><span>Robot played defense</span></label></div>
-				<div><label><input type=checkbox name=bricked value=1><span>Robot broke or was disabled</span></label></div>
-			</fieldset>
-		</td></tr><tr><td class=subheader>
-			Scouter Info
-		</td></tr><tr><td>
-			<fieldset class="left full">
-				<legend>Name:</legend>
-				<input class=full type=text size=50 name=scouter placeholder="Scouter Team, First name, Last initial, Eg. 1234 Pat Q">
-			</fieldset>
-			<fieldset class="left full" id=scouting-comments>
-				<legend>Comments:</legend>
-				<textarea class=full name=comments rows=5 placeholder=Comments></textarea>
-			</fieldset>
-			<input type=hidden name=created value="">
-			<input type=hidden name=modified value="">
-			<fieldset class=full id=nextButtons>
-				<legend>Save data:</legend>
-				<div id=doneButtons></div>
-			</fieldset>
-		</td></tr></table>
+		<table style="width:70%">
+			<tr>
+				<td class=subheader>
+				Barge
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<fieldset>
+					<legend>
+						Is <span class=team></span>'s robot in the <span class=teamColor></span> Barge Zone?
+					</legend>
+					<label>
+						<input type=radio name=end_game_position value=parked>
+						<span>Parked</span>
+					</label>
+					<label>
+						<input type=radio name=end_game_position value=shallow>
+						<span>Hanging from a Shallow Cage</span>
+					</label>
+					<label>
+						<input type=radio name=end_game_position value=deep>
+						<span>Hanging from a Deep Cage</span>
+					</label>
+				</fieldset>
+				</td>
+			</tr>
+			<tr>
+				<td class=subheader>
+					Gameplay
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<fieldset class=full>
+						<legend>
+							How did <span class=team></span> Handle CORAL? (Select ALL that apply)
+						</legend>
+						<div>
+							<label>
+								<input type=checkbox name=coralstation value=1>
+								<span>DROPPED IN to Robot from Coral Station</span>
+							</label>
+						</div>
+						<div>
+							<label>
+								<input type=checkbox name=coralfloor value=1>
+								<span>Picked up from Floor</span>
+							</label>
+						</div>
+					</fieldset>
+					<fieldset class=full>
+						<legend>
+							How did <span class=team></span> Handle ALGAE? (Select ALL that apply)
+						</legend>
+						<div>
+							<label>
+								<input type=checkbox name=algaereef value=1>
+								<span>Picked up DIRECTLY from the Reef</span>
+							</label>
+						</div>
+						<div>
+							<label>
+								<input type=checkbox name=algaefloor value=1>
+								<span>Picked up from Floor</span>
+							</label>
+						</div>
+					</fieldset>
+					<fieldset class=full>
+						<legend>
+							During the match (Select ALL that happened at ANY point):
+						</legend>
+						<div>
+							<label>
+								<input type=checkbox name=defense value=1>
+								<span>Robot played Defense</span>
+							</label>
+						</div>
+						<div>
+							<label>
+								<input type=checkbox name=bricked value=1>
+								<span>Robot Broke or was Disabled</span>
+							</label>
+						</div>
+						<div>
+							<label>
+								<input type=checkbox name=tipped value=1>
+								<span>Robot Tipped Over</span>
+							</label>
+						</div>
+						<div>
+							<label>
+								<input type=checkbox name=bullied value=1>
+								<span>Robot got Bullied by Defense</span>
+							</label>
+						</div>
+					</fieldset>
+				</td>
+			</tr>
+			<tr>
+				<td class=subheader>
+				Scouter Info
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<fieldset class="left full">
+					<legend>
+						NAME:
+					</legend>
+						<input class=full type=text size=50 name=scouter placeholder="Scouter Team, First name, Last initial, Eg. 1234 Pat Q">
+					</fieldset>
+					<fieldset class="left full" id=scouting-comments>
+					<legend>
+						Comments:
+					</legend>
+					<textarea class=full name=comments rows=5 placeholder=Comments></textarea>
+					</fieldset>
+						<input type=hidden name=created value="">
+						<input type=hidden name=modified value="">
+					<fieldset class=full id=nextButtons>
+					<legend>
+						Save data:
+					</legend>
+						<div id=doneButtons></div>
+					</fieldset>
+				</td>
+			</tr>
+		</table>
 	</div>
 </form>
 </body>
