@@ -35,13 +35,12 @@
 
 	<fieldset class=full>
 		<legend><span class=team></span> Team info</legend>
-		<p>Name: <input name=team_name type=text placeholder="NOT the team number"></p>
-		<p>Location: <input name=team_location type=text placeholder="Anytown, ST, USA"></p>
-		<p>Bot name: <input name=bot_name type=text></p>
+		<p>Team Name: <input name=team_name type=text placeholder="NOT the team number"></p>
+		<p>Bot's Name: <input name=bot_name type=text></p>
 	</fieldset>
 
 	<fieldset class=full>
-		<legend>Draw the robot's path for each auto routine that team <span class=team></span> can perform</legend>
+		<legend>Draw the robot's path for each auto routine that team <span class=team></span> can perform (Top 3)</legend>
 
 		<canvas id=auto-paths></canvas>
 		<div>
@@ -54,8 +53,8 @@
 		<input type=hidden class=auto-path name=auto_3_path data-color=red>
 		<input type=hidden class=auto-path name=auto_4_path data-color=purple>
 		<input type=hidden class=auto-path name=auto_5_path data-color=yellow>
-		<input type=hidden class=auto-path name=auto_6_path data-color=brown>
-		<input type=hidden class=auto-path name=auto_7_path data-color=orange>
+		<input type=hidden class=auto-path name=auto_6_path data-color=orange>
+		<input type=hidden class=auto-path name=auto_7_path data-color=brown>
 		<input type=hidden class=auto-path name=auto_8_path data-color=cyan>
 		<input type=hidden class=auto-path name=auto_9_path data-color=white>
 	</fieldset>
@@ -68,49 +67,45 @@
 			<label>Width: <input type=number min=12 step=1 max=48 name=frame_width> inches</label><br>
 		</p>
 		<p>
-			What is the weight of the robot?<br>
-			<label><input type=number min=30 step=1 max=200 name=weight> pounds</label><br>
+			What is the weight of the robot w/o battery and bumpers?<br>
+			<label><input type=number min=30 step=1 max=135 name=weight> pounds</label><br>
 		</p>
 		<p>
 			What drivetrain is used?<br>
 			<label><input type=radio name=drivetrain value=tank><span>Tank</span></label>
 			<label><input type=radio name=drivetrain value=swerve><span>Swerve</span></label>
+			<label><input type=radio name=drivetrain value=mech><span>Mechanum</span></label>
 			<label><input type=radio name=drivetrain value=other><span>Other</span></label>
 		</p>
 		<p>
-			If swerve, which modules?<br>
-			<label><input type=radio name=swerve value=swerve-drive-specialties><span>Swerve Drive Specialties</span></label>
-			<label><input type=radio name=swerve value=andymark><span>AndyMark</span></label>
-			<label><input type=radio name=swerve value=rev-robotics><span>REV Robotics</span></label>
-			<label><input type=radio name=swerve value=westcoast-products><span>WestCoast Products</span></label>
-			<label><input type=radio name=swerve value=other><span>Other/Custom</span></label>
+			What branches/levels of coral can you score?<br>
+			<label><input type=checkbox name=coral value=L4><span>L4</span></label>
+			<label><input type=checkbox name=coral value=L3><span>L3</span></label>
+			<label><input type=checkbox name=coral value=L2><span>L2</span></label>
+			<label><input type=checkbox name=coral value=L1><span>L1 (Trough)</span></label>
 		</p>
 		<p>
-			How many motors power the drive train?<br>
-			<input type=number min=1 step=1 name=motor_count>
+			What can you do with algae?<br>
+			<label><input type=checkbox name=algae value=removereef><span>Remove from Reef</span></label>
+			<label><input type=checkbox name=algae value=processor><span>Score in Processor</span></label>
+			<label><input type=checkbox name=algae value=net><span>Shoot/Place in Net</span></label>
 		</p>
 		<p>
-			What type of motors power the drivetrain?<br>
-			<label><input type=radio name=motors value=neo><span>Neo</span></label>
-			<label><input type=radio name=motors value=falcon_500><span>Falcon 500</span></label>
-			<label><input type=radio name=motors value=full_size_cim><span>Full Size CIM</span></label>
-			<label><input type=radio name=motors value=kraken><span>Kraken</span></label>
-			<label><input type=radio name=motors value=other><span>Other</span></label>
+			Where can you climb?<br>
+			<label><input type=checkbox name=climb value=shallow><span>Shallow Climb</span></label>
+			<label><input type=checkbox name=climb value=deep><span>Deep Climb</span></label>
 		</p>
 		<p>
-			How many wheels?<br>
-			<input type=number min=4 step=1 name=wheel_count value=4>
+			How do you pick up coral and algae?<br>
+			<label><input type=checkbox name=pickup value=coralstation><span>Coral from Coral Station</span></label>
+			<label><input type=checkbox name=pickup value=coralfloor><span>Coral from Floor</span></label>
+			<label><input type=checkbox name=pickup value=algaereef><span>Algae from Reef</span></label>
+			<label><input type=checkbox name=pickup value=algaefloor><span>Algae from Floor</span></label>
 		</p>
 		<p>
-			What type of drive wheels?<br>
-			<label><input type=radio name=wheels value=traction><span><img src=/wheel-traction.png><br>Treaded</span></label>
-			<label><input type=radio name=wheels value=high-traction><span><img src=/wheel-high-traction.png><br>High Traction (TPU)</span></label>
-			<label><input type=radio name=wheels value=pneumatic><span><img src=/wheel-pneumatic.png><br>Pneumatic</span></label>
-			<label><input type=radio name=wheels value=mechanum><span><img src=/wheel-mechanum.png><br>Mechanum</span></label>
-			<label><input type=radio name=wheels value=omni><span><img src=/wheel-omni.png><br>Omni</span></label>
-			<label><input type=radio name=wheels value=untreaded><span><img src=/wheel-colson.png><br>Untreaded</span></label>
-			<label><input type=radio name=wheels value=mixed><span>Mixed</span></label>
-			<label><input type=radio name=wheels value=other><span>Other</span></label>
+			Do you switch out your drive team members?<br>
+			<label><input type=radio name=driveteam value=yes><span>Yes</span></label>
+			<label><input type=radio name=driveteam value=no><span>No</span></label>
 		</p>
 		<p>
 			Computer vision can assist the robot with:<br>
@@ -119,12 +114,14 @@
 			<label><input type=checkbox name=vision_placing value=yes><span>Placing, shooting or aiming</span></label>
 			<label><input type=checkbox name=vision_localization value=yes><span>Localization</span></label>
 		</p>
-	</fieldset>
+		<p>
+			What feature/mechanism are you most proud of on your robot?<br>
+			<label><input name=proudof type=text placeholder="Example: Elevator"></label>
+		</p>
 
-	Scouter name and notes:
+			Scouter Name(s) and Notes:
 	<div class=full><input type=text size=50 name=scouter placeholder="Scouter Team, First name, Last initial, Eg. 1234 Pat Q"></div>
 	<p><textarea name=notes placeholder="Notes (Other things that would be good to know)"></textarea></p>
-	<p>If you are also bot photo scouting, don't forget to take a picture!</p>
 
 	<input type=hidden name=created value="">
 	<input type=hidden name=modified value="">
