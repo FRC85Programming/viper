@@ -60,14 +60,14 @@ img.count{max-width:3.5em}
 img.ReefLevels{max-width:8em}
 
 :root {
-	--main-bg-color:#466c86;
+	--main-bg-color:#122130;
 	--main-fg-color:#DDD;
 	--main-border-color:#09090953;
 	--section-bg-color:#333;
 	--link-color:#fefe00;
 	--link-visited-color:#fefe00;
-	--red-team-color:rgb(144, 0, 0);
-	--blue-team-color:rgb(0, 0, 127);
+	--red-team-color:rgb(129, 17, 17);
+	--blue-team-color:rgb(12, 12, 108);
 	--winner-color:rgb(165, 238, 102);
 	--button-bg-color:#dcdcdc;
 	--button-fg-color:#333;
@@ -79,6 +79,3 @@ img.ReefLevels{max-width:8em}
 	--focus-bg-color:rgb(196, 179, 97);
 	--translucent-hide-color:#333D;
 }
-
-
-html{background-image:url('Bob85Logo2.png');background-size:33vw auto}
