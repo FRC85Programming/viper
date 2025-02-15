@@ -126,7 +126,8 @@ function showPosList(){
 	$('h1').text(eventName)
 	$('.orientLeft,.orientRight').show()
 	$('#select-bot button').each(function(){
-		$(this).toggleClass("highlighted", $(this).text() == localStorage.getItem("last_pos"))
+		//$(this).toggleClass("highlighted",
+			$(this).text() == localStorage.getItem("last_pos")
 	})
 	$('#select-bot button').click(function(){
 		pos = $(this).text()
