@@ -83,7 +83,7 @@ function showSelectSubjectiveScoutTeam(){
 		resetInitialValues(subjectiveScouting)
 		setHash(null,null,null,null,teamList)
 		window.scrollTo(0,0)
-		$('h1').text("Subjective Scouting " + eventName)
+		$('h1').text("Qualitative Scouting " + eventName)
 		var el = $('#teamList').html(""),
 		withData = getTeamsWithSubjectiveData(),
 		showTeams = teamList?teamList.split(/,/).map(s=>parseInt(s)):eventTeams
@@ -320,7 +320,7 @@ function showSubjectiveScoutingForm(t){
 		if (t && typeof t != 'number') t = parseInt($(this).text())
 		if (t) team = t
 		$('.screen,.init-hide').hide()
-		$('h1').text("Subjective Scouting " + eventName + " Team " + team)
+		$('h1').text("Qualitative Scouting " + eventName + " Team " + team)
 		window.scrollTo(0,0)
 		setHash(null,null,team,null,teamList)
 		var form = $('#subjective-scouting')
@@ -802,6 +802,7 @@ function addButtons(div, featured, isFeatured){
 		if($('#matchBtn').length==0 && !isFeatured) div.append($('<button>').text('Choose Match').click(goChooseMatch)).append(" ")
 		if($('.robotBtn').length==0 && !isFeatured) div.append($('<button>').text('Change Robot').click(goChooseRobot)).append(" ")
 	} else {
+		if((featured=='upload')==isFeatured) div.append($('<button>').text('Upload Data').click(goUploadData)).append(" ")
 		if((featured=='next')==isFeatured) div.append($('<button>').text('Save').click(goNext)).append(" ")
 		if((featured=='qr')==isFeatured) div.append($('<button>').text('QR Code').click(showQrCode)).append(" ")
 	}
