@@ -1156,7 +1156,7 @@ function showPitScouting(el,team){
 }
 
 function showSubjectiveScouting(el,team){
-	promiseSubjectiveScouting().then(subjectiveData => {
+	promisePitScouting().then(subjectiveData => {
 		var dat=subjectiveData[team]||{},
 		graph=$('<div class=graph>'),
 		f
