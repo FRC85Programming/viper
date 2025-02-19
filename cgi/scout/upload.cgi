@@ -49,7 +49,7 @@ foreach my $row (@{$uCsv}){
 			$webutil->error("Unexpected match name",$row->[$uHead->{'match'}]) if($row->[$uHead->{'match'}] !~ /^[0-9]*[a-z]+[0-9]+$/);
 			$eventCsv = $scoutCsv;
 			$eventHeaders = $scoutHeaders;
-		} elsif (exists $uHead->{'defense_tips'}){
+		} elsif (exists $uHead->{'strength'}){
 			$eventCsv = $subjectiveCsv;
 			$eventHeaders = $subjectiveHeaders;
 		}

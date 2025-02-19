@@ -295,6 +295,21 @@ function promisePitScouting(){
 	return promiseCache.pitScouting
 }
 
+function promiseAllSubjectiveScouting(){
+	if (!promiseCache.allSubjectiveScouting) promiseCache.allSubjectiveScouting = promiseEventAjax(`/data/${eventId}.subjective.csv`).then(text=>{
+		var data = {}
+		csvToArrayOfMaps(text).forEach(function(teamData){
+			if (!data[teamData.team]) {
+				data[teamData.team] = new Array()
+			}
+
+			data[teamData.team].push(teamData)
+		})
+		return data
+	})
+	return promiseCache.allSubjectiveScouting
+}
+
 function promiseSubjectiveScouting(){
 	if (!promiseCache.subjectiveScouting) promiseCache.subjectiveScouting = promiseEventAjax(`/data/${eventId}.subjective.csv`).then(text=>{
 		var data = {}

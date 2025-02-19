@@ -1156,7 +1156,7 @@ function showPitScouting(el,team){
 }
 
 function showSubjectiveScouting(el,team){
-	promisePitScouting().then(subjectiveData => {
+	promiseSubjectiveScouting().then(subjectiveData => {
 		var dat=subjectiveData[team]||{},
 		graph=$('<div class=graph>'),
 		f
@@ -1164,17 +1164,36 @@ function showSubjectiveScouting(el,team){
 		f=dat.strength||""
 		if (f){
 			el.append('<h4>Strengths</h4>')
-			el.append($('<div style=white-space:pre-wrap>').text(f))
+			if (Array.isArray(f)) {
+				f.forEach(function (t) {
+					el.append($('<div style=white-space:pre-wrap>').text(t))
+				})
+			} else {
+				el.append($('<div style=white-space:pre-wrap>').text(f))
+			}
 		}
 		f=dat.weakness||""
 		if (f){
 			el.append('<h4>Weaknesses</h4>')
-			el.append($('<div style=white-space:pre-wrap>').text(f))
+			if (Array.isArray(f)) {
+				f.forEach(function (t) {
+					el.append($('<div style=white-space:pre-wrap>').text(t))
+				})
+			} else {
+				el.append($('<div style=white-space:pre-wrap>').text(f))
+			}
+
 		}
 		f=dat.notes||""
 		if (f){
 			el.append('<h4>Other</h4>')
-			el.append($('<div style=white-space:pre-wrap>').text(f))
+			if (Array.isArray(f)) {
+				f.forEach(function (t) {
+					el.append($('<div style=white-space:pre-wrap>').text(t))
+				})
+			} else {
+				el.append($('<div style=white-space:pre-wrap>').text(f))
+			}
 		}
 	})
 }
