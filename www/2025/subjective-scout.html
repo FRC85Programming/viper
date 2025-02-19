@@ -7,18 +7,16 @@
 <link rel=stylesheet href=/main.css>
 <link rel=stylesheet href=/local.css>
 <link rel=stylesheet href=/scout.css>
-<link rel=stylesheet href=scout.css>
+<link rel=stylesheet href=/2025/scout.css>
 <script src=/jquery.min.js></script>
 <script src=/canvas-path.js></script>
 <script src=/event-url.js></script>
 <script src=/qrcode.min.js></script>
 <script src=/scout.js></script>
-<script src=scout.js></script>
+<script src=/2025/scout.js></script>
 <script src=/heartbeat.js></script>
 <script src=/main.js></script>
 <script src=/local.js></script>
-<link rel=preload as=image href=speaker-shoot-area-blue.png>
-<link rel=preload as=image href=speaker-shoot-area-red.png>
 <link rel=icon type=image/png href=/logo.png>
 </head>
 <body>
@@ -36,6 +34,14 @@
 	<input type=hidden name=team>
 
 	<fieldset class=full>
+		<p>
+		<label>Match #:<input id=button type=number min=1 step=1 name=match_num></label>
+		<label>Match #:<input type=number min=1 step=1 name=match_num></label>
+		<label>Match #:<input type=number min=1 step=1 name=match_num></label>
+		</p>
+	</fieldset>
+
+	<fieldset class=full>
 		<legend>Team <span class=team></span>'s Strengths </legend>
 		<textarea class=full name=strength></textarea>
 	</fieldset>
@@ -46,12 +52,54 @@
 	</fieldset>
 
 	<fieldset class=full>
+		<p>
+			Robot Speed:<br>
+		<label><input type=radio name=speed value=super_slow><span>Super Slow</span></label>
+		<label><input type=radio name=speed value=slow><span>Slow</span></label>
+		<label><input type=radio name=speed value=fast><span>Fast</span></label>
+		<label><input type=radio name=speed value=very_fast><span>Very Fast</span></label>
+		</p>
+
+		<p>
+			Driving Confidence:<br>
+		<label><input type=radio name=confidence value=very_hestitant><span>Very Hestitant</span></label>
+		<label><input type=radio name=confidence value=cautionary><span>Cautionary</span></label>
+		<label><input type=radio name=confidence value=controlled><span>Controlled Driver</span></label>
+		<label><input type=radio name=confidence value=confident><span>Confident</span></label>
+		</p>
+
+		<p>
+			Robot Stability:<br>
+		<label><input type=radio name=stability value=tips_over><span>Tips Over</span></label>
+		<label><input type=radio name=stability value=tippy><span>Tippy</span></label>
+		<label><input type=radio name=stability value=stable><span>Stable</span></label>
+		<label><input type=radio name=stability value=very_stable><span>Very Stable</span></label>
+		</p>
+
+		<p>
+			Climbing Speed:<br>
+		<label><input type=radio name=climb value=very_long><span>30+ seconds</span></label>
+		<label><input type=radio name=climb value=normal><span>~20 seconds</span></label>
+		<label><input type=radio name=climb value=kinda_fast><span>~15-10 seconds</span></label>
+		<label><input type=radio name=climb value=speedy><span>Sub 10 seconds</span></label>
+		</p>
+
+		<p>
+			Defensive Ability:<br>
+		<label><input type=radio name=defense value=doesnt><span>Doesn't Play</span></label>
+		<label><input type=radio name=defense value=weak><span>Weak Defender</span></label>
+		<label><input type=radio name=defense value=okay><span>Okay Defender</span></label>
+		<label><input type=radio name=defense value=strong><span>Strong Defender</span></label>
+		</p>
+	</fieldset>
+
+	<fieldset class=full>
 		<legend>Other</legend>
 		<textarea class=full name=notes></textarea>
 	</fieldset>
 
 	<fieldset class=full>
-		<legend>Scouter</legend>
+		<legend>Scouter(s)</legend>
 		<input type=text size=50 name=scouter placeholder="Scouter Team, First name, Last initial, Eg. 1234 Pat Q">
 	</fieldset>
 
