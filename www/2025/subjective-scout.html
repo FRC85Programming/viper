@@ -35,9 +35,11 @@
 
 	<fieldset class=full>
 		<p>
-		<label>Match #:<input id=button type=number min=1 step=1 name=match_num></label>
-		<label>Match #:<input type=number min=1 step=1 name=match_num></label>
-		<label>Match #:<input type=number min=1 step=1 name=match_num></label>
+		<label>Match #:<input type=number min=1 step=1 max=48 name=match_num></label>
+		<label>Match #:<input type=number min=1 step=1 max=48 name=match_num></label>
+		<label>Match #:<input type=number min=1 step=1 max=48 name=match_num></label>
+		<label>Match #:<input type=number min=1 step=1 max=48 name=match_num></label>
+		<label>Match #:<input type=number min=1 step=1 max=48 name=match_num></label>
 		</p>
 	</fieldset>
 
@@ -56,6 +58,7 @@
 			Robot Speed:<br>
 		<label><input type=radio name=speed value=super_slow><span>Super Slow</span></label>
 		<label><input type=radio name=speed value=slow><span>Slow</span></label>
+		<label><input type=radio name=speed value=normal><span>Normal</span></label>
 		<label><input type=radio name=speed value=fast><span>Fast</span></label>
 		<label><input type=radio name=speed value=very_fast><span>Very Fast</span></label>
 		</p>
@@ -64,7 +67,7 @@
 			Driving Confidence:<br>
 		<label><input type=radio name=confidence value=very_hestitant><span>Very Hestitant</span></label>
 		<label><input type=radio name=confidence value=cautionary><span>Cautionary</span></label>
-		<label><input type=radio name=confidence value=controlled><span>Controlled Driver</span></label>
+		<label><input type=radio name=confidence value=controlled><span>Controlled</span></label>
 		<label><input type=radio name=confidence value=confident><span>Confident</span></label>
 		</p>
 
@@ -72,6 +75,7 @@
 			Robot Stability:<br>
 		<label><input type=radio name=stability value=tips_over><span>Tips Over</span></label>
 		<label><input type=radio name=stability value=tippy><span>Tippy</span></label>
+		<label><input type=radio name=stability value=unsteady><span>Unsteady</span></label>
 		<label><input type=radio name=stability value=stable><span>Stable</span></label>
 		<label><input type=radio name=stability value=very_stable><span>Very Stable</span></label>
 		</p>
@@ -106,7 +110,9 @@
 	<input type=hidden name=created value="">
 	<input type=hidden name=modified value="">
 	<fieldset class=full id=nextButtons>
-		<legend>Save data:</legend>
+		<legend>
+		Save data:
+		</legend>
 		<div id=doneButtons></div>
 	</fieldset>
 </form>

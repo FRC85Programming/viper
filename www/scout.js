@@ -704,9 +704,11 @@ function goNextMatch(uploaded){
 	return false
 }
 
-function goUploadData(){
+function goUploadData(uploaded){
+	storeSubjectiveScouting(uploaded)
+	storePitScouting(uploaded)
 	localStorage.setItem("last_scout_action","upload")
-	if (!store()) return false
+	//if (!store()) return false
 	location.href="/upload.html"
 	return false
 }
@@ -785,9 +787,8 @@ function setupButtons(){
 	featuredButton=$('<div id=featuredButton>'),
 	otherButtons=$('<div id=otherButtons>')
 	if("qr"==localStorage.getItem("last_scout_action")) featured="qr"
-	else if(getActiveForm()===scouting){
-		var next = getNextMatch()
-		if(!next || haveDataForMatch(next) || haveAllDataForOurNextMatch()) featured='upload'
+	else if(getActiveForm()===scouting|| getActiveForm()===subjectiveScouting || getActiveForm()===pitScouting){
+		var next = featured='upload'
 	}
 	addButtons(featuredButton,featured,true)
 	addButtons(otherButtons,featured,false)
@@ -802,8 +803,8 @@ function addButtons(div, featured, isFeatured){
 		if($('#matchBtn').length==0 && !isFeatured) div.append($('<button>').text('Choose Match').click(goChooseMatch)).append(" ")
 		if($('.robotBtn').length==0 && !isFeatured) div.append($('<button>').text('Change Robot').click(goChooseRobot)).append(" ")
 	} else {
-		if((featured=='upload')==isFeatured) div.append($('<button>').text('Upload Data').click(goUploadData)).append(" ")
 		if((featured=='next')==isFeatured) div.append($('<button>').text('Save').click(goNext)).append(" ")
+		if((featured=='upload')==isFeatured) div.append($('<button>').text('Upload Data').click(goUploadData)).append(" ")
 		if((featured=='qr')==isFeatured) div.append($('<button>').text('QR Code').click(showQrCode)).append(" ")
 	}
 }
