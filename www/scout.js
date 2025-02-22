@@ -708,7 +708,7 @@ function goUploadData(uploaded){
 	storeSubjectiveScouting(uploaded)
 	storePitScouting(uploaded)
 	localStorage.setItem("last_scout_action","upload")
-	//if (!store()) return false
+	if (!store()) return false
 	location.href="/upload.html"
 	return false
 }

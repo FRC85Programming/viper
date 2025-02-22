@@ -28,44 +28,43 @@ The colors in the match table provide extra information:
 
 ### Scouting
 
-Collect data about each team and match.
+In this section, you can select which type of scouting data you would like to collect about each team and match.
 
-Once a scouting page is open, the tablet, phone, or laptop can be unplugged from the scouting briefcase.
-Plug back in when you need to upload data.
+Once a scouting page is open, the tablet, phone, or laptop can disconnected from the internet completely.
 
 You must be logged in as "scouter" or "admin" to be able to upload scouting data.
 
-#### Match scouting
+##### Quantitative Scouting
 
-Collect data about each team as they compete.
+Collect number/quantitave data about each team as they compete. There will be 6 of these scouters at a time.
 
-#### Bot photo scouting
+##### Pit Scouting
 
-Take pictures of each robot.
+Interview each team about their drivetrain size, weight, autos, and game specific features. There will be designated pit scouters who will do this; they are also required to quantative scout.
 
-#### Pit scouting
+##### Qualitative Scouting
 
-Interview each team.
+Collect notes/qualitative data about each team as they compete. This is super important for match strategy and our pick lists and helps back up a team's quantitative numbers.
 
-#### Pit/bot scouting squads
+##### Top Scouters
 
-Use squads to divide up pit and bot scouting work. Clicking the up and down arrows will increase or decrease the number of devices that will be used for scouting. Clicking the numbered buttons will open the pit scouting and the bot scouting in separate browser tabs with a fair share of the teams.
+You can see who has scouted the most matches here. If you are connected to the internet and blue alliance is synced, you can see which scouters have the most accurate data. There may be prizes for students based on this collection.
 
 ### Strategy
 
-#### Stats
+In this section, you can visualize data and create match strategies.
 
-Aid in alliance selection with graphs of each teams performance.
+The students who will be in on pick list discussions should be the only scouters viewing this data.
+
+##### View Stats
+
+Aid in alliance selection with graphs of each teams performance. This also can be used for creating our pick list and comparing teams.
 
 Open this page, unplug from the scouting briefcase, and take your device down to the field.
 
-#### Match prediction
+##### Driver Sheet with Whiteboard
 
-Estimate how many points each team will score in a match based on their performance in other matches.
-
-#### Match planner
-
-Use scouting data to inform match strategy.
+Use scouting data to inform match strategy. You can plan out matches using the whiteboard, quantitative data, qualitative data, and pit scouting data.
 
 Open this page, unplug from the scouting briefcase, and take your device down to the field.
 
