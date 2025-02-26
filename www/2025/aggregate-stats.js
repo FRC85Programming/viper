@@ -1111,8 +1111,6 @@ var whiteboardStats=[
 	"coral_place",
 	"preferred_coral_level",
 	"coral_litter",
-	"human_player_accuracy",
-	"human_player_algae_received",
 	"auto_start",
 	"auto_paths",
 ]
