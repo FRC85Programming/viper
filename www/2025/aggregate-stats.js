@@ -226,15 +226,15 @@ var statInfo={
 		name: 'Count',
 		type: 'num'
 	},
-	auto_start:{
-		name: "Location where the robot starts",
-		type: "heatmap",
-		image: "/2025/start-area-blue.png",
-		aspect_ratio: 3.375,
-		whiteboard_start: 35.8,
-		whiteboard_end: 50,
-		whiteboard_char: "□",
-		whiteboard_us: true
+	average_processor:{
+		name: "Average Processor Scored",
+		type: "avg",
+		//image: "/2025/start-area-blue.png",
+		//aspect_ratio: 3.375,
+		//whiteboard_start: 35.8,
+		//whiteboard_end: 50,
+		//whiteboard_char: "□",
+		//whiteboard_us: true
 	},
 	auto_leave:{
 		name: "Left the Start Line During Auto",
@@ -425,8 +425,8 @@ var statInfo={
 		name: "Scoring Elements Placed During Auto",
 		type: "avg"
 	},
-	auto_score:{
-		name: "Score During Auto",
+	control_algae:{
+		name: "Remove/Control/Both Algae",
 		type: "avg"
 	},
 	auto_place_percent:{
@@ -481,8 +481,8 @@ var statInfo={
 		name: "Minimum Score Contribution",
 		type: "minmax"
 	},
-	score:{
-		name: "Score Contribution",
+	climb_type:{
+		name: "Climb Type",
 		type: "avg"
 	},
 	scouter:{
@@ -808,12 +808,12 @@ var statInfo={
 		name: 'Deep Cage Score',
 		type: 'avg'
 	},
-	//drop:{
-		//name: 'Scoring Elements Dropped',
-		//type: 'avg'
-	//},
-	end_game_score:{
-		name: 'End Game Score',
+	average_contribution:{
+		name: 'Average Points Contributed',
+		type: 'avg'
+	},
+	coral_pickup:{
+		name: 'Station/Floor/Both Coral Pickup',
 		type: 'avg'
 	},
 	park:{
@@ -892,16 +892,16 @@ var statInfo={
 	//	name: 'Coral Collected from Station in Teleop',
 	//	type: 'avg'
 	//},
-	tele_score:{
-		name: 'Score in Teleop',
+	algae_pickup:{
+		name: 'Reef/Floor/Both/NA Algae Pickup',
 		type: 'avg'
 	},
-	algae_place:{
-		name: 'Algae Placed',
+	coral_levels:{
+		name: 'Coral Levels (Checks?)',
 		type: 'avg'
 	},
-	coral_place:{
-		name: 'Coral Placed',
+	average_coral:{
+		name: 'Average Coral Scored',
 		type: 'avg'
 	},
 	tele_algae_place:{
@@ -980,13 +980,13 @@ var statInfo={
 		name: 'Coral Level 4 Score in Teleop',
 		type: 'avg'
 	},
-	preferred_coral_level:{
-		name: 'Preferred Coral Level',
-		type: 'text'
+	max_coral:{
+		name: 'Max Coral Scored',
+		type: 'avg'
 	},
-	preferred_algae_place:{
-		name: 'Preferred Algae Placement',
-		type: 'text'
+	level_accuracy:{
+		name: 'Accuracy of Levels',
+		type: 'avg'
 	},
 	//human_player_algae_received:{
 	//	name: 'Human Player Shots',
@@ -1000,21 +1000,21 @@ var statInfo={
 	//	name: 'Human Player Accuracy',
 	//	type: 'ratio'
 	//},
-	//algae_litter:{
-		//name: 'Algae Litter',
-		//type: 'avg',
+	max_coral_lvl:{
+		name: 'Max Coral on each Level',
+		type: 'avg',
 		//good: 'low',
-	//},
-	//coral_litter:{
-	//	name: 'Coral Litter',
-	//	type: 'avg',
+	},
+	average_net:{
+		name: 'Average Net Scored',
+		type: 'avg',
 	//	good: 'low',
-	//},
-	//litter:{
-	//	name: 'Litter',
-	//	type: 'avg',
+	},
+	average_gp_controled:{
+		name: 'Average Game Pieces Controlled',
+		type: 'avg',
 	//	good: 'low',
-	//},
+	},
 	auto_paths:{
 		name: "Auto Paths",
 		type: "pathlist",
@@ -1101,18 +1101,19 @@ var fieldRotationalSymmetry=true
 window.whiteboard_aspect_ratio=2.18
 
 var whiteboardStats=[
-	"score",
-	"auto_score",
-	"tele_score",
-	"end_game_score",
-	"algae_place",
-	"preferred_algae_place",
-	"algae_litter",
-	"coral_place",
-	"preferred_coral_level",
-	"coral_litter",
-	"auto_start",
-	"auto_paths",
+	"climb_type",
+	"control_algae",
+	"algae_pickup",
+	"coral_pickup",
+	"coral_levels",
+	"level_accuracy",
+	"max_coral_lvl",
+	"average_coral",
+	"max_coral",
+	"average_net",
+	"average_processor",
+	"average_gp_controled",
+	"average_contribution",
 ]
 
 // https://www.postman.com/firstrobotics/workspace/frc-fms-public-published-workspace/example/13920602-f345156c-f083-4572-8d4a-bee22a3fdea1
