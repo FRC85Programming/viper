@@ -16,6 +16,14 @@ function aggregateStats(scout, aggregate, apiScores, subjective, pit, eventStats
 		return"-"
 	}
 
+	function getPreferredClimb(deep,shallow,park){
+		var m=Math.max(park,shallow,deep)
+		if (m==0)return"-"
+		if (m==park)return"-"
+		if(m==deep)return"D"
+		if(m==shallow)return"S"
+		return"-"
+	}
 
 	function getPreferredAlgaePlace(processor,net){
 		var m=Math.max(processor,net)
@@ -88,6 +96,7 @@ function aggregateStats(scout, aggregate, apiScores, subjective, pit, eventStats
 	scout.coral_level_3=scout.auto_coral_level_3+scout.tele_coral_level_3
 	scout.coral_level_4=scout.auto_coral_level_4+scout.tele_coral_level_4
 	scout.preferred_coral_level=getPreferredCoralLevel(scout.coral_level_1,scout.coral_level_2,scout.coral_level_3,scout.coral_level_4)
+	scout.preferred_coral_level=getPreferredClimb(scout.deep,scout.shallow,scout.park)
 	scout.preferred_algae_place=getPreferredAlgaePlace(scout.algae_processor,scout.algae_net)
 	scout.coral_station_1=scout.auto_coral_station_1+scout.tele_coral_station_1
 	scout.coral_station_2=scout.auto_coral_station_2+scout.tele_coral_station_2
@@ -483,7 +492,7 @@ var statInfo={
 	},
 	climb_type:{
 		name: "Climb Type",
-		type: "avg"
+		type: "text"
 	},
 	scouter:{
 		name: "Scouter",
@@ -1010,7 +1019,7 @@ var statInfo={
 		type: 'avg',
 	//	good: 'low',
 	},
-	average_gp_controled:{
+	average_gp_controlled:{
 		name: 'Average Game Pieces Controlled',
 		type: 'avg',
 	//	good: 'low',
@@ -1112,7 +1121,7 @@ var whiteboardStats=[
 	"max_coral",
 	"average_net",
 	"average_processor",
-	"average_gp_controled",
+	"average_gp_controlled",
 	"average_contribution",
 ]
 
