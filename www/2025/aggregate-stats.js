@@ -75,7 +75,6 @@ function aggregateStats(scout, aggregate, apiScores, subjective, pit, eventStats
 	scout.auto_coral_place=scout.auto_coral_level_1+scout.auto_coral_level_2+scout.auto_coral_level_3+scout.auto_coral_level_4
 	scout.auto_place=scout.auto_algae_place+scout.auto_coral_place
 	scout.tele_algae_place=scout.tele_algae_net+scout.tele_algae_processor
-	scout.tele_coral_place=scout.tele_coral_level_1+scout.tele_coral_level_2+scout.tele_coral_level_3+scout.tele_coral_level_4
 	scout.tele_place=scout.tele_algae_place+scout.tele_coral_place
 	scout.algae_drop=scout.auto_algae_drop+scout.tele_algae_drop
 	scout.algae_lower=scout.auto_algae_lower+scout.tele_algae_lower
@@ -179,6 +178,8 @@ function aggregateStats(scout, aggregate, apiScores, subjective, pit, eventStats
 
 	//scout.average_coral=scout.tele_coral_level_4+scout.tele_coral_level_3+scout.tele_coral_level_2+tele_coral_level_1
 	//scout.max_coral=scout.tele_coral_level_4+scout.tele_coral_level_3+scout.tele_coral_level_2+tele_coral_level_1
+
+	scout.tele_coral_place=scout.tele_coral_level_1+scout.tele_coral_level_2+scout.tele_coral_level_3+scout.tele_coral_level_4
 	scout.average_gp_controlled=scout.tele_coral_pickup+scout.tele_algae_pickup
 
 
@@ -543,7 +544,7 @@ var statInfo={
 		//timeline_outline: "#222"
 	},
 	tele_algae_net:{
-		name: "Algae Placed in Net by Robot in Teleop",
+		name: "Average Net Scored",
 		type: "avg",
 		//timeline_stamp: "N",
 		//timeline_fill: "#4eb0a4",
@@ -564,7 +565,7 @@ var statInfo={
 		//timeline_outline: "#4eb0a4"
 	//},
 	tele_algae_processor:{
-		name: "Algae Placed in the Processor in Teleop",
+		name: "Average Processor Scored",
 		type: "avg",
 		//timeline_stamp: "P",
 		//timeline_fill: "#4eb0a4",
@@ -1123,8 +1124,8 @@ var whiteboardStats=[
 	"max_coral_lvl",
 	"tele_coral_place",
 	"max_coral",
-	"average_net",
-	"average_processor",
+	"tele_algae_net",
+	"tele_algae_processor",
 	"average_gp_controlled",
 	"average_contribution",
 ]
