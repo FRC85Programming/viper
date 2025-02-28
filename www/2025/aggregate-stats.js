@@ -16,7 +16,7 @@ function aggregateStats(scout, aggregate, apiScores, subjective, pit, eventStats
 		return"-"
 	}
 
-	function getPreferredClimb(deep,shallow,park){
+	function getPreferredClimb(park,shallow,deep){
 		var m=Math.max(park,shallow,deep)
 		if (m==0)return"-"
 		if (m==park)return"-"
@@ -96,7 +96,7 @@ function aggregateStats(scout, aggregate, apiScores, subjective, pit, eventStats
 	scout.coral_level_3=scout.auto_coral_level_3+scout.tele_coral_level_3
 	scout.coral_level_4=scout.auto_coral_level_4+scout.tele_coral_level_4
 	scout.preferred_coral_level=getPreferredCoralLevel(scout.coral_level_1,scout.coral_level_2,scout.coral_level_3,scout.coral_level_4)
-	scout.climb_type=getPreferredClimb(scout.deep,scout.shallow,scout.park)
+	scout.climb_type=getPreferredClimb(scout.end_game_position=='park',scout.end_game_position=='shallow',scout.end_game_position=='deep')
 	scout.preferred_algae_place=getPreferredAlgaePlace(scout.algae_processor,scout.algae_net)
 	scout.coral_station_1=scout.auto_coral_station_1+scout.tele_coral_station_1
 	scout.coral_station_2=scout.auto_coral_station_2+scout.tele_coral_station_2
@@ -125,16 +125,15 @@ function aggregateStats(scout, aggregate, apiScores, subjective, pit, eventStats
 	scout.auto_drop=scout.auto_algae_drop+scout.auto_coral_drop
 	scout.tele_drop=scout.tele_algae_drop+scout.tele_coral_drop
 	scout.drop=scout.auto_drop+scout.tele_drop
-	scout.park=bool_1_0(scout.end_game_position=='park')
-	scout.shallow=bool_1_0(scout.end_game_position=='shallow')
-	scout.deep=bool_1_0(scout.end_game_position=='deep')
+	//scout.park=bool_1_0(scout.end_game_position=='park')
+	//scout.shallow=bool_1_0(scout.end_game_position=='shallow')
+	//scout.deep=bool_1_0(scout.end_game_position=='deep')
 	scout.algae_place=scout.auto_algae_place+scout.tele_algae_place
 	scout.coral_place=scout.auto_coral_place+scout.tele_coral_place
 	scout.place=scout.auto_place+scout.tele_place
 	scout.algae_litter=scout.algae_removed_reef+scout.algae_drop-scout.algae_ground
 	scout.coral_litter=scout.coral_drop-scout.coral_ground
 	scout.litter=scout.algae_litter+scout.coral_litter
-
 	scout.auto_leave_score=pointValues.auto_leave*scout.auto_leave
 	scout.auto_coral_level_1_score=pointValues.auto_l1*scout.auto_coral_level_1
 	scout.auto_coral_level_2_score=pointValues.auto_l2*scout.auto_coral_level_2
@@ -177,6 +176,7 @@ function aggregateStats(scout, aggregate, apiScores, subjective, pit, eventStats
 	scout.auto_score=scout.auto_coral_score+scout.auto_algae_score
 	scout.tele_score=scout.tele_coral_score+scout.tele_algae_score
 	scout.score=scout.auto_score+scout.tele_score+scout.end_game_score
+	scout.average_gp_controlled=scout.tele_coral_pickup+scout.tele_algae_pickup
 
 	Object.keys(statInfo).forEach(function(field){
 		if (!/human.player/i.test(statInfo.name)){
