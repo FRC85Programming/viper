@@ -495,9 +495,9 @@ var statInfo={
 		name: "Minimum Score Contribution",
 		type: "minmax"
 	},
-	climb_type:{
-		name: "Climb Type",
-		type: "text"
+	score:{
+		name: "Average Score Contributed",
+		type: "avg"
 	},
 	scouter:{
 		name: "Scouter",
@@ -1127,7 +1127,7 @@ var whiteboardStats=[
 	"tele_algae_net",
 	"tele_algae_processor",
 	"average_gp_controlled",
-	"average_contribution",
+	"score",
 ]
 
 // https://www.postman.com/firstrobotics/workspace/frc-fms-public-published-workspace/example/13920602-f345156c-f083-4572-8d4a-bee22a3fdea1
