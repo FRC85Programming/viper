@@ -181,7 +181,6 @@ function aggregateStats(scout, aggregate, apiScores, subjective, pit, eventStats
 	scout.cage_score=scout.shallow_score+scout.deep_score
 		//Climb Types
 	scout.climb_type=getPreferredClimb(scout.park,scout.shallow,scout.deep)
-
 		//Auto+Tele+Endgame Scores
 	scout.auto_score=scout.auto_coral_score+scout.auto_algae_score+scout.auto_leave_score
 	scout.tele_score=scout.tele_coral_score+scout.tele_algae_score
@@ -454,7 +453,7 @@ var statInfo={
 		type: "avg"
 	},
 	control_algae:{
-		name: "Remove/Control/Both Algae",
+		name: "Algae: Remove or Control?",
 		type: "avg"
 	},
 	auto_place_percent:{
@@ -510,7 +509,7 @@ var statInfo={
 		type: "minmax"
 	},
 	score:{
-		name: "Average Score Contributed",
+		name: "Avg Points Contributed",
 		type: "avg"
 	},
 	scouter:{
@@ -558,7 +557,7 @@ var statInfo={
 		//timeline_outline: "#222"
 	},
 	tele_algae_net:{
-		name: "Average Net Scored",
+		name: "Avg Net Scored",
 		type: "avg",
 		//timeline_stamp: "N",
 		//timeline_fill: "#4eb0a4",
@@ -579,7 +578,7 @@ var statInfo={
 		//timeline_outline: "#4eb0a4"
 	//},
 	tele_algae_processor:{
-		name: "Average Processor Scored",
+		name: "Avg Processor Scored",
 		type: "avg",
 		//timeline_stamp: "P",
 		//timeline_fill: "#4eb0a4",
@@ -837,11 +836,11 @@ var statInfo={
 		type: 'avg'
 	},
 	average_contribution:{
-		name: 'Average Points Contributed',
+		name: 'Avg Points Contributed',
 		type: 'avg'
 	},
 	coral_pickup:{
-		name: 'Station/Floor/Both Coral Pickup',
+		name: 'Coral Pickup',
 		type: 'avg'
 	},
 	park:{
@@ -909,7 +908,7 @@ var statInfo={
 		type: 'avg'
 	},
 	tele_coral_place:{
-		name: 'Average Coral Scored',
+		name: 'Avg Coral Scored',
 		type: 'avg'
 	},
 	tele_coral_score:{
@@ -921,7 +920,7 @@ var statInfo={
 	//	type: 'avg'
 	//},
 	algae_pickup:{
-		name: 'Reef/Floor/Both/NA Algae Pickup',
+		name: 'Algae Pickup',
 		type: 'avg'
 	},
 	coral_levels:{
@@ -1034,12 +1033,12 @@ var statInfo={
 		//good: 'low',
 	},
 	average_net:{
-		name: 'Average Net Scored',
+		name: 'Avg Net Scored',
 		type: 'avg',
 	//	good: 'low',
 	},
 	average_gp_controlled:{
-		name: 'Average Game Pieces Controlled',
+		name: 'Avg GPs Controlled',
 		type: 'avg',
 	//	good: 'low',
 	},
@@ -1133,11 +1132,8 @@ var whiteboardStats=[
 	"control_algae",
 	"algae_pickup",
 	"coral_pickup",
-	"coral_levels",
-	"level_accuracy",
-	"max_coral_lvl",
-	"tele_coral_place",
 	"max_coral",
+	"tele_coral_place",
 	"tele_algae_net",
 	"tele_algae_processor",
 	"average_gp_controlled",
