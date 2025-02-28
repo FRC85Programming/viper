@@ -178,7 +178,7 @@ function aggregateStats(scout, aggregate, apiScores, subjective, pit, eventStats
 	scout.score=scout.auto_score+scout.tele_score+scout.end_game_score
 
 	scout.average_coral=scout.tele_coral_level_4+scout.tele_coral_level_3+scout.tele_coral_level_2+tele_coral_level_1
-	scout.max_coral=scout.tele_coral_level_4+scout.tele_coral_level_3+scout.tele_coral_level_2+tele_coral_level_1
+	//scout.max_coral=scout.tele_coral_level_4+scout.tele_coral_level_3+scout.tele_coral_level_2+tele_coral_level_1
 	scout.average_gp_controlled=scout.tele_coral_pickup+scout.tele_algae_pickup
 
 
