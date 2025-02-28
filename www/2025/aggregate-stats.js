@@ -25,6 +25,15 @@ function aggregateStats(scout, aggregate, apiScores, subjective, pit, eventStats
 		return"-"
 	}
 
+	function getPreferredCoralPickup(coralstation,coralfloor,coralboth){
+		var m=Math.max(coralstation,coralfloor,coralboth)
+		if (m==0)return"-"
+		if(m==coralstation)return"ST"
+		if(m==coralfloor)return"FL"
+		if(m==coralboth)return"B"
+		return"-"
+	}
+
 	function getPreferredAlgaePlace(processor,net){
 		var m=Math.max(processor,net)
 		if (m==0)return"-"
@@ -123,9 +132,6 @@ function aggregateStats(scout, aggregate, apiScores, subjective, pit, eventStats
 	scout.auto_drop=scout.auto_algae_drop+scout.auto_coral_drop
 	scout.tele_drop=scout.tele_algae_drop+scout.tele_coral_drop
 	scout.drop=scout.auto_drop+scout.tele_drop
-	scout.park=bool_1_0(scout.end_game_position=='park')
-	scout.shallow=bool_1_0(scout.end_game_position=='shallow')
-	scout.deep=bool_1_0(scout.end_game_position=='deep')
 	scout.algae_place=scout.auto_algae_place+scout.tele_algae_place
 	scout.coral_place=scout.auto_coral_place+scout.tele_coral_place
 	scout.place=scout.auto_place+scout.tele_place
@@ -168,7 +174,11 @@ function aggregateStats(scout, aggregate, apiScores, subjective, pit, eventStats
 	scout.tele_algae_processor_score=pointValues.processor*scout.tele_algae_processor
 	scout.tele_algae_net_score=pointValues.net*scout.tele_algae_net
 	scout.tele_algae_score=scout.tele_algae_processor_score+scout.tele_algae_net_score
-
+		//Coral Pickup
+	scout.coralstation=bool_1_0(scout.coralpickup=='coralstation')
+	scout.coralfloor=bool_1_0(scout.coralpickup=='coralfloor')
+	scout.coralboth=bool_1_0(scout.coralpickup=='coralboth')
+	scout.coral_pickup=getPreferredCoralPickup(scout.coralstation,scout.coralfloor,scout.coralboth)
 	//scout.algae_score=scout.auto_algae_score+scout.tele_algae_score
 	//scout.coral_score=scout.auto_coral_score+scout.tele_coral_score
 
@@ -180,6 +190,9 @@ function aggregateStats(scout, aggregate, apiScores, subjective, pit, eventStats
 	scout.deep_score=pointValues.deep*scout.deep
 	scout.cage_score=scout.shallow_score+scout.deep_score
 		//Climb Types
+	scout.park=bool_1_0(scout.end_game_position=='park')
+	scout.shallow=bool_1_0(scout.end_game_position=='shallow')
+	scout.deep=bool_1_0(scout.end_game_position=='deep')
 	scout.climb_type=getPreferredClimb(scout.park,scout.shallow,scout.deep)
 		//Auto+Tele+Endgame Scores
 	scout.auto_score=scout.auto_coral_score+scout.auto_algae_score+scout.auto_leave_score
@@ -211,6 +224,7 @@ function aggregateStats(scout, aggregate, apiScores, subjective, pit, eventStats
 	aggregate.preferred_coral_level=getPreferredCoralLevel(aggregate.coral_level_1,aggregate.coral_level_2,aggregate.coral_level_3,aggregate.coral_level_4)
 	aggregate.preferred_algae_place=getPreferredAlgaePlace(aggregate.algae_processor,aggregate.algae_net)
 	aggregate.preferred_climb_type=getPreferredClimb(aggregate.park,aggregate.shallow,aggregate.deep)
+	aggregate.preferred_coral_pickup=getPreferredClimb(aggregate.coralstation,aggregate.coralfloor,aggregate.coralboth)
 
 	if(scout.algae_processor&&/^[1-9][0-9]*$/.test(scout.opponent_human_player_team)){
 		var hpTeam = parseInt(scout.opponent_human_player_team),
