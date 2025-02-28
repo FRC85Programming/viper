@@ -419,6 +419,27 @@ var statInfo={
 		//timeline_fill: "#FFF",
 		//timeline_outline: "#AAA"
 	},
+	coralstation:{
+		name: "Coral Picked up at Station",
+		type: "text",
+		//timeline_stamp: "1",
+		//timeline_fill: "#FFF",
+		//timeline_outline: "#AAA"
+	},
+	coralfloor:{
+		name: "Coral Picked up at Floor",
+		type: "text",
+		//timeline_stamp: "1",
+		//timeline_fill: "#FFF",
+		//timeline_outline: "#AAA"
+	},
+	coralboth:{
+		name: "Coral Picked up from Both",
+		type: "text",
+		//timeline_stamp: "1",
+		//timeline_fill: "#FFF",
+		//timeline_outline: "#AAA"
+	},
 	climb_type:{
 		name: "Climb Type",
 		type: "text",
@@ -855,7 +876,7 @@ var statInfo={
 	},
 	coral_pickup:{
 		name: 'Coral Pickup',
-		type: 'avg'
+		type: 'text'
 	},
 	park:{
 		name: 'Park',
