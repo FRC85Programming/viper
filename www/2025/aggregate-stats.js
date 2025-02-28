@@ -123,9 +123,9 @@ function aggregateStats(scout, aggregate, apiScores, subjective, pit, eventStats
 	scout.auto_drop=scout.auto_algae_drop+scout.auto_coral_drop
 	scout.tele_drop=scout.tele_algae_drop+scout.tele_coral_drop
 	scout.drop=scout.auto_drop+scout.tele_drop
-	//scout.park=bool_1_0(scout.end_game_position=='park')
-	//scout.shallow=bool_1_0(scout.end_game_position=='shallow')
-	//scout.deep=bool_1_0(scout.end_game_position=='deep')
+	scout.park=bool_1_0(scout.end_game_position=='park')
+	scout.shallow=bool_1_0(scout.end_game_position=='shallow')
+	scout.deep=bool_1_0(scout.end_game_position=='deep')
 	scout.algae_place=scout.auto_algae_place+scout.tele_algae_place
 	scout.coral_place=scout.auto_coral_place+scout.tele_coral_place
 	scout.place=scout.auto_place+scout.tele_place
@@ -180,7 +180,7 @@ function aggregateStats(scout, aggregate, apiScores, subjective, pit, eventStats
 	scout.deep_score=pointValues.deep*scout.deep
 	scout.cage_score=scout.shallow_score+scout.deep_score
 		//Climb Types
-	scout.climb_type=getPreferredClimb(scout.end_game_position=='park',scout.end_game_position=='shallow',scout.end_game_position=='deep')
+	scout.climb_type=getPreferredClimb(scout.park,scout.shallow,scout.deep)
 
 		//Auto+Tele+Endgame Scores
 	scout.auto_score=scout.auto_coral_score+scout.auto_algae_score+scout.auto_leave_score
