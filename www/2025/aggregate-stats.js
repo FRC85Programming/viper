@@ -133,35 +133,12 @@ function aggregateStats(scout, aggregate, apiScores, subjective, pit, eventStats
 	scout.algae_litter=scout.algae_removed_reef+scout.algae_drop-scout.algae_ground
 	scout.coral_litter=scout.coral_drop-scout.coral_ground
 	scout.litter=scout.algae_litter+scout.coral_litter
-	scout.auto_leave_score=pointValues.auto_leave*scout.auto_leave
-	scout.auto_coral_level_1_score=pointValues.auto_l1*scout.auto_coral_level_1
-	scout.auto_coral_level_2_score=pointValues.auto_l2*scout.auto_coral_level_2
-	scout.auto_coral_level_3_score=pointValues.auto_l3*scout.auto_coral_level_3
-	scout.auto_coral_level_4_score=pointValues.auto_l4*scout.auto_coral_level_4
-	scout.auto_algae_processor_score=pointValues.processor*scout.auto_algae_processor
-	scout.auto_algae_net_score=pointValues.net*scout.auto_algae_net
 	scout.auto_algae_opponent_processor_score=(pointValues
 	.net-pointValues.processor)*scout.auto_algae_opponent_processor
-	scout.tele_coral_level_1_score=pointValues.tele_l1*scout.tele_coral_level_1
-	scout.tele_coral_level_2_score=pointValues.tele_l2*scout.tele_coral_level_2
-	scout.tele_coral_level_3_score=pointValues.tele_l3*scout.tele_coral_level_3
-	scout.tele_coral_level_4_score=pointValues.tele_l4*scout.tele_coral_level_4
-	scout.tele_algae_processor_score=pointValues.processor*scout.tele_algae_processor
-	scout.tele_algae_opponent_net_score=-pointValues.net*scout.tele_algae_processor
-	scout.tele_algae_net_score=pointValues.net*scout.tele_algae_net
 	scout.tele_algae_opponent_processor_score=(pointValues
 		.net-pointValues.processor)*scout.tele_algae_opponent_processor
-	scout.park_score=pointValues.park*scout.park
-	scout.shallow_score=pointValues.shallow*scout.shallow
-	scout.deep_score=pointValues.deep*scout.deep
-	scout.cage_score=scout.shallow_score+scout.deep_score
-	scout.end_game_score=scout.park_score+scout.cage_score
 	scout.auto_algae_processor_net_score=scout.auto_algae_processor_score
-	scout.auto_algae_score=scout.auto_algae_processor_net_score+scout.auto_algae_opponent_processor_score+scout.auto_algae_net_score
-	scout.auto_coral_score=scout.auto_coral_level_1_score+scout.auto_coral_level_2_score+scout.auto_coral_level_3_score+scout.auto_coral_level_4_score
 	scout.tele_algae_processor_net_score=scout.tele_algae_processor_score + scout.tele_algae_net_score
-	scout.tele_algae_score=scout.tele_algae_processor_score+scout.tele_algae_net_score
-	scout.tele_coral_score=scout.tele_coral_level_1_score+scout.tele_coral_level_2_score+scout.tele_coral_level_3_score+scout.tele_coral_level_4_score
 	scout.coral_level_1_score=scout.auto_coral_level_1_score+scout.tele_coral_level_1_score
 	scout.coral_level_2_score=scout.auto_coral_level_2_score+scout.tele_coral_level_2_score
 	scout.coral_level_3_score=scout.auto_coral_level_3_score+scout.tele_coral_level_3_score
@@ -170,15 +147,45 @@ function aggregateStats(scout, aggregate, apiScores, subjective, pit, eventStats
 	scout.algae_opponent_net_score=scout.tele_algae_opponent_net_score
 	scout.algae_net_score=scout.auto_algae_net_score+scout.tele_algae_net_score
 	scout.algae_opponent_processor_score=scout.auto_algae_opponent_processor_score+scout.tele_algae_opponent_processor_score
-	scout.algae_score=scout.auto_algae_score+scout.tele_algae_score
-	scout.coral_score=scout.auto_coral_score+scout.tele_coral_score
-	scout.auto_score=scout.auto_coral_score+scout.auto_algae_score
+
+//Our stuff
+		//Coral Auto Scores
+	scout.auto_coral_level_1_score=pointValues.auto_l1*scout.auto_coral_level_1
+	scout.auto_coral_level_2_score=pointValues.auto_l2*scout.auto_coral_level_2
+	scout.auto_coral_level_3_score=pointValues.auto_l3*scout.auto_coral_level_3
+	scout.auto_coral_level_4_score=pointValues.auto_l4*scout.auto_coral_level_4
+	scout.auto_coral_score=scout.auto_coral_level_1_score+scout.auto_coral_level_2_score+scout.auto_coral_level_3_score+scout.auto_coral_level_4_score
+		//Coral Tele Scores
+	scout.tele_coral_level_1_score=pointValues.tele_l1*scout.tele_coral_level_1
+	scout.tele_coral_level_2_score=pointValues.tele_l2*scout.tele_coral_level_2
+	scout.tele_coral_level_3_score=pointValues.tele_l3*scout.tele_coral_level_3
+	scout.tele_coral_level_4_score=pointValues.tele_l4*scout.tele_coral_level_4
+	scout.tele_coral_score=scout.tele_coral_level_1_score+scout.tele_coral_level_2_score+scout.tele_coral_level_3_score+scout.tele_coral_level_4_score
+		//Algae Auto Scores
+	scout.auto_algae_processor_score=pointValues.processor*scout.auto_algae_processor
+	scout.auto_algae_net_score=pointValues.net*scout.auto_algae_net
+	scout.auto_algae_score=scout.auto_algae_processor_score+scout.auto_algae_net_score
+		//Algae Tele Scores
+	scout.tele_algae_processor_score=pointValues.processor*scout.tele_algae_processor
+	scout.tele_algae_net_score=pointValues.net*scout.tele_algae_net
+	scout.tele_algae_score=scout.tele_algae_processor_score+scout.tele_algae_net_score
+
+	//scout.algae_score=scout.auto_algae_score+scout.tele_algae_score
+	//scout.coral_score=scout.auto_coral_score+scout.tele_coral_score
+
+		//Auto Leave Score
+	scout.auto_leave_score=pointValues.auto_leave*scout.auto_leave
+		//Endgame Climb Scores
+	scout.park_score=pointValues.park*scout.park
+	scout.shallow_score=pointValues.shallow*scout.shallow
+	scout.deep_score=pointValues.deep*scout.deep
+	scout.cage_score=scout.shallow_score+scout.deep_score
+		//Auto+Tele+Endgame Scores
+	scout.auto_score=scout.auto_coral_score+scout.auto_algae_score+scout.auto_leave_score
 	scout.tele_score=scout.tele_coral_score+scout.tele_algae_score
+	scout.end_game_score=scout.park_score+scout.cage_score
+		//Data table stuff
 	scout.score=scout.auto_score+scout.tele_score+scout.end_game_score
-
-	//scout.average_coral=scout.tele_coral_level_4+scout.tele_coral_level_3+scout.tele_coral_level_2+tele_coral_level_1
-	//scout.max_coral=scout.tele_coral_level_4+scout.tele_coral_level_3+scout.tele_coral_level_2+tele_coral_level_1
-
 	scout.tele_coral_place=scout.tele_coral_level_1+scout.tele_coral_level_2+scout.tele_coral_level_3+scout.tele_coral_level_4
 	scout.average_gp_controlled=scout.tele_coral_pickup+scout.tele_algae_pickup
 
