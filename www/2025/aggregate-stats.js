@@ -176,7 +176,11 @@ function aggregateStats(scout, aggregate, apiScores, subjective, pit, eventStats
 	scout.auto_score=scout.auto_coral_score+scout.auto_algae_score
 	scout.tele_score=scout.tele_coral_score+scout.tele_algae_score
 	scout.score=scout.auto_score+scout.tele_score+scout.end_game_score
+
+	scout.average_coral=scout.tele_coral_level_4+scout.tele_coral_level_3+scout.tele_coral_level_2+tele_coral_level_1
+	scout.max_coral=scout.tele_coral_level_4+scout.tele_coral_level_3+scout.tele_coral_level_2+tele_coral_level_1
 	scout.average_gp_controlled=scout.tele_coral_pickup+scout.tele_algae_pickup
+
 
 	Object.keys(statInfo).forEach(function(field){
 		if (!/human.player/i.test(statInfo.name)){
@@ -991,7 +995,7 @@ var statInfo={
 	},
 	max_coral:{
 		name: 'Max Coral Scored',
-		type: 'avg'
+		type: 'max'
 	},
 	level_accuracy:{
 		name: 'Accuracy of Levels',
