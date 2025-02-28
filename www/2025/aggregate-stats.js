@@ -894,7 +894,7 @@ var statInfo={
 		type: 'avg'
 	},
 	tele_coral_place:{
-		name: 'Coral Placed in Teleop',
+		name: 'Average Coral Scored',
 		type: 'avg'
 	},
 	tele_coral_score:{
@@ -1121,7 +1121,7 @@ var whiteboardStats=[
 	"coral_levels",
 	"level_accuracy",
 	"max_coral_lvl",
-	"average_coral",
+	"tele_coral_placed",
 	"max_coral",
 	"average_net",
 	"average_processor",
