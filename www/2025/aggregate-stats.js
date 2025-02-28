@@ -1121,7 +1121,7 @@ var whiteboardStats=[
 	"coral_levels",
 	"level_accuracy",
 	"max_coral_lvl",
-	"tele_coral_placed",
+	"tele_coral_place",
 	"max_coral",
 	"average_net",
 	"average_processor",
