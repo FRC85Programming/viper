@@ -95,7 +95,6 @@ function aggregateStats(scout, aggregate, apiScores, subjective, pit, eventStats
 	scout.coral_level_3=scout.auto_coral_level_3+scout.tele_coral_level_3
 	scout.coral_level_4=scout.auto_coral_level_4+scout.tele_coral_level_4
 	scout.preferred_coral_level=getPreferredCoralLevel(scout.coral_level_1,scout.coral_level_2,scout.coral_level_3,scout.coral_level_4)
-	scout.climb_type=getPreferredClimb(scout.end_game_position=='park',scout.end_game_position=='shallow',scout.end_game_position=='deep')
 	scout.preferred_algae_place=getPreferredAlgaePlace(scout.algae_processor,scout.algae_net)
 	scout.coral_station_1=scout.auto_coral_station_1+scout.tele_coral_station_1
 	scout.coral_station_2=scout.auto_coral_station_2+scout.tele_coral_station_2
@@ -180,6 +179,9 @@ function aggregateStats(scout, aggregate, apiScores, subjective, pit, eventStats
 	scout.shallow_score=pointValues.shallow*scout.shallow
 	scout.deep_score=pointValues.deep*scout.deep
 	scout.cage_score=scout.shallow_score+scout.deep_score
+		//Climb Types
+	scout.climb_type=getPreferredClimb(scout.end_game_position=='park',scout.end_game_position=='shallow',scout.end_game_position=='deep')
+
 		//Auto+Tele+Endgame Scores
 	scout.auto_score=scout.auto_coral_score+scout.auto_algae_score+scout.auto_leave_score
 	scout.tele_score=scout.tele_coral_score+scout.tele_algae_score
@@ -209,6 +211,7 @@ function aggregateStats(scout, aggregate, apiScores, subjective, pit, eventStats
 	aggregate.min_score=Math.min(aggregate.min_score===undefined?999:aggregate.min_score,scout.score)
 	aggregate.preferred_coral_level=getPreferredCoralLevel(aggregate.coral_level_1,aggregate.coral_level_2,aggregate.coral_level_3,aggregate.coral_level_4)
 	aggregate.preferred_algae_place=getPreferredAlgaePlace(aggregate.algae_processor,aggregate.algae_net)
+	aggregate.preferred_climb_type=getPreferredClimb(aggregate.park,aggregate.shallow,aggregate.deep)
 
 	if(scout.algae_processor&&/^[1-9][0-9]*$/.test(scout.opponent_human_player_team)){
 		var hpTeam = parseInt(scout.opponent_human_player_team),
@@ -402,6 +405,10 @@ var statInfo={
 		//timeline_stamp: "1",
 		//timeline_fill: "#FFF",
 		//timeline_outline: "#AAA"
+	},
+	climb_type:{
+		name: "Climb Type",
+		type: "text",
 	},
 	auto_coral_level_2:{
 		name: "Level 2 Coral Placed During Auto",
