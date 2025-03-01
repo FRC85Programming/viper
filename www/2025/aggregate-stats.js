@@ -16,6 +16,13 @@ function aggregateStats(scout, aggregate, apiScores, subjective, pit, eventStats
 		return"-"
 	}
 
+	function getPreferredAlgae(algae_removed){
+		var m=Math.max(algae_removed, 0)
+		if (m==0)return"No"
+		if(m==algae_removed)return"Yes"
+		return"-"
+	}
+
 	function getPreferredClimb(park,shallow,deep){
 		var m=Math.max(park,shallow,deep)
 		if (m==0)return"-"
@@ -193,6 +200,9 @@ function aggregateStats(scout, aggregate, apiScores, subjective, pit, eventStats
 	scout.algaefloor=bool_1_0(scout.algaepickup=='algaefloor')
 	scout.algaeboth=bool_1_0(scout.algaepickup=='algaeboth')
 	scout.algae_pickup=getPreferredCoralPickup(scout.algaereef,scout.algaefloor,scout.algaeboth)
+		//Algae Remove vs Control
+	scout.algae_removed=scout.auto_algae_removed+scout.tele_algae_removed
+	scout.control_algae=getPreferredAlgae(scout.algae_removed)
 	//scout.algae_score=scout.auto_algae_score+scout.tele_algae_score
 	//scout.coral_score=scout.auto_coral_score+scout.tele_coral_score
 
@@ -239,7 +249,8 @@ function aggregateStats(scout, aggregate, apiScores, subjective, pit, eventStats
 	aggregate.preferred_algae_place=getPreferredAlgaePlace(aggregate.algae_processor,aggregate.algae_net)
 	aggregate.preferred_climb_type=getPreferredClimb(aggregate.park,aggregate.shallow,aggregate.deep)
 	aggregate.preferred_coral_pickup=getPreferredCoralPickup(aggregate.coralstation,aggregate.coralfloor,aggregate.coralboth)
-	aggregate.preferred_coral_pickup=getPreferredAlgaePickup(aggregate.algaereef,aggregate.algaefloor,aggregate.algaeboth)
+	aggregate.preferred_algae_pickup=getPreferredAlgaePickup(aggregate.algaereef,aggregate.algaefloor,aggregate.algaeboth)
+	aggregate.preferred_algae_control_remove=getPreferredAlgae(aggregate.algae_removed)
 	aggregate.max_coral=Math.max(aggregate.max_coral||0,scout.tele_coral_place)
 
 	if(scout.algae_processor&&/^[1-9][0-9]*$/.test(scout.opponent_human_player_team)){
@@ -504,8 +515,16 @@ var statInfo={
 		type: "avg"
 	},
 	control_algae:{
-		name: "Algae: Remove or Control?",
+		name: "Algae: Remove?",
+		type: "text"
+	},
+	algae_removed:{
+		name: "Removed Algae",
 		type: "avg"
+	},
+	algae_control_remove:{
+		name: "Removed vs Controlled",
+		type: "text"
 	},
 	auto_place_percent:{
 		name: "Percent of Scoring Elements Placed During Auto",

@@ -190,7 +190,7 @@ $(document).ready(function() {
 				row = $("<tr>")
 				teamList.forEach(function(team,i){
 					var color = (i<BOT_POSITIONS.length/2)?"red":"blue"
-					row.append($(`<td class="${color}TeamBG">`).click(showImg).html(`<img src=/data/${eventYear}/${team}${imageSuffix}.jpg>`))
+					//row.append($(`<td class="${color}TeamBG">`).click(showImg).html(`<img src=/data/${eventYear}/${team}${imageSuffix}.jpg>`))
 				})
 				tbody.append(row)
 			})
