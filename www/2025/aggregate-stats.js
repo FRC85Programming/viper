@@ -34,6 +34,15 @@ function aggregateStats(scout, aggregate, apiScores, subjective, pit, eventStats
 		return"-"
 	}
 
+	function getPreferredAlgaePickup(algaereef,algaefloor,algaeboth){
+		var m=Math.max(algaereef,algaefloor,algaeboth)
+		if (m==0)return"-"
+		if(m==algaereef)return"RF"
+		if(m==algaefloor)return"FL"
+		if(m==algaeboth)return"B"
+		return"-"
+	}
+
 	function getPreferredAlgaePlace(processor,net){
 		var m=Math.max(processor,net)
 		if (m==0)return"-"
@@ -179,6 +188,11 @@ function aggregateStats(scout, aggregate, apiScores, subjective, pit, eventStats
 	scout.coralfloor=bool_1_0(scout.coralpickup=='coralfloor')
 	scout.coralboth=bool_1_0(scout.coralpickup=='coralboth')
 	scout.coral_pickup=getPreferredCoralPickup(scout.coralstation,scout.coralfloor,scout.coralboth)
+		//Algae Pickup
+	scout.algaereef=bool_1_0(scout.algaepickup=='algaereef')
+	scout.algaefloor=bool_1_0(scout.algaepickup=='algaefloor')
+	scout.algaeboth=bool_1_0(scout.algaepickup=='algaeboth')
+	scout.algae_pickup=getPreferredCoralPickup(scout.algaereef,scout.algaefloor,scout.algaeboth)
 	//scout.algae_score=scout.auto_algae_score+scout.tele_algae_score
 	//scout.coral_score=scout.auto_coral_score+scout.tele_coral_score
 
@@ -224,7 +238,8 @@ function aggregateStats(scout, aggregate, apiScores, subjective, pit, eventStats
 	aggregate.preferred_coral_level=getPreferredCoralLevel(aggregate.coral_level_1,aggregate.coral_level_2,aggregate.coral_level_3,aggregate.coral_level_4)
 	aggregate.preferred_algae_place=getPreferredAlgaePlace(aggregate.algae_processor,aggregate.algae_net)
 	aggregate.preferred_climb_type=getPreferredClimb(aggregate.park,aggregate.shallow,aggregate.deep)
-	aggregate.preferred_coral_pickup=getPreferredClimb(aggregate.coralstation,aggregate.coralfloor,aggregate.coralboth)
+	aggregate.preferred_coral_pickup=getPreferredCoralPickup(aggregate.coralstation,aggregate.coralfloor,aggregate.coralboth)
+	aggregate.preferred_coral_pickup=getPreferredAlgaePickup(aggregate.algaereef,aggregate.algaefloor,aggregate.algaeboth)
 
 	if(scout.algae_processor&&/^[1-9][0-9]*$/.test(scout.opponent_human_player_team)){
 		var hpTeam = parseInt(scout.opponent_human_player_team),
@@ -956,6 +971,18 @@ var statInfo={
 	//},
 	algae_pickup:{
 		name: 'Algae Pickup',
+		type: 'text'
+	},
+	algaereef:{
+		name: 'Algae Pickup from Reef',
+		type: 'avg'
+	},
+	algaefloor:{
+		name: 'Algae Pickup from Floor',
+		type: 'avg'
+	},
+	algaeboth:{
+		name: 'Algae Pickup from both',
 		type: 'avg'
 	},
 	coral_levels:{
