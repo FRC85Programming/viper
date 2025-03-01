@@ -1231,6 +1231,7 @@ function showPitScouting(el,team){
 		var dat=pitData[team]||{}
 		if (dat.team_name) el.append($("<p>").text("Team name: " + dat.team_name))
 		if (dat.bot_name) el.append($("<p>").text("Bot name: " + dat.bot_name))
+		if (dat.driveteam) el.append($("<p>").text("Switch Out Drive Team?: " + format(dat.driveteam)))
 
 		el.append($("<h4>").text("Robot"))
 		if (dat.frame_length) el.append($("<p>").text("Dimensions (inches with bumpers): " + format(dat.frame_length+'x'+dat.frame_width+'"')))
@@ -1243,9 +1244,10 @@ function showPitScouting(el,team){
 		if (dat.L3) el.append($("<p>").text(format(dat.L3+', ')))
 		if (dat.L2) el.append($("<p>").text(format(dat.L2+', ')))
 		if (dat.L1) el.append($("<p>").text(dat.L1))
-		el.append($("<p>").text("Weight (pounds): " + format(dat.weight)))
-		list.append($("<li>").text("Drivetrain: " + format(dat.drivetrain)))
-		el.append(list)
+		el.append($("<p>").text("Algae: "))
+		if (dat.removereef) el.append($("<p>").text(format(dat.removereef+', ')))
+		if (dat.processor) el.append($("<p>").text(format(dat.processor+', ')))
+		if (dat.net) el.append($("<p>").text(format(dat.net)))
 
 		el.append($("<h4>").text("Computer Vision"))
 		list=$("<ul>")
