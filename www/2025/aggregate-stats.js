@@ -1238,7 +1238,7 @@ function showPitScouting(el,team){
 		if (dat.drivetrain) el.append($("<p>").text("Drivetrain: " + format(dat.drivetrain)))
 
 		el.append($("<h4>").text("Capabilities"))
-		el.append($("<p>").text("Branch Levels: " + format(dat.coral + ', '+ dat.coral)))
+		el.append($("<p>").text("Branch Levels: " + format(dat.L4+', '+dat.L3+', '+dat.L2+', '+dat.L1)))
 		el.append($("<p>").text("Weight (pounds): "+ format(dat.weight)))
 		list.append($("<li>").text("Drivetrain: " + format(dat.drivetrain)))
 		el.append(list)
