@@ -1233,15 +1233,13 @@ function showPitScouting(el,team){
 		if (dat.bot_name) el.append($("<p>").text("Bot name: " + dat.bot_name))
 
 		el.append($("<h4>").text("Robot"))
-		el.append($("<p>").text("Dimensions (inches with bumpers): " + format(dat.frame_length+'x'+dat.frame_width+'"')))
-		if (dat.weight) list.append($("<li>").text("Weight (pounds): "+ format(dat.weight)))
-		if (dat.drivetrain) list.append($("<li>").text("Drivetrain: " + format(dat.drivetrain)))
-		el.append(list)
+		if (dat.fram_length) el.append($("<p>").text("Dimensions (inches with bumpers): " + format(dat.frame_length+'x'+dat.frame_width+'"')))
+		if (dat.weight) el.append($("<p>").text("Weight (pounds): "+ format(dat.weight)))
+		if (dat.drivetrain) el.append($("<p>").text("Drivetrain: " + format(dat.drivetrain)))
 
 		el.append($("<h4>").text("Capabilities"))
-		list=$("<ul>")
-		list.append($("<li>").text("Dimensions (inches with bumpers): " + format(dat.frame_length+'x'+dat.frame_width+'"')))
-		list.append($("<li>").text("Weight (pounds): "+ format(dat.weight)))
+		el.append($("<p>").text("Branch Levels " + format(dat.L4+', '+dat.L3+', '+dat.L2+', '+dat.L1)))
+		el.append($("<p>").text("Weight (pounds): "+ format(dat.weight)))
 		list.append($("<li>").text("Drivetrain: " + format(dat.drivetrain)))
 		el.append(list)
 
