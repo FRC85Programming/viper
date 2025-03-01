@@ -1233,8 +1233,7 @@ function showPitScouting(el,team){
 		if (dat.bot_name) el.append($("<p>").text("Bot name: " + dat.bot_name))
 
 		el.append($("<h4>").text("Robot"))
-		list=$("<ul>")
-		el.append($("<li>").text("Dimensions (inches with bumpers): " + format(dat.frame_length+'x'+dat.frame_width+'"')))
+		el.append($("<p>").text("Dimensions (inches with bumpers): " + format(dat.frame_length+'x'+dat.frame_width+'"')))
 		if (dat.weight) list.append($("<li>").text("Weight (pounds): "+ format(dat.weight)))
 		if (dat.drivetrain) list.append($("<li>").text("Drivetrain: " + format(dat.drivetrain)))
 		el.append(list)
