@@ -1271,6 +1271,13 @@ function showSubjectiveScouting(el,team){
 		f
 		el.append(graph)
 		f=dat.strength||""
+		el.append($("<h4>").text("Robot"))
+		if (dat.speed) el.append($("<p>").text("Robot Speed: " + format(dat.speed)))
+		if (dat.confidence) el.append($("<p>").text("Driving Confidence: " + format(dat.confidence)))
+		if (dat.stability) el.append($("<p>").text("Robot Stability: " + format(dat.stability)))
+		if (dat.climb) el.append($("<p>").text("Climb Speed: " + format(dat.climb)))
+		if (dat.defense) el.append($("<p>").text("Defensive Ability: " + format(dat.defense)))
+
 		if (f){
 			el.append('<h4>Strengths</h4>')
 			if (Array.isArray(f)) {
