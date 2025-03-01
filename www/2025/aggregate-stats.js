@@ -240,6 +240,7 @@ function aggregateStats(scout, aggregate, apiScores, subjective, pit, eventStats
 	aggregate.preferred_climb_type=getPreferredClimb(aggregate.park,aggregate.shallow,aggregate.deep)
 	aggregate.preferred_coral_pickup=getPreferredCoralPickup(aggregate.coralstation,aggregate.coralfloor,aggregate.coralboth)
 	aggregate.preferred_coral_pickup=getPreferredAlgaePickup(aggregate.algaereef,aggregate.algaefloor,aggregate.algaeboth)
+	aggregate.max_coral=Math.max(aggregate.max_coral||0,scout.tele_coral_place)
 
 	if(scout.algae_processor&&/^[1-9][0-9]*$/.test(scout.opponent_human_player_team)){
 		var hpTeam = parseInt(scout.opponent_human_player_team),
@@ -1071,7 +1072,7 @@ var statInfo={
 	},
 	max_coral:{
 		name: 'Max Coral Scored',
-		type: 'max'
+		type: 'minmax'
 	},
 	level_accuracy:{
 		name: 'Accuracy of Levels',
