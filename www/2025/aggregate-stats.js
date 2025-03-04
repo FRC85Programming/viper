@@ -1288,7 +1288,7 @@ function showSubjectiveScouting(el,team){
 	promiseSubjectiveScouting().then(subjectiveData => {
 		var dat=subjectiveData[team]||{}
 		el.append($("<h4>").text("Robot"))
-		el.append($("<p>").text("Robot Speed: " + preferred_speed))
+		el.append($("<p>").text("Robot Speed: "))
 		//if (dat.confidence) el.append($("<p>").text("Driving Confidence: " + format(dat.confidence)))
 		//if (dat.stability) el.append($("<p>").text("Robot Stability: " + format(dat.stability)))
 		//if (dat.climb) el.append($("<p>").text("Climb Speed: " + format(dat.climb)))
