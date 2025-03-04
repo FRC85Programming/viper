@@ -250,6 +250,7 @@ function aggregateStats(scout, aggregate, apiScores, subjective, pit, eventStats
 	aggregate.preferred_climb_type=getPreferredClimb(aggregate.park,aggregate.shallow,aggregate.deep)
 	aggregate.preferred_coral_pickup=getPreferredCoralPickup(aggregate.coralstation,aggregate.coralfloor,aggregate.coralboth)
 	aggregate.preferred_algae_pickup=getPreferredAlgaePickup(aggregate.algaereef,aggregate.algaefloor,aggregate.algaeboth)
+	aggregate.preferred_speed=getPreferredSpeed(aggregate.super_slow,aggregate.slow,aggregate.normal,aggregate.fast,aggregate.very_fast)
 	aggregate.preferred_algae_control_remove=getPreferredAlgae(aggregate.algae_removed)
 	aggregate.max_coral=Math.max(aggregate.max_coral||0,scout.tele_coral_place)
 
@@ -1151,6 +1152,10 @@ var statInfo={
 	//	name: 'Theft in Teleop',
 	//	type: '%'
 	//},
+	speed:{
+		name: "Robot's Speed",
+		type: "text",
+	},
 }
 
 var teamGraphs={
@@ -1239,12 +1244,12 @@ function showPitScouting(el,team){
 		if (dat.drivetrain) el.append($("<p>").text("Drivetrain: " + format(dat.drivetrain)))
 
 		el.append($("<h4>").text("Capabilities"))
-		el.append($("<p>").text("Branch Levels: "))
+		el.append($("<h5>").text("Branch Levels: "))
 		if (dat.L4) el.append($("<p>").text(format(dat.L4+', ')))
 		if (dat.L3) el.append($("<p>").text(format(dat.L3+', ')))
 		if (dat.L2) el.append($("<p>").text(format(dat.L2+', ')))
 		if (dat.L1) el.append($("<p>").text(dat.L1))
-		el.append($("<p>").text("Algae: "))
+		el.append($("<h5>").text("Algae: "))
 		if (dat.removereef) el.append($("<p>").text(format(dat.removereef+', ')))
 		if (dat.processor) el.append($("<p>").text(format(dat.processor+', ')))
 		if (dat.net) el.append($("<p>").text(format(dat.net)))
@@ -1263,16 +1268,31 @@ function showPitScouting(el,team){
 		return s.replace(/_/g," ")
 	}
 }
+//Stuff for Qualitative Displaying
+
+function getPreferredSpeed(super_slow,slow,normal,fast,very_fast){
+	var m=Math.max(super_slow,slow,normal,fast,very_fast)
+	if (m==0)return"-"
+	if(m==super_slow)return"Super Slow"
+	if(m==slow)return"Slow"
+	if(m==normal)return"Normal"
+	if(m==fast)return"Fast"
+	if(m==very_fast)return"Very Fast"
+	return"-"
+}
+
+subjectiveData[team].preferred_speed=getPreferredSpeed(subjectiveData[team].super_slow,subjectiveData[team].slow,subjectiveData[team].normal,subjectiveData[team].fast,subjectiveData[team].very_fast)
+
 
 function showSubjectiveScouting(el,team){
 	promiseSubjectiveScouting().then(subjectiveData => {
 		var dat=subjectiveData[team]||{}
 		el.append($("<h4>").text("Robot"))
-		if (dat.speed) el.append($("<p>").text("Robot Speed: " + format(dat.speed)))
-		if (dat.confidence) el.append($("<p>").text("Driving Confidence: " + format(dat.confidence)))
-		if (dat.stability) el.append($("<p>").text("Robot Stability: " + format(dat.stability)))
-		if (dat.climb) el.append($("<p>").text("Climb Speed: " + format(dat.climb)))
-		if (dat.defense) el.append($("<p>").text("Defensive Ability: " + format(dat.defense))),
+		el.append($("<p>").text("Robot Speed: " + preferred_speed))
+		//if (dat.confidence) el.append($("<p>").text("Driving Confidence: " + format(dat.confidence)))
+		//if (dat.stability) el.append($("<p>").text("Robot Stability: " + format(dat.stability)))
+		//if (dat.climb) el.append($("<p>").text("Climb Speed: " + format(dat.climb)))
+		//if (dat.defense) el.append($("<p>").text("Defensive Ability: " + format(dat.defense))),
 		graph=$('<div class=graph>'),
 		f
 		el.append(graph)
