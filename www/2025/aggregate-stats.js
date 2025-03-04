@@ -1281,7 +1281,7 @@ function getPreferredSpeed(super_slow,slow,normal,fast,very_fast){
 	return"-"
 }
 
-subjectiveData[team].preferred_speed=getPreferredSpeed(subjectiveData[team].super_slow,subjectiveData[team].slow,subjectiveData[team].normal,subjectiveData[team].fast,subjectiveData[team].very_fast)
+subjectiveData.preferred_speed=getPreferredSpeed(subjectiveData.super_slow,subjectiveData.slow,subjectiveData.normal,subjectiveData.fast,subjectiveData.very_fast)
 
 
 function showSubjectiveScouting(el,team){
