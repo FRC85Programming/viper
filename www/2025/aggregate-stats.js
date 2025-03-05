@@ -1312,7 +1312,7 @@ subjective.speed=getPreferredSpeed(subjective.super_slow,subjective.slow,subject
 
 function showSubjectiveScouting(el,team){
 	promiseSubjectiveScouting().then(subjectiveData => {
-		var dat=subjectiveData[team]||{}
+		var qual=subjectiveData[team]||{}
 		//el.append($("<h4>").text("Robot"))
 		//el.append($("<p>").text("Robot Speed: " + format(dat.speed))),
 		//el.append($("<p>").text("Driving Confidence: " + format(dat.confidence)))
@@ -1322,8 +1322,7 @@ function showSubjectiveScouting(el,team){
 		//graph=$('<div class=graph>'),
 		//f
 		//el.append(graph)
-		f=dat.strength||""
-
+		f=qual.strength||""
 		if (f){
 			el.append('<h4>Strengths</h4>')
 			if (Array.isArray(f)) {
@@ -1334,7 +1333,7 @@ function showSubjectiveScouting(el,team){
 				el.append($('<div style=white-space:pre-wrap>').text(f))
 			}
 		}
-		f=dat.weakness||""
+		f=qual.weakness||""
 		if (f){
 			el.append('<h4>Weaknesses</h4>')
 			if (Array.isArray(f)) {
@@ -1346,7 +1345,7 @@ function showSubjectiveScouting(el,team){
 			}
 
 		}
-		f=dat.notes||""
+		f=qual.notes||""
 		if (f){
 			el.append('<h4>Other</h4>')
 			if (Array.isArray(f)) {
