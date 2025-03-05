@@ -1282,12 +1282,12 @@ function getPreferredSpeed(super_slow,slow,normal,fast,very_fast){
 }
 
 //Speed
-subjectiveData.super_slow=bool_1_0(subjectiveData.speed=='super_slow')
-subjectiveData.slow=bool_1_0(subjectiveData.speed=='slow')
-subjectiveData.normal=bool_1_0(subjectiveData.speed=='normal')
-subjectiveData.fast=bool_1_0(subjectiveData.speed=='fast')
-subjectiveData.very_fast=bool_1_0(subjectiveData.speed=='very_fast')
-subjectiveData.speed=getPreferredSpeed(subjectiveData.super_slow,subjectiveData.slow,subjectiveData.normal,subjectiveData.fast,subjectiveData.very_fast)
+subjective.super_slow=bool_1_0(subjective.speed=='super_slow')
+subjective.slow=bool_1_0(subjective.speed=='slow')
+subjective.normal=bool_1_0(subjective.speed=='normal')
+subjective.fast=bool_1_0(subjective.speed=='fast')
+subjective.very_fast=bool_1_0(subjective.speed=='very_fast')
+subjective.speed=getPreferredSpeed(subjective.super_slow,subjective.slow,subjective.normal,subjective.fast,subjective.very_fast)
 
 
 function showSubjectiveScouting(el,team){
