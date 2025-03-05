@@ -1313,12 +1313,12 @@ subjective.speed=getPreferredSpeed(subjective.super_slow,subjective.slow,subject
 function showSubjectiveScouting(el,team){
 	promiseSubjectiveScouting().then(subjectiveData => {
 		var dat=subjectiveData[team]||{}
-		el.append($("<h4>").text("Robot"))
-		el.append($("<p>").text("Robot Speed: " + format(dat.speed))),
-		el.append($("<p>").text("Driving Confidence: " + format(dat.confidence)))
-		el.append($("<p>").text("Robot Stability: " + format(dat.stability)))
-		el.append($("<p>").text("Climb Speed: " + format(dat.climb)))
-		 el.append($("<p>").text("Defensive Ability: " + format(dat.defense)))
+		//el.append($("<h4>").text("Robot"))
+		//el.append($("<p>").text("Robot Speed: " + format(dat.speed))),
+		//el.append($("<p>").text("Driving Confidence: " + format(dat.confidence)))
+		//el.append($("<p>").text("Robot Stability: " + format(dat.stability)))
+		//el.append($("<p>").text("Climb Speed: " + format(dat.climb)))
+		// el.append($("<p>").text("Defensive Ability: " + format(dat.defense)))
 		//graph=$('<div class=graph>'),
 		//f
 		//el.append(graph)
