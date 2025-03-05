@@ -1152,7 +1152,7 @@ var statInfo={
 	//	name: 'Theft in Teleop',
 	//	type: '%'
 	//},
-	preferred_speed:{
+	speed:{
 		name: "Robot's Speed",
 		type: "text",
 	},
@@ -1281,14 +1281,20 @@ function getPreferredSpeed(super_slow,slow,normal,fast,very_fast){
 	return"-"
 }
 
-subjectiveData.preferred_speed=getPreferredSpeed(subjectiveData.super_slow,subjectiveData.slow,subjectiveData.normal,subjectiveData.fast,subjectiveData.very_fast)
+//Speed
+subjectiveData.super_slow=bool_1_0(subjectiveData.speed=='super_slow')
+subjectiveData.slow=bool_1_0(subjectiveData.speed=='slow')
+subjectiveData.normal=bool_1_0(subjectiveData.speed=='normal')
+subjectiveData.fast=bool_1_0(subjectiveData.speed=='fast')
+subjectiveData.very_fast=bool_1_0(subjectiveData.speed=='very_fast')
+subjectiveData.speed=getPreferredSpeed(subjectiveData.super_slow,subjectiveData.slow,subjectiveData.normal,subjectiveData.fast,subjectiveData.very_fast)
 
 
 function showSubjectiveScouting(el,team){
 	promiseSubjectiveScouting().then(subjectiveData => {
 		var dat=subjectiveData[team]||{}
 		el.append($("<h4>").text("Robot")),
-		el.append($("<p>").text("Robot Speed: " + dat.preferred_speed))
+		el.append($("<p>").text("Robot Speed: " + format(dat.speed)))
 		//if (dat.confidence) el.append($("<p>").text("Driving Confidence: " + format(dat.confidence)))
 		//if (dat.stability) el.append($("<p>").text("Robot Stability: " + format(dat.stability)))
 		//if (dat.climb) el.append($("<p>").text("Climb Speed: " + format(dat.climb)))
