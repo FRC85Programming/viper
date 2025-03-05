@@ -1156,6 +1156,26 @@ var statInfo={
 		name: "Robot's Speed",
 		type: "text",
 	},
+	super_slow:{
+		name: "Robot's Speed",
+		type: "text",
+	},
+	slow:{
+		name: "Robot's Speed",
+		type: "text",
+	},
+	normal:{
+		name: "Robot's Speed",
+		type: "text",
+	},
+	fast:{
+		name: "Robot's Speed",
+		type: "text",
+	},
+	very_fast:{
+		name: "Robot's Speed",
+		type: "text",
+	},
 }
 
 var teamGraphs={
