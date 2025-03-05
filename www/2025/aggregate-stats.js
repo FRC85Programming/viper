@@ -1254,7 +1254,7 @@ var fmsMapping=[
 function showPitScouting(el,team){
 	promisePitScouting().then(pitData => {
 		var dat=pitData[team]||{}
-		el.append(dat)
+		el.append(JSON.stringify(dat, null, 2))
 	})
 }
 
