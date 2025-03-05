@@ -1254,6 +1254,13 @@ var fmsMapping=[
 function showPitScouting(el,team){
 	promisePitScouting().then(pitData => {
 		var dat=pitData[team]||{}
+		el.append(dat)
+	})
+}
+
+function showPitScouting1(el,team){
+	promisePitScouting().then(pitData => {
+		var dat=pitData[team]||{}
 		if (dat.team_name) el.append($("<p>").text("Team name: " + dat.team_name))
 		if (dat.bot_name) el.append($("<p>").text("Bot name: " + dat.bot_name))
 		if (dat.driveteam) el.append($("<p>").text("Switch Out Drive Team?: " + format(dat.driveteam)))
