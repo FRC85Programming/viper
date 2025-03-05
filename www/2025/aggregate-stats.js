@@ -1290,7 +1290,7 @@ function showPitScouting(el,team){
 }
 //Stuff for Qualitative Displaying
 
-function getPreferredSpeed(super_slow,slow,normal,fast,very_fast){
+/**function getPreferredSpeed(super_slow,slow,normal,fast,very_fast){
 	var m=Math.max(super_slow,slow,normal,fast,very_fast)
 	if (m==0)return"-"
 	if(m==super_slow)return"Super Slow"
@@ -1307,7 +1307,7 @@ subjective.slow=bool_1_0(subjective.speed=='slow')
 subjective.normal=bool_1_0(subjective.speed=='normal')
 subjective.fast=bool_1_0(subjective.speed=='fast')
 subjective.very_fast=bool_1_0(subjective.speed=='very_fast')
-subjective.speed=getPreferredSpeed(subjective.super_slow,subjective.slow,subjective.normal,subjective.fast,subjective.very_fast)
+subjective.speed=getPreferredSpeed(subjective.super_slow,subjective.slow,subjective.normal,subjective.fast,subjective.very_fast)**/
 
 
 function showSubjectiveScouting(el,team){
@@ -1315,13 +1315,13 @@ function showSubjectiveScouting(el,team){
 		var dat=subjectiveData[team]||{}
 		el.append($("<h4>").text("Robot"))
 		el.append($("<p>").text("Robot Speed: " + format(dat.speed))),
-		//if (dat.confidence) el.append($("<p>").text("Driving Confidence: " + format(dat.confidence)))
-		//if (dat.stability) el.append($("<p>").text("Robot Stability: " + format(dat.stability)))
-		//if (dat.climb) el.append($("<p>").text("Climb Speed: " + format(dat.climb)))
-		//if (dat.defense) el.append($("<p>").text("Defensive Ability: " + format(dat.defense))),
-		graph=$('<div class=graph>'),
-		f
-		el.append(graph)
+		el.append($("<p>").text("Driving Confidence: " + format(dat.confidence)))
+		el.append($("<p>").text("Robot Stability: " + format(dat.stability)))
+		el.append($("<p>").text("Climb Speed: " + format(dat.climb)))
+		 el.append($("<p>").text("Defensive Ability: " + format(dat.defense)))
+		//graph=$('<div class=graph>'),
+		//f
+		//el.append(graph)
 		f=dat.strength||""
 
 		if (f){
