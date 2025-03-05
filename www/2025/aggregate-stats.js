@@ -250,7 +250,7 @@ function aggregateStats(scout, aggregate, apiScores, subjective, pit, eventStats
 	aggregate.preferred_climb_type=getPreferredClimb(aggregate.park,aggregate.shallow,aggregate.deep)
 	aggregate.preferred_coral_pickup=getPreferredCoralPickup(aggregate.coralstation,aggregate.coralfloor,aggregate.coralboth)
 	aggregate.preferred_algae_pickup=getPreferredAlgaePickup(aggregate.algaereef,aggregate.algaefloor,aggregate.algaeboth)
-	aggregate.preferred_speed=getPreferredSpeed(aggregate.super_slow,aggregate.slow,aggregate.normal,aggregate.fast,aggregate.very_fast)
+	//aggregate.preferred_speed=getPreferredSpeed(aggregate.super_slow,aggregate.slow,aggregate.normal,aggregate.fast,aggregate.very_fast)
 	aggregate.preferred_algae_control_remove=getPreferredAlgae(aggregate.algae_removed)
 	aggregate.max_coral=Math.max(aggregate.max_coral||0,scout.tele_coral_place)
 
