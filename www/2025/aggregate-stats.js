@@ -100,7 +100,6 @@ function aggregateStats(scout, aggregate, apiScores, subjective, pit, eventStats
 	scout.auto_coral_place=scout.auto_coral_level_1+scout.auto_coral_level_2+scout.auto_coral_level_3+scout.auto_coral_level_4
 	scout.auto_place=scout.auto_algae_place+scout.auto_coral_place
 	scout.tele_algae_place=scout.tele_algae_net+scout.tele_algae_processor
-	scout.tele_place=scout.tele_algae_place+scout.tele_coral_place
 	scout.algae_drop=scout.auto_algae_drop+scout.tele_algae_drop
 	scout.algae_lower=scout.auto_algae_lower+scout.tele_algae_lower
 	scout.algae_lower_removed=scout.auto_algae_lower_removed+scout.tele_algae_lower_removed
@@ -124,7 +123,6 @@ function aggregateStats(scout, aggregate, apiScores, subjective, pit, eventStats
 	scout.coral_station_1=scout.auto_coral_station_1+scout.tele_coral_station_1
 	scout.coral_station_2=scout.auto_coral_station_2+scout.tele_coral_station_2
 	scout.auto_coral_station=scout.auto_coral_station_1+scout.auto_coral_station_2
-	scout.tele_coral_station=scout.tele_coral_station_1+scout.tele_coral_station_2
 	scout.coral_station=scout.auto_coral_station+scout.tele_coral_station
 	scout.auto_coral_collect=scout.auto_coral_ground+scout.auto_coral_station
 	scout.tele_coral_collect=scout.tele_coral_ground+scout.tele_coral_station+scout.tele_coral_theft
@@ -149,7 +147,6 @@ function aggregateStats(scout, aggregate, apiScores, subjective, pit, eventStats
 	scout.tele_drop=scout.tele_algae_drop+scout.tele_coral_drop
 	scout.drop=scout.auto_drop+scout.tele_drop
 	scout.algae_place=scout.auto_algae_place+scout.tele_algae_place
-	scout.coral_place=scout.auto_coral_place+scout.tele_coral_place
 	scout.place=scout.auto_place+scout.tele_place
 	scout.algae_litter=scout.algae_removed_reef+scout.algae_drop-scout.algae_ground
 	scout.coral_litter=scout.coral_drop-scout.coral_ground
@@ -205,7 +202,6 @@ function aggregateStats(scout, aggregate, apiScores, subjective, pit, eventStats
 	scout.control_algae=getPreferredAlgae(scout.algae_removed)
 	//scout.algae_score=scout.auto_algae_score+scout.tele_algae_score
 	//scout.coral_score=scout.auto_coral_score+scout.tele_coral_score
-
 		//Auto Leave Score
 	scout.auto_leave_score=pointValues.auto_leave*scout.auto_leave
 		//Endgame Climb Scores
@@ -685,28 +681,28 @@ var statInfo={
 	},
 	tele_coral_level_1:{
 		name: "Level 1 Coral Placed During Teleop",
-		type: "avg",
+		type: 'num',
 		//timeline_stamp: "1",
 		//timeline_fill: "#FFF",
 		//timeline_outline: "#AAA"
 	},
 	tele_coral_level_2:{
 		name: "Level 2 Coral Placed During Teleop",
-		type: "avg",
+		type: 'num',
 		//timeline_stamp: "2",
 		//timeline_fill: "#FFF",
 		//timeline_outline: "#AAA"
 	},
 	tele_coral_level_3:{
 		name: "Level 3 Coral Placed During Teleop",
-		type: "avg",
+		type: 'num',
 		//timeline_stamp: "3",
 		//timeline_fill: "#FFF",
 		//timeline_outline: "#AAA"
 	},
 	tele_coral_level_4:{
 		name: "Level 4 Coral Placed During Teleop",
-		type: "avg",
+		type: 'num',
 		//timeline_stamp: "4",
 		//timeline_fill: "#FFF",
 		//timeline_outline: "#AAA"
