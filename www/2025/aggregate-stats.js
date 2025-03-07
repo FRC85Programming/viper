@@ -58,6 +58,12 @@ function aggregateStats(scout, aggregate, apiScores, subjective, pit, eventStats
 		return"-"
 	}
 
+	function getClimbValue(endgame){
+		if (endgame==1) return 1
+		if (endgame==0) return 0
+		return 0
+	}
+
 	var pointValues={
 		auto_leave:3,
 		auto_l1:3,
@@ -99,25 +105,18 @@ function aggregateStats(scout, aggregate, apiScores, subjective, pit, eventStats
 	scout.auto_algae_place=scout.auto_algae_net+scout.auto_algae_processor
 	scout.auto_coral_place=scout.auto_coral_level_1+scout.auto_coral_level_2+scout.auto_coral_level_3+scout.auto_coral_level_4
 	scout.auto_place=scout.auto_algae_place+scout.auto_coral_place
-	scout.tele_algae_place=scout.tele_algae_net+scout.tele_algae_processor
 	scout.algae_drop=scout.auto_algae_drop+scout.tele_algae_drop
 	scout.algae_lower=scout.auto_algae_lower+scout.tele_algae_lower
 	scout.algae_lower_removed=scout.auto_algae_lower_removed+scout.tele_algae_lower_removed
 	scout.auto_algae_ground=scout.auto_algae_mark_1+scout.auto_algae_mark_2+scout.auto_algae_mark_3
 	scout.algae_ground=scout.auto_algae_ground+scout.tele_algae_ground
-	scout.algae_net=scout.auto_algae_net+scout.tele_algae_net
 	scout.algae_opponent_net=scout.tele_algae_opponent_net
 	scout.algae_opponent_processor=scout.auto_algae_opponent_processor+scout.tele_algae_opponent_processor
-	scout.algae_processor=scout.auto_algae_processor+scout.tele_algae_processor
 	scout.algae_upper=scout.auto_algae_upper+scout.tele_algae_upper
 	scout.algae_upper_removed=scout.auto_algae_upper_removed+scout.tele_algae_upper_removed
 	scout.coral_drop=scout.auto_coral_drop+scout.tele_coral_drop
 	scout.auto_coral_ground=scout.auto_coral_mark_1+scout.auto_coral_mark_2+scout.auto_coral_mark_3
 	scout.coral_ground=scout.tele_coral_ground+scout.tele_coral_ground
-	scout.coral_level_1=scout.auto_coral_level_1+scout.tele_coral_level_1
-	scout.coral_level_2=scout.auto_coral_level_2+scout.tele_coral_level_2
-	scout.coral_level_3=scout.auto_coral_level_3+scout.tele_coral_level_3
-	scout.coral_level_4=scout.auto_coral_level_4+scout.tele_coral_level_4
 	scout.preferred_coral_level=getPreferredCoralLevel(scout.coral_level_1,scout.coral_level_2,scout.coral_level_3,scout.coral_level_4)
 	scout.preferred_algae_place=getPreferredAlgaePlace(scout.algae_processor,scout.algae_net)
 	scout.coral_station_1=scout.auto_coral_station_1+scout.tele_coral_station_1
@@ -214,13 +213,25 @@ function aggregateStats(scout, aggregate, apiScores, subjective, pit, eventStats
 	scout.shallow=bool_1_0(scout.end_game_position=='shallow')
 	scout.deep=bool_1_0(scout.end_game_position=='deep')
 	scout.climb_type=getPreferredClimb(scout.park,scout.shallow,scout.deep)
+	scout.climb_percentage=getClimbValue(scout.end_game_position)*100
+
 		//Auto+Tele+Endgame Scores
 	scout.auto_score=scout.auto_coral_score+scout.auto_algae_score+scout.auto_leave_score
 	scout.tele_score=scout.tele_coral_score+scout.tele_algae_score
 	scout.end_game_score=scout.park_score+scout.cage_score
+		//Coral
+	scout.coral_level_1=scout.tele_coral_level_1
+	scout.coral_level_2=scout.tele_coral_level_2
+	scout.coral_level_3=scout.tele_coral_level_3
+	scout.coral_level_4=scout.tele_coral_level_4
+	scout.tele_coral_place=scout.coral_level_1+scout.coral_level_2+scout.coral_level_3+scout.coral_level_4
+		//Algae
+	scout.algae_net=scout.tele_algae_net
+	scout.algae_processor=scout.algae_processor
+	scout.tele_algae_place=scout.algae_net+scout.tele_algae_processor
 		//Data table stuff
 	scout.score=scout.auto_score+scout.tele_score+scout.end_game_score
-	scout.tele_coral_place=scout.tele_coral_level_1+scout.tele_coral_level_2+scout.tele_coral_level_3+scout.tele_coral_level_4
+
 	scout.average_gp_controlled=scout.tele_coral_pickup+scout.tele_algae_pickup
 
 
@@ -238,6 +249,15 @@ function aggregateStats(scout, aggregate, apiScores, subjective, pit, eventStats
 			if(/^int-list$/.test(statInfo[field]['type'])) aggregate[field]=(aggregate[field]||[]).concat(scout[field])
 		}
 	})
+
+	function calculateAverageWithLoop(array) {
+		let sum = 0;
+		for (let i = 0; i < array.length; i++) {
+		  sum += array[i];
+		}
+		return array.length > 0 ? sum / array.length : 0;
+	  }
+
 	aggregate.count=(aggregate.count||0)+1
 	aggregate.max_score=Math.max(aggregate.max_score||0,scout.score)
 	aggregate.min_score=Math.min(aggregate.min_score===undefined?999:aggregate.min_score,scout.score)
@@ -249,6 +269,7 @@ function aggregateStats(scout, aggregate, apiScores, subjective, pit, eventStats
 	//aggregate.preferred_speed=getPreferredSpeed(aggregate.super_slow,aggregate.slow,aggregate.normal,aggregate.fast,aggregate.very_fast)
 	aggregate.preferred_algae_control_remove=getPreferredAlgae(aggregate.algae_removed)
 	aggregate.max_coral=Math.max(aggregate.max_coral||0,scout.tele_coral_place)
+	aggregate.climb_percentage=calculateAverageWithLoop(getClimbValue(aggregate.end_game_position))
 
 	if(scout.algae_processor&&/^[1-9][0-9]*$/.test(scout.opponent_human_player_team)){
 		var hpTeam = parseInt(scout.opponent_human_player_team),
@@ -746,7 +767,7 @@ var statInfo={
 	//	type: 'avg'
 	//},
 	algae_net:{
-		name: 'Algae Placed or Shot into the Net by the Robot',
+		name: 'Algae Shot into the Net by the Robot',
 		type: 'avg'
 	},
 	algae_net_score:{
@@ -1172,6 +1193,10 @@ var statInfo={
 		name: "Robot's Speed",
 		type: "text",
 	},
+	climb_percentage:{
+		name: "Climb Percentage",
+		type: "avg",
+	},
 }
 
 var teamGraphs={
@@ -1185,7 +1210,7 @@ var teamGraphs={
 	//},
 	"Scoring Element Cycles":{
 		graph:"stacked",
-		data:["algae_place","coral_place"],
+		data:["tele_algae_place","tele_coral_place"],
 	},
 	"Scoring Locations":{
 		graph:"stacked",
@@ -1194,7 +1219,45 @@ var teamGraphs={
 }
 
 var aggregateGraphs = {
-	"Match Score":{
+	"Average Coral Scored":{
+		graph:"bar",
+		data:["tele_coral_place"],
+	},
+	"Average Algae Scored":{
+		graph:"bar",
+		data:["tele_algae_place"],
+	},
+	"Average Game Pieces Scored":{
+		graph:"stacked",
+		data:["tele_algae_place", "tele_coral_place"],
+	},
+	"Coral Levels":{
+		graph:"stacked",
+		data:["coral_level_4", "coral_level_3", "coral_level_2", "coral_level_1"],
+	},
+	"Algae Locations":{
+		graph:"stacked",
+		data:["algae_processor", "algae_net"],
+	},
+	"Average Game Pieces Acquired/Controlled":{
+		graph:"bar",
+		data:["average_gp_controlled"],
+	},
+	"Average Points Contributed":{
+		graph:"bar",
+		data:["score"],
+	},
+	"Average Auto Points Contributed":{
+		graph:"bar",
+		data:["auto_score"],
+	},
+	"Climb Percentage":{
+		graph:"bar",
+		data:["climb_percentage"],
+	},
+
+
+	/**"Match Score":{
 		graph:"boxplot",
 		data:["max_score","score","min_score"],
 	},
@@ -1209,7 +1272,7 @@ var aggregateGraphs = {
 	"Scoring Locations":{
 		graph:"stacked",
 		data:["algae_processor","algae_net","coral_level_1","coral_level_2","coral_level_3","coral_level_4"],
-	},
+	},**/
 	//"Human Player":{
 	//	graph:"bar",
 	//	data:["human_player_algae_received","human_player_net"],
