@@ -1310,14 +1310,14 @@ var whiteboardStats=[
 var fmsMapping=[
 ]
 
-function showPitScouting(el,team){
+function showPitScoutingJson(el,team){
 	promisePitScouting().then(pitData => {
 		var dat=pitData[team]||{}
 		el.append(JSON.stringify(dat, null, 2))
 	})
 }
 
-function showPitScouting1(el,team){
+function showPitScouting(el,team){
 	promisePitScouting().then(pitData => {
 		var dat=pitData[team]||{}
 		if (dat.team_name) el.append($("<p>").text("Team name: " + dat.team_name))
@@ -1375,20 +1375,25 @@ subjective.fast=bool_1_0(subjective.speed=='fast')
 subjective.very_fast=bool_1_0(subjective.speed=='very_fast')
 subjective.speed=getPreferredSpeed(subjective.super_slow,subjective.slow,subjective.normal,subjective.fast,subjective.very_fast)**/
 
+function showSubjectiveScoutingJson(el,team){
+	promiseSubjectiveScouting().then(subjectiveData => {
+		var qual=subjectiveData[team]||{}
+		el.append(JSON.stringify(qual, null, 2))
+	})
+}
 
 function showSubjectiveScouting(el,team){
 	promiseSubjectiveScouting().then(subjectiveData => {
 		var qual=subjectiveData[team]||{}
-		//el.append($("<h4>").text("Robot"))
-		//el.append($("<p>").text("Robot Speed: " + format(dat.speed))),
-		//el.append($("<p>").text("Driving Confidence: " + format(dat.confidence)))
-		//el.append($("<p>").text("Robot Stability: " + format(dat.stability)))
-		//el.append($("<p>").text("Climb Speed: " + format(dat.climb)))
-		// el.append($("<p>").text("Defensive Ability: " + format(dat.defense)))
-		graph=$('<div class=graph>'),
-		f
+		el.append($("<h4>").text("Robot"))
+		if (qual.speed) el.append($("<p>").text("Robot Speed: " + qual.speed))
+		if (qual.confidence) el.append($("<p>").text("Driving Confidence: " + qual.confidence))
+		if (qual.stability) el.append($("<p>").text("Robot Stability: " + qual.stability))
+		if (qual.climb) el.append($("<p>").text("Climb Speed: " + qual.climb))
+		if (qual.defense) el.append($("<p>").text("Defensive Ability: " + qual.defense))
+		var graph=$('<div class=graph>')
 		el.append(graph)
-		f=qual.strength||""
+		var f=qual.strength||""
 		if (f){
 			el.append('<h4>Strengths</h4>')
 			if (Array.isArray(f)) {
