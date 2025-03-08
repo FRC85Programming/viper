@@ -270,10 +270,10 @@ function aggregateStats(scout, aggregate, apiScores, subjective, pit, eventStats
 	aggregate.preferred_algae_control_remove=getPreferredAlgae(aggregate.algae_removed)
 	aggregate.max_coral=Math.max(aggregate.max_coral||0,scout.tele_coral_place)
 	aggregate.climb_percentage=calculateAverageWithLoop(getClimbValue(aggregate.end_game_position))
-	aggregate.coral_level_1_max=Math.max(aggregate.coral_level_1_max||0,aggregate.coral_level_1)
-	aggregate.coral_level_2_max=Math.max(aggregate.coral_level_2_max||0,aggregate.coral_level_2)
-	aggregate.coral_level_3_max=Math.max(aggregate.coral_level_3_max||0,aggregate.coral_level_3)
-	aggregate.coral_level_4_max=Math.max(aggregate.coral_level_4_max||0,aggregate.coral_level_4)
+	aggregate.coral_level_1_max=Math.max(aggregate.coral_level_1_max||0,aggregate.tele_coral_level_1)
+	aggregate.coral_level_2_max=Math.max(aggregate.coral_level_2_max||0,aggregate.tele_coral_level_2)
+	aggregate.coral_level_3_max=Math.max(aggregate.coral_level_3_max||0,aggregate.tele_coral_level_3)
+	aggregate.coral_level_4_max=Math.max(aggregate.coral_level_4_max||0,aggregate.tele_coral_level_4)
 
 
 
@@ -720,28 +720,28 @@ var statInfo={
 		//timeline_outline: "#222"
 	},
 	tele_coral_level_1:{
-		name: "Avg Level 1",
+		name: "Coral Level 1",
 		type: 'avg',
 		//timeline_stamp: "1",
 		//timeline_fill: "#FFF",
 		//timeline_outline: "#AAA"
 	},
 	tele_coral_level_2:{
-		name: "Avg Level 2",
+		name: "Coral Level 2",
 		type: 'avg',
 		//timeline_stamp: "2",
 		//timeline_fill: "#FFF",
 		//timeline_outline: "#AAA"
 	},
 	tele_coral_level_3:{
-		name: "Avg Level 3",
+		name: "Coral Level 3",
 		type: 'avg',
 		//timeline_stamp: "3",
 		//timeline_fill: "#FFF",
 		//timeline_outline: "#AAA"
 	},
 	tele_coral_level_4:{
-		name: "Avg Level 4",
+		name: "Coral Level 4",
 		type: 'avg',
 		//timeline_stamp: "4",
 		//timeline_fill: "#FFF",
@@ -1020,7 +1020,7 @@ var statInfo={
 	},
 	coral_level_1_max:{
 		name: 'Max Level 1',
-		type: 'minmax'
+		type: 'avg'
 	},
 	coral_level_2_max:{
 		name: 'Max Level 2',
@@ -1032,7 +1032,7 @@ var statInfo={
 	},
 	coral_level_4_max:{
 		name: 'Max Level 4',
-		type: 'minmax'
+		type: 'avg'
 	},
 	tele_coral_score:{
 		name: 'Coral Score in Teleop',
