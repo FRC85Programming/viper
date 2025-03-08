@@ -6,22 +6,7 @@ myTeamsStats
 var maxWhiteboardDimension=0
 
 $(document).ready(function() {
-	var statsConfig = new StatsConfig({
-		statsConfigKey:`${eventYear}WhiteboardStats`,
-		getStatsConfig:function(){
-			var s = statsConfig.getLocalStatsConfig()
-			if (s) return s
-			if (myTeamsStats && myTeamsStats.length) return myTeamsStats
-			if (window.whiteboardStats && window.whiteboardStats.length) return window.whiteboardStats
-			if (window.matchPredictorSections) return Object.keys(window.matchPredictorSections).map(k=>window.matchPredictorSections[k]).flat(1)
-			return []
-		},
-		hasWhiteboard:true,
-		drawFunction:fillStats,
-		fileName:"whiteboard",
-		defaultConfig:window.whiteboardStats,
-		mode:"aggregate"
-	})
+
 	if (typeof eventYear !== 'undefined') $('#fieldBG').css("background-image",`url('/${eventYear}/field-whiteboard.png')`)
 	if (eventCompetition=='ftc') $('.noftc').hide()
 	$('button.pen').click(penButtonClicked)
@@ -60,19 +45,10 @@ $(document).ready(function() {
 		sketcher.sketchable('memento.undo')
 	})
 
-	$('button.showInstructions').click(function(){
-		showLightBox($('#instructions'))
-		return false
-	})
-
 	$('button.showWhiteboard').click(function(){
 		showLightBox($('#whiteboard'))
 		return false
 	})
-
-	function displayMatchName(){
-		$('h3').text(eventName + " " + getShortMatchName(matchId))
-	}
 
 	function setLocationHash(){
 		var hash = `event=${eventId}`
@@ -304,59 +280,6 @@ $(document).ready(function() {
 	}
 
 	focusNext()
-
-	function lf(){
-		return $('#statsTable .lastFocus')
-	}
-
-	function teamButtonClicked(){
-		lf().val($(this).text())
-		focusNext()
-		fillStats()
-	}
-
-	function focusNext(){
-		var next = $('#statsTable input').filter(withoutValues).first()
-		$('.team-input').removeClass('lastFocus')
-		if (next.length) focusInput(next)
-		return next.length > 0
-	}
-
-	function withoutValues(i,el){
-		return $(el).val() == '' && (eventCompetition!='ftc'||!$(el).closest('th').is('.noftc'))
-	}
-
-	function focusInput(input){
-		if ('target' in input) input = $(input.target)
-		if (input[0]==lf()[0]) return
-		$('.team-input').removeClass('lastFocus')
-		input.addClass('lastFocus')
-	}
-
-	function getTeamValue(field, team){
-		if (!team) return ""
-		if (! team in eventStatsByTeam) return ""
-		var stats = eventStatsByTeam[team]
-		if (! stats || ! field in stats) return ""
-		if ('count' in stats && stats['count'] && statInfo[field]){
-			if (statInfo[field].type == 'avg') return Math.round((stats[field]||0) / stats['count'])
-			if (statInfo[field].type == '%') return Math.round(100 * (stats[field]||0) / stats['count'])
-		}
-		if (stats[field] == null) return ""
-		if (statInfo[field].type == 'ratio') return Math.round(100 * (stats[field]))
-		return stats[field]
-	}
-
-	$('.viewTeam').click(showTeamStats)
-
-	function showTeamStats(){
-		var t = $(this).attr('data-team')
-		if (t) t = parseInt(t)
-		if (!t) return
-		$('#statsLightBox iframe').attr('src',`/team.html#event=${eventId}&team=${t}`)
-		window.scrollTo(0,0)
-		showLightBox($('#statsLightBox'))
-	}
 
 	function showImg(){
 		showLightBox($('#fullPhoto').attr('src', $(this).find('img').attr('src')))
