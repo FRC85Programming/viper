@@ -25,3 +25,4 @@ button.team{width:3em;height:1.5em;margin:0.25em}
 .icon-button{width:2em;height:2em}
 #field,#stats{position:absolute;left:0;top:0}
 body{text-align:left}
+.vertical {writing-mode:vertical-rl;text-orientation:upright}

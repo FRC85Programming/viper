@@ -33,7 +33,7 @@ $(document).ready(function(){
 			var team = teamList[i]
 			$('#teamButtons').append($(`<button id=team-${team} class=team>${team}</button>`).click(teamButtonClicked))
 		}
-		$('#matchList').append($('<option selected=1>')).change(function(){
+		/**$('#matchList').append($('<option selected=1>')).change(function(){
 			$(this).val().split(",").forEach((bot,i)=>{
 				$(`#${BOT_POSITIONS[i]}`).val(bot)
 			})
@@ -47,7 +47,7 @@ $(document).ready(function(){
 		var title = "Match Predictor"
 		if (eventId) title = `${eventName} ${title}`
 		if (match) title = `${match} ${title}`
-		$('title,h1').text(title)
+		$('title,h1').text(title)**/
 	})
 	$('#prediction input').focus(focusInput).change(setPickedTeams)
 	if (eventCompetition=='ftc') $('.noftc').hide()
@@ -142,7 +142,7 @@ function setPickedTeams(){
 	} else {
 		$('.teamDataEntry').show()
 		$('#prediction tbody').html("")
-		$('#change-teams').hide()
+		//$('#change-teams').hide()
 	}
 	setLocationHash()
 }

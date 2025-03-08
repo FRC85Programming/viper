@@ -1216,17 +1216,9 @@ var teamGraphs={
 		graph:"stacked",
 		data:["auto_score","tele_score","end_game_score"],
 	},
-	//"Match Timeline":{
-		//graph:"timeline",
-		//data:['timeline']
-	//},
-	"Scoring Element Cycles":{
+	"Average Game Pieces Scored":{
 		graph:"stacked",
 		data:["tele_algae_place","tele_coral_place"],
-	},
-	"Scoring Locations":{
-		graph:"stacked",
-		data:["algae_processor","algae_net","coral_level_1","coral_level_2","coral_level_3","coral_level_4"],
 	},
 }
 
