@@ -596,6 +596,18 @@ var statInfo={
 		name: "Minimum Score Contribution",
 		type: "minmax"
 	},
+	auto_score:{
+		name: "Auto Score",
+		type: "avg"
+	},
+	tele_score:{
+		name: "Tele Score",
+		type: "avg"
+	},
+	end_game_score:{
+		name: "End Game Score",
+		type: "avg"
+	},
 	score:{
 		name: "Avg Points Contributed",
 		type: "avg"
@@ -1219,17 +1231,9 @@ var teamGraphs={
 }
 
 var aggregateGraphs = {
-	"Average Coral Scored":{
-		graph:"bar",
-		data:["tele_coral_place"],
-	},
-	"Average Algae Scored":{
-		graph:"bar",
-		data:["tele_algae_place"],
-	},
 	"Average Game Pieces Scored":{
 		graph:"stacked",
-		data:["tele_algae_place", "tele_coral_place"],
+		data:["tele_coral_place", "tele_algae_place"],
 	},
 	"Coral Levels":{
 		graph:"stacked",
@@ -1239,10 +1243,6 @@ var aggregateGraphs = {
 		graph:"stacked",
 		data:["algae_processor", "algae_net"],
 	},
-	"Average Game Pieces Acquired/Controlled":{
-		graph:"bar",
-		data:["average_gp_controlled"],
-	},
 	"Average Points Contributed":{
 		graph:"bar",
 		data:["score"],
@@ -1250,6 +1250,10 @@ var aggregateGraphs = {
 	"Average Auto Points Contributed":{
 		graph:"bar",
 		data:["auto_score"],
+	},
+	"Average Game Pieces Acquired/Controlled":{
+		graph:"bar",
+		data:["average_gp_controlled"],
 	},
 	"Climb Percentage":{
 		graph:"bar",
