@@ -1243,10 +1243,6 @@ var teamGraphs={
 		graph:"stacked",
 		data:["tele_algae_place","tele_coral_place"],
 	},
-	"Coral Levels":{
-		graph:"bar",
-		data:["coral_level_4_max", "coral_level_3_max", "coral_level_2_max", "coral_level_1_max"],
-	},
 }
 
 var aggregateGraphs = {
@@ -1321,14 +1317,17 @@ var whiteboardStats=[
 	"control_algae",
 	"algae_pickup",
 	"coral_pickup",
+	"",
 	"max_coral",
 	"tele_coral_place",
 	"coral_level_4_max",
 	"coral_level_3_max",
 	"coral_level_2_max",
 	"coral_level_1_max",
+	"",
 	"tele_algae_net",
 	"tele_algae_processor",
+	"",
 	"average_gp_controlled",
 	"score",
 ]

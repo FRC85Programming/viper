@@ -22,7 +22,8 @@ $(document).ready(function() {
 		defaultConfig:window.whiteboardStats,
 		mode:"aggregate"
 	})
-	if (typeof eventYear !== 'undefined') $('#fieldBG').css("background-image",`url('/${eventYear}/field-whiteboard.png')`)
+	//REMEBER TO CHANGE THIS YEAR TO YEAR!!
+	$('#fieldBG').css("background-image",`url('/2025/field-whiteboard.png')`)
 	if (eventCompetition=='ftc') $('.noftc').hide()
 	$('button.pen').click(penButtonClicked)
 	displayMatchName()
