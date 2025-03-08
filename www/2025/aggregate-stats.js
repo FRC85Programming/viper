@@ -102,7 +102,7 @@ function aggregateStats(scout, aggregate, apiScores, subjective, pit, eventStats
 		}
 	})
 
-	scout.auto_algae_place=scout.auto_algae_net+scout.auto_algae_processor
+	/**scout.auto_algae_place=scout.auto_algae_net+scout.auto_algae_processor
 	scout.auto_coral_place=scout.auto_coral_level_1+scout.auto_coral_level_2+scout.auto_coral_level_3+scout.auto_coral_level_4
 	scout.auto_place=scout.auto_algae_place+scout.auto_coral_place
 	scout.algae_drop=scout.auto_algae_drop+scout.tele_algae_drop
@@ -163,7 +163,7 @@ function aggregateStats(scout, aggregate, apiScores, subjective, pit, eventStats
 	scout.algae_processor_score=scout.auto_algae_processor_score+scout.tele_algae_processor_score
 	scout.algae_opponent_net_score=scout.tele_algae_opponent_net_score
 	scout.algae_net_score=scout.auto_algae_net_score+scout.tele_algae_net_score
-	scout.algae_opponent_processor_score=scout.auto_algae_opponent_processor_score+scout.tele_algae_opponent_processor_score
+	scout.algae_opponent_processor_score=scout.auto_algae_opponent_processor_score+scout.tele_algae_opponent_processor_score**/
 
 //Our stuff
 		//Coral Auto Scores
@@ -186,6 +186,7 @@ function aggregateStats(scout, aggregate, apiScores, subjective, pit, eventStats
 	scout.tele_algae_processor_score=pointValues.processor*scout.tele_algae_processor
 	scout.tele_algae_net_score=pointValues.net*scout.tele_algae_net
 	scout.tele_algae_score=scout.tele_algae_processor_score+scout.tele_algae_net_score
+
 		//Coral Pickup
 	scout.coralstation=bool_1_0(scout.coralpickup=='coralstation')
 	scout.coralfloor=bool_1_0(scout.coralpickup=='coralfloor')
@@ -214,7 +215,6 @@ function aggregateStats(scout, aggregate, apiScores, subjective, pit, eventStats
 	scout.deep=bool_1_0(scout.end_game_position=='deep')
 	scout.climb_type=getPreferredClimb(scout.park,scout.shallow,scout.deep)
 	scout.climb_percentage=getClimbValue(scout.end_game_position)*100
-
 		//Auto+Tele+Endgame Scores
 	scout.auto_score=scout.auto_coral_score+scout.auto_algae_score+scout.auto_leave_score
 	scout.tele_score=scout.tele_coral_score+scout.tele_algae_score
@@ -270,10 +270,10 @@ function aggregateStats(scout, aggregate, apiScores, subjective, pit, eventStats
 	aggregate.preferred_algae_control_remove=getPreferredAlgae(aggregate.algae_removed)
 	aggregate.max_coral=Math.max(aggregate.max_coral||0,scout.tele_coral_place)
 	aggregate.climb_percentage=calculateAverageWithLoop(getClimbValue(aggregate.end_game_position))
-	aggregate.coral_level_1_max=Math.max(aggregate.coral_level_1)
-	aggregate.coral_level_2_max=Math.max(aggregate.coral_level_2)
-	aggregate.coral_level_3_max=Math.max(aggregate.coral_level_3)
-	aggregate.coral_level_4_max=Math.max(aggregate.coral_level_4)
+	aggregate.coral_level_1_max=Math.max(aggregate.coral_level_1_max||0,aggregate.coral_level_1)
+	aggregate.coral_level_2_max=Math.max(aggregate.coral_level_2_max||0,aggregate.coral_level_2)
+	aggregate.coral_level_3_max=Math.max(aggregate.coral_level_3_max||0,aggregate.coral_level_3)
+	aggregate.coral_level_4_max=Math.max(aggregate.coral_level_4_max||0,aggregate.coral_level_4)
 
 
 
@@ -1087,7 +1087,7 @@ var statInfo={
 		type: 'avg'
 	},
 	coral_level_1:{
-		name: 'Coral Placed on Level 1',
+		name: 'Avg Level 1',
 		type: 'avg'
 	},
 	coral_level_1_score:{
@@ -1095,7 +1095,7 @@ var statInfo={
 		type: 'avg'
 	},
 	coral_level_2:{
-		name: 'Coral Placed on Level 2',
+		name: 'Avg Level 2',
 		type: 'avg'
 	},
 	coral_level_2_score:{
@@ -1103,7 +1103,7 @@ var statInfo={
 		type: 'avg'
 	},
 	coral_level_3:{
-		name: 'Coral Placed on Level 3',
+		name: 'Avg Level 3',
 		type: 'avg'
 	},
 	coral_level_3_score:{
@@ -1111,7 +1111,7 @@ var statInfo={
 		type: 'avg'
 	},
 	coral_level_4:{
-		name: 'Coral Placed on Level 4',
+		name: 'Avg Level 4',
 		type: 'avg'
 	},
 	coral_level_4_score:{
@@ -1242,6 +1242,10 @@ var teamGraphs={
 	"Average Game Pieces Scored":{
 		graph:"stacked",
 		data:["tele_algae_place","tele_coral_place"],
+	},
+	"Coral Levels":{
+		graph:"bar",
+		data:["coral_level_4_max", "coral_level_3_max", "coral_level_2_max", "coral_level_1_max"],
 	},
 }
 
