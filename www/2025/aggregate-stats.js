@@ -270,6 +270,13 @@ function aggregateStats(scout, aggregate, apiScores, subjective, pit, eventStats
 	aggregate.preferred_algae_control_remove=getPreferredAlgae(aggregate.algae_removed)
 	aggregate.max_coral=Math.max(aggregate.max_coral||0,scout.tele_coral_place)
 	aggregate.climb_percentage=calculateAverageWithLoop(getClimbValue(aggregate.end_game_position))
+	aggregate.coral_level_1_max=Math.max(aggregate.coral_level_1)
+	aggregate.coral_level_2_max=Math.max(aggregate.coral_level_2)
+	aggregate.coral_level_3_max=Math.max(aggregate.coral_level_3)
+	aggregate.coral_level_4_max=Math.max(aggregate.coral_level_4)
+
+
+
 
 	if(scout.algae_processor&&/^[1-9][0-9]*$/.test(scout.opponent_human_player_team)){
 		var hpTeam = parseInt(scout.opponent_human_player_team),
@@ -713,29 +720,29 @@ var statInfo={
 		//timeline_outline: "#222"
 	},
 	tele_coral_level_1:{
-		name: "Level 1 Coral Placed During Teleop",
-		type: 'num',
+		name: "Avg Level 1",
+		type: 'avg',
 		//timeline_stamp: "1",
 		//timeline_fill: "#FFF",
 		//timeline_outline: "#AAA"
 	},
 	tele_coral_level_2:{
-		name: "Level 2 Coral Placed During Teleop",
-		type: 'num',
+		name: "Avg Level 2",
+		type: 'avg',
 		//timeline_stamp: "2",
 		//timeline_fill: "#FFF",
 		//timeline_outline: "#AAA"
 	},
 	tele_coral_level_3:{
-		name: "Level 3 Coral Placed During Teleop",
-		type: 'num',
+		name: "Avg Level 3",
+		type: 'avg',
 		//timeline_stamp: "3",
 		//timeline_fill: "#FFF",
 		//timeline_outline: "#AAA"
 	},
 	tele_coral_level_4:{
-		name: "Level 4 Coral Placed During Teleop",
-		type: 'num',
+		name: "Avg Level 4",
+		type: 'avg',
 		//timeline_stamp: "4",
 		//timeline_fill: "#FFF",
 		//timeline_outline: "#AAA"
@@ -1010,6 +1017,22 @@ var statInfo={
 	tele_coral_place:{
 		name: 'Avg Coral Scored',
 		type: 'avg'
+	},
+	coral_level_1_max:{
+		name: 'Max Level 1',
+		type: 'minmax'
+	},
+	coral_level_2_max:{
+		name: 'Max Level 2',
+		type: 'minmax'
+	},
+	coral_level_3_max:{
+		name: 'Max Level 3',
+		type: 'minmax'
+	},
+	coral_level_4_max:{
+		name: 'Max Level 4',
+		type: 'minmax'
 	},
 	tele_coral_score:{
 		name: 'Coral Score in Teleop',
@@ -1296,6 +1319,10 @@ var whiteboardStats=[
 	"coral_pickup",
 	"max_coral",
 	"tele_coral_place",
+	"coral_level_4_max",
+	"coral_level_3_max",
+	"coral_level_2_max",
+	"coral_level_1_max",
 	"tele_algae_net",
 	"tele_algae_processor",
 	"average_gp_controlled",

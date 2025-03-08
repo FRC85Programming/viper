@@ -31,5 +31,5 @@ Plus, Viper is a scouting droid in the Star Wars universe.
    - [2024](/2024/scouting-instructions.html)
    - [2025](/2025/scouting-instructions.html)
  - [Match planner instructions](/planner-instructions.html)
- - [Whitebaord](/whiteboard-planner.hmtl)
+ - [Whiteboard](/whiteboard-planner.html)
  - [Data import/export instructions](/import-export-instructions.html)

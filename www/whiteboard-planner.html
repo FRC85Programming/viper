@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel=stylesheet href=/main.css>
 <link rel=stylesheet href=/local.css>
-<link rel=stylesheet href=/planner.css>
+<link rel=stylesheet href=/whiteboard-planner.css>
 <script src=/jquery.min.js></script>
 <script src=/event-url.js></script>
 <script src=/main.js></script>
@@ -15,7 +15,6 @@
 <script src=/canvas-path.js></script>
 <script src=/stats-config.js></script>
 <script src=/planner.js></script>
-<script src=/predictor.js></script>
 <script src=/heartbeat.js></script>
 <link rel=icon type=image/png href=/Bob85Logo.png>
 </head>
@@ -31,13 +30,13 @@
 	<button class="undo icon-button" title="Whiteboard undo">↶</button>
 	<button class="clear icon-button" title="Whiteboard clear">✘</button>
 	<button class="rotate icon-button" title="Whiteboard rotate">🗘</button>
-	<button class="printer icon-button" title="Print, save page">🖶</button>
+	<!--<button class="printer icon-button" title="Print, save page">🖶</button>
 	<button class="clear-teams icon-button" title="Choose teams">▦</button>
-	<button class="configure-stats icon-button" title="Configure stats">⚙</button>
-	<button class="showInstructions icon-button" title="Show instructions">?</button>
-	<button class="showWhiteboard icon-button" title="Show whiteboard">W</button>
+	<button class="configure-stats icon-button" title="Configure stats">⚙</button>-->
+	<!--<button class="showInstructions icon-button" title="Show instructions">?</button>-->
+	<!--<button class="showWhiteboard icon-button" title="Show whiteboard">WB</button>-->
 </div>
-<table id=statsTable>
+<!--<table id=statsTable>
 	<thead>
 	<tr>
 	<th class="vertical redTeamBG">
@@ -70,18 +69,13 @@
 	</tr>
 	</thead>
 	<tbody></tbody>
-</table>
+</table>-->
 </tbody></table>
-<div class=footnote>Stats <span class=aggregationIncludesPractice>(include/exclude)</span> practice matches</div>
-<div class=teamDataEntry>
-	<div>Match: <select id=matchList></select></div>
-	- OR -
-	<div id=teamButtons></div>
 </div>
 </div>
 <div id=statsLightBox class=lightBoxFullContent style=display:none><iframe></iframe></div>
 <img id=fullPhoto class=lightBoxFullContent>
 <iframe id=whiteboard class=lightBoxFullContent src=/whiteboard-planner.html></iframe>
-<iframe id=instructions class=lightBoxFullContent src=/planner-instructions.html></iframe>
+<!--<iframe id=instructions class=lightBoxFullContent src=/planner-instructions.html></iframe>-->
 </body>
 </html>

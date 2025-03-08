@@ -54,4 +54,5 @@ The demo and public data can be found on the official Viper website: [ViperScout
       - [2023](www/2023/scouting-instructions.md)
       - [2024](www/2024/scouting-instructions.md)
    - [Match planner instructions](www/planner-instructions.md)
+   - [Whiteboard](www/whiteboard-planner.html)
    - [Data import/export instructions](www/import-export-instructions.md)
