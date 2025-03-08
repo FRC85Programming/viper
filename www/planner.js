@@ -67,7 +67,7 @@ $(document).ready(function() {
 
 	$('button.showWhiteboard').click(function(){
 		showLightBox($('#whiteboard'))
-		return false
+		return true
 	})
 
 	function displayMatchName(){
