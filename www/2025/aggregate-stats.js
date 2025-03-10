@@ -59,8 +59,7 @@ function aggregateStats(scout, aggregate, apiScores, subjective, pit, eventStats
 	}
 
 	function getClimbValue(endgame){
-		if (endgame==1) return 1
-		if (endgame==0) return 0
+		if (endgame=="deep"||"shallow") return 1
 		return 0
 	}
 
@@ -269,7 +268,7 @@ function aggregateStats(scout, aggregate, apiScores, subjective, pit, eventStats
 	//aggregate.preferred_speed=getPreferredSpeed(aggregate.super_slow,aggregate.slow,aggregate.normal,aggregate.fast,aggregate.very_fast)
 	aggregate.preferred_algae_control_remove=getPreferredAlgae(aggregate.algae_removed)
 	aggregate.max_coral=Math.max(aggregate.max_coral||0,scout.tele_coral_place)
-	aggregate.climb_percentage=calculateAverageWithLoop(getClimbValue(aggregate.end_game_position))
+	aggregate.climb_percentage=getClimbValue(aggregate.end_game_position)
 	aggregate.coral_level_1_max=Math.max(aggregate.coral_level_1_max||0,scout.tele_coral_level_1)
 	aggregate.coral_level_2_max=Math.max(aggregate.coral_level_2_max||0,scout.tele_coral_level_2)
 	aggregate.coral_level_3_max=Math.max(aggregate.coral_level_3_max||0,scout.tele_coral_level_3)
@@ -1230,7 +1229,7 @@ var statInfo={
 	},
 	climb_percentage:{
 		name: "Climb Percentage",
-		type: "avg",
+		type: "%",
 	},
 }
 
