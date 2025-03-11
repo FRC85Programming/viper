@@ -300,7 +300,7 @@ function promiseAllSubjectiveScouting(){
 		var data = {}
 		csvToArrayOfMaps(text).forEach(function(teamData){
 			if (!data[teamData.team]) {
-				data[teamData.team] = new Array()
+				data[teamData.team] = []
 			}
 
 			data[teamData.team].push(teamData)
