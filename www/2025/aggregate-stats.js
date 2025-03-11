@@ -57,10 +57,14 @@ function aggregateStats(scout, aggregate, apiScores, subjective, pit, eventStats
 		if(m==processor)return"Pro"
 		return"-"
 	}
-
 	function getClimbValue(endgame){
 		if (endgame=="deep"||"shallow") return 1
 		return 0
+	}
+
+	function getReliabilty(other){
+		if (other=="stuck"||"tipped"||"disabled") return 0
+		return 1
 	}
 
 	var pointValues={
@@ -213,7 +217,7 @@ function aggregateStats(scout, aggregate, apiScores, subjective, pit, eventStats
 	scout.shallow=bool_1_0(scout.end_game_position=='shallow')
 	scout.deep=bool_1_0(scout.end_game_position=='deep')
 	scout.climb_type=getPreferredClimb(scout.park,scout.shallow,scout.deep)
-	scout.climb_percentage=getClimbValue(scout.end_game_position)*100
+	scout.climb_percentage=getClimbValue(scout.end_game_position)
 		//Auto+Tele+Endgame Scores
 	scout.auto_score=scout.auto_coral_score+scout.auto_algae_score+scout.auto_leave_score
 	scout.tele_score=scout.tele_coral_score+scout.tele_algae_score
@@ -230,9 +234,9 @@ function aggregateStats(scout, aggregate, apiScores, subjective, pit, eventStats
 	scout.tele_algae_place=scout.algae_net+scout.tele_algae_processor
 		//Data table stuff
 	scout.score=scout.auto_score+scout.tele_score+scout.end_game_score
-
 	scout.average_gp_controlled=scout.tele_coral_pickup+scout.tele_algae_pickup
-
+		//Reliability
+	scout.reliability=getReliabilty(scout.other)
 
 	Object.keys(statInfo).forEach(function(field){
 		if (!/human.player/i.test(statInfo.name)){
@@ -1231,6 +1235,10 @@ var statInfo={
 		name: "Climb Percentage",
 		type: "%",
 	},
+	reliability:{
+		name: "Reliability Percentage",
+		type: "%",
+	},
 }
 
 var teamGraphs={
@@ -1272,6 +1280,10 @@ var aggregateGraphs = {
 	"Climb Percentage":{
 		graph:"bar",
 		data:["climb_percentage"],
+	},
+	"Reliability Percentage":{
+		graph:"bar",
+		data:["reliability"],
 	},
 
 
