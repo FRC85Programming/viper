@@ -327,7 +327,7 @@ function showSubjectiveScoutingForm(t){
 		resetInitialValues(form)
 		$('.location-pointer').remove()
 		fillDefaultFormFields()
-		fillPreviousFormData(form, localSubjectiveScoutingData(team)||subjectiveData[team])
+		//fillPreviousFormData(form, localSubjectiveScoutingData(team)||subjectiveData[team])
 		resetSequentialInputSeries()
 		$('.count').each(countHandler)
 		for (var i=0; i<window.onShowSubjectiveScouting.length; i++){
