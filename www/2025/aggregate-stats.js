@@ -1455,6 +1455,18 @@ function showSubjectiveScouting(el,team){
 			}
 
 		}
+		f=qual.autons||""
+		if (f){
+			el.append('<h4>Autos</h4>')
+			if (Array.isArray(f)) {
+				f.forEach(function (t) {
+					el.append($('<div style=white-space:pre-wrap>').text(t))
+				})
+			} else {
+				el.append($('<div style=white-space:pre-wrap>').text(f))
+			}
+
+		}
 		f=qual.notes||""
 		if (f){
 			el.append('<h4>Other</h4>')
