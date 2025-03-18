@@ -1357,13 +1357,6 @@ var fmsMapping=[
 function showPitScouting(el,team){
 	promisePitScouting().then(pitData => {
 		var dat=pitData[team]||{}
-		el.append(JSON.stringify(dat, null, 2))
-	})
-}
-
-function showPitScouting1(el,team){
-	promisePitScouting().then(pitData => {
-		var dat=pitData[team]||{}
 		if (dat.team_name) el.append($("<p>").text("Team name: " + dat.team_name))
 		if (dat.bot_name) el.append($("<p>").text("Bot name: " + dat.bot_name))
 		if (dat.driveteam) el.append($("<p>").text("Switch Out Drive Team?: " + format(dat.driveteam)))
@@ -1384,11 +1377,11 @@ function showPitScouting1(el,team){
 		if (dat.processor) el.append($("<p>").text(format(dat.processor+', ')))
 		if (dat.net) el.append($("<p>").text(format(dat.net)))
 
-		el.append($("<h4>").text("Computer Vision"))
+		/**el.append($("<h4>").text("Computer Vision"))
 		el.append((dat.vision_auto?$('<p>'):$('<p style=text-decoration:line-through>')).text("Auto"))
 		el.append((dat.vision_collecting?$('<p>'):$('<p style=text-decoration:line-through>')).text("Collecting"))
 		el.append((dat.vision_placing?$('<p>'):$('<p style=text-decoration:line-through>')).text("Placing, shooting or aiming"))
-		el.append((dat.vision_localization?$('<p>'):$('<p style=text-decoration:line-through>')).text("Localization"))
+		el.append((dat.vision_localization?$('<p>'):$('<p style=text-decoration:line-through>')).text("Localization"))**/
 	})
 
 	function format(s){
