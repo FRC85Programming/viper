@@ -63,7 +63,7 @@ function aggregateStats(scout, aggregate, apiScores, subjective, pit, eventStats
 	}
 
 	function getReliabilty(other){
-		if (other=="stuck"||"tipped"||"disabled") return 0
+		if (other=="algae_stuck"||"tipped"||"disabled"||"coral_stuck") return 0
 		return 1
 	}
 
@@ -105,26 +105,35 @@ function aggregateStats(scout, aggregate, apiScores, subjective, pit, eventStats
 		}
 	})
 
-	/**scout.auto_algae_place=scout.auto_algae_net+scout.auto_algae_processor
+	scout.auto_algae_place=scout.auto_algae_net+scout.auto_algae_processor
 	scout.auto_coral_place=scout.auto_coral_level_1+scout.auto_coral_level_2+scout.auto_coral_level_3+scout.auto_coral_level_4
 	scout.auto_place=scout.auto_algae_place+scout.auto_coral_place
+	scout.tele_algae_place=scout.tele_algae_net+scout.tele_algae_processor
+	scout.tele_place=scout.tele_algae_place+scout.tele_coral_place
 	scout.algae_drop=scout.auto_algae_drop+scout.tele_algae_drop
 	scout.algae_lower=scout.auto_algae_lower+scout.tele_algae_lower
 	scout.algae_lower_removed=scout.auto_algae_lower_removed+scout.tele_algae_lower_removed
 	scout.auto_algae_ground=scout.auto_algae_mark_1+scout.auto_algae_mark_2+scout.auto_algae_mark_3
 	scout.algae_ground=scout.auto_algae_ground+scout.tele_algae_ground
+	scout.algae_net=scout.auto_algae_net+scout.tele_algae_net
 	scout.algae_opponent_net=scout.tele_algae_opponent_net
 	scout.algae_opponent_processor=scout.auto_algae_opponent_processor+scout.tele_algae_opponent_processor
+	scout.algae_processor=scout.auto_algae_processor+scout.tele_algae_processor
 	scout.algae_upper=scout.auto_algae_upper+scout.tele_algae_upper
 	scout.algae_upper_removed=scout.auto_algae_upper_removed+scout.tele_algae_upper_removed
 	scout.coral_drop=scout.auto_coral_drop+scout.tele_coral_drop
 	scout.auto_coral_ground=scout.auto_coral_mark_1+scout.auto_coral_mark_2+scout.auto_coral_mark_3
 	scout.coral_ground=scout.tele_coral_ground+scout.tele_coral_ground
+	scout.coral_level_1=scout.auto_coral_level_1+scout.tele_coral_level_1
+	scout.coral_level_2=scout.auto_coral_level_2+scout.tele_coral_level_2
+	scout.coral_level_3=scout.auto_coral_level_3+scout.tele_coral_level_3
+	scout.coral_level_4=scout.auto_coral_level_4+scout.tele_coral_level_4
 	scout.preferred_coral_level=getPreferredCoralLevel(scout.coral_level_1,scout.coral_level_2,scout.coral_level_3,scout.coral_level_4)
 	scout.preferred_algae_place=getPreferredAlgaePlace(scout.algae_processor,scout.algae_net)
 	scout.coral_station_1=scout.auto_coral_station_1+scout.tele_coral_station_1
 	scout.coral_station_2=scout.auto_coral_station_2+scout.tele_coral_station_2
 	scout.auto_coral_station=scout.auto_coral_station_1+scout.auto_coral_station_2
+	scout.tele_coral_station=scout.tele_coral_station_1+scout.tele_coral_station_2
 	scout.coral_station=scout.auto_coral_station+scout.tele_coral_station
 	scout.auto_coral_collect=scout.auto_coral_ground+scout.auto_coral_station
 	scout.tele_coral_collect=scout.tele_coral_ground+scout.tele_coral_station+scout.tele_coral_theft
@@ -149,6 +158,7 @@ function aggregateStats(scout, aggregate, apiScores, subjective, pit, eventStats
 	scout.tele_drop=scout.tele_algae_drop+scout.tele_coral_drop
 	scout.drop=scout.auto_drop+scout.tele_drop
 	scout.algae_place=scout.auto_algae_place+scout.tele_algae_place
+	scout.coral_place=scout.auto_coral_place+scout.tele_coral_place
 	scout.place=scout.auto_place+scout.tele_place
 	scout.algae_litter=scout.algae_removed_reef+scout.algae_drop-scout.algae_ground
 	scout.coral_litter=scout.coral_drop-scout.coral_ground
@@ -166,7 +176,7 @@ function aggregateStats(scout, aggregate, apiScores, subjective, pit, eventStats
 	scout.algae_processor_score=scout.auto_algae_processor_score+scout.tele_algae_processor_score
 	scout.algae_opponent_net_score=scout.tele_algae_opponent_net_score
 	scout.algae_net_score=scout.auto_algae_net_score+scout.tele_algae_net_score
-	scout.algae_opponent_processor_score=scout.auto_algae_opponent_processor_score+scout.tele_algae_opponent_processor_score**/
+	scout.algae_opponent_processor_score=scout.auto_algae_opponent_processor_score+scout.tele_algae_opponent_processor_score
 
 //Our stuff
 		//Coral Auto Scores
@@ -189,7 +199,6 @@ function aggregateStats(scout, aggregate, apiScores, subjective, pit, eventStats
 	scout.tele_algae_processor_score=pointValues.processor*scout.tele_algae_processor
 	scout.tele_algae_net_score=pointValues.net*scout.tele_algae_net
 	scout.tele_algae_score=scout.tele_algae_processor_score+scout.tele_algae_net_score
-
 		//Coral Pickup
 	scout.coralstation=bool_1_0(scout.coralpickup=='coralstation')
 	scout.coralfloor=bool_1_0(scout.coralpickup=='coralfloor')
@@ -205,6 +214,7 @@ function aggregateStats(scout, aggregate, apiScores, subjective, pit, eventStats
 	scout.control_algae=getPreferredAlgae(scout.algae_removed)
 	//scout.algae_score=scout.auto_algae_score+scout.tele_algae_score
 	//scout.coral_score=scout.auto_coral_score+scout.tele_coral_score
+
 		//Auto Leave Score
 	scout.auto_leave_score=pointValues.auto_leave*scout.auto_leave
 		//Endgame Climb Scores
@@ -234,6 +244,7 @@ function aggregateStats(scout, aggregate, apiScores, subjective, pit, eventStats
 	scout.tele_algae_place=scout.algae_net+scout.tele_algae_processor
 		//Data table stuff
 	scout.score=scout.auto_score+scout.tele_score+scout.end_game_score
+	scout.tele_coral_place=scout.tele_coral_level_1+scout.tele_coral_level_2+scout.tele_coral_level_3+scout.tele_coral_level_4
 	scout.average_gp_controlled=scout.tele_coral_pickup+scout.tele_algae_pickup
 		//Reliability
 	scout.reliability=getReliabilty(scout.other)
@@ -252,15 +263,6 @@ function aggregateStats(scout, aggregate, apiScores, subjective, pit, eventStats
 			if(/^int-list$/.test(statInfo[field]['type'])) aggregate[field]=(aggregate[field]||[]).concat(scout[field])
 		}
 	})
-
-	function calculateAverageWithLoop(array) {
-		let sum = 0;
-		for (let i = 0; i < array.length; i++) {
-		  sum += array[i];
-		}
-		return array.length > 0 ? sum / array.length : 0;
-	  }
-
 	aggregate.count=(aggregate.count||0)+1
 	aggregate.max_score=Math.max(aggregate.max_score||0,scout.score)
 	aggregate.min_score=Math.min(aggregate.min_score===undefined?999:aggregate.min_score,scout.score)
@@ -347,8 +349,8 @@ var statInfo={
 		//timeline_outline: "#F0F"
 	},
 	defense:{
-		name: "Played Defense",
-		type: "%"
+		name: "Defensive Rating",
+		type: "avg"
 	},
 	bricked:{
 		name: "Robot Disabled",
@@ -607,7 +609,7 @@ var statInfo={
 		type: "minmax"
 	},
 	auto_score:{
-		name: "Auto Score",
+		name: "Avg Auto Score",
 		type: "avg"
 	},
 	tele_score:{
@@ -723,29 +725,29 @@ var statInfo={
 		//timeline_outline: "#222"
 	},
 	tele_coral_level_1:{
-		name: "Coral Level 1",
-		type: 'avg',
+		name: "Level 1 Coral Placed During Teleop",
+		type: "avg",
 		//timeline_stamp: "1",
 		//timeline_fill: "#FFF",
 		//timeline_outline: "#AAA"
 	},
 	tele_coral_level_2:{
-		name: "Coral Level 2",
-		type: 'avg',
+		name: "Level 2 Coral Placed During Teleop",
+		type: "avg",
 		//timeline_stamp: "2",
 		//timeline_fill: "#FFF",
 		//timeline_outline: "#AAA"
 	},
 	tele_coral_level_3:{
-		name: "Coral Level 3",
-		type: 'avg',
+		name: "Level 3 Coral Placed During Teleop",
+		type: "avg",
 		//timeline_stamp: "3",
 		//timeline_fill: "#FFF",
 		//timeline_outline: "#AAA"
 	},
 	tele_coral_level_4:{
-		name: "Coral Level 4",
-		type: 'avg',
+		name: "Level 4 Coral Placed During Teleop",
+		type: "avg",
 		//timeline_stamp: "4",
 		//timeline_fill: "#FFF",
 		//timeline_outline: "#AAA"
@@ -789,7 +791,7 @@ var statInfo={
 	//	type: 'avg'
 	//},
 	algae_net:{
-		name: 'Algae Shot into the Net by the Robot',
+		name: 'Algae Placed or Shot into the Net by the Robot',
 		type: 'avg'
 	},
 	algae_net_score:{
@@ -1090,7 +1092,7 @@ var statInfo={
 		type: 'avg'
 	},
 	coral_level_1:{
-		name: 'Avg Level 1',
+		name: 'Coral Placed on Level 1',
 		type: 'avg'
 	},
 	coral_level_1_score:{
@@ -1098,7 +1100,7 @@ var statInfo={
 		type: 'avg'
 	},
 	coral_level_2:{
-		name: 'Avg Level 2',
+		name: 'Coral Placed on Level 2',
 		type: 'avg'
 	},
 	coral_level_2_score:{
@@ -1106,7 +1108,7 @@ var statInfo={
 		type: 'avg'
 	},
 	coral_level_3:{
-		name: 'Avg Level 3',
+		name: 'Coral Placed on Level 3',
 		type: 'avg'
 	},
 	coral_level_3_score:{
@@ -1114,7 +1116,7 @@ var statInfo={
 		type: 'avg'
 	},
 	coral_level_4:{
-		name: 'Avg Level 4',
+		name: 'Coral Placed on Level 4',
 		type: 'avg'
 	},
 	coral_level_4_score:{
@@ -1259,11 +1261,11 @@ var aggregateGraphs = {
 	},
 	"Coral Levels":{
 		graph:"stacked",
-		data:["coral_level_4", "coral_level_3", "coral_level_2", "coral_level_1"],
+		data:["coral_level_4_max", "coral_level_3_max", "coral_level_2_max", "coral_level_1_max"],
 	},
 	"Algae Locations":{
 		graph:"stacked",
-		data:["algae_processor", "algae_net"],
+		data:["tele_algae_processor", "tele_algae_net"],
 	},
 	"Average Points Contributed":{
 		graph:"bar",
@@ -1281,11 +1283,14 @@ var aggregateGraphs = {
 		graph:"bar",
 		data:["climb_percentage"],
 	},
+	"Defensive Rating (3=best, 0=worst)":{
+		graph:"bar",
+		data:["defense"],
+	},
 	"Reliability Percentage":{
 		graph:"bar",
 		data:["reliability"],
 	},
-
 
 	/**"Match Score":{
 		graph:"boxplot",
@@ -1302,7 +1307,7 @@ var aggregateGraphs = {
 	"Scoring Locations":{
 		graph:"stacked",
 		data:["algae_processor","algae_net","coral_level_1","coral_level_2","coral_level_3","coral_level_4"],
-	},**/
+	},
 	//"Human Player":{
 	//	graph:"bar",
 	//	data:["human_player_algae_received","human_player_net"],
@@ -1310,7 +1315,7 @@ var aggregateGraphs = {
 	//"Human Player Accuracy":{
 	//	graph:"bar",
 	//	data:["human_player_accuracy"],
-	//}
+	//}**/
 }
 
 var matchPredictorSections={
@@ -1340,6 +1345,8 @@ var whiteboardStats=[
 	"tele_algae_processor",
 	"",
 	"average_gp_controlled",
+	"defense",
+	"auto_score",
 	"score",
 ]
 
@@ -1347,14 +1354,14 @@ var whiteboardStats=[
 var fmsMapping=[
 ]
 
-function showPitScoutingJson(el,team){
+function showPitScouting(el,team){
 	promisePitScouting().then(pitData => {
 		var dat=pitData[team]||{}
 		el.append(JSON.stringify(dat, null, 2))
 	})
 }
 
-function showPitScouting(el,team){
+function showPitScouting1(el,team){
 	promisePitScouting().then(pitData => {
 		var dat=pitData[team]||{}
 		if (dat.team_name) el.append($("<p>").text("Team name: " + dat.team_name))
@@ -1412,80 +1419,51 @@ subjective.fast=bool_1_0(subjective.speed=='fast')
 subjective.very_fast=bool_1_0(subjective.speed=='very_fast')
 subjective.speed=getPreferredSpeed(subjective.super_slow,subjective.slow,subjective.normal,subjective.fast,subjective.very_fast)**/
 
-function showSubjectiveScoutingJson(el,team){
-	promiseAllSubjectiveScouting().then(subjectiveData => {
-		var qual=subjectiveData[team]||{}
-		el.append(JSON.stringify(qual, null, 2))
-	})
-}
 
 function showSubjectiveScouting(el,team){
-	promiseAllSubjectiveScouting().then(subjectiveData => {
-		var qual
-		if (Array.isArray(subjectiveData[team])) {
-			qual = subjectiveData[team][0]||{}
-		} else {
-			qual = subjectiveData[team]||{}
-		}
-
-		el.append($("<h4>").text("Robot"))
-		if (qual.speed) el.append($("<p>").text("Robot Speed: " + qual.speed))
-		if (qual.confidence) el.append($("<p>").text("Driving Confidence: " + qual.confidence))
-		if (qual.stability) el.append($("<p>").text("Robot Stability: " + qual.stability))
-		if (qual.climb) el.append($("<p>").text("Climb Speed: " + qual.climb))
-		if (qual.defense) el.append($("<p>").text("Defensive Ability: " + qual.defense))
-		var graph=$('<div class=graph>')
+	promiseSubjectiveScouting().then(subjectiveData => {
+		var qual=subjectiveData[team]||{}
+		//el.append($("<h4>").text("Robot"))
+		//el.append($("<p>").text("Robot Speed: " + format(dat.speed))),
+		//el.append($("<p>").text("Driving Confidence: " + format(dat.confidence)))
+		//el.append($("<p>").text("Robot Stability: " + format(dat.stability)))
+		//el.append($("<p>").text("Climb Speed: " + format(dat.climb)))
+		//el.append($("<p>").text("Defensive Ability: " + format(dat.defense)))
+		graph=$('<div class=graph>'),
+		f
 		el.append(graph)
-
-		var strengths
-		var weaknesses
-		var other
-		if (Array.isArray(subjectiveData[team])) {
-			strengths = []
-			weaknesses = []
-			other = []
-			subjectiveData[team].forEach(function (f) {
-				strengths.push(f.strength||"")
-				weaknesses.push(f.weakness||"")
-				other.push(f.notes||"")
-			})
-		} else {
-			strengths = qual.strength||""
-			weaknesses = qual.weakness||""
-			other = qual.notes||""
-		}
-
-		if (strengths) {
+		f=qual.strength||""
+		if (f){
 			el.append('<h4>Strengths</h4>')
-			if (Array.isArray(strengths)) {
-				strengths.forEach(function (t) {
+			if (Array.isArray(f)) {
+				f.forEach(function (t) {
 					el.append($('<div style=white-space:pre-wrap>').text(t))
 				})
 			} else {
-				el.append($('<div style=white-space:pre-wrap>').text(strengths))
+				el.append($('<div style=white-space:pre-wrap>').text(f))
 			}
 		}
-
-		if (weaknesses) {
+		f=qual.weakness||""
+		if (f){
 			el.append('<h4>Weaknesses</h4>')
-			if (Array.isArray(weaknesses)) {
-				weaknesses.forEach(function (t) {
+			if (Array.isArray(f)) {
+				f.forEach(function (t) {
 					el.append($('<div style=white-space:pre-wrap>').text(t))
 				})
 			} else {
-				el.append($('<div style=white-space:pre-wrap>').text(weaknesses))
+				el.append($('<div style=white-space:pre-wrap>').text(f))
 			}
 
 		}
-
-		if (other) {
+		f=qual.notes||""
+		if (f){
 			el.append('<h4>Other</h4>')
-			if (Array.isArray(other)) {
-				other.forEach(function (t) {
+			if (Array.isArray(f)) {
+				f.forEach(function (t) {
 					el.append($('<div style=white-space:pre-wrap>').text(t))
 				})
 			} else {
-				el.append($('<div style=white-space:pre-wrap>').text(other))
+				el.append($('<div style=white-space:pre-wrap>').text(f))
 			}
 		}
 	})
