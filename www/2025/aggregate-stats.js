@@ -246,6 +246,7 @@ function aggregateStats(scout, aggregate, apiScores, subjective, pit, eventStats
 	scout.score=scout.auto_score+scout.tele_score+scout.end_game_score
 	scout.tele_coral_place=scout.tele_coral_level_1+scout.tele_coral_level_2+scout.tele_coral_level_3+scout.tele_coral_level_4
 	scout.average_gp_controlled=scout.tele_coral_pickup+scout.tele_algae_pickup
+	scout.defense_rating=scout.defense
 		//Reliability
 	scout.reliability=getReliabilty(scout.other)
 
@@ -348,7 +349,7 @@ var statInfo={
 		//timeline_fill: "#F0F",
 		//timeline_outline: "#F0F"
 	},
-	defense:{
+	defense_rating:{
 		name: "Defensive Rating",
 		type: "avg"
 	},
@@ -1285,7 +1286,7 @@ var aggregateGraphs = {
 	},
 	"Defensive Rating (3=best, 0=worst)":{
 		graph:"bar",
-		data:["defense"],
+		data:["defense_rating"],
 	},
 	"Reliability Percentage":{
 		graph:"bar",
@@ -1345,7 +1346,7 @@ var whiteboardStats=[
 	"tele_algae_processor",
 	"",
 	"average_gp_controlled",
-	"defense",
+	"defense_rating",
 	"auto_score",
 	"score",
 ]
