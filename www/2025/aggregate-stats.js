@@ -1413,63 +1413,73 @@ subjective.fast=bool_1_0(subjective.speed=='fast')
 subjective.very_fast=bool_1_0(subjective.speed=='very_fast')
 subjective.speed=getPreferredSpeed(subjective.super_slow,subjective.slow,subjective.normal,subjective.fast,subjective.very_fast)**/
 
-
 function showSubjectiveScouting(el,team){
-	promiseSubjectiveScouting().then(subjectiveData => {
-		var qual=subjectiveData[team]||{}
-		//el.append($("<h4>").text("Robot"))
-		//el.append($("<p>").text("Robot Speed: " + format(dat.speed))),
-		//el.append($("<p>").text("Driving Confidence: " + format(dat.confidence)))
-		//el.append($("<p>").text("Robot Stability: " + format(dat.stability)))
-		//el.append($("<p>").text("Climb Speed: " + format(dat.climb)))
-		//el.append($("<p>").text("Defensive Ability: " + format(dat.defense)))
-		graph=$('<div class=graph>'),
-		f
+	promiseAllSubjectiveScouting().then(subjectiveData => {
+		var qual
+		if (Array.isArray(subjectiveData[team])) {
+			qual = subjectiveData[team][0]||{}
+		} else {
+			qual = subjectiveData[team]||{}
+		}
+
+		el.append($("<h4>").text("Robot"))
+		if (qual.speed) el.append($("<p>").text("Robot Speed: " + qual.speed))
+		if (qual.confidence) el.append($("<p>").text("Driving Confidence: " + qual.confidence))
+		if (qual.stability) el.append($("<p>").text("Robot Stability: " + qual.stability))
+		if (qual.climb) el.append($("<p>").text("Climb Speed: " + qual.climb))
+		if (qual.defense) el.append($("<p>").text("Defensive Ability: " + qual.defense))
+		var graph=$('<div class=graph>')
 		el.append(graph)
-		f=qual.strength||""
-		if (f){
+
+		var strengths
+		var weaknesses
+		var other
+		if (Array.isArray(subjectiveData[team])) {
+			strengths = []
+			weaknesses = []
+			other = []
+			subjectiveData[team].forEach(function (f) {
+				strengths.push(f.strength||"")
+				weaknesses.push(f.weakness||"")
+				other.push(f.notes||"")
+			})
+		} else {
+			strengths = qual.strength||""
+			weaknesses = qual.weakness||""
+			other = qual.notes||""
+		}
+
+		if (strengths) {
 			el.append('<h4>Strengths</h4>')
-			if (Array.isArray(f)) {
-				f.forEach(function (t) {
+			if (Array.isArray(strengths)) {
+				strengths.forEach(function (t) {
 					el.append($('<div style=white-space:pre-wrap>').text(t))
 				})
 			} else {
-				el.append($('<div style=white-space:pre-wrap>').text(f))
+				el.append($('<div style=white-space:pre-wrap>').text(strengths))
 			}
 		}
-		f=qual.weakness||""
-		if (f){
+
+		if (weaknesses) {
 			el.append('<h4>Weaknesses</h4>')
-			if (Array.isArray(f)) {
-				f.forEach(function (t) {
+			if (Array.isArray(weaknesses)) {
+				weaknesses.forEach(function (t) {
 					el.append($('<div style=white-space:pre-wrap>').text(t))
 				})
 			} else {
-				el.append($('<div style=white-space:pre-wrap>').text(f))
+				el.append($('<div style=white-space:pre-wrap>').text(weaknesses))
 			}
 
 		}
-		f=qual.autons||""
-		if (f){
-			el.append('<h4>Autos</h4>')
-			if (Array.isArray(f)) {
-				f.forEach(function (t) {
-					el.append($('<div style=white-space:pre-wrap>').text(t))
-				})
-			} else {
-				el.append($('<div style=white-space:pre-wrap>').text(f))
-			}
 
-		}
-		f=qual.notes||""
-		if (f){
+		if (other) {
 			el.append('<h4>Other</h4>')
-			if (Array.isArray(f)) {
-				f.forEach(function (t) {
+			if (Array.isArray(other)) {
+				other.forEach(function (t) {
 					el.append($('<div style=white-space:pre-wrap>').text(t))
 				})
 			} else {
-				el.append($('<div style=white-space:pre-wrap>').text(f))
+				el.append($('<div style=white-space:pre-wrap>').text(other))
 			}
 		}
 	})
