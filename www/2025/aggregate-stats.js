@@ -23,30 +23,33 @@ function aggregateStats(scout, aggregate, apiScores, subjective, pit, eventStats
 		return"-"
 	}
 
-	function getPreferredClimb(park,shallow,deep){
-		var m=Math.max(park,shallow,deep)
+	function getPreferredClimb(none,park,shallow,deep){
+		var m=Math.max(none,park,shallow,deep)
 		if (m==0)return"-"
 		if (m==park)return"-"
 		if(m==deep)return"D"
 		if(m==shallow)return"S"
+		if(m==none)return"-"
 		return"-"
 	}
 
-	function getPreferredCoralPickup(coralstation,coralfloor,coralboth){
-		var m=Math.max(coralstation,coralfloor,coralboth)
+	function getPreferredCoralPickup(coralno,coralstation,coralfloor,coralboth){
+		var m=Math.max(coralstation,coralfloor,coralboth,coralno)
 		if (m==0)return"-"
 		if(m==coralstation)return"ST"
 		if(m==coralfloor)return"FL"
 		if(m==coralboth)return"B"
+		if(m==coralno)return"-"
 		return"-"
 	}
 
-	function getPreferredAlgaePickup(algaereef,algaefloor,algaeboth){
-		var m=Math.max(algaereef,algaefloor,algaeboth)
+	function getPreferredAlgaePickup(algaeno,algaereef,algaefloor,algaeboth){
+		var m=Math.max(algaereef,algaefloor,algaeboth,algaeno)
 		if (m==0)return"-"
 		if(m==algaereef)return"RF"
 		if(m==algaefloor)return"FL"
 		if(m==algaeboth)return"B"
+		if(m==algaeno)return"-"
 		return"-"
 	}
 
@@ -58,12 +61,14 @@ function aggregateStats(scout, aggregate, apiScores, subjective, pit, eventStats
 		return"-"
 	}
 	function getClimbValue(endgame){
-		if (endgame=="deep"||"shallow") return 1
+		if (endgame=='deep'||'shallow')return 1
+		if (endgame=='none'||'parked')return 0
 		return 0
 	}
 
 	function getReliabilty(other){
-		if (other=="algae_stuck"||"tipped"||"disabled"||"coral_stuck") return 0
+		if (other=='algae_stuck'||'tipped'||'disabled'||'coral_stuck')return 0
+		if (other=='nothing'||'bullied')return 1
 		return 1
 	}
 
@@ -201,14 +206,16 @@ function aggregateStats(scout, aggregate, apiScores, subjective, pit, eventStats
 	scout.tele_algae_score=scout.tele_algae_processor_score+scout.tele_algae_net_score
 		//Coral Pickup
 	scout.coralstation=bool_1_0(scout.coralpickup=='coralstation')
+	scout.coralno=bool_1_0(scout.coralpickup=='coralno')
 	scout.coralfloor=bool_1_0(scout.coralpickup=='coralfloor')
 	scout.coralboth=bool_1_0(scout.coralpickup=='coralboth')
-	scout.coral_pickup=getPreferredCoralPickup(scout.coralstation,scout.coralfloor,scout.coralboth)
+	scout.coral_pickup=getPreferredCoralPickup(scout.coralno,scout.coralstation,scout.coralfloor,scout.coralboth)
 		//Algae Pickup
 	scout.algaereef=bool_1_0(scout.algaepickup=='algaereef')
 	scout.algaefloor=bool_1_0(scout.algaepickup=='algaefloor')
+	scout.algaeno=bool_1_0(scout.algaepickup=='algaeno')
 	scout.algaeboth=bool_1_0(scout.algaepickup=='algaeboth')
-	scout.algae_pickup=getPreferredCoralPickup(scout.algaereef,scout.algaefloor,scout.algaeboth)
+	scout.algae_pickup=getPreferredCoralPickup(scout.alageno,scout.algaereef,scout.algaefloor,scout.algaeboth)
 		//Algae Remove vs Control
 	scout.algae_removed=scout.auto_algae_removed+scout.tele_algae_removed
 	scout.control_algae=getPreferredAlgae(scout.algae_removed)
@@ -226,7 +233,8 @@ function aggregateStats(scout, aggregate, apiScores, subjective, pit, eventStats
 	scout.park=bool_1_0(scout.end_game_position=='park')
 	scout.shallow=bool_1_0(scout.end_game_position=='shallow')
 	scout.deep=bool_1_0(scout.end_game_position=='deep')
-	scout.climb_type=getPreferredClimb(scout.park,scout.shallow,scout.deep)
+	scout.none=bool_1_0(scout.end_game_position=='none')
+	scout.climb_type=getPreferredClimb(scout.none,scout.park,scout.shallow,scout.deep)
 	scout.climb_percentage=getClimbValue(scout.end_game_position)
 		//Auto+Tele+Endgame Scores
 	scout.auto_score=scout.auto_coral_score+scout.auto_algae_score+scout.auto_leave_score
@@ -269,13 +277,14 @@ function aggregateStats(scout, aggregate, apiScores, subjective, pit, eventStats
 	aggregate.min_score=Math.min(aggregate.min_score===undefined?999:aggregate.min_score,scout.score)
 	aggregate.preferred_coral_level=getPreferredCoralLevel(aggregate.coral_level_1,aggregate.coral_level_2,aggregate.coral_level_3,aggregate.coral_level_4)
 	aggregate.preferred_algae_place=getPreferredAlgaePlace(aggregate.algae_processor,aggregate.algae_net)
-	aggregate.preferred_climb_type=getPreferredClimb(aggregate.park,aggregate.shallow,aggregate.deep)
-	aggregate.preferred_coral_pickup=getPreferredCoralPickup(aggregate.coralstation,aggregate.coralfloor,aggregate.coralboth)
-	aggregate.preferred_algae_pickup=getPreferredAlgaePickup(aggregate.algaereef,aggregate.algaefloor,aggregate.algaeboth)
+	aggregate.preferred_climb_type=getPreferredClimb(aggregate.park,aggregate.shallow,aggregate.deep,aggregate.none)
+	aggregate.preferred_coral_pickup=getPreferredCoralPickup(aggregate.coralstation,aggregate.coralfloor,aggregate.coralboth,aggregate.coralno)
+	aggregate.preferred_algae_pickup=getPreferredAlgaePickup(aggregate.algaereef,aggregate.algaefloor,aggregate.algaeboth,aggregate.algaeno)
 	//aggregate.preferred_speed=getPreferredSpeed(aggregate.super_slow,aggregate.slow,aggregate.normal,aggregate.fast,aggregate.very_fast)
 	aggregate.preferred_algae_control_remove=getPreferredAlgae(aggregate.algae_removed)
 	aggregate.max_coral=Math.max(aggregate.max_coral||0,scout.tele_coral_place)
 	aggregate.climb_percentage=getClimbValue(aggregate.end_game_position)
+	aggregate.reliability=getReliabilty(aggregate.other)
 	aggregate.coral_level_1_max=Math.max(aggregate.coral_level_1_max||0,scout.tele_coral_level_1)
 	aggregate.coral_level_2_max=Math.max(aggregate.coral_level_2_max||0,scout.tele_coral_level_2)
 	aggregate.coral_level_3_max=Math.max(aggregate.coral_level_3_max||0,scout.tele_coral_level_3)
@@ -1319,6 +1328,7 @@ var aggregateGraphs = {
 	//}**/
 }
 
+
 var matchPredictorSections={
 	Total:["score"],
 }
@@ -1394,7 +1404,7 @@ function showPitScouting(el,team){
 }
 //Stuff for Qualitative Displaying
 
-/**function getPreferredSpeed(super_slow,slow,normal,fast,very_fast){
+function getPreferredSpeed(super_slow,slow,normal,fast,very_fast){
 	var m=Math.max(super_slow,slow,normal,fast,very_fast)
 	if (m==0)return"-"
 	if(m==super_slow)return"Super Slow"
@@ -1405,7 +1415,7 @@ function showPitScouting(el,team){
 	return"-"
 }
 
-//Speed
+/**Speed
 subjective.super_slow=bool_1_0(subjective.speed=='super_slow')
 subjective.slow=bool_1_0(subjective.speed=='slow')
 subjective.normal=bool_1_0(subjective.speed=='normal')

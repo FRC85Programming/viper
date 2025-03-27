@@ -318,7 +318,7 @@
 				<tr style="height: 70px">
 					<td class="team teamColorBG" colspan=2 rowspan=2>
 						<div>
-							<input name=none disabled>
+							<input name=none1 disabled>
 						</div>
 					</td>
 					<td class="equalWidth">
@@ -577,7 +577,7 @@
 		<tr style="height: 70px">
 			<td class="team teamColorBG" colspan=2 rowspan=2>
 				<div>
-					<input name=none disabled>
+					<input name=none1 disabled>
 				</div>
 			</td>
 			<td class="equalWidth">
@@ -634,6 +634,10 @@
 						<input type=radio name=end_game_position value=deep>
 						<span>Hanging from a Deep Cage</span>
 					</label>
+					<label>
+						<input type=radio name=end_game_position value=none>
+						<span>NOT in Barge Zone</span>
+					</label>
 				</fieldset>
 				</td>
 			</tr>
@@ -648,6 +652,12 @@
 						<legend>
 							How did <span class=team></span> intake CORAL?
 						</legend>
+						<div>
+							<label>
+								<input type=radio name=coralpickup value=coralno>
+								<span>Robot DID NOT pick up Coral</span>
+							</label>
+						</div>
 						<div>
 							<label>
 								<input type=radio name=coralpickup value=coralstation>
@@ -671,6 +681,12 @@
 						<legend>
 							How did <span class=team></span> intake ALGAE?
 						</legend>
+						<div>
+							<label>
+								<input type=radio name=algaepickup value=algaeno>
+								<span>Robot DID NOT pick up Algae</span>
+							</label>
+						</div>
 						<div>
 							<label>
 								<input type=radio name=algaepickup value=algaereef>
@@ -697,7 +713,7 @@
 						<div>
 							<label>
 								<input type=radio name=defense value='0'>
-								<span>Did not play defense</span>
+								<span>DID NOT play defense</span>
 							</label>
 						</div>
 						<div>
@@ -723,6 +739,12 @@
 						<legend>
 							During the match (Select ALL that happened at ANY point):
 						</legend>
+						<div>
+							<label>
+								<input type=checkbox name=other value="nothing">
+								<span>No Issues</span>
+							</label>
+						</div>
 						<div>
 							<label>
 								<input type=checkbox name=other value="disabled">
