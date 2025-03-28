@@ -61,8 +61,8 @@ function aggregateStats(scout, aggregate, apiScores, subjective, pit, eventStats
 		return"-"
 	}
 	function getClimbValue(endgame){
-		if (endgame=='deep'||'shallow')return 1
-		if (endgame=='none'||'parked')return 0
+		if (endgame=='deep'||endgame=='shallow')return 1
+		if (endgame=='none'||endgame=='parked')return 0
 		return 0
 	}
 
