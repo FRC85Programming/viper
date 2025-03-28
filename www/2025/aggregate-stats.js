@@ -67,8 +67,8 @@ function aggregateStats(scout, aggregate, apiScores, subjective, pit, eventStats
 	}
 
 	function getReliabilty(other){
-		if (other=='algae_stuck'||'tipped'||'disabled'||'coral_stuck')return 0
-		if (other=='nothing'||'bullied')return 1
+		if (other=='algae_stuck'||other=='tipped'||other=='disabled'||other=='coral_stuck')return 0
+		if (other=='nothing'||other=='bullied')return 1
 		return 1
 	}
 
@@ -1244,7 +1244,7 @@ var statInfo={
 	},
 	climb_percentage:{
 		name: "Climb Percentage",
-		type: "avg",
+		type: "%",
 	},
 	reliability:{
 		name: "Reliability Percentage",
