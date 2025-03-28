@@ -803,8 +803,8 @@ function addButtons(div, featured, isFeatured){
 		if($('#matchBtn').length==0 && !isFeatured) div.append($('<button>').text('Choose Match').click(goChooseMatch)).append(" ")
 		if($('.robotBtn').length==0 && !isFeatured) div.append($('<button>').text('Change Robot').click(goChooseRobot)).append(" ")
 	} else {
+		//if((featured=='upload')==isFeatured) div.append($('<button>').text('Upload Data').click(goUploadData)).append(" ")
 		if((featured=='next')==isFeatured) div.append($('<button>').text('Save').click(goNext)).append(" ")
-		if((featured=='upload')==isFeatured) div.append($('<button>').text('Upload Data').click(goUploadData)).append(" ")
 		if((featured=='qr')==isFeatured) div.append($('<button>').text('QR Code').click(showQrCode)).append(" ")
 	}
 }

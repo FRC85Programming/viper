@@ -230,10 +230,10 @@ function aggregateStats(scout, aggregate, apiScores, subjective, pit, eventStats
 	scout.deep_score=pointValues.deep*scout.deep
 	scout.cage_score=scout.shallow_score+scout.deep_score
 		//Climb Types
-	scout.park=bool_1_0(scout.end_game_position=='park')
-	scout.shallow=bool_1_0(scout.end_game_position=='shallow')
-	scout.deep=bool_1_0(scout.end_game_position=='deep')
-	scout.none=bool_1_0(scout.end_game_position=='none')
+	//scout.park=bool_1_0(scout.end_game_position=='park')
+	//scout.shallow=bool_1_0(scout.end_game_position=='shallow')
+	//scout.deep=bool_1_0(scout.end_game_position=='deep')
+	//scout.none=bool_1_0(scout.end_game_position=='none')
 	scout.climb_type=getPreferredClimb(scout.none,scout.park,scout.shallow,scout.deep)
 	scout.climb_percentage=getClimbValue(scout.end_game_position)
 		//Auto+Tele+Endgame Scores
@@ -289,7 +289,6 @@ function aggregateStats(scout, aggregate, apiScores, subjective, pit, eventStats
 	aggregate.coral_level_2_max=Math.max(aggregate.coral_level_2_max||0,scout.tele_coral_level_2)
 	aggregate.coral_level_3_max=Math.max(aggregate.coral_level_3_max||0,scout.tele_coral_level_3)
 	aggregate.coral_level_4_max=Math.max(aggregate.coral_level_4_max||0,scout.tele_coral_level_4)
-
 
 
 
@@ -1445,16 +1444,19 @@ function showSubjectiveScouting(el,team){
 		var weaknesses
 		var other
 		var autons
+		var scouter
 		if (Array.isArray(subjectiveData[team])) {
 			strengths = []
 			weaknesses = []
 			other = []
+			autons = []
 			autons = []
 			subjectiveData[team].forEach(function (f) {
 				strengths.push(f.strength||"")
 				weaknesses.push(f.weakness||"")
 				other.push(f.notes||"")
 				autons.push(f.autons||"")
+				scouter.push(f.scouter||"")
 			})
 		} else {
 			strengths = qual.strength||""
@@ -1471,6 +1473,7 @@ function showSubjectiveScouting(el,team){
 				})
 			} else {
 				el.append($('<div style=white-space:pre-wrap>').text(strengths))
+				el.append($('<div style=white-space:pre-wrap>').text(scouter))
 			}
 		}
 
