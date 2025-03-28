@@ -1496,17 +1496,16 @@ function showSubjectiveScouting(el,team){
 				el.append($('<div style=white-space:pre-wrap>').text(other))
 			}
 		}
-	})
+		if (autons) {
+			el.append('<h4>Autos</h4>')
+			if (Array.isArray(autons)) {
+				weaknesses.forEach(function (t) {
+					el.append($('<div style=white-space:pre-wrap>').text(t))
+				})
+			} else {
+				el.append($('<div style=white-space:pre-wrap>').text(autons))
+			}
 
-	if (autons) {
-		el.append('<h4>Autos</h4>')
-		if (Array.isArray(autons)) {
-			weaknesses.forEach(function (t) {
-				el.append($('<div style=white-space:pre-wrap>').text(t))
-			})
-		} else {
-			el.append($('<div style=white-space:pre-wrap>').text(autons))
 		}
-
-	}
+	})
 }
