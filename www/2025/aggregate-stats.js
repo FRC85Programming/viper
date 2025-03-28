@@ -1244,7 +1244,7 @@ var statInfo={
 	},
 	climb_percentage:{
 		name: "Climb Percentage",
-		type: "%",
+		type: "avg",
 	},
 	reliability:{
 		name: "Reliability Percentage",
