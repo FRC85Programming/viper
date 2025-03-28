@@ -1444,19 +1444,16 @@ function showSubjectiveScouting(el,team){
 		var weaknesses
 		var other
 		var autons
-		var scouter
 		if (Array.isArray(subjectiveData[team])) {
 			strengths = []
 			weaknesses = []
 			other = []
-			autons = []
 			autons = []
 			subjectiveData[team].forEach(function (f) {
 				strengths.push(f.strength||"")
 				weaknesses.push(f.weakness||"")
 				other.push(f.notes||"")
 				autons.push(f.autons||"")
-				scouter.push(f.scouter||"")
 			})
 		} else {
 			strengths = qual.strength||""
@@ -1473,7 +1470,6 @@ function showSubjectiveScouting(el,team){
 				})
 			} else {
 				el.append($('<div style=white-space:pre-wrap>').text(strengths))
-				//el.append($('<div style=white-space:pre-wrap>').text(scouter))
 			}
 		}
 
