@@ -1473,7 +1473,7 @@ function showSubjectiveScouting(el,team){
 				})
 			} else {
 				el.append($('<div style=white-space:pre-wrap>').text(strengths))
-				el.append($('<div style=white-space:pre-wrap>').text(scouter))
+				//el.append($('<div style=white-space:pre-wrap>').text(scouter))
 			}
 		}
 
