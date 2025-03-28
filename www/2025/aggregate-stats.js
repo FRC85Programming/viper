@@ -1499,7 +1499,7 @@ function showSubjectiveScouting(el,team){
 		if (autons) {
 			el.append('<h4>Autos</h4>')
 			if (Array.isArray(autons)) {
-				weaknesses.forEach(function (t) {
+				autons.forEach(function (t) {
 					el.append($('<div style=white-space:pre-wrap>').text(t))
 				})
 			} else {
