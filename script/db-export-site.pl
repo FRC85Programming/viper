@@ -43,7 +43,7 @@ if (scalar(@$data)){
 	}
 
 	if ($data->[0]->[3]){
-		die "Error opening logo.png for writing: $!" if (!open $fh, ">:raw", "$dir/logo.png");
+		die "Error opening logo.jpg for writing: $!" if (!open $fh, ">:raw", "$dir/logo.jpg");
 		print $fh $data->[0]->[3];
 		close $fh;
 	}
