@@ -11,7 +11,7 @@ if [ $DB_SETTINGS_COUNT -ge 5 ]
 then
 	echo >> www/.htaccess
 	echo 'RewriteRule ^\/?local(?:\.background)?\.(js|css|png)$ /file.cgi?file=local.$1 [L]' >> www/.htaccess
-	echo 'RewriteRule ^\/?background\.png$ /file.cgi?file=background.png [L]' >> www/.htaccess
+	echo 'RewriteRule ^\/?background\.png$ /file.cgi?file=bobBackground.png [L]' >> www/.htaccess
 	echo 'RewriteRule ^\/?logo\.png$ /file.cgi?file=logo.jpg [L]' >> www/.htaccess
 
 	echo >> www/data/.htaccess
@@ -19,8 +19,8 @@ then
 	echo 'RewriteRule ^\/?(?:data\/)?((?:[0-9\-]+\/)?[^\/]+\.(?:csv|json|jpg))$ /file.cgi?file=$1 [L]' >> www/data/.htaccess
 else
 	echo >> www/.htaccess
-	echo 'RewriteCond %{DOCUMENT_ROOT}/local.background.png -f' >> www/.htaccess
-	echo 'RewriteRule ^\/?background\.png$ /local.background.png [L]' >> www/.htaccess
+	echo 'RewriteCond %{DOCUMENT_ROOT}/local.bobBackground.png -f' >> www/.htaccess
+	echo 'RewriteRule ^\/?background\.png$ /local.bobBackground.png [L]' >> www/.htaccess
 	echo >> www/.htaccess
 	echo 'RewriteCond %{DOCUMENT_ROOT}/local.logo.jpg -f' >> www/.htaccess
 	echo 'RewriteRule ^\/?logo\.png$ /local.logo.jpg [L]' >> www/.htaccess

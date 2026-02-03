@@ -37,7 +37,7 @@ if (scalar(@$data)){
 	close $fh;
 
 	if ($data->[0]->[2]){
-		die "Error opening background.png for writing: $!" if (!open $fh, ">:raw", "$dir/background.png");
+		die "Error opening bobBackground.png for writing: $!" if (!open $fh, ">:raw", "$dir/bobBackground.png");
 		print $fh $data->[0]->[2];
 		close $fh;
 	}

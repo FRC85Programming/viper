@@ -69,7 +69,7 @@ sub backgroundPng(){
 	if (scalar(@$data) and $data->[0]->[0]){
 		$data = $data->[0]->[0];
 	} else {
-		$data = read_file('background.png', {binmode=>':raw'})
+		$data = read_file('bobBackground.png', {binmode=>':raw'})
 	}
 	binmode(STDOUT, ":raw");
 	print "Content-type: image/png\n\n";
