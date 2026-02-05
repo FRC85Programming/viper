@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel=stylesheet href=/main.css>
+<link rel=stylesheet href=/local.css>
+<link rel=stylesheet href=/scout.css>
+<link rel=stylesheet href=scout.css>
+<script src=/jquery.min.js></script>
+<script src=/main.js></script>
+<script src=/event-url.js></script>
+<script src=/qrcode.min.js></script>
+<script src=/canvas-path.js></script>
+<script src=/scout.js></script>
+<script src=scout.js></script>
+<script src=/heartbeat.js></script>
+<script src=/local.js></script>
+<link rel=preload as=image href=start-area-blue.png>
+<link rel=preload as=image href=start-area-red.png>
+<link rel=preload as=image href=scout-red.png>
+<link rel=preload as=image href=scout-blue.png>
+<link rel=preload as=image href=algae-collect.png>
+<link rel=preload as=image href=algae-drop.png>
+<link rel=preload as=image href=algae-place.png>
+<link rel=preload as=image href=algae-remove.png>
+<link rel=preload as=image href=coral-collect.png>
+<link rel=preload as=image href=coral-drop.png>
+<link rel=preload as=image href=coral-place.png>
+<link rel=preload as=image href=reef.png>
+<link rel=preload as=image href=leave.png>
+<link rel=preload as=image href=climb.png>
+<link rel=icon type=image/png href=/logo.jpg>
+</head>
+
+<body>
+<div id=select-bot class=screen style=display:none>
+	<h1></h1>
+	<h2 data-i18n=choose_pos_heading></h2>
+	<div class=side-by-side>
+		<table class=orientLeft><tr>
+			<td class=redTeamBG><button>R1</button></td>
+			<td rowspan=3><img class=bigimg src=field.png></td>
+			<td class=blueTeamBG><button>B3</button></td>
+		</tr><tr>
+			<td class=redTeamBG><button>R2</button></td>
+			<td class=blueTeamBG><button>B2</button></td>
+		</tr><tr>
+			<td class=redTeamBG><button>R3</button></td>
+			<td class=blueTeamBG><button>B1</button></td>
+		</tr></table>
+	</div>
+	<div class=side-by-side>
+		<span data-i18n=choose_pos_or></span>
+	</div>
+	<div class=side-by-side>
+		<table class=orientRight><tr>
+			<td class=blueTeamBG><button>B1</button></td>
+			<td rowspan=3><img class=bigimg src=field.png></td>
+			<td class=redTeamBG><button>R3</button></td>
+		</tr><tr>
+			<td class=blueTeamBG><button>B2</button></td>
+			<td class=redTeamBG><button>R2</button></td>
+		</tr><tr>
+			<td class=blueTeamBG><button>B3</button></td>
+			<td class=redTeamBG><button>R1</button></td>
+		</tr></table>
+	</div>
+	<button class=showInstructions data-i18n=instructions></button>
+	<iframe class="instructions lightBoxFullContent" src=/scouting-select-bot-instructions.html></iframe>
+</div>
+
+<div id=select-match class=screen style=display:none>
+	<h1></h1>
+	<button class=showInstructions data-i18n=instructions></button>
+	<button class=robotBtn data-i18n=change_robot_button></button>
+	<iframe class="instructions lightBoxFullContent" src=/scouting-select-match-instructions.html></iframe>
+	<div id=match-list></div>
+</div>
+
+<div id=change-team class=screen style=display:none>
+	<h1></h1>
+	<input type=text id=teamChange inputmode=numeric size=4 placeholder=Team#>
+	<button id=teamChangeBtn>Change</button>
+	<button id=teamCancelBtn data-i18n=cancel_button></button>
+</div>
+
+<form id=scouting class=screen style=display:none>
+
+	<div class=tabs>
+		<div class="tab default-tab" data-content=prematch data-i18n=pre_match_tab></div>
+		<div class=tab data-content=auto data-i18n=auto_tab></div>
+		<div class=tab data-content=teleop data-i18n=tele_tab></div>
+		<div class=tab data-content=end-game data-i18n=end_game_tab></div>
+	</div>
+
+	<div class="prematch tab-content">
+		<table><tr><td colspan=2>
+			<h1></h1>
+			<div>
+				<button class=showInstructions data-i18n=instructions></button>
+				<button id=teamBtn data-i18n=team_correction_button></button>
+				<button id=matchBtn data-i18n=choose_match_button></button>
+				<button class=robotBtn data-i18n=change_robot_button></button>
+				<button class=fieldRotateBtn data-i18n=rotate_field_button></button>
+				<iframe class="instructions lightBoxFullContent" src=scouting-instructions.html></iframe>
+			</div>
+			<input type=hidden name=event>
+			<input type=hidden name=match>
+			<input type=hidden name=team>
+			<input type=hidden name=timeline id=timeline>
+		</td></tr><tr><td class=subheader data-i18n=starting_position>
+		</td><td class="subheader teamColorBG" style=height:3% data-i18n=pre_team_header
+		</td></tr><tr><td rowspan=4>
+			<div id=start-area><div id=robot-starting-position></div></div>
+			<input id=auto-start-input type=hidden name=auto_start>
+		</td><td>
+			<label><input type=checkbox data-element=coral data-provides=1 name=coral_preload value=1><span data-i18n=coral_preload></span></label>
+		</td></tr><tr><td id=no-show-area>
+			<label><input type=checkbox name=no_show value=1><span data-i18n=no_show></span></label>
+		</td></tr><tr><td class="subheader otherTeamBG" data-i18n=opponent_processor_team>
+		</td></tr><tr><td id=choose-opponent>
+			<input type=text name=opponent_human_player_team placeholder=99999 size=5 style=width:4em>
+		</td></tr><tr><td colspan=2>
+			<button style=float:right class=tab-button data-content=auto data-i18n=proceed_auto_button></button>
+		</td></tr></table>
+
+	</div>
+
+	<div class="auto tab-content">
+		<table class=field-table><tr><td colspan=4>
+			<div class="scout-locations orient-rotate">
+				<button class=count data-input=auto_coral_drop style=right:25%;bottom:1%><img src=coral-drop.png></button>
+				<button class=count data-input=auto_algae_drop style="right:40%;bottom:1%"><img src=algae-drop.png></button>
+				<button class=count data-input=auto_coral_station_1 style="right:5%;top:3%"><img src=coral-collect.png></button>
+				<button class=count data-input=auto_coral_station_2 style="right:5%;bottom:3%"><img src=coral-collect.png></button>
+				<button class=count data-input=auto_algae_processor style="left:43%;top:0.5%"><img src=algae-place.png></button>
+				<button class=count data-input=auto_algae_opponent_processor style="left:5%;bottom:0.5%"><img src=algae-place.png></button>
+				<button class=count data-input=auto_algae_net style="left:24%;bottom:20%"><img src=algae-place.png></button>
+				<button class=count data-input=auto_algae_mark_1 style="right:5%;top:25%"><img src=algae-collect.png></button>
+				<button class=count data-input=auto_coral_mark_1 style="right:14.5%;top:25%"><img src=coral-collect.png></button>
+				<button class=count data-input=auto_algae_mark_2 style="right:5%;bottom:42%"><img src=algae-collect.png></button>
+				<button class=count data-input=auto_coral_mark_2 style="right:14.5%;bottom:42%"><img src=coral-collect.png></button>
+				<button class=count data-input=auto_algae_mark_3 style="right:5%;bottom:25%"><img src=algae-collect.png></button>
+				<button class=count data-input=auto_coral_mark_3 style="right:14.5%;bottom:25%"><img src=coral-collect.png></button>
+				<div class=reef-scout style="right:26%;top:22%">
+					<span class=label style="left:0;bottom:77%">L4</span>
+					<span class=label style="left:0;bottom:52%">L3</span>
+					<span class=label style="left:0;bottom:27%">L2</span>
+					<span class=label style="left:0;bottom:2%">L1</span>
+					<button class=count data-input=auto_coral_level_4 style="left:25%;bottom:75%"><img src=coral-place.png></button>
+					<button class=count data-input=auto_coral_level_3 style="left:25%;bottom:50%"><img src=coral-place.png></button>
+					<button class=count data-input=auto_coral_level_2 style="left:25%;bottom:25%"><img src=coral-place.png></button>
+					<button class=count data-input=auto_coral_level_1 style="left:25%;bottom:0"><img src=coral-place.png></button>
+					<button class=count data-input=auto_algae_upper_removed style="left:75%;bottom:62.5%"><img src=algae-remove.png></button>
+					<button class=count data-input=auto_algae_upper style="left:50%;bottom:62.5%"><img src=algae-collect.png></button>
+					<button class=count data-input=auto_algae_lower_removed style="left:75%;bottom:37.5%"><img src=algae-remove.png></button>
+					<button class=count data-input=auto_algae_lower style="left:50%;bottom:37.5%"><img src=algae-collect.png></button>
+				</div>
+				<button id=tele-reminder class="to-tele tab-button" data-content=teleop style="right:25%;top:5.5%;aspect-ratio:1.8"><img src=teleop.png></button>
+				<label class=orient-rotate style="left:34%;bottom:7%"><input type=checkbox name=auto_leave value=1><span><img src=leave.png></span></label>
+			</div>
+		</td></tr><tr><td class=teamColorBG data-i18n=pos_team>
+		</td><td>
+			<button class=undo data-i18n=undo_button></button>
+		</td><td>
+			<div class=collapse data-content=auto-values data-i18n=values_button></div>
+			<div class=collapse data-content=auto-timeline data-i18n=timeline_button></div>
+		</td><td>
+			<button class="to-tele tab-button" data-content=teleop data-i18n=proceed_tele_button></button>
+		</td></tr></table>
+
+		<table id=auto-values class=collapsable><tr><td class="algae collection">
+			<input type=text class=num data-element=algae data-provides=0 value=0 name=auto_algae_upper_removed size=1 disabled max=3>
+			<span data-i18n=auto_algae_upper_removed></span>
+		</td><td class="algae collection">
+			<input type=text class=num data-element=algae data-provides=1 value=0 name=auto_algae_mark_1 size=1 disabled max=1>
+			<span data-i18n=auto_algae_mark_1></span>
+		</td><td class="algae placement" rowspan=3>
+			<input type=text class=num data-element=algae data-accepts=1 value=0 name=auto_algae_processor size=1 disabled>
+			<span data-i18n=auto_algae_processor></span>
+		</td><td class="algae placement">
+			<input type=text class=num data-element=algae data-accepts=1 value=0 name=auto_algae_net size=1 disabled>
+			<span data-i18n=auto_algae_net></span>
+		</td></tr><tr><td class="algae collection">
+			<input type=text class=num data-element=algae data-provides=0 value=0 name=auto_algae_lower_removed size=1 disabled max=3>
+			<span data-i18n=auto_algae_lower_removed></span>
+		</td><td class="algae collection">
+			<input type=text class=num data-element=algae data-provides=1 value=0 name=auto_algae_mark_2 size=1 disabled max=1>
+			<span data-i18n=auto_algae_mark_2></span>
+		</td><td rowspan=2 class="algae placement">
+			<input type=text class=num data-element=algae data-accepts=1 value=0 name=auto_algae_opponent_processor size=1 disabled>
+			<span data-i18n=auto_algae_opponent_processor></span>
+		</td></tr><tr><td class="algae collection">
+			<input type=text class=num data-element=algae data-provides=1 value=0 name=auto_algae_upper size=1 disabled max=3>
+			<span data-i18n=auto_algae_upper></span>
+		</td><td rowspan=2 class="algae collection">
+			<input type=text class=num data-element=algae data-provides=1 value=0 name=auto_algae_mark_3 size=1 disabled max=1>
+			<span data-i18n=auto_algae_mark_3></span>
+		</td></tr><tr><td class="algae collection">
+			<input type=text class=num data-element=algae data-provides=1 value=0 name=auto_algae_lower size=1 disabled max=3>
+			<span data-i18n=auto_algae_lower></span>
+		</td><td colspan=2 class="algae placement">
+			<input type=text class=num data-element=algae data-accepts=1 value=0 name=auto_algae_drop size=1 disabled>
+			<span data-i18n=auto_algae_drop></span>
+		</td></tr><tr><td rowspan=2 class="coral collection">
+			<input type=text class=num data-element=coral data-provides=1 value=0 name=auto_coral_station_1 size=1 disabled>
+			<span data-i18n=auto_coral_station_1></span>
+		</td><td class="coral collection">
+			<input type=text class=num data-element=coral data-provides=1 value=0 name=auto_coral_mark_1 size=1 disabled max=1>
+			<span data-i18n=auto_coral_mark_1></span>
+		</td><td class="coral placement">
+			<input type=text class=num data-element=coral data-accepts=1 value=0 name=auto_coral_level_4 size=1 disabled>
+			<span data-i18n=auto_coral_level_4></span>
+		</td><td rowspan=4 class="coral placement">
+			<input type=text class=num data-element=coral data-accepts=1 value=0 name=auto_coral_drop size=1 disabled>
+			<span data-i18n=auto_coral_drop></span>
+		</td></tr><tr><td class="coral collection">
+			<input type=text class=num data-element=coral data-provides=1 value=0 name=auto_coral_mark_2 size=1 disabled max=1>
+			<span data-i18n=auto_coral_mark_2></span>
+		</td><td class="coral placement">
+			<input type=text class=num data-element=coral data-accepts=1 value=0 name=auto_coral_level_3 size=1 disabled>
+			<span data-i18n=auto_coral_level_3></span>
+		</td></tr><tr><td rowspan=2 class="coral collection">
+			<input type=text class=num data-element=coral data-provides=1 value=0 name=auto_coral_station_2 size=1 disabled>
+			<span data-i18n=auto_coral_station_2></span>
+		</td><td rowspan=2 class="coral collection">
+			<input type=text class=num data-element=coral data-provides=1 value=0 name=auto_coral_mark_3 size=1 disabled max=1>
+			<span data-i18n=auto_coral_mark_3></span>
+		</td><td class="coral placement">
+			<input type=text class=num data-element=coral data-accepts=1 value=0 name=auto_coral_level_2 size=1 disabled>
+			<span data-i18n=auto_coral_level_2></span>
+		</td></tr><tr><td class="coral placement">
+			<input type=text class=num data-element=coral data-accepts=1 value=0 name=auto_coral_level_1 size=1 disabled>
+			<span data-i18n=auto_coral_level_1></span>
+		</td></tr></table>
+
+		<table id=auto-timeline class="collapsable timeline-table">
+			<thead><tr><td class=subheader data-i18n=timeline_time_header>
+			</td><td class=subheader data-i18n=timeline_action_header>
+			</td></tr></thead>
+			<tbody class=timeline></tbody>
+		</table>
+	</div>
+
+	<div class="teleop tab-content">
+		<table class=field-table><tr><td colspan=4>
+			<div class="scout-locations orient-rotate">
+				<button class=count data-input=tele_coral_drop style=right:30%;bottom:1%><img src=coral-drop.png></button>
+				<button class=count data-input=tele_algae_drop style="right:45%;bottom:1%"><img src=algae-drop.png></button>
+				<button class=count data-input=tele_algae_theft style="left:9%;bottom:30%"><img src=algae-collect.png></button>
+				<button class=count data-input=tele_coral_theft style=left:9%;top:30%><img src=coral-collect.png></button>
+				<button class=count data-input=tele_coral_station_1 style="right:5%;top:3%"><img src=coral-collect.png></button>
+				<button class=count data-input=tele_coral_station_2 style="right:5%;bottom:3%"><img src=coral-collect.png></button>
+				<button class=count data-input=tele_algae_processor style="left:43%;top:0.5%"><img src=algae-place.png></button>
+				<button class=count data-input=tele_algae_opponent_processor style="left:5%;bottom:0.5%"><img src=algae-place.png></button>
+				<button class=count data-input=tele_algae_net style="left:24%;bottom:28%"><img src=algae-place.png></button>
+				<button class=timer data-input=climb_time style="left:24%;bottom:10%"><img src=climb.png></button>
+				<button class=count data-input=tele_algae_opponent_net style="left:24%;top:20%"><img src=algae-place.png></button>
+				<button class=count data-input=tele_algae_ground style="right:10%;bottom:30%"><img src=algae-collect.png></button>
+				<button class=count data-input=tele_coral_ground style="right:10%;top:30%"><img src=coral-collect.png></button>
+				<div class=reef-scout style="right:26%;top:22%">
+					<span class=label style="left:0;bottom:77%">L4</span>
+					<span class=label style="left:0;bottom:52%">L3</span>
+					<span class=label style="left:0;bottom:27%">L2</span>
+					<span class=label style="left:0;bottom:2%">L1</span>
+					<button class=count data-input=tele_coral_level_4 style="left:25%;bottom:75%"><img src=coral-place.png></button>
+					<button class=count data-input=tele_coral_level_3 style="left:25%;bottom:50%"><img src=coral-place.png></button>
+					<button class=count data-input=tele_coral_level_2 style="left:25%;bottom:25%"><img src=coral-place.png></button>
+					<button class=count data-input=tele_coral_level_1 style="left:25%;bottom:0"><img src=coral-place.png></button>
+					<button class=count data-input=tele_algae_upper_removed style="left:75%;bottom:62.5%"><img src=algae-remove.png></button>
+					<button class=count data-input=tele_algae_upper style="left:50%;bottom:62.5%"><img src=algae-collect.png></button>
+					<button class=count data-input=tele_algae_lower_removed style="left:75%;bottom:37.5%"><img src=algae-remove.png></button>
+					<button class=count data-input=tele_algae_lower style="left:50%;bottom:37.5%"><img src=algae-collect.png></button>
+				</div>
+			</div>
+		</td></tr><tr><td class=teamColorBG data-i18n=pos_team>
+		</td><td>
+			<button class=undo data-i18n=undo_button></button>
+		</td><td>
+			<div class=collapse data-content=tele-values data-i18n=values_button></div>
+			<div class=collapse data-content=tele-timeline data-i18n=timeline_button></div>
+		</td><td>
+			<button class=tab-button data-content=end-game data-i18n=proceed_end_button></button>
+		</td></tr></table>
+
+		<table id=tele-values class=collapsable><tr><td class="algae collection">
+			<input type=text class=num data-element=algae data-provides=0 value=0 name=tele_algae_upper_removed size=1 disabled max=3>
+			<span data-i18n=tele_algae_upper_removed></span>
+		</td><td class="algae collection" rowspan=2>
+			<input type=text class=num data-element=algae data-provides=1 value=0 name=tele_algae_ground size=1 disabled>
+			<span data-i18n=tele_algae_ground></span>
+		</td><td class="algae placement">
+			<input type=text class=num data-element=algae data-accepts=1 value=0 name=tele_algae_processor size=1 disabled>
+			<span data-i18n=tele_algae_processor></span>
+		</td><td class="algae placement">
+			<input type=text class=num data-element=algae data-accepts=1 value=0 name=tele_algae_net size=1 disabled>
+			<span data-i18n=tele_algae_net></span>
+		</td></tr><tr><td class="algae collection">
+			<input type=text class=num data-element=algae data-provides=0 value=0 name=tele_algae_lower_removed size=1 disabled max=3>
+			<span data-i18n=tele_algae_lower_removed></span>
+		</td><td rowspan=2 class="algae placement">
+			<input type=text class=num value=0 data-element=opponent-algae data-accepts=1 name=tele_algae_opponent_net size=1 disabled>
+			<span data-i18n=tele_algae_opponent_net></span>
+		</td><td rowspan=2 class="algae placement">
+			<input type=text class=num data-element=algae data-accepts=1 value=0 name=tele_algae_opponent_processor size=1 disabled>
+			<span data-i18n=tele_algae_opponent_processor></span>
+		</td></tr><tr><td class="algae collection">
+			<input type=text class=num data-element=algae data-provides=1 value=0 name=tele_algae_upper size=1 disabled max=3>
+			<span data-i18n=tele_algae_upper></span>
+		</td><td class="algae collection" rowspan=2>
+			<input type=text class=num data-element=algae data-provides=1 value=0 name=tele_algae_theft size=1 disabled>
+			<span data-i18n=tele_algae_theft></span>
+		</td></tr><tr><td class="algae collection">
+			<input type=text class=num data-element=algae data-provides=1 value=0 name=tele_algae_lower size=1 disabled max=3>
+			<span data-i18n=tele_algae_lower></span>
+		</td><td colspan=2 class="algae placement">
+			<input type=text class=num data-element=algae data-accepts=1 value=0 name=tele_algae_drop size=1 disabled>
+			<span data-i18n=tele_algae_drop></span>
+		</td></tr><tr><td rowspan=2 class="coral collection">
+			<input type=text class=num data-element=coral data-provides=1 value=0 name=tele_coral_station_1 size=1 disabled>
+			<span data-i18n=tele_coral_station_1></span>
+		</td><td class="coral collection" rowspan=2>
+			<input type=text class=num data-element=coral data-provides=1 value=0 name=tele_coral_ground size=1 disabled>
+			<span data-i18n=tele_coral_ground></span>
+		</td><td class="coral placement">
+			<input type=text class=num data-element=coral data-accepts=1 value=0 name=tele_coral_level_4 size=1 disabled>
+			<span data-i18n=tele_coral_level_4></span>
+		</td><td rowspan=2 class="coral placement">
+			<input type=text class=num data-element=coral data-accepts=1 value=0 name=tele_coral_drop size=1 disabled>
+			<span data-i18n=tele_coral_drop></span>
+		</td></tr><tr><td class="coral placement">
+			<input type=text class=num data-element=coral data-accepts=1 value=0 name=tele_coral_level_3 size=1 disabled>
+			<span data-i18n=tele_coral_level_3></span>
+		</td></tr><tr><td rowspan=2 class="coral collection">
+			<input type=text class=num data-element=coral data-provides=1 value=0 name=tele_coral_station_2 size=1 disabled>
+			<span data-i18n=tele_coral_station_2></span>
+		</td><td class="coral collection" rowspan=2>
+			<input type=text class=num data-element=coral data-provides=1 value=0 name=tele_coral_theft size=1 disabled>
+			<span data-i18n=tele_coral_theft></span>
+		</td><td class="coral placement">
+			<input type=text class=num data-element=coral data-accepts=1 value=0 name=tele_coral_level_2 size=1 disabled>
+			<span data-i18n=tele_coral_level_2></span>
+		</td><td rowspan=2 class=timer>
+			<input type=text class=num value=0 name=climb_time size=1 disabled>
+			<span data-i18n=climb_time></span>
+		</td></tr><tr><td class="coral placement">
+			<input type=text class=num data-element=coral data-accepts=1 value=0 name=tele_coral_level_1 size=1 disabled>
+			<span data-i18n=tele_coral_level_1></span>
+		</td></tr></table>
+
+		<table id=tele-timeline class="collapsable timeline-table">
+			<thead><tr><td class=subheader data-i18n=timeline_time_header>
+			</td><td class=subheader data-i18n=timeline_action_header>
+			</td></tr></thead>
+			<tbody class=timeline></tbody>
+		</table>
+	</div>
+
+	<div class="end-game tab-content">
+		<table><tr><td class=subheader data-i18n=barge_heading>
+		</td></tr><tr><td>
+
+			<fieldset>
+				<legend data-i18n=barge_zone_question></legend>
+				<label><input type=radio name=end_game_position value=parked><span data-i18n=barge_zone_parked_button></span></label>
+				<label><input type=radio name=end_game_position value=shallow><span data-i18n=barge_zone_shallow_button></span></label>
+				<label><input type=radio name=end_game_position value=deep><span data-i18n=barge_zone_deep_parked_button></span></label>
+			</fieldset>
+			<fieldset>
+				<legend data-i18n=climb_failed_question></legend>
+				<label><input type=checkbox name=end_game_climb_fail value=1><span data-i18n=climb_failed_button></span></label>
+			</fieldset>
+
+		</td></tr><tr><td class=subheader data-i18n=gameplay_heading>
+		</td></tr><tr><td>
+			<fieldset class=full>
+				<legend data-i18n=gameplay_question></legend>
+				<div><label><input type=checkbox name=defense value=1><span data-i18n=defense_button></span></label></div>
+				<div><label><input type=checkbox name=bricked value=1><span data-i18n=bricked_button></span></label></div>
+				<div><label><input type=checkbox name=coral_stuck value=1><span data-i18n=coral_stuck_button></span></label></div>
+			</fieldset>
+		</td></tr><tr><td class=subheader data-i18n=scouter_header>
+		</td></tr><tr><td>
+			<fieldset class="left full" id=review-request>
+				<legend data-i18n=review_requested_legend></legend>
+				<div><label><input type=checkbox name=review_requested value=1><span data-i18n=review_requested_button></span></label></div>
+			</fieldset>
+			<fieldset class="left full">
+				<legend data-i18n=scouter_name_question></legend>
+				<input class=full type=text size=50 name=scouter data-i18n-placeholder=scouter_name_placeholder>
+			</fieldset>
+			<fieldset class="left full" id=scouting-comments>
+				<legend data-i18n=comments_question></legend>
+				<textarea class=full name=comments rows=5 data-i18n-placeholder=comments_placeholder></textarea>
+			</fieldset>
+			<input type=hidden name=created value="">
+			<input type=hidden name=modified value="">
+			<fieldset class=full id=nextButtons>
+				<legend data-i18n=save_data_question></legend>
+				<div id=doneButtons></div>
+			</fieldset>
+		</td></tr></table>
+	</div>
+</form>
+</body>
+</html>
