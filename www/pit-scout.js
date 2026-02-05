@@ -137,6 +137,9 @@ addI18n({
 		fr:'Quelle est la transmission utilisée ?',
 		zh_tw:'使用什麼傳動系統？',
 	},
+	robot_intake_question:{
+		en:'Where do you intake from?',
+	},
 	robot_drivetrain_tank:{
 		en:'Tank',
 		pt:'Tanque',
@@ -144,6 +147,15 @@ addI18n({
 		he:'טַנק',
 		fr:'Réservoir',
 		zh_tw:'坦克',
+	},
+	robot_intake_bottom:{
+		en:'Bottom',
+	},
+	robot_intake_side:{
+		en:'Side',
+	},
+	robot_intake_front:{
+		en:'Front',
 	},
 	robot_drivetrain_swerve:{
 		en:'Swerve',
