@@ -411,6 +411,9 @@ addI18n({
 		fr:'Remarques (Autres informations utiles)',
 		zh_tw:'備註（其他值得了解的事）',
 	},
+	wheel_type_notes:{
+		en:'Example (Mechnum, Omni, etc.)',
+	},
 	pit_scout_photo_reminder:{
 		en:'If you are also bot photo scouting, don\'t forget to take a picture!',
 		pt:'Se você também estiver explorando fotos de robôs, não se esqueça de tirar uma foto!',
