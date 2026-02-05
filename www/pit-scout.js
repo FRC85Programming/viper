@@ -129,6 +129,12 @@ addI18n({
 		fr:'livres',
 		zh_tw:'英鎊',
 	},
+	robot_starting_fuel_question:{
+		en:'How much fuel does the robot start with?',
+	},
+	robot_starting_fuel:{
+		en:'fuel',
+	},
 	robot_drivetrain_question:{
 		en:'What drivetrain is used?',
 		pt:'Qual sistema de transmissão é usado?',
