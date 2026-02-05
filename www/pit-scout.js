@@ -135,24 +135,8 @@ addI18n({
 	robot_starting_fuel:{
 		en:'fuel',
 	},
-	robot_drivetrain_question:{
-		en:'What drivetrain is used?',
-		pt:'Qual sistema de transmissão é usado?',
-		tr:'Hangi aktarma organı kullanılıyor?',
-		he:'באיזו מערכת הנעה משתמשים?',
-		fr:'Quelle est la transmission utilisée ?',
-		zh_tw:'使用什麼傳動系統？',
-	},
 	robot_intake_question:{
 		en:'Where do you intake from?',
-	},
-	robot_drivetrain_tank:{
-		en:'Tank',
-		pt:'Tanque',
-		tr:'Tank',
-		he:'טַנק',
-		fr:'Réservoir',
-		zh_tw:'坦克',
 	},
 	robot_intake_bottom:{
 		en:'Bottom',
@@ -162,6 +146,34 @@ addI18n({
 	},
 	robot_intake_front:{
 		en:'Front',
+	},
+	robot_trenchorbump_question:{
+		en:'Which obstacles can the robot deal with?',
+	},
+	robot_trenchorbump_trench:{
+		en:'Trench',
+	},
+	robot_trenchorbump_bump:{
+		en:'Bump',
+	},
+	robot_trenchorbump_both:{
+		en:'Both',
+	},
+	robot_drivetrain_question:{
+		en:'What drivetrain is used?',
+		pt:'Qual sistema de transmissão é usado?',
+		tr:'Hangi aktarma organı kullanılıyor?',
+		he:'באיזו מערכת הנעה משתמשים?',
+		fr:'Quelle est la transmission utilisée ?',
+		zh_tw:'使用什麼傳動系統？',
+	},
+	robot_drivetrain_tank:{
+		en:'Tank',
+		pt:'Tanque',
+		tr:'Tank',
+		he:'טַנק',
+		fr:'Réservoir',
+		zh_tw:'坦克',
 	},
 	robot_drivetrain_swerve:{
 		en:'Swerve',
