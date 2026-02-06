@@ -40,22 +40,6 @@ addI18n({
 	tower_zone_third_button:{
 		en:'Third Level',
 	},
-	climb_failed_question:{
-		en:'If not off the ground on a cage:',
-		he:'אם לא מעל הקרקע על כלוב:',
-		tr:'Kafes üzerinde yerden yüksekte değilse:',
-		zh_tw:'如果籠子沒有離地面：',
-		fr:'S\'il n\'est pas au sol sur une cage :',
-		pt:'Se não estiver fora do chão em uma gaiola:',
-	},
-	climb_failed_button:{
-		en:'Robot attempted to climb, but failed',
-		he:'רובוט ניסה לטפס, אך נכשל',
-		tr:'Robot tırmanmaya çalıştı ancak başaramadı',
-		zh_tw:'機器人嘗試攀爬，但失敗了',
-		fr:'Le robot a tenté de grimper, mais a échoué',
-		pt:'O robô tentou escalar, mas falhou',
-	},
 	tower_heading:{
 		en:'Tower',
 	},
@@ -77,27 +61,12 @@ addI18n({
 	},
 	defense_button:{
 		en:'Played defense',
-		he:'שיחק הגנה',
-		tr:'Defans oynadı',
-		zh_tw:'防守',
-		fr:'A joué en défense',
-		pt:'Jogou na defesa',
 	},
 	bricked_button:{
 		en:'Broke or was disabled',
-		he:'נשבר או היה מושבת',
-		tr:'Kırıldı veya devre dışı bırakıldı',
-		zh_tw:'損壞或被停用',
-		fr:'S\'est cassé ou a été désactivé',
-		pt:'Quebrou ou foi desabilitado',
 	},
-	coral_stuck_button:{
-		en:'Had a coral stuck on it',
-		he:'היה תקוע עליו אלמוג',
-		tr:'Üzerine bir mercan takıldı',
-		zh_tw:'上面黏著一塊珊瑚',
-		fr:'A eu un corail coincé dessus',
-		pt:'Tinha um coral preso nele',
+	fuel_stuck_button:{
+		en:'Had a fuel jammed in it',
 	},
 })
 
