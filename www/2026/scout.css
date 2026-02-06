@@ -10,7 +10,7 @@
 .blueTeam #start-area{background:url(start-area-blue.png) no-repeat center center / 100% 100%}
 .redTeam #start-area{background:url(start-area-red.png) no-repeat center center / 100% 100%}
 .reef-scout{background:url(reef.png) no-repeat center center / 100% 100%}
-#robot-starting-position{position:absolute;top:0;left:0;width:2.5em;height:2.5em;border-radius:.3em;}
+#robot-starting-position{position:absolute;top:0;left:0;width:3.5em;height:2.5em;border-radius:.3em;}
 .blueTeam #robot-starting-position{border:.3em solid var(--blue-team-color);background:var(--button-bg-color)}
 .redTeam #robot-starting-position{border:.3em solid var(--red-team-color);background:var(--button-bg-color)}
 
