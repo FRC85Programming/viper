@@ -31,29 +31,14 @@ addI18n({
 	tower_zone_question:{
 		en:'Where did _TEAMNUM_\'s robot climb? (if  not leave blank)',
 	},
-	barge_zone_parked_button:{
-		en:'Parked',
-		he:'חונה',
-		tr:'Park edilmiş',
-		zh_tw:'停車',
-		fr:'Stationné',
-		pt:'Estacionado',
+	tower_zone_first_button:{
+		en:'First Level',
 	},
-	barge_zone_shallow_button:{
-		en:'Hanging from a shallow cage',
-		he:'תלוי מכלוב רדוד',
-		tr:'Sığ bir kafesten sarkmış',
-		zh_tw:'懸掛在淺籠子裡',
-		fr:'Suspendu à une cage peu profonde',
-		pt:'Pendurado em uma gaiola rasa',
+	tower_zone_second_button:{
+		en:'Second Level',
 	},
-	barge_zone_deep_parked_button:{
-		en:'Hanging from a deep cage',
-		he:'תלוי מכלוב עמוק',
-		tr:'Derin bir kafesten sarkmış',
-		zh_tw:'吊在深籠子裡',
-		fr:'Suspendu à une cage profonde',
-		pt:'Pendurado em uma gaiola funda',
+	tower_zone_third_button:{
+		en:'Third Level',
 	},
 	climb_failed_question:{
 		en:'If not off the ground on a cage:',
