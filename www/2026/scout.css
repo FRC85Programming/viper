@@ -6,7 +6,7 @@
 
 .orientLeft .bigimg, body.leftField.redTeam #start-area,body.rightField.blueTeam #start-area,body.leftField.redTeam .orient-rotate,body.rightField.blueTeam .orient-rotate,body.leftField.redTeam .orient-rotate > *,body.rightField.blueTeam .orient-rotate > * {transform:rotate(180deg)}
 
-#start-area{width:14em;height:25em;position:relative;margin:1000 auto}
+#start-area{width:14em;height:25em;position:relative;margin:0 auto}
 .blueTeam #start-area{background:url(start-area-blue.png) no-repeat center center / 100% 100%}
 .redTeam #start-area{background:url(start-area-red.png) no-repeat center center / 100% 100%}
 .reef-scout{background:url(reef.png) no-repeat center center / 100% 100%}
