@@ -159,6 +159,27 @@ addI18n({
 	robot_trenchorbump_both:{
 		en:'Both',
 	},
+	robot_climb_question:{
+		en:'How high can your robot climb',
+	},
+	robot_climb_first:{
+		en:'First Level',
+	},
+	robot_climb_second:{
+		en:'Second Level',
+	},
+	robot_climb_third:{
+		en:'Third Level',
+	},
+	robot_reverseclimb_question:{
+		en:'Can the robot reverse climb?',
+	},
+	robot_reverseclimb_yes:{
+		en:'Yes',
+	},
+	robot_reverseclimb_no:{
+		en:'No',
+	},
 	robot_drivetrain_question:{
 		en:'What drivetrain is used?',
 		pt:'Qual sistema de transmissão é usado?',
