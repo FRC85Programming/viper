@@ -132,8 +132,11 @@ addI18n({
 	robot_starting_fuel_question:{
 		en:'How much fuel does the robot start with?',
 	},
-	robot_starting_fuel:{
+	robot_fuel:{
 		en:'fuel',
+	},
+	robot_fuelpersecond_question:{
+		en:'How much fuel can the robot score per second?',
 	},
 	robot_intake_question:{
 		en:'Where do you intake from?',
