@@ -1,13 +1,8 @@
 "use strict"
 
 addI18n({
-	coral_preload:{
-		en:'Preloaded Coral',
-		he:'קורל טעון מראש',
-		tr:'Önceden Yüklenmiş Mercan',
-		zh_tw:'預裝珊瑚',
-		fr:'Corail préchargé',
-		pt:'Coral pré-carregado',
+	fuel_preload:{
+		en:'Preloaded Fuel',
 	},
 	opponent_processor_team:{
 		en:'What is the team number of the OPPONENT\'s human player at the processor?',
