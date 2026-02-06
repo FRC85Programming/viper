@@ -28,13 +28,8 @@ addI18n({
 		fr:'Équipe _TEAMNUM_',
 		pt:'Equipe _TEAMNUM_',
 	},
-	barge_zone_question:{
-		en:'Is _TEAMNUM_\'s robot in the _TEAMCOLOR_ barge zone?',
-		he:'האם הרובוט של _TEAMNUM_ נמצא באזור ה-_TEAMCOLOR_?',
-		tr:'_TEAMNUM_\'un robotu _TEAMRENGİ_ mavna bölgesinde mi?',
-		zh_tw:'_TEAMNUM_ 的機器人是否在 _TEAMCOLOR_ 駁船區？',
-		fr:'Le robot de _TEAMNUM_ se trouve-t-il dans la zone de la barge _TEAMCOLOR_ ?',
-		pt:'O robô de _TEAMNUM_ está na zona de barcaça _TEAMCOLOR_?',
+	tower_zone_question:{
+		en:'Where did _TEAMNUM_\'s robot climb? (if  not leave blank)',
 	},
 	barge_zone_parked_button:{
 		en:'Parked',
@@ -76,13 +71,8 @@ addI18n({
 		fr:'Le robot a tenté de grimper, mais a échoué',
 		pt:'O robô tentou escalar, mas falhou',
 	},
-	barge_heading:{
-		en:'Barge',
-		he:'דוֹבְרָה',
-		tr:'Mavna',
-		zh_tw:'駁船',
-		fr:'Barge',
-		pt:'Barcaça',
+	tower_heading:{
+		en:'Tower',
 	},
 	gameplay_heading:{
 		en:'Gameplay',
