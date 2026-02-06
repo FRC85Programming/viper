@@ -160,7 +160,7 @@ addI18n({
 		en:'Both',
 	},
 	robot_climb_question:{
-		en:'How high can your robot climb',
+		en:'How high can the robot climb',
 	},
 	robot_climb_first:{
 		en:'First Level',
