@@ -68,13 +68,13 @@
 			<label><span data-i18n=robot_size_length></span> <input type=number min=12 step=1 max=48 name=frame_length> <span data-i18n=robot_size_unit></span></label><br>
 			<label><span data-i18n=robot_size_width></span> <input type=number min=12 step=1 max=48 name=frame_width> <span data-i18n=robot_size_unit></span></label><br>
 		</p>
-		<p>
+	<!--	<p>
 			<span data-i18n=robot_weight_question></span><br>
 			<label><input type=number min=30 step=1 max=200 name=weight> <span data-i18n=robot_weight_unit></label><br>
-		</p>
+		</p> -->
 		<p>
-			<span data-i18n=robot_starting_fuel_question></span><br>
-			<label><input type=number min=0 step=1 max=8 name=starting_fuel> <span data-i18n=robot_fuel></label><br>
+			<span data-i18n=robot_holding_fuel_question></span><br>
+			<label><input type=number min=0 step=1 max=8 name=holding_fuel> <span data-i18n=robot_fuel></label><br>
 		</p>
 		<p>
 			<span data-i18n=robot_fuelpersecond_question></span><br>
@@ -82,9 +82,9 @@
 		</p>
 		<p>
 			<span data-i18n=robot_intake_question></span><br>
-			<label><input type=radio name=intake value=bottom><span data-i18n=robot_intake_bottom>Bottom</span></label>
-			<label><input type=radio name=intake value=side><span data-i18n=robot_intake_side>Side</span></label>
-			<label><input type=radio name=intake value=front><span data-i18n=robot_intake_front>Front</span></label>
+			<label><input type=radio name=intake value=human><span data-i18n=robot_intake_human>Bottom</span></label>
+			<label><input type=radio name=intake value=ground><span data-i18n=robot_intake_ground>Side</span></label>
+			<label><input type=radio name=intake value=both><span data-i18n=robot_intake_both>Front</span></label>
 		</p>
 		<p>
 			<span data-i18n=robot_trenchorbump_question></span><br>
@@ -97,6 +97,7 @@
 			<label><input type=radio name=climb value=first><span data-i18n=robot_climb_first>First</span></label>
 			<label><input type=radio name=climb value=second><span data-i18n=robot_climb_second>second</span></label>
 			<label><input type=radio name=climb value=third><span data-i18n=robot_climb_third>Third</span></label>
+			<label><input type=radio name=climb value=fourth><span data-i18n=robot_climb_none>Fourth</span></label>
 		</p>
 		<p>
 			<span data-i18n=robot_reverseclimb_question></span><br>
@@ -118,24 +119,31 @@
 			<label><input type=radio name=swerve value=other><span data-i18n=robot_swerve_other></span></label>
 		</p>
 		<p>
+			<span data-i18n=robot_motorl_question></span><br>
+			<!--This isn't the actual name, I'm just not sure about what to write...-->
+			<label><input type=radio name=motorl1 value=l1><span data-i18n=robot_motorl_first>First</span></label>
+			<label><input type=radio name=motorl2 value=l2><span data-i18n=robot_motorl_second>Second</span></label>
+			<label><input type=radio name=motorl3 value=l3><span data-i18n=robot_motorl_third>Third</span></label>
+			<label><input type=radio name=motorl4 value=l4><span data-i18n=robot_motorl_fourth>Fourth</span></label>
+		</p>
+		<p>
 			<span data-i18n=drivetrain_motor_count_question></span><br>
 			<input type=number min=1 step=1 name=motor_count>
 		</p>
 		<p>
-			<span data-i18n=drivetrain_motor_type_question></span><br>
+		<!--	<span data-i18n=drivetrain_motor_type_question></span><br>
 			<label><input type=radio name=motors value=neo><span data-i18n=motor_type_neo></span></label>
 			<label><input type=radio name=motors value=falcon_500><span data-i18n=motor_type_f500></span></label>
 			<label><input type=radio name=motors value=full_size_cim><span data-i18n=motor_type_cim></span></label>
 			<label><input type=radio name=motors value=kraken><span data-i18n=motor_type_kraken></span></label>
 			<label><input type=radio name=motors value=other><span data-i18n=motor_type_other></span></label>
-		</p>
+		</p> -->
 		<p>
 			<span data-i18n=wheel_count_question></span><br>
 			<input type=number min=4 step=1 name=wheel_count value=4>
 		</p>
 		<p>
 			<span data-i18n=wheel_type_question></span><br>
-			<textarea name=notes  data-i18n-placeholder=wheel_type_notes></textarea>
 		</p>
 		<p>
 			<span data-i18n=vision_question></span><br>

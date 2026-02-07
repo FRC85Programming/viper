@@ -129,8 +129,8 @@ addI18n({
 		fr:'livres',
 		zh_tw:'英鎊',
 	},
-	robot_starting_fuel_question:{
-		en:'How much fuel does the robot start with?',
+	robot_holding_fuel_question:{
+		en:'How much Fuel can you hold?',
 	},
 	robot_fuel:{
 		en:'fuel',
@@ -141,17 +141,17 @@ addI18n({
 	robot_intake_question:{
 		en:'Where do you intake from?',
 	},
-	robot_intake_bottom:{
-		en:'Bottom',
+	robot_intake_human:{
+		en:'Human Player',
 	},
-	robot_intake_side:{
-		en:'Side',
+	robot_intake_ground:{
+		en:'Ground',
 	},
-	robot_intake_front:{
-		en:'Front',
+	robot_intake_both:{
+		en:'Both',
 	},
 	robot_trenchorbump_question:{
-		en:'Which obstacles can the robot deal with?',
+		en:'What of the following can your robot do?',
 	},
 	robot_trenchorbump_trench:{
 		en:'Trench',
@@ -334,6 +334,21 @@ addI18n({
 		he:'איזה סוג של גלגלי הנעה?',
 		fr:'Quel type de roues motrices ?',
 		zh_tw:'什麼類型的驅動輪？',
+	},
+	robot_motorl_question:{
+		en:'If swerve, ask (may not know, leave empty)',
+	},
+	robot_motorl_first:{
+		en:'L1',
+	},
+	robot_motorl_second:{
+		en:'L2',
+	},
+	robot_motorl_third:{
+		en:'L3',
+	},
+	robot_motorl_fourth:{
+		en:'L4',
 	},
 	wheel_type_traction:{
 		en:'Treaded',
