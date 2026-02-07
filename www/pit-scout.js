@@ -203,40 +203,40 @@ addI18n({
 		zh_tw:'坦克',
 	},
 		scouter_name:{
-		vincent: 'Vincent'
-		jackh: 'Jack H'
-		jacke: 'Jack E'
-		evan: 'Evan'
-		henrik: 'Henrik'
-		kayla: 'Kayla'
-		sawyer: 'Sawyer'
-		gavin: 'Gavin'
-		kyle: 'Kyle'
-		deedee: 'DeeDee'
-		shea: 'Shea'
-		ari: 'Ari'
-		nico: 'Nico'
-		gracie: 'Gracie'
-		jon: 'Jon'
-		korbin: 'Korbin'
-		taylor: 'Taylor'
-		noah: 'Noah'
-		emerson: 'Emerson'
-		javi: 'Javi'
-		aubree: 'Aubree'
-		camilla: 'Camilla'
-		eli: 'Eli'
-		wyatt: 'Wyatt'
-		wes: 'Wes'
-		micah: 'Micah'
-		matthew: 'Matthew'
-		luke: 'Luke'
-		aj: 'AJ'
-		hailey: 'Hailey'
-		andrew: 'Andrew'
-		gibson: 'Gibson'
-		mj: 'MJ'
-		seth: 'Seth'
+		vincent: 'Vincent',
+		jackh: 'Jack H',
+		jacke: 'Jack E',
+		evan: 'Evan',
+		henrik: 'Henrik',
+		kayla: 'Kayla',
+		sawyer: 'Sawyer',
+		gavin: 'Gavin',
+		kyle: 'Kyle',
+		deedee: 'DeeDee',
+		shea: 'Shea',
+		ari: 'Ari',
+		nico: 'Nico',
+		gracie: 'Gracie',
+		jon: 'Jon',
+		korbin: 'Korbin',
+		taylor: 'Taylor',
+		noah: 'Noah',
+		emerson: 'Emerson',
+		javi: 'Javi',
+		aubree: 'Aubree',
+		camilla: 'Camilla',
+		eli: 'Eli',
+		wyatt: 'Wyatt',
+		wes: 'Wes',
+		micah: 'Micah',
+		matthew: 'Matthew',
+		luke: 'Luke',
+		aj: 'AJ',
+		hailey: 'Hailey',
+		andrew: 'Andrew',
+		gibson: 'Gibson',
+		mj: 'MJ',
+		seth: 'Seth',
 	},
 	robot_drivetrain_swerve:{
 		en:'Swerve',
