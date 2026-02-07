@@ -202,7 +202,7 @@ addI18n({
 		fr:'Réservoir',
 		zh_tw:'坦克',
 	},
-		scouter_name:{
+		scouter_name_question:{
 		scouter_name: 'Name',
 		vincent: 'Vincent',
 		jackh: 'Jack H',
