@@ -50,7 +50,7 @@ addI18n({
 		zh_tw:'機器人名稱：',
 	},
 	auto_path_legend:{
-		en:'Draw the robot\'s path for each auto routine that team _TEAMNUM_ can perform',
+		en:'Draw your robot\'s path for each auto routine that team _TEAMNUM_ can perform',
 		pt:'Desenhe o caminho do robô para cada rotina automática que a equipe _TEAMNUM_ pode executar',
 		tr:'_TEAMNUM_ takımının gerçekleştirebileceği her otomatik rutin için robotun yolunu çiz',
 		he:'צייר את הנתיב של הרובוט עבור כל שגרה אוטומטית שצוות _TEAMNUM_ יכול לבצע',
@@ -82,7 +82,7 @@ addI18n({
 		zh_tw:'機器人',
 	},
 	robot_size_question:{
-		en:'What are the robot frame dimensions WITHOUT bumpers?',
+		en:'What are your robot frame dimensions WITHOUT bumpers?',
 		pt:'Quais são as dimensões da estrutura do robô SEM para-choques?',
 		tr:'Tamponlar OLMADAN robot çerçeve boyutları nelerdir?',
 		he:'מהן מידות מסגרת הרובוט ללא פגושים?',
@@ -114,7 +114,7 @@ addI18n({
 		zh_tw:'英吋',
 	},
 	robot_weight_question:{
-		en:'What is the weight of the robot?',
+		en:'What is the weight of your robot?',
 		pt:'Qual é o peso do robô?',
 		tr:'Robotun ağırlığı nedir?',
 		he:'מה משקל הרובוט?',
@@ -130,13 +130,13 @@ addI18n({
 		zh_tw:'英鎊',
 	},
 	robot_holding_fuel_question:{
-		en:'How much Fuel can you hold?',
+		en:'How much fuel can you hold?',
 	},
 	robot_fuel:{
 		en:'fuel',
 	},
 	robot_fuelpersecond_question:{
-		en:'How much fuel can the robot score per second?',
+		en:'How much fuel can your robot score per second?',
 	},
 	robot_intake_question:{
 		en:'Where do you intake from?',
@@ -163,7 +163,7 @@ addI18n({
 		en:'Both',
 	},
 	robot_climb_question:{
-		en:'How high can the robot climb',
+		en:'How high can your robot climb',
 	},
 	robot_climb_first:{
 		en:'First Level',
@@ -178,7 +178,7 @@ addI18n({
 		en:'None',
 	},
 	robot_reverseclimb_question:{
-		en:'Can the robot reverse climb?',
+		en:'Can your robot reverse climb?',
 	},
 	robot_reverseclimb_yes:{
 		en:'Yes',
@@ -267,7 +267,7 @@ addI18n({
 		zh_tw:'其他/客製化',
 	},
 	drivetrain_motor_count_question:{
-		en:'How many motors power the drive train?',
+		en:'How many motors power your drive train?',
 		pt:'Quantos motores alimentam o sistema de transmissão?',
 		tr:'Tahrik organına kaç motor güç veriyor?',
 		he:'כמה מנועים מפעילים את מערכת ההינע?',
@@ -275,7 +275,7 @@ addI18n({
 		zh_tw:'有多少個電動馬達為傳動系統提供動力？',
 	},
 	drivetrain_motor_type_question:{
-		en:'What type of motors power the drivetrain?',
+		en:'What type of motors power your drivetrain?',
 		pt:'Que tipo de motor alimenta o sistema de transmissão?',
 		tr:'Tahrik organına hangi tip motor güç veriyor?',
 		he:'איזה סוג מנועים מניע את מערכת ההינע?',
@@ -418,7 +418,7 @@ addI18n({
 		zh_tw:'其他',
 	},
 	vision_question:{
-		en:'Computer vision can assist the robot with:',
+		en:'Computer vision can assist your robot with:',
 		pt:'A visão computacional pode auxiliar o robô com:',
 		tr:'Bilgisayar görüşü robota şunlarda yardımcı olabilir:',
 		he:'ראייה ממוחשבת יכולה לסייע לרובוט עם:',
