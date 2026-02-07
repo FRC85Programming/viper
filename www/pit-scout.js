@@ -174,6 +174,9 @@ addI18n({
 	robot_climb_third:{
 		en:'Third Level',
 	},
+	robot_climb_fourth:{
+		en:'None',
+	},
 	robot_reverseclimb_question:{
 		en:'Can the robot reverse climb?',
 	},
