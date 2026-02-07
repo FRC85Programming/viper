@@ -203,6 +203,7 @@ addI18n({
 		zh_tw:'坦克',
 	},
 		scouter_name:{
+		scouter_name: 'Name',
 		vincent: 'Vincent',
 		jackh: 'Jack H',
 		jacke: 'Jack E',
