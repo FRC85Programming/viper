@@ -174,7 +174,7 @@ addI18n({
 	robot_climb_third:{
 		en:'Third Level',
 	},
-	robot_climb_fourth:{
+	robot_climb_none:{
 		en:'None',
 	},
 	robot_reverseclimb_question:{
