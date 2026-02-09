@@ -73,6 +73,15 @@ addI18n({
 		fr:'Auto suivant',
 		zh_tw:'下一個汽車',
 	},
+		auto_climb_legend:{
+		en:'Draw your robot\'s climb position on the tower',
+	},
+	auto_climb_next_button:{
+		en:'Next climb area',
+	},
+	auto_climb_undo_button:{
+		en:'Undo Last Point',
+	},
 	robot_legend:{
 		en:'Robot',
 		pt:'Robô',
