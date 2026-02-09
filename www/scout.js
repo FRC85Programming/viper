@@ -810,7 +810,7 @@ function countHandler(e){
 		lastClickTimeOnCounter=e.timeStamp
 		var toAdd=5,
 		oldVal=val
-		if(/fuul/.test(src))toAdd = 10
+		if(/image.fuul/.test(src))toAdd = 10
 
 		if(dataValue)toAdd=parseInt(dataValue)||0
 		val+=toAdd
