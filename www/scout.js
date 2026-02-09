@@ -810,9 +810,8 @@ function countHandler(e){
 		lastClickTimeOnCounter=e.timeStamp
 		var toAdd=5,
 		oldVal=val
-		if(/down/.test(src))toAdd = -1
-		else if(/three/.test(src))toAdd = 3
-		else if(/five/.test(src))toAdd = 5
+		if(/fuul/.test(src))toAdd = 10
+
 		if(dataValue)toAdd=parseInt(dataValue)||0
 		val+=toAdd
 		val = val<min?min:val
