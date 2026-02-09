@@ -808,7 +808,7 @@ function countHandler(e){
 	if (parent.find('.disabledOverlay').is(':visible')) return
 	if (clicked){
 		lastClickTimeOnCounter=e.timeStamp
-		var toAdd=1,
+		var toAdd=5,
 		oldVal=val
 		if(/down/.test(src))toAdd = -1
 		else if(/three/.test(src))toAdd = 3
