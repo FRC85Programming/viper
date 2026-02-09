@@ -812,14 +812,14 @@ function countHandler(e){
 		oldVal=val
 	if(/fuul/.test(src))toAdd=10
 
-		if(dataValue)toAdd=parseInt(dataValue)||0
+/*	if(dataValue)toAdd=parseInt(dataValue)||0
 		val+=toAdd
 		val = val<min?min:val
 		val = val>max?max:val
 		var change = val-oldVal
 		animateChangeFloater(change, e)
 		inputChanged(input.val(val),change)
-		parent.find('.count').each(countHandler)
+		parent.find('.count').each(countHandler) */
 	} else {
 		if(/down/.test(count.attr('src'))){
 			count.css('visibility', val<=min?'hidden':'visible');
