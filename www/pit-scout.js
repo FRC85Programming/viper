@@ -580,7 +580,7 @@ addI18n({
 	},
 })
 
-$("climb-blue.png").click(function(e){
+$("image.climb-blue").click(function(e){
 		var x = Math.round(1000 * (e.pageX - this.offsetLeft) / this.width)/10,
 		y = Math.round(1000 * (e.pageY - this.offsetTop) / this.height)/10,
 		inp = $(this).parent().find('input'),
