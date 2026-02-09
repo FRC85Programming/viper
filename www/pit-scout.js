@@ -579,3 +579,13 @@ addI18n({
 		fr:'Inconnu',
 	},
 })
+
+$("climb-blue.png").click(function(e){
+		var x = Math.round(1000 * (e.pageX - this.offsetLeft) / this.width)/10,
+		y = Math.round(1000 * (e.pageY - this.offsetTop) / this.height)/10,
+		inp = $(this).parent().find('input'),
+		name = inp.attr('name')
+		$(`.${name}`).remove()
+		$('body').append($('<img class=location-pointer src=/pointer.png style="position:absolute;width:3em">').css('top',e.pageY).css('left',e.pageX).addClass(name))
+		inputChanged(inp.val(val), `${x}%x${y}%`)
+	})
