@@ -802,6 +802,7 @@ function countHandler(e){
 	input = findInputInEl(parent),
 	src = count.attr('src'),
 	dataValue = count.attr('data-value'),
+	dataInput = count.attr('data-input'),
 	val=parseInt(input.val())||0,
 	max=parseInt(input.attr('max'))||999999,
 	min=parseInt(input.attr('min'))||0
@@ -810,7 +811,8 @@ function countHandler(e){
 		lastClickTimeOnCounter=e.timeStamp
 		var toAdd=5,
 		oldVal=val
-	if(/fuul/.test(src))toAdd=10
+		//console.log('src: ' + src)
+	if(/ten/.test(dataInput))toAdd=10
 
 	if(dataValue)toAdd=parseInt(dataValue)||0
 		val+=toAdd
