@@ -217,7 +217,7 @@ addI18n({
 		he:'צופית סובייקטיבית ב-_EVENTNAME_',
 		tr:'_EVENTNAME_ adresindeki Öznel Scout',
 	},
-	auto_fuel_score:{
+	auto_fuel_scoreone:{
 		en:'Press to add fuel to score',
 
 	},
@@ -817,6 +817,7 @@ function countHandler(e){
 		oldVal=val
 		//console.log('src: ' + src)
 	if(/ten/.test(dataInput))toAdd=10
+	if(/one/.test(dataInput))toAdd=1
 
 	if(dataValue)toAdd=parseInt(dataValue)||0
 		val+=toAdd
@@ -835,42 +836,7 @@ function countHandler(e){
 	}
 	return false
 }
-var lastClickTimeOnCounter = 0
-function countHandler(e){
-	var clicked = e&&e.hasOwnProperty('type')&&e.type==='click'&&Math.abs(lastClickTimeOnCounter-e.timeStamp)>100,
-	parent = findParentFromButton($(this)),
-	count = $(this).is('.count')?$(this):$(this).find('.count').first(),
-	input = findInputInEl(parent),
-	src = count.attr('src'),
-	dataValue = count.attr('data-value'),
-	dataInput = count.attr('data-input'),
-	val=parseInt(input.val())||0,
-	max=parseInt(input.attr('max'))||999999,
-	min=parseInt(input.attr('min'))||0
-	if (parent.find('.disabledOverlay').is(':visible')) return
-	if (clicked){
-		lastClickTimeOnCounter=e.timeStamp
-		var toAdd=1,
-		oldVal=val
-		//console.log('src: ' + src)
-		
-	if(dataValue)toAdd=parseInt(dataValue)||0
-		val+=toAdd
-		val = val<min?min:val
-		val = val>max?max:val
-		var change = val-oldVal
-		animateChangeFloater(change, e)
-		inputChanged(input.val(val),change)
-		parent.find('.count').each(countHandler)
-	} else {
-		if(/down/.test(count.attr('src'))){
-			count.css('visibility', val<=min?'hidden':'visible');
-		} else {
-			count.css('visibility', val>=max?'hidden':'visible');
-		}
-	}
-	return false
-}
+
 function animateChangeFloater(change, relative){
 	if (change!=0){
 		var x = relative.pageX?relative.pageX:(relative.offset().left+relative.width()/2),
