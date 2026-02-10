@@ -186,13 +186,13 @@ addI18n({
 	robot_climb_none:{
 		en:'None',
 	},
-	robot_reverseclimb_question:{
-		en:'Can your robot reverse climb?',
+	robot_autoclimb_question:{
+		en:'Can your robot climb in auto?',
 	},
-	robot_reverseclimb_yes:{
+	robot_autoclimb_yes:{
 		en:'Yes',
 	},
-	robot_reverseclimb_no:{
+	robot_autoclimb_no:{
 		en:'No',
 	},
 	robot_drivetrain_question:{
