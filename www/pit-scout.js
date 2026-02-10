@@ -312,14 +312,14 @@ addI18n({
 		fr:'Autre/Personnalisé',
 		zh_tw:'其他/客製化',
 	},
-	drivetrain_motor_count_question:{
+	/*drivetrain_motor_count_question:{
 		en:'How many motors power your drive train?',
 		pt:'Quantos motores alimentam o sistema de transmissão?',
 		tr:'Tahrik organına kaç motor güç veriyor?',
 		he:'כמה מנועים מפעילים את מערכת ההינע?',
 		fr:'Combien de moteurs alimentent la transmission ?',
 		zh_tw:'有多少個電動馬達為傳動系統提供動力？',
-	},
+	}, */
 	drivetrain_motor_type_question:{
 		en:'What type of motors power your drivetrain?',
 		pt:'Que tipo de motor alimenta o sistema de transmissão?',

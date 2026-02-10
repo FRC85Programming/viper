@@ -132,11 +132,10 @@
 			<label><input type=radio name=motorl3 value=l3><span data-i18n=robot_motorl_third>Third</span></label>
 			<label><input type=radio name=motorl4 value=l4><span data-i18n=robot_motorl_fourth>Fourth</span></label>
 		</p>
-		<p>
+	<!--	<p>
 			<span data-i18n=drivetrain_motor_count_question></span><br>
 			<input type=number min=1 step=1 name=motor_count>
-		</p>
-		<p>
+		</p> -->
 		<!--	<span data-i18n=drivetrain_motor_type_question></span><br>
 			<label><input type=radio name=motors value=neo><span data-i18n=motor_type_neo></span></label>
 			<label><input type=radio name=motors value=falcon_500><span data-i18n=motor_type_f500></span></label>
@@ -149,7 +148,8 @@
 			<input type=number min=4 step=1 name=wheel_count value=4>
 		</p>
 		<p>
-			<span data-i18n=wheel_type_question></span><br>
+			<span data-i18n=wheel_type_question></span><br><div class=full><input type=text size=50 name=scouter data-i18n-placeholder=wheel_type_question_placeholder></div>
+	<p><textarea name=notes  data-i18n-placeholder=wheel_type_question_placeholder></textarea></p>
 		</p>
 		<p>
 			<span data-i18n=vision_question></span><br>
