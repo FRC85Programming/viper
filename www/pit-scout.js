@@ -479,6 +479,9 @@ addI18n({
 		fr:'Auto',
 		zh_tw:'汽車',
 	},
+		wheel_type_question_placeholder:{
+		en:'Type what kind of wheel here',
+	},
 	vision_collecting:{
 		en:'Collecting',
 		pt:'Coletar',
