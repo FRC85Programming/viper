@@ -294,6 +294,21 @@ addI18n({
 		he:'בקשת סקירה של נתונים אלה',
 		tr:'Bu verilerin incelenmesini isteyin',
 	},
+	gameplay_questiontwo:{
+		en:'How accurate was the robot?',
+	},
+	very_accurate:{
+		en:'Very Accurate',
+	},
+	somewhat_accurate:{
+	en:'Somewhat Accurate',
+	},
+	na_accurate:{
+	en:'N/A',
+	},
+	not_accurate:{
+		en:'Not Accurate',
+	},
 	scouter_name_question:{
 		en:'Name:',
 		pt:'Nome:',
@@ -775,7 +790,7 @@ function countHandler(e){
 	input = findInputInEl(parent),
 	src = count.attr('src'),
 	dataValue = count.attr('data-value'),
-	dataInput = count.attr('data-input'),
+	dataInput = count.attr('data-input')
 	val=parseInt(input.val())||0,
 	max=parseInt(input.attr('max'))||999999,
 	min=parseInt(input.attr('min'))||0
