@@ -308,7 +308,7 @@ addI18n({
 	},
 	not_accurate:{
 		en:'Not Accurate',
-	},
+	}, 
 	scouter_name_question:{
 		en:'Name:',
 		pt:'Nome:',
