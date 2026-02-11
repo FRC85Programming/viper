@@ -294,7 +294,7 @@ addI18n({
 		he:'בקשת סקירה של נתונים אלה',
 		tr:'Bu verilerin incelenmesini isteyin',
 	},
-	gameplay_questiontwo:{
+/*	gameplay_questiontwo:{
 		en:'How accurate was the robot?',
 	},
 	very_accurate:{
@@ -308,7 +308,7 @@ addI18n({
 	},
 	not_accurate:{
 		en:'Not Accurate',
-	}, 
+	}, */
 	scouter_name_question:{
 		en:'Name:',
 		pt:'Nome:',
