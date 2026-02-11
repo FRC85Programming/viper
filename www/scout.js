@@ -794,7 +794,6 @@ function countHandler(e){
 	src = count.attr('src'),
 	dataValue = count.attr('data-value'),
 	dataInput = count.attr('data-input'),
-	dataInput = count.attr('data-input')
 	val=parseInt(input.val())||0,
 	max=parseInt(input.attr('max'))||999999,
 	min=parseInt(input.attr('min'))||0
