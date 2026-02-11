@@ -294,6 +294,7 @@ addI18n({
 		he:'בקשת סקירה של נתונים אלה',
 		tr:'Bu verilerin incelenmesini isteyin',
 	},
+<<<<<<< HEAD
 /*	gameplay_questiontwo:{
 		en:'How accurate was the robot?',
 	},
@@ -309,6 +310,8 @@ addI18n({
 	not_accurate:{
 		en:'Not Accurate',
 	}, */
+=======
+>>>>>>> parent of dcd6eea (adsfsdf)
 	scouter_name_question:{
 		en:'Name:',
 		pt:'Nome:',
@@ -790,6 +793,7 @@ function countHandler(e){
 	input = findInputInEl(parent),
 	src = count.attr('src'),
 	dataValue = count.attr('data-value'),
+	dataInput = count.attr('data-input'),
 	dataInput = count.attr('data-input')
 	val=parseInt(input.val())||0,
 	max=parseInt(input.attr('max'))||999999,
