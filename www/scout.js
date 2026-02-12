@@ -264,16 +264,16 @@ addI18n({
 	gameplay_questiontwo:{
 		en:'How accurate was the robot?',
 	},
-	very_accurate_button:{
+	very_button:{
 		en:'Very Accurate',
 	},
-	somewhat_accurate_button:{
+	somewhat_button:{
 	en:'Somewhat Accurate',
 	},
-	na_accurate_button:{
+	na_button:{
 	en:'N/A',
 	},
-	not_accurate_button:{
+	not_button:{
 		en:'Not Accurate',
 	},
 
