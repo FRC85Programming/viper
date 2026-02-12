@@ -290,6 +290,18 @@ addI18n({
 		pt:'Equipe do Scouter, Primeiro nome, Inicial do último, Ex.: 1234 Pat Q',
 
 	},
+	moving_score_question:  {
+		en: "What does the robot do while scoring?",
+	},
+	move_shoot_button: {
+		en: "Shoots while moving",
+	},
+	stationary_shoot_button: {
+		en: "Shoots while stationary",
+	},
+	no_shoot_button: {
+		en: "Doesn't shoot",
+	},
 	comments_question:{
 		en:'Comments:',
 		pt:'Comentários:',
