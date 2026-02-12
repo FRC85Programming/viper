@@ -261,7 +261,7 @@ addI18n({
 
 	},
 
-/*	gameplay_questiontwo:{
+	gameplay_questiontwo:{
 		en:'How accurate was the robot?',
 	},
 	very_accurate:{
@@ -275,7 +275,7 @@ addI18n({
 	},
 	not_accurate:{
 		en:'Not Accurate',
-	}, */
+	}, 
 
 	scouter_name_question:{
 		en:'Name:',
