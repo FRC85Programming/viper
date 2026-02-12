@@ -52,10 +52,6 @@ addI18n({
 	red:{
 		en:'red',
 		pt:'vermelho',
-		fr:'rouge',
-		zh_tw:'紅色的',
-		he:'אָדוֹם',
-		tr:'kırmızı',
 	},
 	blue:{
 		en:'blue',
@@ -68,10 +64,6 @@ addI18n({
 	team_correction_button:{
 		en:'Team # Correction',
 		pt:'Correção do número da equipe',
-		fr:'Correction du numéro d\'équipe',
-		zh_tw:'團隊 # 修正',
-		he:'צוות # תיקון',
-		tr:'Takım # Düzeltme',
 	},
 	choose_match_button:{
 		en:'Choose Match',
@@ -84,10 +76,6 @@ addI18n({
 	rotate_field_button:{
 		en:'Rotate Field',
 		pt:'Girar campo',
-		fr:'Pivoter le terrain',
-		zh_tw:'旋轉字段',
-		he:'סובב שדה',
-		tr:'Alanı Döndür',
 	},
 	change_robot_button:{
 		en:'Change Robot',
@@ -125,9 +113,7 @@ addI18n({
 		en:'End Game »',
 		pt:'Fim do jogo »',
 		fr:'Fin de partie »',
-		zh_tw:'結束遊戲 »',
-		he:'משחק סיום »',
-		tr:'Oyunu Sonlandır »',
+
 	},
 	scouting_title:{
 		en:'_TEAMNUM_ _POS_ _MATCHSHORT_ _EVENTNAME_',
@@ -141,9 +127,7 @@ addI18n({
 		en:'_EVENTNAME_, _POS_, _MATCHNAME_, Team _TEAMNUM_',
 		pt:'_EVENTNAME_, _POS_, _MATCHNAME_, Equipe _TEAMNUM_',
 		fr:'_EVENTNAME_, _POS_, _MATCHNAME_, Équipe _TEAMNUM_',
-		zh_tw:'_EVENTNAME_、_POS_、_MATCHNAME_、隊伍 _TEAMNUM_',
-		he:'_EVENTNAME_, _POS_, _MATCHNAME_, צוות _TEAMNUM_',
-		tr:'_EVENTNAME_, _POS_, _MATCHNAME_, Takım _TEAMNUM_',
+
 	},
 	pit_scouting_title:{
 		en:'_TEAMNUM_ Pit Scouting at _EVENTNAME_',
@@ -188,10 +172,7 @@ addI18n({
 	team_correction_heading:{
 		en:'_MATCHNAME_ _POS_ Team Number Correction',
 		pt:'_MATCHNAME_ _POS_ Correção do número da equipe',
-		fr:'_MATCHNAME_ _POS_ Correction du numéro d\'équipe',
-		zh_tw:'_MATCHNAME_ _POS_ 隊伍號碼修正',
-		he:'_MATCHNAME_ _POS_ תיקון מספר צוות',
-		tr:'_MATCHNAME_ _POS_ Takım Numarası Düzeltme',
+
 	},
 	pit_scouting_select_team_title:{
 		en:'Pit Scout at _EVENTNAME_',
@@ -207,7 +188,7 @@ addI18n({
 		fr:'Sélectionner une équipe à repérer',
 		zh_tw:'選擇一隊進行坑探',
 		he:'בחר צוות ל-Pit Scout',
-		tr:'Bir Takım Seç Pit Scout\'a',
+		tr:'Bir Takm Seç Pit Scout\'a',
 	},
 	subjective_scouting_select_team_title:{
 		en:'Subjective Scout at _EVENTNAME_',
@@ -223,11 +204,6 @@ addI18n({
 	},
 	subjective_scouting_select_team_heading:{
 		en:'Select a Team to Subjectively Scout',
-		pt:'Selecione uma equipe para fazer o Scout subjetivo',
-		fr:'Sélectionner une équipe Scouting subjectif',
-		zh_tw:'選擇一支球隊進行主觀考察',
-		he:'בחר צוות לצפייה סובייקטיבית',
-		tr:'Öznel Olarak Scout Yapmak İçin Bir Takım Seçin',
 	},
 	event_not_found:{
 		en:'Event Not Found',
@@ -235,7 +211,7 @@ addI18n({
 		fr:'Événement introuvable',
 		zh_tw:'未找到事件',
 		he:'האירוע לא נמצא',
-		tr:'Etkinlik Bulunamadı',
+		tr:'Etkinlik Bulunamad',
 	},
 	confirm_save_data_question:{
 		en:'Do you want to save your data?',
@@ -248,10 +224,6 @@ addI18n({
 	done_scouting:{
 		en:'Data saved and done. That was the last match!',
 		pt:'Dados salvos e prontos. Essa foi a última partida!',
-		fr:'Données sauvegardées et terminées. C\'était le dernier match !',
-		zh_tw:'資料已儲存並完成。那是最後一場比賽！',
-		he:'הנתונים נשמרו ובוצעו. זה היה המשחק האחרון!',
-		tr:'Veriler kaydedildi ve tamamlandı. Bu son maçtı!',
 	},
 	undo_button:{
 		en:'Undo',
@@ -273,28 +245,16 @@ addI18n({
 	scouter_header:{
 		en:'Scouter Info',
 		pt:'Informações do Scouter',
-		fr:'Informations sur le recruteur',
-		zh_tw:'球探資訊',
-		he:'מידע על צופי',
-		tr:'Scouter Bilgileri',
+
 	},
 	review_requested_legend:{
 		en:'Fall asleep? Watch the wrong robot? Press the wrong button?',
-		pt:'Adormeceu? Assistiu ao robô errado? Pressionou o botão errado?',
-		fr:'Vous vous êtes endormi ? Vous avez regardé le mauvais robot ? Vous avez appuyé sur le mauvais bouton ?',
-		zh_tw:'睡著了？看錯機器人？按錯按鈕了？',
-		he:'נרדמת? צפה ברובוט הלא נכון? לחץ על הכפתור הלא נכון?',
-		tr:'Uyudun mu? Yanlış robotu mu izliyorsun? Yanlış düğmeye mi bastınız?',
 	},
 	review_requested_button:{
 		en:'Request data review',
-		pt:'Solicitar revisão destes dados',
-		fr:'Demander la révision de ces données',
-		zh_tw:'請求審查此數據',
-		he:'בקשת סקירה של נתונים אלה',
-		tr:'Bu verilerin incelenmesini isteyin',
+
 	},
-<<<<<<< HEAD
+
 /*	gameplay_questiontwo:{
 		en:'How accurate was the robot?',
 	},
@@ -310,8 +270,7 @@ addI18n({
 	not_accurate:{
 		en:'Not Accurate',
 	}, */
-=======
->>>>>>> parent of dcd6eea (adsfsdf)
+
 	scouter_name_question:{
 		en:'Name:',
 		pt:'Nome:',
@@ -323,10 +282,7 @@ addI18n({
 	scouter_name_placeholder:{
 		en:'Scouter Team, First name, Last initial, Eg. 1234 Pat Q',
 		pt:'Equipe do Scouter, Primeiro nome, Inicial do último, Ex.: 1234 Pat Q',
-		fr:'Équipe du recruteur, Prénom, Initiale du nom, ex.: 1234 Pat Q',
-		zh_tw:'童子軍隊伍，名字，姓氏首字母，例如。 1234 還',
-		he:'צוות צופים, שם פרטי, ראשי תיבות אחרון, למשל. 1234 Pat Q',
-		tr:'Scouter Takımı, Adı, Soyadı, Örn. 1234 Pat Q',
+
 	},
 	comments_question:{
 		en:'Comments:',
@@ -378,11 +334,7 @@ addI18n({
 	},
 	back_team_select_button:{
 		en:'Back to Team Selection',
-		pt:'Voltar para Seleção de equipe',
-		tr:'Takım Seçimine Geri Dön',
-		he:'חזרה לבחירת צוות',
-		fr:'Retour à la sélection d\'équipe',
-		zh_tw:'返回球隊選擇',
+
 	},
 })
 
