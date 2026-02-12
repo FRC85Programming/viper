@@ -256,6 +256,15 @@ addI18n({
 	review_requested_legend:{
 		en:'Fall asleep? Watch the wrong robot? Press the wrong button?',
 	},
+	auto_climb_question: {
+		en: "Does the robot climb in auto?",
+	},
+	climbs_button: {
+		en: "Climbs",
+	},
+	no_climb_button: {
+		en: "Doesn't climb",
+	},
 	review_requested_button:{
 		en:'Request data review',
 
