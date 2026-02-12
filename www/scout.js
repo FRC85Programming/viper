@@ -286,7 +286,7 @@ addI18n({
 		tr:'Ad:',
 	},
 	scouter_name_placeholder:{
-		en:'Scouter Team, First name, Last initial, Eg. 1234 Pat Q',
+		en:'Scouter First and Last Name',
 		pt:'Equipe do Scouter, Primeiro nome, Inicial do último, Ex.: 1234 Pat Q',
 
 	},
