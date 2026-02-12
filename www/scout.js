@@ -247,6 +247,12 @@ addI18n({
 		pt:'Informações do Scouter',
 
 	},
+	fuel_five_add: {
+		en: "Plus 5 Fuel",
+	},
+	fuel_ten_add: {
+		en: "Plus 10 Fuel",
+	},
 	review_requested_legend:{
 		en:'Fall asleep? Watch the wrong robot? Press the wrong button?',
 	},
