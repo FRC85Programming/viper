@@ -269,7 +269,18 @@ addI18n({
 		en:'Request data review',
 
 	},
-
+	shift_question: {
+		en: "What shift did the robot have?",
+	},
+	first_shift: {
+		en: "First",
+	},
+	second_shift: {
+		en: "Second",
+	},
+	no_clue: {
+		en: "I don't know",
+	},
 	gameplay_questiontwo:{
 		en:'How accurate was the robot?',
 	},
