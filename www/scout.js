@@ -284,6 +284,12 @@ addI18n({
 	auto_fuel_title: {
 		en: "Plus 1 Fuel",
 	},
+	tower_zone_middle: {
+		en: "Middle",
+	},
+	tower_zone_side: {
+		en: "Side",
+	},
 	scouter_name_question:{
 		scouter_name: 'Name',
 		vincent: 'Vincent',
