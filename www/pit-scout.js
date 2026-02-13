@@ -76,6 +76,9 @@ addI18n({
 		robo_climb:{
 		en:'Draw your robot\'s climb position on the tower',
 	},
+	climb_position: {
+		en: "robot climb area",
+	},
 	auto_climb_next_button:{
 		en:'Next climb area',
 	},
