@@ -281,6 +281,9 @@ addI18n({
 	no_clue: {
 		en: "I don't know",
 	},
+	auto_fuel_title: {
+		en: "Plus 1 Fuel",
+	},
 	scouter_name_question:{
 		scouter_name: 'Name',
 		vincent: 'Vincent',
