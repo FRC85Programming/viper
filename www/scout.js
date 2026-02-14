@@ -126,6 +126,9 @@ addI18n({
 	pre_load:{
 		en: "Pre-Loaded Fuel",
 	},
+	feeder_bot_button: {
+		en: "Was a feeder bot",
+	},
 	scouting_heading:{
 		en:'_EVENTNAME_, _POS_, _MATCHNAME_, Team _TEAMNUM_',
 		pt:'_EVENTNAME_, _POS_, _MATCHNAME_, Equipe _TEAMNUM_',
