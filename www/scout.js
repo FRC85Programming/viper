@@ -169,6 +169,9 @@ addI18n({
 		he:'_EVENTNAME_, _POS_, _MATCHNAME_,',
 		tr:'_EVENTNAME_, _POS_, _MATCHNAME_,',
 	},
+	tower_zone_fourth_button:{
+		en: "Didn't climb",
+	},
 	team_correction_heading:{
 		en:'_MATCHNAME_ _POS_ Team Number Correction',
 		pt:'_MATCHNAME_ _POS_ Correção do número da equipe',
