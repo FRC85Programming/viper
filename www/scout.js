@@ -853,6 +853,7 @@ function countHandler(e){
 		//console.log('src: ' + src)
 	if(/ten/.test(dataInput))toAdd=10
 	if(/one/.test(dataInput))toAdd=1
+	if(/eight/.test(dataInput))toAdd=8
 
 	if(dataValue)toAdd=parseInt(dataValue)||0
 		val+=toAdd
