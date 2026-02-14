@@ -172,6 +172,9 @@ addI18n({
 	tower_zone_fourth_button:{
 		en: "Didn't climb",
 	},
+	tower_zone_question:{
+		en: "Where did _TEAMNUM_ climb?",
+	},
 	team_correction_heading:{
 		en:'_MATCHNAME_ _POS_ Team Number Correction',
 		pt:'_MATCHNAME_ _POS_ Correção do número da equipe',
