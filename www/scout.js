@@ -205,6 +205,9 @@ addI18n({
 		en:'Press to add fuel to score',
 
 	},
+	tele_fuel_scoreone:{
+		en: "Press to add one fuel"
+	},
 	subjective_scouting_select_team_heading:{
 		en:'Select a Team to Subjectively Scout',
 	},
