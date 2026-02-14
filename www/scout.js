@@ -205,7 +205,7 @@ addI18n({
 		en:'Press to add fuel to score',
 
 	},
-	fuel_add_one:{
+	fuel_one_add:{
 		en: "Press to add one fuel"
 	},
 	subjective_scouting_select_team_heading:{
