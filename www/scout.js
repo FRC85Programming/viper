@@ -123,6 +123,9 @@ addI18n({
 		he:'_TEAMNUM_ _POS_ _MATCHSHORT_ _EVENTNAME_',
 		tr:'_TEAMNUM_ _POS_ _MATCHSHORT_ _EVENTNAME_',
 	},
+	pre_load:{
+		en: "Pre-Loaded Fuel",
+	},
 	scouting_heading:{
 		en:'_EVENTNAME_, _POS_, _MATCHNAME_, Team _TEAMNUM_',
 		pt:'_EVENTNAME_, _POS_, _MATCHNAME_, Equipe _TEAMNUM_',
