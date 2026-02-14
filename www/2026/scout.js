@@ -29,7 +29,7 @@ addI18n({
 		pt:'Equipe _TEAMNUM_',
 	},
 	tower_zone_question:{
-		en:'Where did _TEAMNUM_\'s robot climb? (if  not leave blank)',
+		en:'Where did _TEAMNUM_\'s robot climb?',
 	},
 	tower_zone_first_button:{
 		en:'First Level',
