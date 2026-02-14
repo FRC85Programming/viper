@@ -263,7 +263,7 @@ addI18n({
 		en: "Plus 5 Fuel ^",
 	},
 	fuel_ten_add: {
-		en: "Plus 10 Fuel ⌄",
+		en: "Add fuel in order: 1, 5. 10",
 	},
 	review_requested_legend:{
 		en:'Fall asleep? Watch the wrong robot? Press the wrong button?',
