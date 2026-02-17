@@ -263,7 +263,7 @@ addI18n({
 		en: "Plus 5 Fuel ^",
 	},
 	fuel_ten_add: {
-		en: "Add fuel in order: 1, 5. 10",
+		en: "Add fuel in order: 1, 5, 10",
 	},
 	review_requested_legend:{
 		en:'Fall asleep? Watch the wrong robot? Press the wrong button?',
@@ -294,7 +294,7 @@ addI18n({
 		en: "I don't know",
 	},
 	auto_fuel_title: {
-		en: "Plus 1 Fuel",
+		en: "Add fuel in order: 1, 5, 8",
 	},
 	tower_zone_middle: {
 		en: "Middle",
