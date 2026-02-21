@@ -1,28 +1,51 @@
 #comments,fieldset{max-width:30em;margin:0 auto;text-align:start}
-.scouter{text-align:end}
+.scouter{text-align:end;color:#8b949e;font-size:0.9em}
 .scouter::before{content:"-- "}
 .chart canvas{height:20em}
 .graph{display:inline-block;max-width:100%}
 .chart,.heatmap{padding:0 1em;display:inline-block}
-.comments{white-space:pre-wrap}
+.comments{white-space:pre-wrap;background:var(--card-bg-color);border:1px solid var(--main-border-color);border-radius:6px;padding:0.5em;margin:0.5em 0}
 .imagePreview img{height:320px}
 .imagePreview{display:inline}
 #fullPhoto{object-fit:contain;background:#0000;border:none;position:fixed;z-index:9999;display:none}
 #stats th.match{writing-mode:vertical-rl;text-orientation:upright}
-#stats{font-size:12px;margin:1em auto;border-collapse:collapse}
+#stats{
+  font-size:12px;
+  margin:1em auto;
+  border-collapse:collapse;
+  border:1px solid var(--main-border-color);
+  border-radius:6px;
+  overflow:hidden;
+}
 #stats h4{margin:1em 0 0.5em 0;font-size:200%;text-align:start;display:inline-block}
+#stats th{background:var(--section-bg-color);color:#8b949e;font-weight:600}
 #stats th,#stats td{border:1px solid var(--main-border-color)}
 #stats .borderless{border:none}
 #stats td.blank{border:none;height:2em}
 #teamButtons{column-width:4.5em}
-#teamButtons button {margin:0.2em;width:4em}
+#teamButtons button{margin:0.2em;width:4em}
 .chart canvas{min-height:30em;min-width:50em}
 @media (min-height:800px){
 	.chart canvas{max-height:50vh}
 }
-#topNav ul{display:inline-block}
-#topNav li{display:inline-block}
-#topNav li:not(:first-of-type)::before{content:" | "}
+#topNav{
+  background:var(--card-bg-color);
+  border:1px solid var(--main-border-color);
+  border-radius:8px;
+  display:inline-block;
+  padding:0.3em 0.5em;
+  margin:0.5em auto;
+}
+#topNav ul{display:inline-block;margin:0;padding:0;list-style:none}
+#topNav li{
+  display:inline-block;
+  margin:0 0.2em;
+  padding:0.2em 0.5em;
+  border-radius:4px;
+  transition:background 0.15s;
+}
+#topNav li:hover{background:var(--button-hover-bg-color)}
+#topNav li:not(:first-of-type)::before{content:"";margin:0}
 #topNav li[style*="display: none"]::before,
 #topNav li[style*="display:none"]::before{content:""}
-.unused{text-decoration:line-through}
+.unused{text-decoration:line-through;opacity:0.5}

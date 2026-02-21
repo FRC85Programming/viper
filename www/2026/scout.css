@@ -1,7 +1,7 @@
 #scouting{max-width:60em;margin:0 auto}
-#scouting>div>table{border-collapse:collapse;border:1px solid var(--main-border-color);margin-bottom:3vmin;width:100%}
-#scouting>div>table>tbody>tr>th{border:1px solid var(--main-border-color);font-size:200%}
-#scouting>div>table>tbody>tr>td{border:1px solid var(--main-border-color);overflow:hidden;text-align:center;padding:.4em;font-weight:bold; margin-bottom:0;vertical-align:top;vertical-align:middle}
+#scouting>div>table{border-collapse:collapse;border:1px solid var(--main-border-color);border-radius:8px;margin-bottom:3vmin;width:100%;overflow:hidden}
+#scouting>div>table>tbody>tr>th{border:1px solid var(--main-border-color);font-size:200%;background:var(--section-bg-color)}
+#scouting>div>table>tbody>tr>td{border:1px solid var(--main-border-color);overflow:hidden;text-align:center;padding:.4em;font-weight:bold;margin-bottom:0;vertical-align:top;vertical-align:middle}
 #scouting .num {display:block;font-size:125%;margin:0 auto;font-weight:bold}
 
 .orientLeft .bigimg, body.leftField.redTeam #start-area,body.rightField.blueTeam #start-area,body.leftField.redTeam .orient-rotate,body.rightField.blueTeam .orient-rotate,body.leftField.redTeam .orient-rotate > *,body.rightField.blueTeam .orient-rotate > * {transform:rotate(180deg)}
@@ -18,7 +18,7 @@
 @media (max-height:400px){.scout-locations{max-height:60vh}}
 @media (min-height:401px) and (max-height:600px){.scout-locations{max-height:70vh}}
 @media (min-height:601px) and (max-height:800px){.scout-locations{max-height:77vh}}
-.scout-locations button{background-color:#0008;border-color:#0008}
+.scout-locations button{background-color:#00000099;border-color:#00000099;color:#fff}
 .redTeam .scout-locations{background:url(scout-red.png) no-repeat center center / 100% 100%}
 .blueTeam .scout-locations{background:url(scout-blue.png) no-repeat center center / 100% 100%}
 .scout-locations > button,.scout-locations > label{height:14%;position:absolute;min-width:0;aspect-ratio:1;display:inline-block}
@@ -36,13 +36,13 @@ html{padding:0}
 #nextButtons{margin-bottom:50vh}
 #select-bot button{font-size:100%}
 
-.algae{background:#99ddd5;font-size:80%}
-.coral{background:white;font-size:80%}
-.collection{color:rgb(5, 58, 0)}
-.placement{color:rgb(0, 23, 69)}
+.algae{background:#1a3d3a;color:#99ddd5;font-size:80%;border-color:#2a5a55}
+.coral{background:#2d2d2d;color:#e6edf3;font-size:80%;border-color:#444c56}
+.collection{color:#3fb950}
+.placement{color:#58a6ff}
 
 .prematch td,.auto td,.teleop td{position:relative}
-.disabledOverlay {position:absolute;display:inline-block;width:100%;height:100%;background:#0006;top:0;left:0}
+.disabledOverlay {position:absolute;display:inline-block;width:100%;height:100%;background:#0d111799;top:0;left:0;backdrop-filter:blur(1px)}
 
 @media (orientation: landscape) and (max-height:500px){
 	#scouting > div > table.field-table > tbody > tr {display:table-cell}

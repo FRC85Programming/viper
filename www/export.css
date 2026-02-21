@@ -1,8 +1,31 @@
 form,.siteInput{position:relative}
-.hostOptions{margin:0;list-style-type:none;padding:0;background:var(--main-bg-color);display:none;position:absolute;left:0;right:0}
-.hostOptions li{border:1px solid var(--main-border-color);padding:0.2em;}
-.siteInput{margin:0.5em 0;border:1px solid var(--main-border-color);width:100%}
+.hostOptions{
+  margin:0;list-style-type:none;padding:0;
+  background:var(--card-bg-color);
+  border:1px solid var(--main-border-color);
+  border-radius:0 0 6px 6px;
+  box-shadow:0 4px 12px #0006;
+  display:none;position:absolute;left:0;right:0;z-index:10;
+}
+.hostOptions li{
+  border-bottom:1px solid var(--main-border-color);
+  padding:0.35em 0.6em;
+  cursor:pointer;
+  transition:background 0.15s;
+}
+.hostOptions li:hover{background:var(--button-hover-bg-color)}
+.hostOptions li:last-child{border-bottom:none}
+.siteInput{
+  margin:0.5em 0;
+  border:1px solid var(--main-border-color);
+  border-radius:6px;
+  background:var(--card-bg-color);
+  color:var(--main-fg-color);
+  padding:0.3em 0.6em;
+  width:100%;
+}
+.siteInput:focus{outline:none;border-color:#58a6ff;box-shadow:0 0 0 3px #1f6feb33}
 .siteInput:focus+.hostOptions,.siteInput+.hostOptions:active{display:block}
-.side-by-side{max-width:20em;border:1px solid var(--main-fg-color);padding:0.5em}
+.side-by-side{max-width:20em;border:1px solid var(--main-border-color);border-radius:8px;padding:0.8em;background:var(--card-bg-color)}
 .loading-spinner{width:1em;animation:spin 4s linear infinite}
 @keyframes spin {100% {transform:rotate(360deg)}}
