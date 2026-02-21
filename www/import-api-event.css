@@ -1,2 +1,10 @@
-input[type="text"],textarea{width:40em;max-width:100%}
-textarea{height:20em}
+input[type="text"],textarea{
+  width:40em;max-width:100%;
+  background:var(--card-bg-color);
+  border:1px solid var(--main-border-color);
+  border-radius:6px;
+  color:var(--main-fg-color);
+  padding:0.3em 0.6em;
+}
+input[type="text"]:focus,textarea:focus{outline:none;border-color:#58a6ff;box-shadow:0 0 0 3px #1f6feb33}
+textarea{height:20em;padding:0.5em;resize:vertical}

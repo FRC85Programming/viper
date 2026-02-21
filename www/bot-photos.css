@@ -1,5 +1,6 @@
-.photoPreview {margin:1em;max-width:150px;max-height:150px;display:block}
+.photoPreview{margin:1em;max-width:150px;max-height:150px;display:block;border-radius:6px;border:1px solid var(--main-border-color)}
 #fullPhoto{object-fit:contain;background:#0000;border:none}
-#teams td,#teams th{padding:0.5em;border:1px solid gray}
-#teams{margin: 1em auto}
+#teams td,#teams th{padding:0.5em;border:1px solid var(--main-border-color)}
+#teams th{background:var(--section-bg-color);color:#8b949e;font-weight:600}
+#teams{margin:1em auto;border-collapse:collapse;border-radius:6px;overflow:hidden}
 #showInstructions{margin-bottom:1em}

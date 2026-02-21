@@ -1,1 +1,2 @@
-.borderTable td,.borderTable th{border: 3px var(--main-fg-color) ridge;padding:0.3em}
+.borderTable td,.borderTable th{border:2px solid var(--main-border-color);padding:0.3em;border-radius:2px}
+.borderTable th{background:var(--section-bg-color);color:#8b949e;font-weight:600}

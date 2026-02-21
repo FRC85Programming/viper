@@ -1,1 +1,1 @@
-#photo{width:100%;margin:1em 0;height:80vh;object-fit:contain}
+#photo{width:100%;margin:1em 0;height:80vh;object-fit:contain;border-radius:6px;border:1px solid var(--main-border-color)}
