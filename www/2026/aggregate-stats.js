@@ -2080,7 +2080,7 @@ var aggregateGraphs={
 		zh_tw:'計分元素週期',
 		data:["algae_place","coral_place"],
 	},
-	"Scoring Locations":{
+	/*"Scoring Locations":{
 		graph:"stacked",
 		tr:'Puanlama Yerleri',
 		pt:'Locais de pontuação',
@@ -2088,7 +2088,7 @@ var aggregateGraphs={
 		he:'ניקוד מיקומים',
 		zh_tw:'得分地點',
 		data:["algae_processor","algae_net","coral_level_1","coral_level_2","coral_level_3","coral_level_4"],
-	},
+	},*/
 	"Human Player":{
 		graph:"bar",
 		tr:'İnsan Oyuncu',
