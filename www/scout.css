@@ -66,8 +66,8 @@ img.robot-location{max-width:20em;border:1px solid var(--main-border-color)}
   transition:color 0.15s,border-color 0.15s,background 0.15s;
   color:#8b949e;
 }
-.tab:hover{color:var(--main-fg-color);background:var(--button-hover-bg-color)}
 .tab.active-tab,.tab.selected{border-bottom-color:var(--highlight-fg-color);color:var(--main-fg-color)}
+.tab:hover{color:var(--main-fg-color);background:var(--button-hover-bg-color)}
 .subheader{background:var(--section-bg-color);font-weight:600;letter-spacing:0.02em;color:#8b949e}
 .colorBar{height:.5em;margin:0em 0em .25em 0em;border-radius:5px}
 .colorBar.white{background-color:var(--main-fg-color)}
