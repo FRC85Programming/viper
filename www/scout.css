@@ -23,9 +23,9 @@ label:has(>input[type="radio"])>span,label:has(>input[type="checkbox"])>span,but
   font-weight:500;
   transition:background 0.15s,border-color 0.15s;
 }
-label:has(>input[type="radio"])>span:hover,label:has(>input[type="checkbox"])>span:hover{background:var(--button-hover-bg-color);border-color:#8b949e}
 label input:checked+span{background:var(--button-selected-bg-color);border-color:var(--button-selected-bg-color);color:#fff}
 label input:disabled+span{text-decoration:var(--button-disabled-decoration-color) wavy line-through;text-decoration-thickness:.2em;opacity:0.6}
+label:has(>input[type="radio"])>span:hover,label:has(>input[type="checkbox"])>span:hover{background:var(--button-hover-bg-color);border-color:#8b949e}
 input[type='checkbox'],input[type='radio'], .init-hide{display:none}
 .full{width:calc(100% - 1em);margin:.5em auto;max-width:50em;display:block}
 label,fieldset{display:inline-block}

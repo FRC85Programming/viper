@@ -41,8 +41,8 @@ button,input[type="submit"],select{
   cursor:pointer;
   transition:background 0.15s,border-color 0.15s;
 }
-/*button:hover,input[type="submit"]:hover{background:var(--button-hover-bg-color);border-color:#8b949e}
-select:hover{border-color:#8b949e}*/
+button:hover,input[type="submit"]:hover{background:var(--button-hover-bg-color);border-color:#8b949e}
+select:hover{border-color:#8b949e}
 body{text-align:center;overscroll-behavior:contain}
 table,ul{margin:0 auto;}
 ol,ul,p{text-align:start;max-width:40em;margin:0 auto}
@@ -95,7 +95,7 @@ h2{color:var(--main-fg-color);font-size:1.1em;letter-spacing:-0.01em}
 }
 .lightBoxFullContent{z-index:9999;position:fixed;background-color:var(--card-bg-color);border:1px solid var(--main-border-color);border-radius:8px;top:2em;left:2em;width:calc(100vw - 4em);height:calc(100vh - 4em);padding:0;display:none}
 [data-tooltip]::before{position:absolute;content:attr(data-tooltip);opacity:0}
-/*[data-tooltip]:hover::before{
+[data-tooltip]:hover::before{
   opacity:1;color:var(--main-fg-color);
   background:var(--card-bg-color);
   border:1px solid var(--main-border-color);
@@ -115,4 +115,4 @@ html[dir="rtl"] [data-tooltip]:hover::before{margin-right:3em}
 @media print {
 	html{background:white;color:black}
 	#hamburger{display:none}
-}*/
+}
