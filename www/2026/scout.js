@@ -6,27 +6,12 @@ addI18n({
 	},
 	opponent_processor_team:{
 		en:'What is the team number of the OPPONENT\'s human player at the processor?',
-		he:'מהו מספר הצוות של השחקן האנושי של OPPONENT במעבד?',
-		tr:'Rakibin insan oyuncusunun işlemcideki takım numarası nedir?',
-		zh_tw:'對手人類玩家在處理器處的隊號是多少？',
-		fr:'Quel est le numéro d\'équipe du joueur humain adverse au processeur ?',
-		pt:'Qual é o número da equipe do jogador humano do OPONENTE no processador?',
 	},
 	starting_position:{
 		en:'Click team _TEAMNUM_\'s starting position.',
-		he:'לחץ על עמדת ההתחלה של צוות _TEAMNUM_.',
-		tr:'Takım _TEAMNUM_\'un başlangıç ​​pozisyonuna tıklayın.',
-		zh_tw:'點選隊伍_TEAMNUM_的起始位置。',
-		fr:'Cliquez sur la position de départ de l\'équipe _TEAMNUM_.',
-		pt:'Clique na posição inicial da equipe _TEAMNUM_.',
 	},
 	pre_team_header:{
 		en:'Team _TEAMNUM_',
-		he:'צוות _TEAMNUM_',
-		tr:'Takım _TEAMNUM_',
-		zh_tw:'團隊 _TEAMNUM_',
-		fr:'Équipe _TEAMNUM_',
-		pt:'Equipe _TEAMNUM_',
 	},
 	tower_zone_question:{
 		en:'Where did _TEAMNUM_\'s robot climb?',
@@ -45,19 +30,9 @@ addI18n({
 	},
 	gameplay_heading:{
 		en:'Gameplay',
-		he:'משחקיות',
-		tr:'Oyun',
-		zh_tw:'遊戲玩法',
-		fr:'Gameplay',
-		pt:'Jogabilidade',
 	},
 	gameplay_question:{
 		en:'During the match, the robot:',
-		he:'במהלך המשחק, הרובוט:',
-		tr:'Maç sırasında robot:',
-		zh_tw:'比賽過程中，機器人：',
-		fr:'Pendant le match, le robot :',
-		pt:'Durante a partida, o robô:',
 	},
 	defense_button:{
 		en:'Played defense',
@@ -231,7 +206,7 @@ $(document).ready(function(){
 	}
 
 
-	
+
 	function hasScoringElement(el){
 		return sumValues($(`[data-element="${el}"]`))>0
 	}
