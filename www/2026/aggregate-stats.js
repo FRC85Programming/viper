@@ -341,7 +341,7 @@ var statInfo={
 		tr:'Robot Devre Dışı',
 		he:'רובוט מושבת',
 	},
-	auto_algae_drop:{
+	/*auto_algae_drop:{
 		name: "Algae Dropped in Auto",
 		type: "avg",
 		timeline_stamp: "X",
@@ -2011,7 +2011,7 @@ var statInfo={
 		tr:'Teleoperasyonda Yerleştirilen Maksimum Puanlama Elemanları',
 		he:'רכיבי ניקוד מקסימליים ממוקמים ב-Teleoperation',
 	},
-}
+}*/
 
 var teamGraphs={
 	"Game Stage":{
