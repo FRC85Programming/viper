@@ -25,7 +25,7 @@ label:has(>input[type="radio"])>span,label:has(>input[type="checkbox"])>span,but
 }
 label input:checked+span{background:var(--button-selected-bg-color);border-color:var(--button-selected-bg-color);color:#fff}
 label input:disabled+span{text-decoration:var(--button-disabled-decoration-color) wavy line-through;text-decoration-thickness:.2em;opacity:0.6}
-label:has(>input[type="radio"])>span:hover,label:has(>input[type="checkbox"])>span:hover{background:var(--button-hover-bg-color);border-color:#8b949e}
+/*label:has(>input[type="radio"])>span:hover,label:has(>input[type="checkbox"])>span:hover{background:var(--button-hover-bg-color);border-color:#8b949e}*/
 input[type='checkbox'],input[type='radio'], .init-hide{display:none}
 .full{width:calc(100% - 1em);margin:.5em auto;max-width:50em;display:block}
 label,fieldset{display:inline-block}
@@ -67,7 +67,7 @@ img.robot-location{max-width:20em;border:1px solid var(--main-border-color)}
   color:#8b949e;
 }
 .tab.active-tab,.tab.selected{border-bottom-color:var(--highlight-fg-color);color:var(--main-fg-color)}
-.tab:hover{color:var(--main-fg-color);background:var(--button-hover-bg-color)}
+/*.tab:hover{color:var(--main-fg-color);background:var(--button-hover-bg-color)}*/
 .subheader{background:var(--section-bg-color);font-weight:600;letter-spacing:0.02em;color:#8b949e}
 .colorBar{height:.5em;margin:0em 0em .25em 0em;border-radius:5px}
 .colorBar.white{background-color:var(--main-fg-color)}
