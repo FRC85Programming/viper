@@ -230,12 +230,8 @@ $(document).ready(function(){
 		return(mul*val)
 	}
 
-	function hasCoral(){
-		return hasScoringElement('coral')
-	}
-	function hasAlgae(){
-		return hasScoringElement('algae')
-	}
+
+	
 	function hasScoringElement(el){
 		return sumValues($(`[data-element="${el}"]`))>0
 	}
