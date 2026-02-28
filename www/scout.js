@@ -857,6 +857,7 @@ function countHandler(e){
 	if(/one/.test(dataInput))toAdd=1
 
 	if(/eight/.test(dataInput))toAdd=8
+	if(/minusone/.test(dataInput))toAdd=-1
 
 	if(dataValue)toAdd=parseInt(dataValue)||0
 		val+=toAdd
