@@ -218,11 +218,11 @@ $(document).ready(function(){
 	}
 
 	function toggleScoringElements(){
-		var has={
+		/*var has={
 			coral:hasCoral(),
 			algae:hasAlgae(),
 			'opponent-algae':hasOpponentProcessorShots(),
-		}
+		}*/
 		$(`[data-element]`).each(function(){
 			var el=$(this).attr('data-element'),
 			show=(has[el]!=(!!$(this).attr('data-provides')))
@@ -253,36 +253,6 @@ $(document).ready(function(){
 		})
 		return chosen
 	}
-
-	/*$('#auto-paths').click(function(e){
-		var path = getAutoPath(startNewAutoPath),
-		val = path.val()
-		if (val) val += " "
-		val += getPercentCoordinates(e, this, true, false)
-		path.val(val)
-		drawAutos()
-		startNewAutoPath = false
-	})*/
-
-	/*$('#auto-path-next').click(function(){
-		startNewAutoPath = true
-		return false
-	})*/
-
-	/*$('#auto-path-undo').click(function(){
-		var path = getAutoPath()
-		path.val(path.val().replace(/ ?[^ ]+$/,""))
-		drawAutos()
-		return false
-	})*/
-
-	/*function drawAutos(){
-		var canvas = $('#auto-paths')[0]
-		sizeAndClearCanvas(canvas)
-		$('.auto-path').each(function(){
-			drawPath(canvas,$(this).attr('data-color'),$(this).val(),true,false)
-		})
-	}*/
 
 	function proceedToTeleBlink(){
 		var goTele=$('.auto.tab-content').is(':visible') && matchStartTime>0 && (new Date().getTime()-matchStartTime)>=AUTO_MS
