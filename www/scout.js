@@ -834,6 +834,7 @@ function findInputInEl(parent){
 var changeFloater = $('<div id=change-floater>')
 
 var lastClickTimeOnCounter = 0
+
 function countHandler(e){
 	var clicked = e&&e.hasOwnProperty('type')&&e.type==='click'&&Math.abs(lastClickTimeOnCounter-e.timeStamp)>100,
 	parent = findParentFromButton($(this)),
@@ -852,7 +853,9 @@ function countHandler(e){
 		oldVal=val
 		//console.log('src: ' + src)
 	if(/ten/.test(dataInput))toAdd=10
+
 	if(/one/.test(dataInput))toAdd=1
+
 	if(/eight/.test(dataInput))toAdd=8
 
 	if(dataValue)toAdd=parseInt(dataValue)||0
