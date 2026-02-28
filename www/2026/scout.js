@@ -254,9 +254,7 @@ $(document).ready(function(){
 		return chosen
 	}
 
-	/*var startNewAutoPath = false*/
-
-	$('#auto-paths').click(function(e){
+	/*$('#auto-paths').click(function(e){
 		var path = getAutoPath(startNewAutoPath),
 		val = path.val()
 		if (val) val += " "
@@ -264,27 +262,27 @@ $(document).ready(function(){
 		path.val(val)
 		drawAutos()
 		startNewAutoPath = false
-	})
+	})*/
 
-	$('#auto-path-next').click(function(){
+	/*$('#auto-path-next').click(function(){
 		startNewAutoPath = true
 		return false
-	})
+	})*/
 
-	$('#auto-path-undo').click(function(){
+	/*$('#auto-path-undo').click(function(){
 		var path = getAutoPath()
 		path.val(path.val().replace(/ ?[^ ]+$/,""))
 		drawAutos()
 		return false
-	})
+	})*/
 
-	function drawAutos(){
+	/*function drawAutos(){
 		var canvas = $('#auto-paths')[0]
 		sizeAndClearCanvas(canvas)
 		$('.auto-path').each(function(){
 			drawPath(canvas,$(this).attr('data-color'),$(this).val(),true,false)
 		})
-	}
+	}*/
 
 	function proceedToTeleBlink(){
 		var goTele=$('.auto.tab-content').is(':visible') && matchStartTime>0 && (new Date().getTime()-matchStartTime)>=AUTO_MS
