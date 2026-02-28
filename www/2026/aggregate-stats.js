@@ -649,11 +649,11 @@ var statInfo={
 	auto_fuel_scoreone:{
 		en:'Fuel Score in Auto',
 		type:'avg',
-		/*timeline_stamp: {
+		timeline_stamp: {
 			"1":"I",
 			"5":"V",
 			"10":"X",
-		},*/
+		},
 		timeline_fill:"#f1ce03",
 		timeline_outline:"#f1ce03",
 		fr:'Score de carburant en auto',
@@ -979,11 +979,11 @@ var statInfo={
 	tele_fuel_scoreone:{
 		en:'Fuel Score in Teleop',
 		type:'avg',
-		/*timeline_stamp: {
+		timeline_stamp: {
 			"1":"I",
 			"5":"V",
 			"10":"X",
-		},*/
+		},
 		timeline_fill:"#f1ce03",
 		timeline_outline:"#f1ce03",
 		fr:'Score de carburant en téléop',
