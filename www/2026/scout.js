@@ -254,7 +254,7 @@ $(document).ready(function(){
 		return chosen
 	}
 
-	var startNewAutoPath = false
+	/*var startNewAutoPath = false*/
 
 	$('#auto-paths').click(function(e){
 		var path = getAutoPath(startNewAutoPath),
