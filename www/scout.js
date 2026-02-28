@@ -852,13 +852,13 @@ function countHandler(e){
 		var toAdd=5,
 		oldVal=val
 		//console.log('src: ' + src)
-	if(/ten/.test(dataInput))toAdd=10
+	if(/Ten/.test(dataInput))toAdd=10
 
-	if(/one/.test(dataInput))toAdd=1
+	if(/One/.test(dataInput))toAdd=1
 
-	if(/eight/.test(dataInput))toAdd=8
+	if(/Eight/.test(dataInput))toAdd=8
 
-	if(/minusone/.test(dataInput))toAdd=-1
+	if(/MinusOne/.test(dataInput))toAdd=-1
 
 	if(dataValue)toAdd=parseInt(dataValue)||0
 		val+=toAdd
