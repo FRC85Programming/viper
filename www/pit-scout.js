@@ -587,6 +587,7 @@ addI18n({
 })
 
 function setRobotClimbPosition(e){
+		console.log("clicked")
 		var mi = document.getElementById('climb-area'),
 		fi = document.getElementById('robot-climb-position'),
 		ir = "none"==(""+getComputedStyle($('#climb-area')[0]).transform),
@@ -597,7 +598,7 @@ function setRobotClimbPosition(e){
 
 	$('#climb-area').click(setRobotClimbPosition)
 
-	$("image.climb-blue").click(function(e){
+	$("img.climb-blue").click(function(e){
 			var x = Math.round(1000 * (e.pageX - this.offsetLeft) / this.width)/10,
 			y = Math.round(1000 * (e.pageY - this.offsetTop) / this.height)/10,
 			inp = $(this).parent().find('input'),
