@@ -218,11 +218,6 @@ $(document).ready(function(){
 	}
 
 	function toggleScoringElements(){
-		/*var has={
-			coral:hasCoral(),
-			algae:hasAlgae(),
-			'opponent-algae':hasOpponentProcessorShots(),
-		}*/
 		$(`[data-element]`).each(function(){
 			var el=$(this).attr('data-element'),
 			show=(has[el]!=(!!$(this).attr('data-provides')))
