@@ -49,7 +49,7 @@ function aggregateStats(scout, aggregate, apiScores, subjective, pit, eventStats
 
     scout.autoFuelScore = scout.autoFuelScoreOne + scout.autoFuelScoreFive + scout.autoFuelScoreEight
 
-	scout.auto_fuel_output = scout.auto_fuel_score + scout.auto_fuel_neutral_alliance_pass
+	/*scout.auto_fuel_output = scout.auto_fuel_score + scout.auto_fuel_neutral_alliance_pass
 	scout.tele_fuel_output = scout.tele_fuel_score + scout.tele_fuel_alliance_dump + scout.tele_fuel_neutral_alliance_pass + scout.tele_fuel_opponent_alliance_pass + scout.tele_fuel_opponent_neutral_pass
 	scout.fuel_output = scout.auto_fuel_output + scout.tele_fuel_output
 
@@ -65,7 +65,7 @@ function aggregateStats(scout, aggregate, apiScores, subjective, pit, eventStats
 	scout.trench_depot_alliance_to_neutral = scout.auto_trench_depot_alliance_to_neutral + scout.tele_trench_depot_alliance_to_neutral
 	scout.trench_depot_neutral_to_alliance = scout.auto_trench_depot_neutral_to_alliance + scout.tele_trench_depot_neutral_to_alliance
 	scout.trench_outpost_alliance_to_neutral = scout.auto_trench_outpost_alliance_to_neutral + scout.tele_trench_outpost_alliance_to_neutral
-	scout.trench_outpost_neutral_to_alliance = scout.auto_trench_outpost_neutral_to_alliance + scout.tele_trench_outpost_neutral_to_alliance
+	scout.trench_outpost_neutral_to_alliance = scout.auto_trench_outpost_neutral_to_alliance + scout.tele_trench_outpost_neutral_to_alliance*/
 
 	scout.auto_tower_score = 0
 	if (scout.auto_climb_level === 1) scout.auto_tower_score = pointValues.tower_level_1_auto * 2
