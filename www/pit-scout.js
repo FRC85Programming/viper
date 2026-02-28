@@ -586,6 +586,17 @@ addI18n({
 	},
 })
 
+function setRobotClimbPosition(e){
+		var mi = document.getElementById('climb-area'),
+		fi = document.getElementById('robot-climb-position'),
+		ir = "none"==(""+getComputedStyle($('#climb-area')[0]).transform),
+		co = getPercentCoordinates(e,mi,ir,ir,true)
+		moveFloaterToPercentCoordinates(mi,ir,co,fi)
+		$('#auto-climb-input').val(co)
+	}
+
+	$('#climb-area').click(setRobotClimbPosition)
+
 	$("image.climb-blue").click(function(e){
 			var x = Math.round(1000 * (e.pageX - this.offsetLeft) / this.width)/10,
 			y = Math.round(1000 * (e.pageY - this.offsetTop) / this.height)/10,
