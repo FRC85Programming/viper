@@ -845,7 +845,7 @@ function countHandler(e){
 	dataInput = count.attr('data-input'),
 	val=parseInt(input.val())||0,
 	max=parseInt(input.attr('max'))||999999,
-	min=parseInt(input.attr('min'))||0
+	min=parseInt(input.attr('min'))||-999999
 	if (parent.find('.disabledOverlay').is(':visible')) return
 	if (clicked){
 		lastClickTimeOnCounter=e.timeStamp
@@ -857,7 +857,8 @@ function countHandler(e){
 	if(/one/.test(dataInput))toAdd=1
 
 	if(/eight/.test(dataInput))toAdd=8
-	if(/minusone/.test(dataInput))toAdd=1
+
+	if(/minusone/.test(dataInput))toAdd=-1
 
 	if(dataValue)toAdd=parseInt(dataValue)||0
 		val+=toAdd
