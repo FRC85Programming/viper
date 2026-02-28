@@ -233,8 +233,9 @@ function showStats(){
 		Chart.defaults.color=window.getComputedStyle(document.body).getPropertyValue('--main-fg-color')
 		var charts = {}
 		for (var i=0; i<sections.length; i++){
-			var section = sections[i],
-			statName = graphList[section].data[0],
+			var section = sections[i]
+			if (!graphList[section].data || !graphList[section].data.length) continue
+			var statName = graphList[section].data[0],
 			stat=statInfo[statName],
 			graphType=graphList[section].graph,
 			source=stat.source||"",
@@ -370,18 +371,24 @@ function showStats(){
 					highGood = (info.good||"high")=='high',
 					statName = (info.type=='avg'?"Average ":"") + translate(field) + (info.type=='%'?" %":""),
 					tr = $('<tr class=statRow>').append($('<th>').text(statName + " ").attr('data-field',field).click(reSort)),
-					best = (highGood?-1:1)*99999999
+					best = (highGood?-1:1)*99999999,
+					worst = (highGood?1:-1)*99999999
 					for (var k=0; k<teamList.length; k++){
 						var t = teamList[k],
 						picked = teamsPicked[t],
 						value = getTeamValue(field, t)
 						if (!picked && ((highGood && value > best) || (!highGood && value < best))) best = value
+						if (!picked && ((highGood && value < worst) || (!highGood && value > worst))) worst = value
 					}
 					for (var k=0; k<teamList.length; k++){
 						var t = teamList[k]
 						picked = teamsPicked[t],
 						value = getTeamValue(field, t)
-						tr.append($('<td>').toggleClass('picked',picked).toggleClass('best',!picked && value==best).attr('data-team',t).attr('data-tooltip',t+" "+getTeamInfo(t)).click(showStatClickMenu).text(Math.round(value)))
+						var td = $('<td>').toggleClass('picked',picked).attr('data-team',t).attr('data-tooltip',t+" "+getTeamInfo(t)).click(showStatClickMenu).text(Math.round(value))
+						if (!picked && best != worst){
+							td.attr('style', `background-color: ${getGradientColor(Math.abs(value-worst)/Math.abs(best-worst))}`)
+						}
+						tr.append(td)
 					}
 					table.append(tr)
 				}
@@ -533,6 +540,26 @@ function darkenColor(color){
 	}
 	return "darkGray"
 
+}
+
+function getGradientColor(ratio){
+	// ratio: 0 = worst (red), 1 = best (green)
+	// Gradient: dark red -> black -> dark green
+	ratio = Math.max(0, Math.min(1, ratio))
+	var red, green, blue
+	if (ratio >= 0.5) {
+		// Upper half: green to black
+		var t = (ratio - 0.5) * 2
+		green = Math.round(100 * t)
+		red = 0
+	} else {
+		// Lower half: black to red
+		var t = ratio * 2
+		red = Math.round(100 * (1 - t))
+		green = 0
+	}
+	blue = 0
+	return `rgb(${red}, ${green}, ${blue})`
 }
 
 function getTeamValue(field, team, graphType, source){
