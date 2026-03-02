@@ -2096,4 +2096,16 @@ function showSubjectiveScouting(el,team){
 }
 
 var importFunctions={
+	"1awesome":{
+		example:"/2026/1awesome.csv",
+		convert:importScouting195,
+	},
+	"2awesomeSauce":{
+		example:"/2026/2awesomeSauce.json",
+		convert:importScouting3061,
+	},
+	"3awesomeZauce":{
+		example:"/2026/3awesomeZauce.tsv",
+		convert:importScoutingLovat,
+	},
 }
