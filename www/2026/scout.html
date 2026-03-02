@@ -127,13 +127,14 @@
 
 			<fieldset>
 					<legend data-i18n=auto_climb_question></legend><div>
-					<label><input type=radio name=climb_where value=first><span data-i18n=climbs_button></span></label>
-					<label><input type=radio name=climb_where value=second><span data-i18n=no_climb_button></span></label>
+					<label><input type=radio name=climb_where value=1><span data-i18n=climbs_button></span></label>
+					<label><input type=radio name=climb_where value=0><span data-i18n=no_climb_button></span></label>
 					</fieldset>
 		<button id=tele-reminder class="to-tele tab-button" data-content=teleop style="right:25%;top:5.5%;aspect-ratio:1.8"><img src=teleop.png></button>
 		</fieldset>
 				<div><legend data-i18n=auto_fuel_title></legend></div>
-				<button id="auto_score" class=count data-input=autoFuelScoreOne style="right:60%;bottom:1;width:250px;height:250px"><img src=FUELplusone.png></button>
+				<button class=count data-input=autoFuelScoreMinusOne style="right:80%;bottom:1%;width:175px;height:175px"><img src=FUELminusone.png></button>
+				<button class=count data-input=autoFuelScoreOne style="right:60%;bottom:1;width:250px;height:250px"><img src=FUELplusone.png></button>
 				<button class=count data-input=autoFuelScoreFive style="right:40%;bottom:1%;width:250px;height:250px"><img src=FUELplusfive.png></button>
 				<button class=count data-input=autoFuelScoreEight style=right:20%;bottom:1%;width:250px;height:250px><img src=FUELpluseight.png></button>
 				<table id="autopoints">
@@ -189,14 +190,14 @@
 				<div>
 					<fieldset>
 					<legend data-i18n=shift_question></legend><div>
-					<label><input type=radio name=shift_perhaps value=first><span data-i18n=first_shift></span></label>
-					<label><input type=radio name=shift_perhaps value=second><span data-i18n=second_shift></span></label>
-					<label><input type=radio name=shift_perhaps value=third><span data-i18n=no_clue></span></label>
+					<label><input type=radio name=shift_perhaps value=1><span data-i18n=first_shift></span></label>
+					<label><input type=radio name=shift_perhaps value=2><span data-i18n=second_shift></span></label>
+					<label><input type=radio name=shift_perhaps value=0><span data-i18n=no_clue></span></label>
 
 					<legend data-i18n=moving_shooting_question></legend><div>
-					<label><input type=checkbox name=shooting_position value=first><span data-i18n=move_shoot_button></span></label>
-					<label><input type=checkbox name=shooting_position value=second><span data-i18n=stationary_shoot_button></span></label>
-					<label><input type=checkbox name=shooting_position value=third><span data-i18n=no_shoot_button></span></label>
+					<label><input type=checkbox name=shooting_position value=3><span data-i18n=move_shoot_button></span></label>
+					<label><input type=checkbox name=shooting_position value=2><span data-i18n=stationary_shoot_button></span></label>
+					<label><input type=checkbox name=shooting_position value=0><span data-i18n=no_shoot_button></span></label>
 					</fieldset>
 					<div><legend data-i18n=fuel_ten_add></legend></div>
 					<button class=count data-input=teleFuelScoreMinusOne style="right:80%;bottom:1%;width:175px;height:175px"><img src=FUELminusone.png></button>
@@ -235,10 +236,10 @@
 		</td></tr><tr><td>
 			<fieldset>
 				<legend data-i18n=tower_zone_question></legend>
-				<label><input type=radio name=end_game_position value=first><span data-i18n=tower_zone_first_button></span></label>
-				<label><input type=radio name=end_game_position value=second><span data-i18n=tower_zone_second_button></span></label>
-				<label><input type=radio name=end_game_position value=third><span data-i18n=tower_zone_third_button></span></label>
-				<label><input type=radio name=end_game_position value=fourth><span data-i18n=tower_zone_fourth_button></span></label>
+				<label><input type=radio name=end_game_position value=1><span data-i18n=tower_zone_first_button></span></label>
+				<label><input type=radio name=end_game_position value=2><span data-i18n=tower_zone_second_button></span></label>
+				<label><input type=radio name=end_game_position value=3><span data-i18n=tower_zone_third_button></span></label>
+				<label><input type=radio name=end_game_position value=0><span data-i18n=tower_zone_fourth_button></span></label>
 			</fieldset>
 
 		</td></tr><tr><td class=subheader data-i18n=gameplay_heading>
@@ -252,10 +253,10 @@
 
 
 			<div><span data-i18n=gameplay_questiontwo></span><br></div>
-			<label><input type=radio name=accuracy value=one><span data-i18n=very_button></span></label>
-			<label><input type=radio name=accuracy value=two><span data-i18n=somewhat_button></span></label>
-			<label><input type=radio name=accuracy value=four><span data-i18n=not_button></span></label>
-			<label><input type=radio name=accuracy value=three><span data-i18n=na_button></span></label>
+			<label><input type=radio name=accuracy value=3><span data-i18n=very_button></span></label>
+			<label><input type=radio name=accuracy value=2><span data-i18n=somewhat_button></span></label>
+			<label><input type=radio name=accuracy value=1><span data-i18n=not_button></span></label>
+			<label><input type=radio name=accuracy value=0><span data-i18n=na_button></span></label>
 		</p>
 
 
@@ -270,40 +271,40 @@
 
 	<span data-i18n=scouter_name_question></span><br>
 	<li><select id=locale-choose>
-	<option value=en>Vincent</option>
-	<option value=en>Jack H</option>
-	<option value=en>Jack E</option>
-	<option value=en>Evan</option>
-	<option value=en>Henrik</option>
-	<option value=en>Kayla</option>
-	<option value=en>Sawyer</option>
-	<option value=en>Gavin</option>
-	<option value=en>Kyle</option>
-	<option value=en>DeeDee</option>
-	<option value=en>Shea</option>
-	<option value=en>Ari</option>
-	<option value=en>Nico</option>
-	<option value=en>Gracie</option>
-	<option value=en>Jon</option>
-	<option value=en>Korbin</option>
-	<option value=en>Taylor</option>
-	<option value=en>Noah</option>
-	<option value=en>Emerson</option>
-	<option value=en>Javi</option>
-	<option value=en>Aubree</option>
-	<option value=en>Camilla</option>
-	<option value=en>Eli</option>
-	<option value=en>Wyatt</option>
-	<!--<option value=en>Wes</option> -->
-	<option value=en>Micah</option>
-	<option value=en>Matthew</option>
-	<option value=en>Luke</option>
-	<option value=en>AJ</option>
-	<option value=en>Hailey</option>
-	<option value=en>Andrew</option>
-	<!--<option value=en>Gibson</option>-->
-	<option value=en>MJ</option>
-	<option value=en>Seth</option>
+	<option value=vincent>Vincent</option>
+	<option value=jack_h>Jack H</option>
+	<option value=jack_e>Jack E</option>
+	<option value=evan>Evan</option>
+	<option value=henrik>Henrik</option>
+	<option value=kayla>Kayla</option>
+	<option value=sawyer>Sawyer</option>
+	<option value=gavin>Gavin</option>
+	<option value=kyle>Kyle</option>
+	<option value=deedee>DeeDee</option>
+	<option value=shea>Shea</option>
+	<option value=ari>Ari</option>
+	<option value=nico>Nico</option>
+	<option value=gracie>Gracie</option>
+	<option value=jon>Jon</option>
+	<option value=korbin>Korbin</option>
+	<option value=taylor>Taylor</option>
+	<option value=noah>Noah</option>
+	<option value=emerson>Emerson</option>
+	<option value=javi>Javi</option>
+	<option value=aubree>Aubree</option>
+	<option value=camilla>Camilla</option>
+	<option value=eli>Eli</option>
+	<option value=wyatt>Wyatt</option>
+	<!--<option value=wes>Wes</option> -->
+	<option value=micah>Micah</option>
+	<option value=matthew>Matthew</option>
+	<option value=luke>Luke</option>
+	<option value=aj>AJ</option>
+	<option value=hailey>Hailey</option>
+	<option value=andrew>Andrew</option>
+	<!--<option value=gibson>Gibson</option>-->
+	<option value=mj>MJ</option>
+	<option value=seth>Seth</option>
 			</fieldset>
 
 			<fieldset class="left full" id=scouting-comments>
