@@ -2140,7 +2140,7 @@ function importScouting1awesome(text){
 	/*	row.shooting_position=row.stationary_shoot_button
 		row.shooting_position=row.move_shoot_button+row.stationary_shoot_button
 		row.fuel_output=row.autoFuel+row.teleFuel
-		row.fuel_score=row.autoFuelScore+row.teleFuelScore    THIS WAS FROM A TAB */
+		row.fuel_score=row.autoFuelScore+row.teleFuelScore    THIS WAS FROM A TAB, I AM UNSURE IT IF WILL WORK*/
 		row.end_game_position=row.tower_zone_first_button
 		row.end_game_position=row.tower_zone_second_button
 		row.end_game_position=row.tower_zone_third_button
