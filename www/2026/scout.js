@@ -490,7 +490,7 @@ addI18n({
 		pt:'Prendeu um oponente para impedir que disparasse ou coletasse.',
 	},
 	accuracy_legend:{
-		en:'How accurate is _TEAMNUM_?',
+		en:'How accurate is team _TEAMNUM_?',
 		he:'כמה פעמים צוות _TEAMNUM_ פספסו את הזריקות שלהם?',
 		tr:'Takım _TEAMNUM_ kaç kez atışlarını ıskala attı?',
 		zh_tw:'隊伍_TEAMNUM_多久會漏接他們的射擊?',

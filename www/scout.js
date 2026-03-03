@@ -330,7 +330,7 @@ addI18n({
 		tr:'Ad:',
 	},
 	scouter_name_placeholder:{
-		en:'Scouter Team, First name, Last initial, Eg. 1234 Pat Q',
+		en:'First name, Last initial',
 		pt:'Equipe do Scouter, Primeiro nome, Inicial do último, Ex.: 1234 Pat Q',
 		fr:'Équipe du recruteur, Prénom, Initiale du nom, ex.: 1234 Pat Q',
 		zh_tw:'童子軍隊伍，名字，姓氏首字母，例如。 1234 還',
