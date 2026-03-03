@@ -42,7 +42,7 @@ addI18n({
 		pt:'Jogo',
 	},
 	demonstrated_capabilities:{
-		en:'Team _TEAMNUM_ Demonstrated Capabilities',
+		en:'During the match, team _TEAMNUM_ scored while',
 		he:'יכולות שהוכחו בצוות _TEAMNUM_',
 		tr:'Takım _TEAMNUM_ Gösterilen Yetenekler',
 		zh_tw:'隊伍_TEAMNUM_展示的能力',
@@ -50,7 +50,7 @@ addI18n({
 		pt:'Capacidades Demonstradas da Equipe _TEAMNUM_',
 	},
 	shoot_move_desc:{
-		en:'Shoot on the move',
+		en:'Moving',
 		he:'ירוק תוך כדי תנועה',
 		tr:'Hareket halinde ateş et',
 		zh_tw:'邊移動邊射擊',
@@ -489,7 +489,7 @@ addI18n({
 		fr:'Épinglé un adversaire pour les empêcher de tirer ou de collecter.',
 		pt:'Prendeu um oponente para impedir que disparasse ou coletasse.',
 	},
-	misses_legend:{
+	accuracy_legend:{
 		en:'How often did team _TEAMNUM_ miss their shots?',
 		he:'כמה פעמים צוות _TEAMNUM_ פספסו את הזריקות שלהם?',
 		tr:'Takım _TEAMNUM_ kaç kez atışlarını ıskala attı?',
@@ -497,21 +497,21 @@ addI18n({
 		fr:'Combien de fois l\'équipe _TEAMNUM_ a-t-elle raté ses tirs?',
 		pt:'Com que frequência a equipe _TEAMNUM_ errou seus tiros?',
 	},
-	misses_0_1:{
-		en:'0-1%',
+	accuracy_very:{
+		en:'Very accurate',
 	},
-	misses_1_10:{
-		en:'1-10%',
+	accuracy_middle:{
+		en:'Not too accurate',
 	},
-	misses_10_30:{
-		en:'10-30%',
+	accuracy_not:{
+		en:'Not accurate',
 	},
-	misses_30_60:{
-		en:'30-60%',
+	accuracy_na:{
+		en:'N/A',
 	},
-	misses_60_100:{
+/*	misses_60_100:{
 		en:'60-100%',
-	},
+	}, */
 	tele_fuel_score:{
 		en:'Fuel scored in hub',
 		he:'דלק נקודות בחישוקן',

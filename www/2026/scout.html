@@ -131,7 +131,7 @@
 
 	<div class="auto tab-content">
 		<div class="field-actions orient-rotate">
-		<!--	<button class="alliance to-neutral orient-rotate" data-end=alliance data-side=depot data-input=auto_trench_depot_alliance_to_neutral style=right:26%;bottom:5%><img class=orient-rotate src=arrow-left.png></button>
+			<button class="alliance to-neutral orient-rotate" data-end=alliance data-side=depot data-input=auto_trench_depot_alliance_to_neutral style=right:26%;bottom:5%><img class=orient-rotate src=arrow-left.png></button>
 			<button class="alliance to-neutral orient-rotate" data-end=alliance data-side=depot data-input=auto_bump_depot_alliance_to_neutral style=right:26%;bottom:21%><img class=orient-rotate src=arrow-left.png></button>
 			<button class="alliance to-neutral orient-rotate" data-end=alliance data-side=outpost data-input=auto_bump_outpost_alliance_to_neutral style=right:26%;top:21%><img class=orient-rotate src=arrow-left.png></button>
 			<button class="alliance to-neutral orient-rotate" data-end=alliance data-side=outpost data-input=auto_trench_outpost_alliance_to_neutral style=right:26%;top:5%><img class=orient-rotate src=arrow-left.png></button>
@@ -148,7 +148,7 @@
 			<label class=alliance data-end=alliance data-side=outpost style=right:0%;top:7%><input type=checkbox name=auto_collect_outpost value=1><span><img class=orient-rotate src=fuel-collect.png></span></label>
 			<label class=alliance data-end=alliance data-side=depot style=right:2%;bottom:22%><input type=checkbox name=auto_collect_depot value=1><span><img class=orient-rotate src=fuel-collect.png></span></label>
 
-			<input class="alliance climb count num orient-rotate" data-end=alliance style=right:3%;top:40% type=text value=0 max=1 name=auto_climb_level size=1 readonly> -->
+			<input class="alliance climb count num orient-rotate" data-end=alliance style=right:3%;top:40% type=text value=0 max=1 name=auto_climb_level size=1 readonly>
 		</div>
 		<div class=side-by-side>
 			<div class=fuel-container>
@@ -472,13 +472,13 @@
 				<div><label><input type=radio name=defended value=slowed-greatly><span data-i18n=defended_slowed_greatly></span></label> <span data-i18n=defended_slowed_greatly_desc></span></div>
 			</fieldset>
 			<fieldset class=full>
-				<legend data-i18n=misses_legend></legend>
+				<legend data-i18n=accuracy_legend></legend>
 				<div>
-					<label><input type=radio name=misses value=0-1><span data-i18n=misses_0_1></span></label>
-					<label><input type=radio name=misses value=1-10><span data-i18n=misses_1_10></span></label>
-					<label><input type=radio name=misses value=10-30><span data-i18n=misses_10_30></span></label>
-					<label><input type=radio name=misses value=30-60><span data-i18n=misses_30_60></span></label>
-					<label><input type=radio name=misses value=60-100><span data-i18n=misses_60_100></span></label>
+					<label><input type=radio name=accuracy value=very><span data-i18n=accuracy_very></span></label>
+					<label><input type=radio name=accuracy value=middle><span data-i18n=accuracy_middle></span></label>
+					<label><input type=radio name=accuracy value=not><span data-i18n=accuracy_not></span></label>
+					<label><input type=radio name=accuracy value=na><span data-i18n=accuracy_na></span></label>
+				<!--	<label><input type=radio name=accuracy value=60-100><span data-i18n=accuracy_60_100></span></label> -->
 				</div>
 			</fieldset>
 		</td></tr><tr><td class=subheader data-i18n=scouter_header>
