@@ -127,16 +127,16 @@
 
 			<fieldset>
 					<legend data-i18n=auto_climb_question></legend><div>
-					<label><input type=radio name=climb_where value=1><span data-i18n=climbs_button></span></label>
-					<label><input type=radio name=climb_where value=0><span data-i18n=no_climb_button></span></label>
+					<label><input type=radio name=climbs value=1><span data-i18n=climbs_button></span></label>
+					<label><input type=radio name=noClimb value=0><span data-i18n=no_climb_button></span></label>
 					</fieldset>
 		<button id=tele-reminder class="to-tele tab-button" data-content=teleop style="right:25%;top:5.5%;aspect-ratio:1.8"><img src=teleop.png></button>
 		</fieldset>
 				<div><legend data-i18n=auto_fuel_title></legend></div>
-				<button class=count data-input=autoFuelScoreMinusOne style="right:80%;bottom:1%;width:175px;height:175px"><img src=FUELminusone.png></button>
-				<button class=count data-input=autoFuelScoreOne style="right:60%;bottom:1;width:175px;height:175px"><img src=FUELplusone.png></button>
-				<button class=count data-input=autoFuelScoreFive style="right:40%;bottom:1%;width:175px;height:175px"><img src=FUELplusfive.png></button>
-				<button class=count data-input=autoFuelScoreEight style=right:20%;bottom:1%;width:175px;height:175px><img src=FUELpluseight.png></button>
+				<button class=count data-input=autoFuelScoreMinusOne value=-1 style="right:80%;bottom:1%;width:175px;height:175px"><img src=FUELminusone.png></button>
+				<button class=count data-input=autoFuelScoreOne value=1 style="right:60%;bottom:1;width:175px;height:175px"><img src=FUELplusone.png></button>
+				<button class=count data-input=autoFuelScoreFive value=5 tyle="right:40%;bottom:1%;width:175px;height:175px"><img src=FUELplusfive.png></button>
+				<button class=count data-input=autoFuelScoreEight value=8 style=right:20%;bottom:1%;width:175px;height:175px><img src=FUELpluseight.png></button>
 				<table id="autopoints">
 					<tr>
 						<td>Auto Fuel Points</td>
@@ -190,14 +190,14 @@
 				<div>
 					<fieldset>
 					<legend data-i18n=shift_question></legend><div>
-					<label><input type=radio name=shift_perhaps value=1><span data-i18n=first_shift></span></label>
-					<label><input type=radio name=shift_perhaps value=2><span data-i18n=second_shift></span></label>
-					<label><input type=radio name=shift_perhaps value=0><span data-i18n=no_clue></span></label>
+					<label><input type=radio name=firstShift value=1><span data-i18n=first_shift></span></label>
+					<label><input type=radio name=secondShift value=2><span data-i18n=second_shift></span></label>
+					<label><input type=radio name=thirdShift value=0><span data-i18n=no_clue></span></label>
 
 					<legend data-i18n=moving_shooting_question></legend><div>
-					<label><input type=checkbox name=shooting_position value=3><span data-i18n=move_shoot_button></span></label>
-					<label><input type=checkbox name=shooting_position value=2><span data-i18n=stationary_shoot_button></span></label>
-					<label><input type=checkbox name=shooting_position value=0><span data-i18n=no_shoot_button></span></label>
+					<label><input type=checkbox name=moveShoot value=3><span data-i18n=move_shoot_button></span></label>
+					<label><input type=checkbox name=stationaryShoot value=2><span data-i18n=stationary_shoot_button></span></label>
+					<label><input type=checkbox name=noShoot value=0><span data-i18n=no_shoot_button></span></label>
 					</fieldset>
 					<div><legend data-i18n=fuel_ten_add></legend></div>
 					<button class=count data-input=teleFuelScoreMinusOne style="right:80%;bottom:1%;width:175px;height:175px"><img src=FUELminusone.png></button>
@@ -236,10 +236,10 @@
 		</td></tr><tr><td>
 			<fieldset>
 				<legend data-i18n=tower_zone_question></legend>
-				<label><input type=radio name=end_game_position value=1><span data-i18n=tower_zone_first_button></span></label>
-				<label><input type=radio name=end_game_position value=2><span data-i18n=tower_zone_second_button></span></label>
-				<label><input type=radio name=end_game_position value=3><span data-i18n=tower_zone_third_button></span></label>
-				<label><input type=radio name=end_game_position value=0><span data-i18n=tower_zone_fourth_button></span></label>
+				<label><input type=radio name=towerZoneFirst value=1><span data-i18n=tower_zone_first_button></span></label>
+				<label><input type=radio name=towerZoneSecond value=2><span data-i18n=tower_zone_second_button></span></label>
+				<label><input type=radio name=towerZoneThird value=3><span data-i18n=tower_zone_third_button></span></label>
+				<label><input type=radio name=towerZoneGround value=0><span data-i18n=tower_zone_fourth_button></span></label>
 			</fieldset>
 
 		</td></tr><tr><td class=subheader data-i18n=gameplay_heading>
@@ -253,10 +253,10 @@
 
 
 			<div><span data-i18n=gameplay_questiontwo></span><br></div>
-			<label><input type=radio name=accuracy value=3><span data-i18n=very_button></span></label>
-			<label><input type=radio name=accuracy value=2><span data-i18n=somewhat_button></span></label>
-			<label><input type=radio name=accuracy value=1><span data-i18n=not_button></span></label>
-			<label><input type=radio name=accuracy value=0><span data-i18n=na_button></span></label>
+			<label><input type=radio name=veryAccurate value=3><span data-i18n=very_button></span></label>
+			<label><input type=radio name=somewhatAccurate value=2><span data-i18n=somewhat_button></span></label>
+			<label><input type=radio name=notAccurate value=1><span data-i18n=not_button></span></label>
+			<label><input type=radio name=naAccurate value=0><span data-i18n=na_button></span></label>
 		</p>
 
 

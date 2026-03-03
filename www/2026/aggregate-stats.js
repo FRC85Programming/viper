@@ -2128,43 +2128,28 @@ function importScouting1awesome(text){
 		/* WE GOTTA FIX IT FELIX
 		So i named them for the second row option by waht is in the data-i18n so I really hope thats right*/
 
-		/*row.auto_climb_where=row.climbs
-		row.auto_climbs_where=row.no_climb */
-		row.shift_perhaps=row.first_shift
 		row.shift_1=row.shift1
-		row.shift_perhaps=row.second_shift
 		row.shift_2=row.shift2
-	/*	row.auto_shift_1=row.autoShift1  */
-		row.shift_perhaps=row.no_clue
-		row.shooting_positionr=row.move_shoot_button
-	/*	row.shooting_position=row.stationary_shoot_button
-		row.shooting_position=row.move_shoot_button+row.stationary_shoot_button
-		row.fuel_output=row.autoFuel+row.teleFuel
-		row.fuel_score=row.autoFuelScore+row.teleFuelScore    THIS WAS FROM A TAB, I AM UNSURE IT IF WILL WORK*/
-		row.end_game_position=row.tower_zone_first_button
-		row.end_game_position=row.tower_zone_second_button
-		row.end_game_position=row.tower_zone_third_button
-		row.end_game_position=row.tower_zone_fourth_button
+		row.firstShift=row.first_shift
+		row.secondShift=row.second_shift
+		row.thirdShift=row.no_clue
+		row.moveShoot=row.move_shoot_button
+		row.stationaryShoot=stationary_shoot_button
+		row.noShoot=no_shoot_button
+		row.climbs=climbs_button
+		row.noClimb=no_climb_button
+		row.towerZoneFirst=row.tower_zone_first_button
+		row.towerZoneSecond=row.tower_zone_second_button
+		row.towerZoneThird=row.tower_zone_third_button
+		row.towerZoneGround=row.tower_zone_fourth_button
 		row.defense=row.defense_button
 		row.bricked=row.bricked_button
 		row.fuel_stuck=row.fuel_stuck_button
 		row.feeder=row.feeder_bot_button
-		row.accuracy=row.very_button
-		row.accuracy=row.somewhat_button
-		row.accuracy=row.not_button
-		row.accuracy=row.na_button
-		/* row.tele_algae_processor=row.teleProcessor
-		row.tele_algae_net=row.teleBarge
-		row.tele_algae_opponent_processor=row.teleOppProcessor
-		row.tele_coral_theft=row.teleOppCoral
-		row.tele_algae_theft=row.teleOppAlgae
-		row.tele_coral_ground=row.teleCoralGround
-		row.tele_coral_station_1=row.teleCoralStation1
-		row.tele_coral_station_2=row.teleCoralStation2
-		row.tele_algae_drop=row.teleMissProcessor+row.teleMissBarge
-		row.climb_time=row.climbTime
-		row.end_game_climb_fail=''
-		row.end_game_position='' */
+		row.veryAccurate=row.very_button
+		row.somewhatAccurate=row.somewhat_button
+		row.notAccurate=row.not_button
+		row.naAccurate=row.na_button
 		switch(((""+row.climbStatusID)||"0")[0]){
 			case "2":case "3":row.end_game_position='parked';row.end_game_climb_fail=1;break
 			case "4":row.end_game_position='shallow';break
@@ -2179,7 +2164,7 @@ function importScouting1awesome(text){
 function importScouting2awesomeSauce(text){
 	var data = [],
 	MAP={
-		autoAlgaeRight:"auto_algae_mark_1",
+		/*autoAlgaeRight:"auto_algae_mark_1",
 		autoAlgaeCenter:"auto_algae_mark_2",
 		autoAlgaeLeft:"auto_algae_mark_3",
 		autoAlgaeDrop:"auto_algae_drop",
@@ -2214,7 +2199,7 @@ function importScouting2awesomeSauce(text){
 		teleopReefPickupAlgae:"tele_algae_upper",
 		teleopScoreNet:"tele_algae_net",
 		teleopScoreProcessor:"tele_algae_processor",
-		teleopStationPickupCoral:"tele_coral_station_1",
+		teleopStationPickupCoral:"tele_coral_station_1",*/
 	}
 	JSON.parse(text).forEach(m=>{
 		var r = {}
