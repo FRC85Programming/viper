@@ -200,6 +200,21 @@ addI18n({
 	robot_climb_height_none:{
 		en:"None",
 	},
+	swerve_question:{
+		en:'If swerve, which modules?',
+	},
+	robot_swerve_l1:{
+		en:'L1',
+	},
+	robot_swerve_l2:{
+		en:'L2',
+	},
+	robot_swerve_l3:{
+		en:'L3',
+	},
+	robot_swerve_l4:{
+		en:'L4',
+	},
 	robot_swerve_question:{
 		en:'If swerve, which modules?',
 		pt:'Se desvio, quais módulos?',
