@@ -449,6 +449,7 @@ addI18n({
 	},
 	to_alliance_zone_question:{
 		en: "How does your robot get to the alliance zone?",
+	},
 	pit_scout_photo_reminder:{
 		en:'If you are also bot photo scouting, don\'t forget to take a picture!',
 		pt:'Se você também estiver explorando fotos de robôs, não se esqueça de tirar uma foto!',
