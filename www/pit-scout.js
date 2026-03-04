@@ -186,7 +186,7 @@ addI18n({
 		en: "Both",
 	},
 	how_high_climb_question:{
-		en: "How high can the robot climb?",
+		en: "How high can the robot climb (teams highest, it is assumed they will be able to climb lower as well. If not, comment)?",
 	},
 	robot_climb_height_l1:{
 		en:"Level 1",
