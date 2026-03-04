@@ -72,10 +72,10 @@
 			<span data-i18n=robot_fuel_capacity_question></span><br>
 			<label><input type=number min=0 step=1 max=200 name=fuel_capacity></label>
 		</p>
-		<p>
+		<!-- <p>
 			<span data-i18n=intake_count_question></span><br>
 			<label><input type=number min=0 step=1 max=4 name=intake_count></label>
-		</p>
+		</p> -->
 		<p>
 			<span data-i18n=intake_style_question></span><br>
 			<label><input type=checkbox name=intake_otb value=1><span data-i18n=robot_intake_style_otb></span></label>
@@ -91,15 +91,34 @@
 			<label><input type=checkbox name=shooter_fixed value=1><span data-i18n=robot_shooter_style_fixed></span></label>
 			<label><input type=checkbox name=shooter_turret value=1><span data-i18n=robot_shooter_style_turret></span></label>
 		</p>
-		<p>
+	<!--	<p>
 			<span data-i18n=robot_weight_question></span><br>
 			<label><input type=number min=30 step=1 max=200 name=weight> <span data-i18n=robot_weight_unit></label><br>
-		</p>
+		</p> -->
 		<p>
 			<span data-i18n=robot_drivetrain_question></span><br>
 			<label><input type=radio name=drivetrain value=tank><span data-i18n=robot_drivetrain_tank>Tank</span></label>
 			<label><input type=radio name=drivetrain value=swerve><span data-i18n=robot_drivetrain_swerve>Swerve</span></label>
 			<label><input type=radio name=drivetrain value=other><span data-i18n=robot_drivetrain_other>Other</span></label>
+		</p>
+		<p>
+			<span data-i18n=robot_transport_question></span><br>
+			<label><input type=radio name=transport value=trench><span data-i18n=robot_transport_trench></span></label>
+			<label><input type=radio name=transport value=bump><span data-i18n=robot_transport_bump></span></label>
+			<label><input type=radio name=transport value=both><span data-i18n=robot_transport_both></span></label>
+		</p>
+		<p>
+			<span data-i18n=to_alliance_zone_question></span><br>
+			<label><input type=radio name=intake value=humanplayer><span data-i18n=robot_intake_humanplayer></span></label>
+			<label><input type=radio name=intake value=ground><span data-i18n=robot_intake_ground></span></label>
+			<label><input type=radio name=intake value=both><span data-i18n=robot_intake_both></span></label>
+		</p>
+		<p>
+			<span data-i18n=how_high_climb_question></span><br>
+			<label><input type=radio name=climb value=l1><span data-i18n=robot_climb_height_l1></span></label>
+			<label><input type=radio name=climb value=l2><span data-i18n=robot_climb_height_l2></span></label>
+			<label><input type=radio name=climb value=l3><span data-i18n=robot_climb_height_l3></span></label>
+			<label><input type=radio name=climb value=none><span data-i18n=robot_climb_height_none></span></label>
 		</p>
 		<p>
 			<span data-i18n=robot_swerve_question></span><br>
@@ -109,10 +128,10 @@
 			<label><input type=radio name=swerve value=westcoast-products><span data-i18n=robot_swerve_wcp></span></label>
 			<label><input type=radio name=swerve value=other><span data-i18n=robot_swerve_other></span></label>
 		</p>
-		<p>
+		<!-- <p>
 			<span data-i18n=drivetrain_motor_count_question></span><br>
 			<input type=number min=1 step=1 max=4 name=motor_count>
-		</p>
+		</p> -->
 		<p>
 			<span data-i18n=drivetrain_motor_type_question></span><br>
 			<label><input type=radio name=motors value=neo><span data-i18n=motor_type_neo></span></label>

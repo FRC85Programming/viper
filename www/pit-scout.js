@@ -161,6 +161,45 @@ addI18n({
 		fr:'Autre',
 		zh_tw:'其他',
 	},
+	robot_intake_question:{
+		en: "Where does your robot intake from?",
+	},
+	robot_intake_humanplayer:{
+		en: "Human player station",
+	},
+	robot_intake_ground:{
+		en: "Ground",
+	},
+	robot_intake_both:{
+		en: "Both",
+	},
+	robot_transport_question:{
+		en: "Which of the following can your robot do?",
+	},
+	robot_transport_trench: {
+		en: "Trench",
+	},
+	robot_transport_bump: {
+		en: "Bump",
+	},
+	robot_transport_both: {
+		en: "Both",
+	},
+	how_high_climb_question:{
+		en: "How high can the robot climb?",
+	},
+	robot_climb_height_l1:{
+		en:"Level 1",
+	},
+	robot_climb_height_l2:{
+		en:"Level 2",
+	},
+	robot_climb_height_l3:{
+		en:"Level 3",
+	},
+	robot_climb_height_none:{
+		en:"None",
+	},
 	robot_swerve_question:{
 		en:'If swerve, which modules?',
 		pt:'Se desvio, quais módulos?',
