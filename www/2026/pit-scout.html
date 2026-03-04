@@ -62,6 +62,16 @@
 	</fieldset>
 
 	<fieldset class=full>
+		<legend data-i18n=climb_ladder_legend></legend>
+
+		<!-- <canvas id=auto-paths></canvas>
+		<div>
+			<button id=auto-path-undo data-i18n=auto_path_undo_button></button>
+			<button id=auto-path-next data-i18n=auto_path_next_button></button>
+		</div> -->
+	</fieldset>
+
+	<fieldset class=full>
 		<legend data-i18n=robot_legend></legend>
 		<p>
 			<span data-i18n=robot_size_question></span><br>
@@ -72,10 +82,6 @@
 			<span data-i18n=robot_fuel_capacity_question></span><br>
 			<label><input type=number min=0 step=1 max=200 name=fuel_capacity></label>
 		</p>
-		<!-- <p>
-			<span data-i18n=intake_count_question></span><br>
-			<label><input type=number min=0 step=1 max=4 name=intake_count></label>
-		</p> -->
 		<p>
 			<span data-i18n=intake_style_question></span><br>
 			<label><input type=checkbox name=intake_otb value=1><span data-i18n=robot_intake_style_otb></span></label>
@@ -91,10 +97,6 @@
 			<label><input type=checkbox name=shooter_fixed value=1><span data-i18n=robot_shooter_style_fixed></span></label>
 			<label><input type=checkbox name=shooter_turret value=1><span data-i18n=robot_shooter_style_turret></span></label>
 		</p>
-	<!--	<p>
-			<span data-i18n=robot_weight_question></span><br>
-			<label><input type=number min=30 step=1 max=200 name=weight> <span data-i18n=robot_weight_unit></label><br>
-		</p> -->
 		<p>
 			<span data-i18n=robot_drivetrain_question></span><br>
 			<label><input type=radio name=drivetrain value=tank><span data-i18n=robot_drivetrain_tank>Tank</span></label>

@@ -57,6 +57,9 @@ addI18n({
 		fr:'Dessinez la trajectoire du robot pour chaque routine automatique que l\'équipe _TEAMNUM_ peut exécuter',
 		zh_tw:'繪製 _TEAMNUM_ 團隊可以執行的每個自動程式的機器人路徑',
 	},
+	climb_ladder_legend:{
+		en:'Where does your robot climb?',
+	},
 	auto_path_undo_button:{
 		en:'Undo Last Point',
 		pt:'Desfazer último ponto',
