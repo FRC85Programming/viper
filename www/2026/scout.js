@@ -1013,8 +1013,8 @@ $(document).ready(function(){
 		document.getElementById("autoFuelScore").innerHTML = count;
 	}
 
-	document.getElementById("autoFuelTen").onclick = function(){
-		count+=10;
+	document.getElementById("autoFuelEight").onclick = function(){
+		count+=8;
 
 		document.getElementById("autoFuelScore").innerHTML = count;
 	}
