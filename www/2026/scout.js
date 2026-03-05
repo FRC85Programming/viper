@@ -1001,6 +1001,12 @@ $(document).ready(function(){
 		document.getElementById("autoFuelScore").innerHTML = count;
 	}
 
+	document.getElementById("autoFuelOne").onclick = function(){
+		count+=1;
+
+		document.getElementById("autoFuelScore").innerHTML = count;
+	}
+
 	$('.kebab-button').click(function(e){
 		var dropdown = $(this).siblings('.kebab-dropdown')
 		dropdown.toggleClass('open')
