@@ -152,11 +152,19 @@
 		</div>-->
 		<div class=side-by-side>
 			<div class=fuel-container>
-				<button class=autoFuelMinusOne data-value=-1>-1</button>
-				<button class=autoFuelOne data-value=1>1</button>
-				<button class=autoFuelFive data-value=5>5</button>
-				<button class=autoFuelTen data-value=8>8</button>
+				<button id=autoFuelMinusOne class="fuel" data-value=-1>-1</button>
+				<button id=autoFuelOne class="fuel" data-value=1>1</button>
+				<button id=autoFuelFive class="fuel" data-value=5>5</button>
+				<button id=autoFuelTen class="fuel" data-value=8>8</button>
 			</div>
+			<table>
+				<tr>
+					<td>Fuel Score</td>
+				</tr>
+				<tr>
+					<td id="autoFuelScore">0</td>
+				</tr>
+			</table>
 			<div>
 				<span class=fuel-capacity-section>
 					<span data-i18n=fuel_capacity_label></span>
