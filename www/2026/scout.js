@@ -96,6 +96,18 @@ addI18n({
 		fr:'Tirer tout en grimpant',
 		pt:'Atirar enquanto escala',
 	},
+	auto_climb_legend:{
+		en:'Did team _TEAMNUM_ climb in auto?',
+	},
+	auto_climb_legend:{
+		en:'Did team _TEAMNUM_ climb in auto?',
+	},
+	climb_does:{
+		en:'Yes',
+	},
+	climb_doesnt:{
+		en:'No',
+	},
 	fuel_strategy_legend:{
 		en:'What was the main strategy team _TEAMNUM_ used to get fuel into the alliance zone?',
 		he:'מה הייתה האסטרטגיה הראשית של צוות _TEAMNUM_ כדי להכניס דלק לאזור הברית?',
