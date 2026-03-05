@@ -152,11 +152,13 @@
 		</div>-->
 		<div class=side-by-side>
 			<div class=fuel-container>
-				<button class=fuel data-value=-1>-1</button>
-				<button class=fuel data-value=1>1</button>
-				<button class=fuel data-value=5>5</button>
-				<button class=fuel data-value=8>8</button>
+				<button class=autoFuelMinusOne data-value=-1>-1</button>
+				<button class=autoFuelOne data-value=1>1</button>
+				<button class=autoFuelFive data-value=5>5</button>
+				<button class=autoFuelTen data-value=8>8</button>
 			</div>
+			<label>Counter</label>
+			<label id="autoScoreCounter">0</label>
 			<div>
 				<span class=fuel-capacity-section>
 					<span data-i18n=fuel_capacity_label></span>
@@ -269,10 +271,10 @@
 		</div>-->
 		<div class=side-by-side>
 			<div class=fuel-container>
-				<button class=fuel data-value=-1>-1</button>
-				<button class=fuel data-value=1>1</button>
-				<button class=fuel data-value=5>5</button>
-				<button class=fuel data-value=10>10</button>
+				<button id="teleFuelMinusOne" class=fuel data-value=-1>-1</button>
+				<button id="teleFuelOne" class=fuel data-value=1>1</button>
+				<button id="teleFuelFive" class=fuel data-value=5>5</button>
+				<button id="teleFuelTen" class=fuel data-value=10>10</button>
 			</div>
 			<div>
 				<span class=fuel-capacity-section>
