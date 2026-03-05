@@ -1195,14 +1195,14 @@ $(document).ready(function(){
 	$('.target').click(activateTarget)
 	toAlliance()
 
-	$('.fuel').on('click', function(e){
-		var target = $('.target.active:visible'),
-		offset = target.offset()
-		e.pageX = offset.left + target.width() / 2
-		e.pageY = offset.top + target.height() / 2
-		target.attr('data-value',$(this).attr('data-value'))
-		return countHandler.call(target[0],e)
-	})
+	// $('.fuel').on('click', function(e){
+	// 	var target = $('.target.active:visible'),
+	// 	offset = target.offset()
+	// 	e.pageX = offset.left + target.width() / 2
+	// 	e.pageY = offset.top + target.height() / 2
+	// 	target.attr('data-value',$(this).attr('data-value'))
+	// 	return countHandler.call(target[0],e)
+	// })
 
 	$('.climb').on('click', function(e){
 		countHandler.call(this,e)
