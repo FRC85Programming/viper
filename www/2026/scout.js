@@ -994,6 +994,7 @@ $(document).ready(function(){
 	})
 
 	let autoCount = 0;
+	let teleCount = 0;
 
 	document.getElementById("autoFuelMinusOne").onclick = function(){
 		autoCount-=1;
@@ -1017,6 +1018,30 @@ $(document).ready(function(){
 		autoCount+=8;
 
 		document.getElementById("autoFuelScore").innerHTML = autoCount;
+	}
+
+		document.getElementById("teleFuelMinusOne").onclick = function(){
+		teleCount-=1;
+
+		document.getElementById("teleFuelScore").innerHTML = teleCount;
+	}
+
+	document.getElementById("teleFuelOne").onclick = function(){
+		teleCount+=1;
+
+		document.getElementById("teleFuelScore").innerHTML = teleCount;
+	}
+
+	document.getElementById("teleFuelFive").onclick = function(){
+		teleCount+=5;
+
+		document.getElementById("teleFuelScore").innerHTML = teleCount;
+	}
+
+	document.getElementById("teleFuelEight").onclick = function(){
+		teleCount+=8;
+
+		document.getElementById("teleFuelScore").innerHTML = teleCount;
 	}
 
 	$('.kebab-button').click(function(e){
