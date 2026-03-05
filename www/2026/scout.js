@@ -993,6 +993,8 @@ $(document).ready(function(){
 		pitData = data
 	})
 
+	let count = 0;
+
 	document.getElementById("autoFuelMinusOne").onclick = function(){
 		count-=1;
 
