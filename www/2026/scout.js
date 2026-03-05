@@ -993,6 +993,12 @@ $(document).ready(function(){
 		pitData = data
 	})
 
+	document.getElementById("autoFuelMinusOne").onclick = function(){
+		count-=1;
+
+		document.getElementById("autoFuelScore").innerHTML = count;
+	}
+
 	$('.kebab-button').click(function(e){
 		var dropdown = $(this).siblings('.kebab-dropdown')
 		dropdown.toggleClass('open')
