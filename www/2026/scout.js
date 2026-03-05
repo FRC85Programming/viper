@@ -1007,57 +1007,7 @@ $(document).ready(function(){
 	promisePitScouting().then(function(data){
 		pitData = data
 	})
-
-	let autoCount = 0;
-	let teleCount = 0;
-
-	document.getElementById("autoFuelMinusOne").onclick = function(){
-		autoCount-=1;
-
-		document.getElementById("autoFuelScore").innerHTML = autoCount;
-	}
-
-	document.getElementById("autoFuelOne").onclick = function(){
-		autoCount+=1;
-
-		document.getElementById("autoFuelScore").innerHTML = autoCount;
-	}
-
-	document.getElementById("autoFuelFive").onclick = function(){
-		autoCount+=5;
-
-		document.getElementById("autoFuelScore").innerHTML = autoCount;
-	}
-
-	document.getElementById("autoFuelEight").onclick = function(){
-		autoCount+=8;
-
-		document.getElementById("autoFuelScore").innerHTML = autoCount;
-	}
-
-		document.getElementById("teleFuelMinusOne").onclick = function(){
-		teleCount-=1;
-
-		document.getElementById("teleFuelScore").innerHTML = teleCount;
-	}
-
-	document.getElementById("teleFuelOne").onclick = function(){
-		teleCount+=1;
-
-		document.getElementById("teleFuelScore").innerHTML = teleCount;
-	}
-
-	document.getElementById("teleFuelFive").onclick = function(){
-		teleCount+=5;
-
-		document.getElementById("teleFuelScore").innerHTML = teleCount;
-	}
-
-	document.getElementById("teleFuelTen").onclick = function(){
-		teleCount+=10;
-
-		document.getElementById("teleFuelScore").innerHTML = teleCount;
-	}
+	
 
 	$('.kebab-button').click(function(e){
 		var dropdown = $(this).siblings('.kebab-dropdown')
