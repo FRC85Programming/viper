@@ -1396,7 +1396,6 @@ $(document).ready(function(){
 			drawPath(canvas,$(this).attr('data-color'),$(this).val(),true,false)
 		})
 	}
-})
 	let autoCount = 0;
 	let teleCount = 0;
 
@@ -1447,3 +1446,5 @@ $(document).ready(function(){
 
 		document.getElementById("teleFuelScore").innerHTML = teleCount;
 	}
+
+})
