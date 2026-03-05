@@ -65,6 +65,21 @@ addI18n({
 		fr:'Tirer tout en collectant',
 		pt:'Atirar enquanto coleta',
 	},
+	climb_legend:{
+		en:'How high did team _TEAMNUM_ climb?',
+	},
+	climb_none:{
+		en:'None',
+	},
+	climb_first:{
+		en:'First bar',
+	},
+	climb_second:{
+		en:'Second bar',
+	},
+	climb_third:{
+		en:'Third bar',
+	},
 	shoot_turret_desc:{
 		en:'Change shooting direction while moving straight',
 		he:'שנה כיוון יריה בעת תנועה ישר',
