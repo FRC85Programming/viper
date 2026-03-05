@@ -1038,8 +1038,8 @@ $(document).ready(function(){
 		document.getElementById("teleFuelScore").innerHTML = teleCount;
 	}
 
-	document.getElementById("teleFuelEight").onclick = function(){
-		teleCount+=8;
+	document.getElementById("teleFuelTen").onclick = function(){
+		teleCount+=10;
 
 		document.getElementById("teleFuelScore").innerHTML = teleCount;
 	}
