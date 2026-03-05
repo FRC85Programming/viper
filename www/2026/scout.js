@@ -993,30 +993,30 @@ $(document).ready(function(){
 		pitData = data
 	})
 
-	let count = 0;
+	let autoCount = 0;
 
 	document.getElementById("autoFuelMinusOne").onclick = function(){
-		count-=1;
+		autoCount-=1;
 
-		document.getElementById("autoFuelScore").innerHTML = count;
+		document.getElementById("autoFuelScore").innerHTML = autoCount;
 	}
 
 	document.getElementById("autoFuelOne").onclick = function(){
-		count+=1;
+		autoCount+=1;
 
-		document.getElementById("autoFuelScore").innerHTML = count;
+		document.getElementById("autoFuelScore").innerHTML = autoCount;
 	}
 
 	document.getElementById("autoFuelFive").onclick = function(){
-		count+=5;
+		autoCount+=5;
 
-		document.getElementById("autoFuelScore").innerHTML = count;
+		document.getElementById("autoFuelScore").innerHTML = autoCount;
 	}
 
 	document.getElementById("autoFuelEight").onclick = function(){
-		count+=8;
+		autoCount+=8;
 
-		document.getElementById("autoFuelScore").innerHTML = count;
+		document.getElementById("autoFuelScore").innerHTML = autoCount;
 	}
 
 	$('.kebab-button').click(function(e){
