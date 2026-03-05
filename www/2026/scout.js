@@ -1013,6 +1013,12 @@ $(document).ready(function(){
 		document.getElementById("autoFuelScore").innerHTML = count;
 	}
 
+	document.getElementById("autoFuelTen").onclick = function(){
+		count+=10;
+
+		document.getElementById("autoFuelScore").innerHTML = count;
+	}
+
 	$('.kebab-button').click(function(e){
 		var dropdown = $(this).siblings('.kebab-dropdown')
 		dropdown.toggleClass('open')
