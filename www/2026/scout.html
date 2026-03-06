@@ -303,6 +303,11 @@
 				<span class=collapse data-content=tele-counters data-i18n=values_button></span>
 				<span class=collapse data-content=tele-timeline data-i18n=timeline_button></span>
 			</div>
+			<fieldset class=full id=auto-climb-position-fieldset>
+				<legend data-i18n=auto_climb_legend></legend>
+				<div id=auto-climb-area class=orient-rotate><div id=robot-auto-climb-position></div></div>
+				<input id=auto-climb-position-input type=hidden name=auto_climb_position>
+			</fieldset>
 		</div>
 		<!-- <div class=side-by-side>
 			<div><button class=undo data-i18n=undo_button></button></div>
@@ -427,11 +432,6 @@
 	<div class="end-game tab-content">
 		<table><tr><td class=subheader data-i18n=end_game_gameplay_header>
 		</td></tr><tr><td>
-			<fieldset class=full id=auto-climb-position-fieldset>
-				<legend data-i18n=auto_climb_legend></legend>
-				<div id=auto-climb-area class=orient-rotate><div id=robot-auto-climb-position></div></div>
-				<input id=auto-climb-position-input type=hidden name=auto_climb_position>
-			</fieldset>
 			<fieldset class=full id=tele-climb-position-fieldset>
 				<legend data-i18n=tele_climb_legend></legend>
 				<div id=tele-climb-area class=orient-rotate><div id=robot-tele-climb-position></div></div>
