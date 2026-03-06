@@ -86,12 +86,12 @@ function eventFromHash(){
 $(window).on('hashchange', eventFromHash)
 eventFromHash()
 
-function promiseEventAjax(file){
-	return fetch(file).then(response=>{
-		if(!response.ok) return ''
-		return response.text()
-	}).catch(x=>'')
-}
+// function promiseEventAjax(file){
+// 	return fetch(file).then(response=>{
+// 		if(!response.ok) return ''
+// 		return response.text()
+// 	}).catch(x=>'')
+// }
 
 function csvToArrayOfMaps(csv){
 	var arr = []
