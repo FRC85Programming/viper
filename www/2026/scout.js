@@ -1413,7 +1413,7 @@ $(document).ready(function(){
 
 	document.getElementById("autoFuelMinusOne").onclick = function(){
 		autoCount-=1;
-		inputElement.min = 0;
+		if (autoCount < 0) autoCount = 0;
 
 		document.getElementById("autoFuelScore").innerHTML = autoCount;
 	}
