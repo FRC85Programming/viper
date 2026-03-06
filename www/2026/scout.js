@@ -1438,6 +1438,7 @@ $(document).ready(function(){
 
 	document.getElementById("teleFuelMinusOne").onclick = function(){
 		teleCount-=1;
+		if (teleCount < 0) teleCount = 0;
 
 		document.getElementById("teleFuelScore").innerHTML = teleCount;
 	}
