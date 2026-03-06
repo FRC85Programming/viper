@@ -795,14 +795,14 @@ addI18n({
 		fr:'Tranchée (côté avant-poste) neutre à alliance',
 		pt:'Trincheira (lado do avançado) neutro a aliança',
 	},
-	auto_climb_legend:{
-		en:'Where did team _TEAMNUM_ climb during autonomous?',
-		he:'לאיזה גובה טיפס צוות _TEAMNUM_ במהלך אוטונומי?',
-		tr:'Takım _TEAMNUM_ otonom sırasında nereye tırmandı?',
-		zh_tw:'隊伍_TEAMNUM_在自主期間爬到了哪裡?',
-		fr:'Où l\'équipe _TEAMNUM_ a-t-elle grimpé lors de l\'autonome?',
-		pt:'Onde a equipe _TEAMNUM_ escalou durante autônoma?',
-	},
+	// auto_climb_legend:{
+	// 	en:'Where did team _TEAMNUM_ climb during autonomous?',
+	// 	he:'לאיזה גובה טיפס צוות _TEAMNUM_ במהלך אוטונומי?',
+	// 	tr:'Takım _TEAMNUM_ otonom sırasında nereye tırmandı?',
+	// 	zh_tw:'隊伍_TEAMNUM_在自主期間爬到了哪裡?',
+	// 	fr:'Où l\'équipe _TEAMNUM_ a-t-elle grimpé lors de l\'autonome?',
+	// 	pt:'Onde a equipe _TEAMNUM_ escalou durante autônoma?',
+	// },
 	tele_climb_legend:{
 		en:'Where did team _TEAMNUM_ climb during teleop?',
 		he:'לאיזה גובה טיפס צוות _TEAMNUM_ במהלך teleop?',
