@@ -1413,6 +1413,7 @@ $(document).ready(function(){
 
 	document.getElementById("autoFuelMinusOne").onclick = function(){
 		autoCount-=1;
+		inputElement.min = 0;
 
 		document.getElementById("autoFuelScore").innerHTML = autoCount;
 	}
@@ -1458,8 +1459,4 @@ $(document).ready(function(){
 
 		document.getElementById("teleFuelScore").innerHTML = teleCount;
 	}
-
-	if (autoCount<=-1) autoCount = 0;
-	if (teleCount<=-1) teleCount = 0;
-
 })
