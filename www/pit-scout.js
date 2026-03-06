@@ -111,6 +111,12 @@ addI18n({
 	robot_climb_first_right:{
 		en:'Right 1st',
 	},
+	robot_climb_first_right:{
+		en:'Right 1st',
+	},
+	robot_climb_no_climb:{
+		en:'No Climb',
+	},
 	robot_size_question:{
 		en:'What are the robot frame dimensions WITHOUT bumpers?',
 		pt:'Quais são as dimensões da estrutura do robô SEM para-choques?',
