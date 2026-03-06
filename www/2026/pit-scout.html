@@ -62,17 +62,16 @@
 	</fieldset>
 
 	<fieldset class=full>
-		<legend data-i18n=climb_ladder_legend></legend>
-
-		<!-- <canvas id=auto-paths></canvas>
-		<div>
-			<button id=auto-path-undo data-i18n=auto_path_undo_button></button>
-			<button id=auto-path-next data-i18n=auto_path_next_button></button>
-		</div> -->
-	</fieldset>
-
-	<fieldset class=full>
 		<legend data-i18n=robot_legend></legend>
+		<p>
+			<span data-i18n="climb_ladder_legend"></span><br>
+			<label><input type=checkbox name=climb_third_rung_left value=1><span data-i18n=robot_climb_third_left></span></label>
+			<label><input type=checkbox name=climb_third_rung_right value=1><span data-i18n=robot_climb_third_right></span></label><br>
+			<label><input type=checkbox name=climb_second_rung_left value=1><span data-i18n=robot_climb_second_left></span></label>
+			<label><input type=checkbox name=climb_second_rung_right value=1><span data-i18n=robot_climb_second_right></span></label><br>
+			<label><input type=checkbox name=climb_first_rung_left value=1><span data-i18n=robot_climb_first_left></span></label>
+			<label><input type=checkbox name=climb_first_rung_right value=1><span data-i18n=robot_climb_first_right></span></label><br>
+		</p>
 		<p>
 			<span data-i18n=robot_size_question></span><br>
 			<label><span data-i18n=robot_size_length></span> <input type=number min=12 step=1 max=48 name=frame_length> <span data-i18n=robot_size_unit></span></label><br>

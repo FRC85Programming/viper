@@ -84,6 +84,24 @@ addI18n({
 		fr:'Robot',
 		zh_tw:'機器人',
 	},
+	robot_climb_third_left:{
+		en:'Left 3rd',
+	},
+	robot_climb_third_right:{
+		en:'Right 3rd',
+	},
+	robot_climb_second_left:{
+		en:'Left 2nd',
+	},
+	robot_climb_second_right:{
+		en:'Right 2nd',
+	},
+	robot_climb_first_left:{
+		en:'Left 1st',
+	},
+	robot_climb_first_right:{
+		en:'Right 1st',
+	},
 	robot_size_question:{
 		en:'What are the robot frame dimensions WITHOUT bumpers?',
 		pt:'Quais são as dimensões da estrutura do robô SEM para-choques?',
