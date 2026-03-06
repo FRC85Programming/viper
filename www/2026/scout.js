@@ -1435,7 +1435,7 @@ $(document).ready(function(){
 		document.getElementById("autoFuelScore").innerHTML = autoCount;
 	}
 
-		document.getElementById("teleFuelMinusOne").onclick = function(){
+	document.getElementById("teleFuelMinusOne").onclick = function(){
 		teleCount-=1;
 
 		document.getElementById("teleFuelScore").innerHTML = teleCount;
@@ -1458,5 +1458,8 @@ $(document).ready(function(){
 
 		document.getElementById("teleFuelScore").innerHTML = teleCount;
 	}
+
+	if (autoCount<=-1) autoCount = 0;
+	if (teleCount<=-1) teleCount = 0;
 
 })
