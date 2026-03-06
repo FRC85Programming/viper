@@ -87,17 +87,26 @@ addI18n({
 	robot_climb_third_left:{
 		en:'Left 3rd',
 	},
+	robot_climb_third_middle:{
+		en:'Middle 3rd',
+	},
 	robot_climb_third_right:{
 		en:'Right 3rd',
 	},
 	robot_climb_second_left:{
 		en:'Left 2nd',
 	},
+	robot_climb_second_middle:{
+		en:'Middle 2nd',
+	},
 	robot_climb_second_right:{
 		en:'Right 2nd',
 	},
 	robot_climb_first_left:{
 		en:'Left 1st',
+	},
+	robot_climb_first_middle:{
+		en:'Middle 1st',
 	},
 	robot_climb_first_right:{
 		en:'Right 1st',
