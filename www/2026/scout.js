@@ -210,6 +210,9 @@ addI18n({
 		fr:'Un peu',
 		pt:'Alguns',
 	},
+	fuel_alliance_passing_desc:{
+		en:'Did _TEAMNUM_ pass or push fuel to the alliance zone from the opposing zone?',
+	},
 	bricked_some_desc:{
 		en:'Disabled for a short time.',
 		he:'הושבת לזמן קצר.',
