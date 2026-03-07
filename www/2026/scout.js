@@ -58,8 +58,11 @@ addI18n({
 		fr:'Capacités démontrées de l\'équipe _TEAMNUM_',
 		pt:'Capacidades Demonstradas da Equipe _TEAMNUM_',
 	},
+	shoot_stationary_desc:{
+		en:'Shoot while stationary',
+	},
 	shoot_move_desc:{
-		en:'Moving',
+		en:'Shoot while moving',
 		he:'ירוק תוך כדי תנועה',
 		tr:'Hareket halinde ateş et',
 		zh_tw:'邊移動邊射擊',
@@ -281,6 +284,12 @@ addI18n({
 		fr:'Désactivée pendant tout le match.',
 		pt:'Desabilitada durante toda a partida.',
 	},
+	bricked_unsure:{
+		en:'Unsure of whether it was disabled or not',
+	},
+	bricked_unsure_desc:{
+		en:'Unsure',
+	},
 	defense_legend:{
 		en:'Team _TEAMNUM_ Defense Rating',
 		he:'דירוג הגנה של צוות _TEAMNUM_',
@@ -460,6 +469,12 @@ addI18n({
 		fr:'Marqué très peu.',
 		pt:'Pontuou muito pouco.',
 	},
+	defended_non_defendable:{
+		en:'Non-shooter, defense did not affect them',
+	},
+	defended_non_defendable_desc:{
+		en:'Non-defendable',
+	},
 	defense_methods_legend:{
 		en:'What methods did team _TEAMNUM_ use when defending?',
 		he:'אילו שיטות השתמש צוות _TEAMNUM_ בהגנה?',
@@ -544,7 +559,7 @@ addI18n({
 		en:'Very accurate',
 	},
 	accuracy_middle:{
-		en:'Not too accurate',
+		en:'Somewhat accurate',
 	},
 	accuracy_not:{
 		en:'Not accurate',
