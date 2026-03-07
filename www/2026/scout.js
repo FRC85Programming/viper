@@ -59,10 +59,10 @@ addI18n({
 		pt:'Capacidades Demonstradas da Equipe _TEAMNUM_',
 	},
 	shoot_stationary_desc:{
-		en:'Shoot while stationary',
+		en:'Stationary',
 	},
 	shoot_move_desc:{
-		en:'Shoot while moving',
+		en:'Moving',
 		he:'ירוק תוך כדי תנועה',
 		tr:'Hareket halinde ateş et',
 		zh_tw:'邊移動邊射擊',
@@ -70,7 +70,7 @@ addI18n({
 		pt:'Atirar em movimento',
 	},
 	shoot_collecting_desc:{
-		en:'Shoot while collecting',
+		en:'Collecting',
 		he:'ירוק בזמן אוסף',
 		tr:'Toplama sırasında ateş et',
 		zh_tw:'邊收集邊射擊',
@@ -101,7 +101,7 @@ addI18n({
 		pt:'Mudar direção de tiro enquanto se move reto',
 	},
 	shoot_climbing_desc:{
-		en:'Shoot while climbing',
+		en:'Climbing',
 		he:'ירוק בעת טיפוס',
 		tr:'Tırmanış sırasında ateş et',
 		zh_tw:'攀爬時射擊',
