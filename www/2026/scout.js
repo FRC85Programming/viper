@@ -41,6 +41,15 @@ addI18n({
 		fr:'Jeu',
 		pt:'Jogo',
 	},
+	shift_legend:{
+		en:'Which shift did team _TEAMNUM_ get after auto?',
+	},
+	shift_one:{
+		en:'First shift',
+	},
+	shift_two:{
+		en:'Second shift',
+	},
 	demonstrated_capabilities:{
 		en:'During the match, team _TEAMNUM_ scored while',
 		he:'יכולות שהוכחו בצוות _TEAMNUM_',
