@@ -518,6 +518,9 @@ addI18n({
 		fr:'Sauvegarde des données :',
 		zh_tw:'儲存資料：',
 	},
+	subjective_auto_question:{
+		en:'Team _TEAMNUM_ Autos',
+	},
 	subjective_penalties_question:{
 		en:'Team _TEAMNUM_ Penalties',
 		zh_tw:'球隊 _TEAMNUM_ 罰球',
