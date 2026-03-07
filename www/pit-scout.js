@@ -237,7 +237,7 @@ addI18n({
 		en:"None",
 	},
 	swerve_question:{
-		en:'If swerve, which modules?',
+		en:'If swerve, which modules (L1-L4 for speed)?',
 	},
 	robot_swerve_l1:{
 		en:'L1',
