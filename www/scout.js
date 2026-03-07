@@ -105,6 +105,9 @@ addI18n({
 		he:'אין הופעה',
 		tr:'Gösterilmedi',
 	},
+	starting_fuel:{
+		en:'Starting Fuel',
+	},
 	proceed_auto_button:{
 		en:'Auto »',
 		pt:'Auto »',
