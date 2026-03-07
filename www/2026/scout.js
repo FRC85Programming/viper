@@ -96,6 +96,9 @@ addI18n({
 		fr:'Tirer tout en grimpant',
 		pt:'Atirar enquanto escala',
 	},
+	shoot_na_desc:{
+		en:'N/A',
+	},
 	auto_climb_legend:{
 		en:'Did team _TEAMNUM_ climb in auto?',
 	},
