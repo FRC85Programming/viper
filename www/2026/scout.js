@@ -1425,7 +1425,7 @@ $(document).ready(function(){
 		})
 	}
 
-	// This is the stuff for the blinking thing in auto. Check 2025 scout.html for reference
+	// // This is the stuff for the blinking thing in auto. Check 2025 scout.html for reference
 
 	// function proceedToTeleBlink(){
 	// 	var goTele=$('.auto.tab-content').is(':visible') && matchStartTime>0 && (new Date().getTime()-matchStartTime)>=AUTO_MS
