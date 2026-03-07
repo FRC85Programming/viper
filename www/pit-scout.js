@@ -518,7 +518,7 @@ addI18n({
 		fr:'Sauvegarde des données :',
 		zh_tw:'儲存資料：',
 	},
-	subjective_auto_question:{
+	subjective_autos_question:{
 		en:'Team _TEAMNUM_ Autos',
 	},
 	subjective_penalties_question:{
