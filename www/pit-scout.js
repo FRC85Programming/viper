@@ -524,6 +524,9 @@ addI18n({
 	subjective_strengths_question:{
 		en:'Team _TEAMNUM_ Strengths',
 	},
+	subjective_weaknesses_question:{
+		en:'Team _TEAMNUM_ Weaknesses',
+	},
 	subjective_penalties_question:{
 		en:'Team _TEAMNUM_ Penalties',
 		zh_tw:'球隊 _TEAMNUM_ 罰球',

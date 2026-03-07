@@ -2231,6 +2231,7 @@ function showSubjectiveScouting(el,team){
 		var dat=subjectiveData[team]||{}
 		el.append($('<fieldset>').append($('<legend data-i18n=subjective_autos_question>').append($('<div style=white-space:pre-wrap>').text(dat.autos||""))))
 		el.append($('<fieldset>').append($('<legend data-i18n=subjective_strengths_question>').append($('<div style=white-space:pre-wrap>').text(dat.strengths||""))))
+		el.append($('<fieldset>').append($('<legend data-i18n=subjective_weaknesses_question>').append($('<div style=white-space:pre-wrap>').text(dat.weaknesses||""))))
 		el.append($('<fieldset>').append($('<legend data-i18n=subjective_penalties_question>').append($('<div style=white-space:pre-wrap>').text(dat.penalties||""))))
 		el.append($('<fieldset>').append($('<legend data-i18n=subjective_defense_question>').append($('<div style=white-space:pre-wrap>').text(dat.defense_tips||""))))
 		el.append($('<fieldset>').append($('<legend data-i18n=subjective_notes_question>').append($('<div style=white-space:pre-wrap>').text(dat.notes||""))))
