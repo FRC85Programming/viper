@@ -470,10 +470,10 @@ addI18n({
 		pt:'Pontuou muito pouco.',
 	},
 	defended_non_defendable:{
-		en:'Non-shooter, defense did not affect them',
+		en:'Non-defendable',
 	},
 	defended_non_defendable_desc:{
-		en:'Non-defendable',
+		en:'Non-shooter, defense did not affect them',
 	},
 	defense_methods_legend:{
 		en:'What methods did team _TEAMNUM_ use when defending?',
