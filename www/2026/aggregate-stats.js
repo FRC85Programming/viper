@@ -315,7 +315,7 @@ var statInfo={
 		values: {
 			'':'defense_none',
 			'bad':'defense_bad',
-			'ineffective':'defense_ineffective',
+			'okay':'defense_okay',
 			'good':'defense_good',
 			'great':'defense_great'
 		},
@@ -334,8 +334,8 @@ var statInfo={
 		tr:'Kötü Savunma',
 		he:'הגנה גרועה',
 	},
-	defense_ineffective:{
-		en:'Ineffective Defense',
+	defense_okay:{
+		en:'okay Defense',
 		type:'%',
 		fr:'Défense Inefficace',
 		pt:'Defesa Ineficaz',

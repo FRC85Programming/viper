@@ -308,7 +308,7 @@ addI18n({
 		fr:'Plus de pénalités jouant la défense que les points adverses empêchés.',
 		pt:'Mais penalidades jogando defesa do que pontos adversários impedidos.',
 	},
-	defense_ineffective:{
+	defense_okay:{
 		en:'Okay',
 		he:'לא יעיל',
 		tr:'Etkisiz',
@@ -316,7 +316,7 @@ addI18n({
 		fr:'Inefficace',
 		pt:'Ineficaz',
 	},
-	defense_ineffective_desc:{
+	defense_okay_desc:{
 		en:'Didn\'t significantly impact the game.',
 		he:'לא השפיע באופן משמעותי על המשחק.',
 		tr:'Oyunu önemli ölçüde etkilemedi.',
