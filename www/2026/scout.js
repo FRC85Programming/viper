@@ -184,12 +184,7 @@ addI18n({
 		pt:'Permaneceu na zona de aliança e recebeu combustível de outros bots.',
 	},
 	bricked_legend:{
-		en:'Was team _TEAMNUM_ bricked?',
-		he:'האם צוות _TEAMNUM_ היה מושבת?',
-		tr:'Takım _TEAMNUM_ tuğla kullanmış mı?',
-		zh_tw:'隊伍_TEAMNUM_被禁用了嗎?',
-		fr:'L\'équipe _TEAMNUM_ a-t-elle été paralysée?',
-		pt:'A equipe _TEAMNUM_ foi desabilitada?',
+		en:'Was team _TEAMNUM_ disabled?',
 	},
 	bricked_no:{
 		en:'No',
