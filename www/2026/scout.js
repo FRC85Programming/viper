@@ -309,7 +309,7 @@ addI18n({
 		pt:'Mais penalidades jogando defesa do que pontos adversários impedidos.',
 	},
 	defense_ineffective:{
-		en:'Ineffective',
+		en:'Okay',
 		he:'לא יעיל',
 		tr:'Etkisiz',
 		zh_tw:'無效',
