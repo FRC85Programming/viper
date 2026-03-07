@@ -213,6 +213,9 @@ addI18n({
 	fuel_alliance_passing_desc:{
 		en:'Did _TEAMNUM_ pass or push fuel to the alliance zone from the opposing zone?',
 	},
+	fuel_alliance_passing_label:{
+		en:'Alliance zone passing',
+	},
 	bricked_some_desc:{
 		en:'Disabled for a short time.',
 		he:'הושבת לזמן קצר.',
