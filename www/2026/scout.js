@@ -214,7 +214,7 @@ addI18n({
 		en:'Did _TEAMNUM_ pass or push fuel to the alliance zone from the opposing zone?',
 	},
 	fuel_alliance_passing_label:{
-		en:'Alliance zone passing',
+		en:'Far Pass',
 	},
 	bricked_some_desc:{
 		en:'Disabled for a short time.',
