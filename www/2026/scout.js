@@ -1414,16 +1414,16 @@ $(document).ready(function(){
 
 	// This is the stuff for the blinking thing in auto. Check 2025 scout.html for reference
 
-	function proceedToTeleBlink(){
-		var goTele=$('.auto.tab-content').is(':visible') && matchStartTime>0 && (new Date().getTime()-matchStartTime)>=AUTO_MS
-		$('#tele-reminder').toggle(goTele)
-		$('.to-tele').toggleClass('pulse-bg',goTele)
-		if(goTele)setTimeout(proceedToTeleForce,10200)
-	}
+	// function proceedToTeleBlink(){
+	// 	var goTele=$('.auto.tab-content').is(':visible') && matchStartTime>0 && (new Date().getTime()-matchStartTime)>=AUTO_MS
+	// 	$('#tele-reminder').toggle(goTele)
+	// 	$('.to-tele').toggleClass('pulse-bg',goTele)
+	// 	if(goTele)setTimeout(proceedToTeleForce,10200)
+	// }
 
-	function proceedToTeleForce(){
-		if($('.auto.tab-content').is(':visible') && matchStartTime>0 && (new Date().getTime()-matchStartTime)>=AUTO_MS+10000) showTab(null, $('.tab[data-content="teleop"]'))
-	}
+	// function proceedToTeleForce(){
+	// 	if($('.auto.tab-content').is(':visible') && matchStartTime>0 && (new Date().getTime()-matchStartTime)>=AUTO_MS+10000) showTab(null, $('.tab[data-content="teleop"]'))
+	// }
 
 	let autoCount = 0;
 	let teleCount = 0;
