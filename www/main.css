@@ -41,7 +41,7 @@ ol,ul,p{text-align:start;max-width:40em;margin:0 auto}
 .side-by-side{display:inline-block;vertical-align:top;margin:1em;box-sizing:content-box}
 .winner{border-left-color:var(--winner-color);border-right-color:var(--winner-color)}
 h1{padding:0 2.5em}
-#fullscreen{position:fixed;bottom:0.4em;right:0.4em;font-size:200%;cursor:pointer}
+#fullscreen{position:fixed;bottom:0.4em;right:0.4em;font-size:400%;cursor:pointer}
 #hamburger{position:fixed;top:0;left:92vw;font-size:300%;cursor:pointer}
 #hamburger.hasUploads{background-color:var(--highlight-bg-color)}
 #error-logs-link,#hamburger.error{background-color:var(--button-disabled-decoration-color)}
@@ -61,7 +61,7 @@ html[dir="ltr"] .tooltip-before[data-tooltip]:hover::before{margin-left:-11em}
 html[dir="rtl"] [data-tooltip]:hover::before{margin-right:3em}
 [data-tooltip]:not([data-tooltip-persistent])::before{pointer-events:none}
 @media only screen and ((max-width:600px) or (max-height:600px)){
-	html{font-size:15px;}
+	html{font-size:12px;}
 }
 @media print {
 	html{background:white;color:black}
