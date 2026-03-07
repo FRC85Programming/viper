@@ -375,6 +375,9 @@ addI18n({
 		fr:'Non défendu',
 		pt:'Indefeso',
 	},
+	all_shooting_locations_legend:{
+		en:'What areas could _TEAMNUM_ shoot from?',
+	},
 	defended_undefended_desc:{
 		en:'Didn\'t get defended.',
 		he:'לא קיבל הגנה.',
