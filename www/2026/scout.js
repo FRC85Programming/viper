@@ -285,10 +285,10 @@ addI18n({
 		pt:'Desabilitada durante toda a partida.',
 	},
 	bricked_unsure:{
-		en:'Unsure of whether it was disabled or not',
+		en:'Unsure',
 	},
 	bricked_unsure_desc:{
-		en:'Unsure',
+		en:'Unsure if they were disabled or not.',
 	},
 	defense_legend:{
 		en:'Team _TEAMNUM_ Defense Rating',
