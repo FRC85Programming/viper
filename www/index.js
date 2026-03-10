@@ -48,11 +48,20 @@ $(document).ready(function(){
 			if(m) seasons[m[0]] = 1
 		}
 		seasons = Object.keys(seasons)
+
+		// Add a fixed "template" season option that is not backed by real events
+		seasons.push('TEMPLATE')
+
 		seasons.sort((a,b) => {return b.localeCompare(a)})
 		for (var i=0; i<seasons.length; i++){
 			var season = seasons[i],
 			comp = /-/.test(season)?"FTC":"FRC"
-			$('#seasons').append($(`<option value=${season}>${season} ${comp}</option>`))
+
+			if (season === 'TEMPLATE') {
+				$('#seasons').append($('<option value="TEMPLATE">Template season</option>'))
+			} else {
+				$('#seasons').append($(`<option value=${season}>${season} ${comp}</option>`))
+			}
 		}
 		$('#seasons').toggle(seasons.length > 1)
 		events = events.sort(dateCompare)
