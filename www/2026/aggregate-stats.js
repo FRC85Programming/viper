@@ -2092,7 +2092,3 @@ function showSubjectiveScouting(el,team){
 		applyTranslations()
 	})
 }
-
-function importScouting195(text){
-
-}
