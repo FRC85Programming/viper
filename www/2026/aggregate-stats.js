@@ -2093,21 +2093,6 @@ function showSubjectiveScouting(el,team){
 	})
 }
 
-var importFunctions={
-	"195":{
-		example:"/2026/195.csv",
-		convert:importScouting195,
-	},
-	"3061":{
-		example:"/2026/3061.json",
-		convert:importScouting3061,
-	},
-	"Lovat":{
-		example:"/2026/lovat.tsv",
-		convert:importScoutingLovat,
-	},
-}
-
 function importScouting195(text){
-	
+
 }
