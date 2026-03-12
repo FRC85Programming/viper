@@ -2094,4 +2094,170 @@ function showSubjectiveScouting(el,team){
 }
 
 var importFunctions={
+	"195":{
+		example:"/2026/195.csv",
+		convert:importScouting195,
+	},
+	"3061":{
+		example:"/2026/3061.json",
+		convert:importScouting3061,
+	},
+	"Lovat":{
+		example:"/2026/lovat.tsv",
+		convert:importScoutingLovat,
+	},
+}
+
+function importScouting195(text){
+	var rows=csvToArrayOfMaps(text)
+	rows.forEach(row=>{
+		row.match="qm" + row.matchNum
+		row.no_show=row.preNoShow
+		row.auto_leave=row.autoLeave
+		row.auto_start=''
+		switch(((""+row.preStartPosID)||"0")[0]){
+			case "1":row.auto_start='17x43';break
+			case "2":row.auto_start='33x43';break
+			case "3":row.auto_start='50x43';break
+			case "4":row.auto_start='67x43';break
+			case "5":row.auto_start='83x43';break
+		}
+		row.auto_coral_level_4=row.autoL4
+		row.auto_coral_level_3=row.autoL3
+		row.auto_coral_level_2=row.autoL2
+		row.auto_coral_level_1=row.autoL1
+		row.auto_coral_drop=row.autoMissL4+row.autoMissL3+row.autoMissL2+row.autoMissL1
+		row.auto_algae_lower=row.autoAlgaeRmv
+		row.auto_algae_processor=row.autoProcessor
+		row.auto_coral_mark_1=row.autoMarkCoral
+		row.auto_algae_mark_1=row.autoMarkAlgae
+		row.auto_coral_station_1=row.autoCoralStation1
+		row.auto_coral_station_2=row.autoCoralStation2
+		row.auto_algae_drop=row.autoMissProcessor+row.autoMissBarge
+		row.auto_algae_net=row.autoBarge
+		row.tele_coral_level_4=row.teleL4
+		row.tele_coral_level_3=row.teleL3
+		row.tele_coral_level_2=row.teleL2
+		row.tele_coral_level_1=row.teleL1
+		row.tele_coral_drop=row.teleMissL4+row.teleMissL3+row.teleMissL2+row.teleMissL1
+		row.tele_algae_lower=row.teleAlgaeRmv
+		row.tele_algae_processor=row.teleProcessor
+		row.tele_algae_net=row.teleBarge
+		row.tele_algae_opponent_processor=row.teleOppProcessor
+		row.tele_coral_theft=row.teleOppCoral
+		row.tele_algae_theft=row.teleOppAlgae
+		row.tele_coral_ground=row.teleCoralGround
+		row.tele_coral_station_1=row.teleCoralStation1
+		row.tele_coral_station_2=row.teleCoralStation2
+		row.tele_algae_drop=row.teleMissProcessor+row.teleMissBarge
+		row.climb_time=row.climbTime
+		row.end_game_climb_fail=''
+		row.end_game_position=''
+		switch(((""+row.climbStatusID)||"0")[0]){
+			case "2":case "3":row.end_game_position='parked';row.end_game_climb_fail=1;break
+			case "4":row.end_game_position='shallow';break
+			case "5":row.end_game_position='deep';break
+			case "6":row.end_game_position='parked';break
+		}
+		row.defense=row.postDefense
+	})
+	return rows
+}
+
+function importScoutingLovat(text){
+	var rows=csvToArrayOfMaps(text.replace(/,/g,"،").replace(/\t/g,","))
+	rows.forEach(row=>{
+		row.auto_leave=bool_1_0(row.activeAuton)
+		row.match=row.match.replace(/Q/,"qm")
+		row.team=row.teamNumber
+		row.tele_coral_level_4=row.coralL4
+		row.tele_coral_level_3=row.coralL3
+		row.tele_coral_level_2=row.coralL2
+		row.tele_coral_level_1=row.coralL1
+		row.tele_coral_drop=row.coralDrops
+		row.tele_algae_processor=row.processorScores
+		row.tele_algae_net=row.netScores
+		row.tele_algae_drop=row.algaeDrops
+		row.end_game_climb_fail=''
+		row.end_game_position=''
+		switch(row.endgame){
+			case "FAILED_DEEP":case "FAILED_SHALLOW":row.end_game_position='parked';row.end_game_climb_fail=1;break
+			case "SHALLOW":row.end_game_position='shallow';break
+			case "DEEP":row.end_game_position='deep';break
+			case "PARKED":row.end_game_position='parked';break
+		}
+		row.comments=row.notes
+	})
+	return rows
+}
+
+// https://scouting.team3061.org/analysis/api/dataset
+function importScouting3061(text){
+	var data = [],
+	MAP={
+		autoAlgaeRight:"auto_algae_mark_1",
+		autoAlgaeCenter:"auto_algae_mark_2",
+		autoAlgaeLeft:"auto_algae_mark_3",
+		autoAlgaeDrop:"auto_algae_drop",
+		autoCoralRight:"auto_coral_mark_1",
+		autoAlgaeCenter:"auto_coral_mark_2",
+		autoCoralLeft:"auto_coral_mark_3",
+		autoCoralDrop:"auto_coral_drop",
+		autol1:"auto_coral_level_1",
+		autol2:"auto_coral_level_2",
+		autol3:"auto_coral_level_3",
+		autol4:"auto_coral_level_4",
+		autoMissCoral:"auto_coral_drop",
+		autoMissNet:"auto_algae_drop",
+		autoReefPickupAlgae:"auto_algae_upper",
+		autoScoreNet:"auto_algae_net",
+		autoScoreProcessor:"auto_algae_processor",
+		autoStationPickupCoral:"auto_coral_station_1",
+		bargeFall:"end_game_climb_fail",
+		broken:"bricked",
+		leave:"auto_leave",
+		preloadCoral:"coral_preload",
+		teleopAlgaeDrop:"tele_algae_drop",
+		teleopCoralDrop:"tele_coral_drop",
+		teleopGroundPickupAlgae:"tele_algae_ground",
+		teleopGroundPickupCoral:"tele_coral_ground",
+		teleopl1:"tele_coral_level_1",
+		teleopl2:"tele_coral_level_2",
+		teleopl3:"tele_coral_level_3",
+		teleopl4:"tele_coral_level_4",
+		teleopMissCoral:"tele_coral_drop",
+		teleopMissNet:"tele_algae_drop",
+		teleopReefPickupAlgae:"tele_algae_upper",
+		teleopScoreNet:"tele_algae_net",
+		teleopScoreProcessor:"tele_algae_processor",
+		teleopStationPickupCoral:"tele_coral_station_1",
+	}
+	JSON.parse(text).forEach(m=>{
+		var r = {}
+		data.push(r)
+		r.match="qm"+m.matchNumber
+		r.team=m.robotNumber
+		r.scouter=m.scouterId
+		r.created=new Date(m.timestamp).toISOString().replace(/\..*/,"+00:00")
+		r.modified=r.created
+		r.timeline=[]
+		r.end_game_position=""
+		Object.values(MAP).forEach(v=>r[v]=0)
+		m.actionQueue.forEach(a=>{
+			var t=Math.floor(a.ts/1000)
+			switch(a.id){
+				case "deep":r.end_game_position="deep";break;
+				case "park":r.end_game_position="parked";break;
+				case "shallow":r.end_game_position="shallow";break;
+				default:
+					if(MAP.hasOwnProperty(a.id)){
+						r[MAP[a.id]]++
+						r.timeline.push(`${t}:${MAP[a.id]}`)
+					}
+					break;
+			}
+		})
+		r.timeline=r.timeline.join(" ")
+	})
+	return data
 }
