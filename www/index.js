@@ -49,7 +49,7 @@ $(document).ready(function(){
 		}
 		seasons = Object.keys(seasons)
 
-		// Add a fixed "template" season option that is not backed by real events
+		// Add a fixed "template" season option that is not backed by real events WHAT IS GOIN ONNNNNNNNN
 		seasons.push('TEMPLATE')
 
 		seasons.sort((a,b) => {return b.localeCompare(a)})
