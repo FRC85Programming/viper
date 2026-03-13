@@ -2092,3 +2092,99 @@ function showSubjectiveScouting(el,team){
 		applyTranslations()
 	})
 }
+
+function importScouting195(text){
+	var rows=csvToArrayOfMaps(text)
+	rows.forEach(row=>{
+		row.match="qm" + row.matchNum
+		row.no_show=row.preNoShow
+		row.auto_leave=row.autoLeave
+		row.auto_start=''
+		switch(((""+row.preStartPosID)||"0")[0]){
+			case "1":row.auto_start='17x43';break
+			case "2":row.auto_start='33x43';break
+			case "3":row.auto_start='50x43';break
+			case "4":row.auto_start='67x43';break
+			case "5":row.auto_start='83x43';break
+		}
+		row.climbOptionDoes=row.climb_does
+		row.climbOptionDoesnt=row.climb_doesnt
+		row.tele_fuel_score=row.teleFuelScore
+		row.tele_fuel_neutral_alliance_pass=row.teleFuelNeutralAlliancePass
+		row.tele_fuel_opponent_neutral_pass=row.teleFuelOpponentNeutralPass
+		row.tele_fuel_opponent_alliance_pass=row.teleFuelOpponentAlliancePass
+		row.tele_trench_depot_alliance_to_neutral=row.teleTrenchDepotAllianceToNeutral
+		row.tele_bump_depot_alliance_to_neutral=row.teleBumpDepotAllianceToNeutral
+		row.tele_bump_outpost_alliance_to_neutral=row.teleBumpOutpostAllianceToNeutral
+		row.tele_trench_outpost_alliance_to_neutral=row.teleTrenchOutpostAllianceToNeutral
+		row.tele_trench_depot_neutral_to_alliance=row.teleTrenchDepotNeutralToAlliance
+		row.tele_bump_depot_neutral_to_alliance=row.teleBumpDepotNeutralToAlliance
+		row.tele_bump_outpost_neutral_to_alliance=row.teleBumpOutpostNeutralToAlliance
+		row.tele_trench_outpost_neutral_to_alliance=row.teleTrenchOutpostNeutralToAlliance
+		row.tele_trench_outpost_neutral_to_alliance=row.teleTrenchOutpostNeutralToAlliance
+		row.tele_trench_outpost_neutral_to_opponent=row.teleTrenchOutpostNeutralToOpponent
+		row.tele_trench_outpost_opponent_to_neutral=row.teleTrenchOutpostOpponentToNeutral
+		row.tele_bump_outpost_neutral_to_opponent=row.teleBumpOutpostNeutralToOpponent
+		row.tele_bump_depot_neutral_to_opponent=row.teleBumpDepotNeutralToOpponent
+		row.tele_trench_depot_neutral_to_opponent=row.teleTrenchDepotNeutralToOpponent
+		row.tele_trench_outpost_opponent_to_neutral=row.teleTrenchOutpostOpponentToNeutral
+		row.tele_bump_outpost_opponent_to_neutral=row.teleBumpOutpostOpponentToNeutral
+		row.tele_bump_depot_opponent_to_neutral=row.teleBumpDepotOpponentToNeutral
+		row.tele_trench_depot_opponent_to_neutral=row.teleTrenchDepotOpponentToNeutral
+		row.tele_alliance_time=row.tele_alliance_time
+		row.tele_neutral_time=row.tele_neutral_time
+		row.tele_algae_opponent_processor=row.teleOppProcessor
+		row.shiftOne=row.shift_one
+		row.shiftTwo=row.shift_two
+		row.howScoreStationary=row.shoot_stationary_desc
+		row.howScoreMove=row.shoot_move_desc
+		row.howScoreCollect=row.shoot_collecting_desc
+		row.howScoreClimb=row.shoot_climbing_desc
+		row.howScoreNA=row.shoot_na_desc
+		row.noShow=row.no_show
+		row.startingFuel=row.starting_fuel
+		row.climbOptionDoes=row.climb_does
+		row.climbOptionDoesnt=row.climb_doesnt
+		row.teleFuelScore=row.tele_fuel_score
+		row.teleFuelAllianceDump=row.tele_fuel_alliance_dump
+		row.teleFuelNeutralAlliancePass=row.tele_fuel_neutral_alliance_pass
+		row.teleFuelOpponentNeutralPass=row.tele_fuel_opponent_neutral_pass
+		row.teleFuelOpponentAlliancePass=row.tele_fuel_opponent_alliance_pass
+		row.teleTrenchDepotAllianceToNeutral=row.tele_trench_depot_alliance_to_neutral
+		row.teleBumpDepotAllianceToNeutral=row.tele_bump_depot_alliance_to_neutral
+		row.teleBumpOutpostAllianceToNeutral=row.tele_bump_outpost_alliance_to_neutral
+		row.teleTrenchOutpostAllianceToNeutral=row.tele_trench_outpost_alliance_to_neutral
+		row.teleTrenchDepotNeutralToAlliance=row.tele_trench_depot_neutral_to_alliance
+		row.teleBumpDepotNeutralToAlliance=row.tele_bump_depot_neutral_to_alliance
+		row.teleBumpOutpostNeutralToAlliance=row.tele_bump_outpost_neutral_to_alliance
+		row.teleTrenchOutpostNeutralToAlliance=row.tele_trench_outpost_neutral_to_alliance
+		row.teleTrenchOutpostNeutralToOpponent=row.tele_trench_outpost_neutral_to_opponent
+		row.teleTrenchOutpostOpponentToNeutral=row.tele_trench_outpost_opponent_to_neutral
+		row.teleBumpOutpostNeutralToOpponent=row.tele_bump_outpost_neutral_to_opponent
+		row.teleBumpDepotNeutralToOpponent=row.tele_bump_depot_neutral_to_opponent
+		row.teleTrenchDepotNeutralToOpponent=row.tele_trench_depot_neutral_to_opponent
+		row.teleTrenchOutpostOpponentToNeutral=row.tele_trench_outpost_opponent_to_neutral
+		row.teleBumpOutpostOpponentToNeutral=row.tele_bump_outpost_opponent_to_neutral
+		row.teleBumpDepotOpponentToNeutral=row.tele_bump_depot_opponent_to_neutral
+		row.teleTrenchDepotOpponentToNeutral=row.tele_trench_depot_opponent_to_neutral
+		row.teleAllianceTime=row.tele_alliance_time
+		row.teleNeutralTime=row.tele_neutral_time
+		row.shiftOne=row.shift_one
+		row.shiftTwo=row.shift_two
+		row.howScoreStationary=row.shoot_stationary_desc
+		row.howScoreMove=row.shoot_move_desc
+		row.howScoreCollect=row.shoot_collecting_desc
+		row.howScoreClimb=row.shoot_climbing_desc
+		row.howScoreNA=row.shoot_na_desc
+		row.end_game_climb_fail=''
+		row.end_game_position=''
+		switch(((""+row.climbStatusID)||"0")[0]){
+			case "2":case "3":row.end_game_position='parked';row.end_game_climb_fail=1;break
+			case "4":row.end_game_position='shallow';break
+			case "5":row.end_game_position='deep';break
+			case "6":row.end_game_position='parked';break
+		}
+		row.defense=row.postDefense
+	})
+	return rows
+}
