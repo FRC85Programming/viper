@@ -177,8 +177,8 @@
 		</div>
 			<fieldset class=full id=auto-climb-fieldset>
 				<legend data-i18n=auto_climb_legend></legend>
-				<div><label><input type=radio name=climbOptionDoes value=does><span data-i18n=climb_does></span></div>
-				<div><label><input type=radio name=climbOptionDoesnt value=doesnt><span data-i18n=climb_doesnt></span></div>
+				<div><label><input type=radio name=climbOption value=does><span data-i18n=climb_does></span></div>
+				<div><label><input type=radio name=climbOption value=doesnt><span data-i18n=climb_doesnt></span></div>
 			</fieldset>
 		<!-- <div class=side-by-side>
 			<div><button class=undo data-i18n=undo_button></button></div>
@@ -308,6 +308,10 @@
 		<table id=tele-counters class="collapsable counters-table">
 			<thead><tr><td class=subheader>Count</td><td class=subheader>Description</td></tr></thead>
 			<tbody>
+			<!-- <tr>
+				<td><input type=text class=num value=0 name=teleFuelScore size=4 disabled></td>
+				<td data-i18n=tele_fuel_score></td>
+			</tr> -->
 			<tr>
 				<td><input type=text class=num value=0 name=teleFuelAllianceDump size=4 disabled></td>
 				<td data-i18n=tele_fuel_alliance_dump></td>
@@ -403,8 +407,8 @@
 			<fieldset class=full>
 				<legend data-i18n=shift_legend></legend>
 				<!--Changed the name from Shift to shiftOne-->
-				<label><input type=radio name=shiftOne value=shiftOne><span data-i18n=shift_one></span></label>
-				<label><input type=radio name=shiftTwo value=shiftTwo><span data-i18n=shift_two></span></label>
+				<label><input type=radio name=shift value=shiftOne><span data-i18n=shift_one></span></label>
+				<label><input type=radio name=shift value=shiftTwo><span data-i18n=shift_two></span></label>
 			</fieldset>
 			<fieldset class=full>
 				<legend data-i18n=demonstrated_capabilities></legend>
