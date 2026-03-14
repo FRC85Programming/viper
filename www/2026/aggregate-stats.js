@@ -101,6 +101,8 @@ function aggregateStats(scout, aggregate, apiScores, subjective, pit, eventStats
 	scout.auto_trench_alliance = scout.auto_trench_depot_alliance + scout.auto_trench_outpost_alliance
 	scout.auto_trench = scout.auto_trench_alliance
 
+    scout.tele_fuel_total = scout.teleFuelScore
+
 	scout.tele_trench_depot_alliance = scout.tele_trench_depot_alliance_to_neutral + scout.tele_trench_depot_neutral_to_alliance
 	scout.tele_trench_depot_opponent = scout.tele_trench_depot_neutral_to_opponent + scout.tele_trench_depot_opponent_to_neutral
 	scout.tele_trench_outpost_alliance = scout.tele_trench_outpost_alliance_to_neutral + scout.tele_trench_outpost_neutral_to_alliance
