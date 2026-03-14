@@ -2129,47 +2129,16 @@ function importScouting195(text){
 		row.tele_bump_outpost_opponent_to_neutral=row.teleBumpOutpostOpponentToNeutral
 		row.tele_bump_depot_opponent_to_neutral=row.teleBumpDepotOpponentToNeutral
 		row.tele_trench_depot_opponent_to_neutral=row.teleTrenchDepotOpponentToNeutral
-		row.tele_alliance_time=row.tele_alliance_time
-		row.tele_neutral_time=row.tele_neutral_time
 		row.tele_algae_opponent_processor=row.teleOppProcessor
-		row.howScoreStationary=row.shoot_stationary_desc
-		row.howScoreMove=row.shoot_move_desc
-		row.howScoreCollect=row.shoot_collecting_desc
-		row.howScoreClimb=row.shoot_climbing_desc
-		row.howScoreNA=row.shoot_na_desc
-		row.noShow=row.no_show
-		row.startingFuel=row.starting_fuel
+		row.shoot_stationary_desc=row.howScoreStationary
+		row.shoot_move_desc=row.howScoreMove
+		row.shoot_collecting_desc=row.howScoreCollect
+		row.shoot_climbing_desc=row.howScoreClimb
+		row.shoot_na_desc=row.howScoreNA
+		row.no_show=row.noShow
+		row.starting_fuel=row.startingFuel
 		row.climbOption=[row.climb_does,row.climb_doesnt].filter(s=>s).join(", ")
-		row.teleFuelScore=row.tele_fuel_score
-		row.teleFuelAllianceDump=row.tele_fuel_alliance_dump
-		row.teleFuelNeutralAlliancePass=row.tele_fuel_neutral_alliance_pass
-		row.teleFuelOpponentNeutralPass=row.tele_fuel_opponent_neutral_pass
-		row.teleFuelOpponentAlliancePass=row.tele_fuel_opponent_alliance_pass
-		row.teleTrenchDepotAllianceToNeutral=row.tele_trench_depot_alliance_to_neutral
-		row.teleBumpDepotAllianceToNeutral=row.tele_bump_depot_alliance_to_neutral
-		row.teleBumpOutpostAllianceToNeutral=row.tele_bump_outpost_alliance_to_neutral
-		row.teleTrenchOutpostAllianceToNeutral=row.tele_trench_outpost_alliance_to_neutral
-		row.teleTrenchDepotNeutralToAlliance=row.tele_trench_depot_neutral_to_alliance
-		row.teleBumpDepotNeutralToAlliance=row.tele_bump_depot_neutral_to_alliance
-		row.teleBumpOutpostNeutralToAlliance=row.tele_bump_outpost_neutral_to_alliance
-		row.teleTrenchOutpostNeutralToAlliance=row.tele_trench_outpost_neutral_to_alliance
-		row.teleTrenchOutpostNeutralToOpponent=row.tele_trench_outpost_neutral_to_opponent
-		row.teleTrenchOutpostOpponentToNeutral=row.tele_trench_outpost_opponent_to_neutral
-		row.teleBumpOutpostNeutralToOpponent=row.tele_bump_outpost_neutral_to_opponent
-		row.teleBumpDepotNeutralToOpponent=row.tele_bump_depot_neutral_to_opponent
-		row.teleTrenchDepotNeutralToOpponent=row.tele_trench_depot_neutral_to_opponent
-		row.teleTrenchOutpostOpponentToNeutral=row.tele_trench_outpost_opponent_to_neutral
-		row.teleBumpOutpostOpponentToNeutral=row.tele_bump_outpost_opponent_to_neutral
-		row.teleBumpDepotOpponentToNeutral=row.tele_bump_depot_opponent_to_neutral
-		row.teleTrenchDepotOpponentToNeutral=row.tele_trench_depot_opponent_to_neutral
-		row.teleAllianceTime=row.tele_alliance_time
-		row.teleNeutralTime=row.tele_neutral_time
 		row.shift=[row.shift_one,row.shift_two].filter(s=>s).join(", ")
-		row.howScoreStationary=row.shoot_stationary_desc
-		row.howScoreMove=row.shoot_move_desc
-		row.howScoreCollect=row.shoot_collecting_desc
-		row.howScoreClimb=row.shoot_climbing_desc
-		row.howScoreNA=row.shoot_na_desc
 		row.climbMethod=[row.climb_method_rungs,row.climb_method_uprights,row.climb_method_flip].filter(s=>s).join(", ")
 		row.fuel_to_alliance=[row.fuel_carried_label,row.fuel_pushed_label,row.fuel_passed_label,row.fuel_received_label,row.fuel_alliance_passing_label].filter(s=>s).join(", ")
 		row.bricked=[row.bricked_no,row.bricked_some,bricked_half,bricked_most,bricked_all,bricked_unsure].filter(s=>s).join(", ")
@@ -2185,6 +2154,28 @@ function importScouting195(text){
 		// 	case "5":row.end_game_position='deep';break
 		// 	case "6":row.end_game_position='parked';break
 		// }
+		// row.teleFuelScore=row.tele_fuel_score
+		// row.teleFuelAllianceDump=row.tele_fuel_alliance_dump
+		// row.teleFuelNeutralAlliancePass=row.tele_fuel_neutral_alliance_pass
+		// row.teleFuelOpponentNeutralPass=row.tele_fuel_opponent_neutral_pass
+		// row.teleFuelOpponentAlliancePass=row.tele_fuel_opponent_alliance_pass
+		// row.teleTrenchDepotAllianceToNeutral=row.tele_trench_depot_alliance_to_neutral
+		// row.teleBumpDepotAllianceToNeutral=row.tele_bump_depot_alliance_to_neutral
+		// row.teleBumpOutpostAllianceToNeutral=row.tele_bump_outpost_alliance_to_neutral
+		// row.teleTrenchOutpostAllianceToNeutral=row.tele_trench_outpost_alliance_to_neutral
+		// row.teleTrenchDepotNeutralToAlliance=row.tele_trench_depot_neutral_to_alliance
+		// row.teleBumpDepotNeutralToAlliance=row.tele_bump_depot_neutral_to_alliance
+		// row.teleBumpOutpostNeutralToAlliance=row.tele_bump_outpost_neutral_to_alliance
+		// row.teleTrenchOutpostNeutralToAlliance=row.tele_trench_outpost_neutral_to_alliance
+		// row.teleTrenchOutpostNeutralToOpponent=row.tele_trench_outpost_neutral_to_opponent
+		// row.teleTrenchOutpostOpponentToNeutral=row.tele_trench_outpost_opponent_to_neutral
+		// row.teleBumpOutpostNeutralToOpponent=row.tele_bump_outpost_neutral_to_opponent
+		// row.teleBumpDepotNeutralToOpponent=row.tele_bump_depot_neutral_to_opponent
+		// row.teleTrenchDepotNeutralToOpponent=row.tele_trench_depot_neutral_to_opponent
+		// row.teleTrenchOutpostOpponentToNeutral=row.tele_trench_outpost_opponent_to_neutral
+		// row.teleBumpOutpostOpponentToNeutral=row.tele_bump_outpost_opponent_to_neutral
+		// row.teleBumpDepotOpponentToNeutral=row.tele_bump_depot_opponent_to_neutral
+		// row.teleTrenchDepotOpponentToNeutral=row.tele_trench_depot_opponent_to_neutral
 		row.defense=row.postDefense
 	})
 	return rows
