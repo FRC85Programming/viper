@@ -2094,9 +2094,9 @@ function showSubjectiveScouting(el,team){
 }
 
 var importFunctions={
-	"195":{
-		example:"/2026/195.csv",
-		convert:importScouting195,
+	"85":{
+		example:"/2026/85.csv",
+		convert:importScouting85,
 	},
 	// "3061":{
 	// 	example:"/2025/3061.json",
@@ -2108,7 +2108,7 @@ var importFunctions={
 	// },
 }
 
-function importScouting195(text){
+function importScouting85(text){
 	var rows=csvToArrayOfMaps(text)
 	rows.forEach(row=>{
 		row.match="qm" + row.matchNum
