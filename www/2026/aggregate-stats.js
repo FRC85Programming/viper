@@ -2107,8 +2107,6 @@ function importScouting195(text){
 			case "4":row.auto_start='67x43';break
 			case "5":row.auto_start='83x43';break
 		}
-		row.climbOptionDoes=row.climb_does
-		row.climbOptionDoesnt=row.climb_doesnt
 		row.tele_fuel_score=row.teleFuelScore
 		row.tele_fuel_neutral_alliance_pass=row.teleFuelNeutralAlliancePass
 		row.tele_fuel_opponent_neutral_pass=row.teleFuelOpponentNeutralPass
@@ -2134,8 +2132,6 @@ function importScouting195(text){
 		row.tele_alliance_time=row.tele_alliance_time
 		row.tele_neutral_time=row.tele_neutral_time
 		row.tele_algae_opponent_processor=row.teleOppProcessor
-		row.shiftOne=row.shift_one
-		row.shiftTwo=row.shift_two
 		row.howScoreStationary=row.shoot_stationary_desc
 		row.howScoreMove=row.shoot_move_desc
 		row.howScoreCollect=row.shoot_collecting_desc
@@ -2143,7 +2139,7 @@ function importScouting195(text){
 		row.howScoreNA=row.shoot_na_desc
 		row.noShow=row.no_show
 		row.startingFuel=row.starting_fuel
-		row.climbOption=[row.climbOptionDoes,row.climbOptionDoesnt].filter(s=>s).join(", ")
+		row.climbOption=[row.climb_does,row.climb_doesnt].filter(s=>s).join(", ")
 		row.teleFuelScore=row.tele_fuel_score
 		row.teleFuelAllianceDump=row.tele_fuel_alliance_dump
 		row.teleFuelNeutralAlliancePass=row.tele_fuel_neutral_alliance_pass
@@ -2168,20 +2164,27 @@ function importScouting195(text){
 		row.teleTrenchDepotOpponentToNeutral=row.tele_trench_depot_opponent_to_neutral
 		row.teleAllianceTime=row.tele_alliance_time
 		row.teleNeutralTime=row.tele_neutral_time
-		row.shift=[row.shiftOne,row.shiftTwo].filter(s=>s).join(", ")
+		row.shift=[row.shift_one,row.shift_two].filter(s=>s).join(", ")
 		row.howScoreStationary=row.shoot_stationary_desc
 		row.howScoreMove=row.shoot_move_desc
 		row.howScoreCollect=row.shoot_collecting_desc
 		row.howScoreClimb=row.shoot_climbing_desc
 		row.howScoreNA=row.shoot_na_desc
-		row.end_game_climb_fail=''
-		row.end_game_position=''
-		switch(((""+row.climbStatusID)||"0")[0]){
-			case "2":case "3":row.end_game_position='parked';row.end_game_climb_fail=1;break
-			case "4":row.end_game_position='shallow';break
-			case "5":row.end_game_position='deep';break
-			case "6":row.end_game_position='parked';break
-		}
+		row.climbMethod=[row.climb_method_rungs,row.climb_method_uprights,row.climb_method_flip].filter(s=>s).join(", ")
+		row.fuel_to_alliance=[row.fuel_carried_label,row.fuel_pushed_label,row.fuel_passed_label,row.fuel_received_label,row.fuel_alliance_passing_label].filter(s=>s).join(", ")
+		row.bricked=[row.bricked_no,row.bricked_some,bricked_half,bricked_most,bricked_all,bricked_unsure].filter(s=>s).join(", ")
+		row.defended=[row.defended_undefended,row.defended_turned_tables,row.defended_unaffected,row.defended_slowed,row.defended_slowed_greatly,row.defended_non_defendable].filter(s=>s).join(", ")
+		row.defense=[row.defense_none,row.defense_bad,row.defense_okay,row.defense_good,row.defense_great].filter(s=>s).join(", ")
+		row.climb=[row.climb_none,row.climb_first,row.climb_second,row.climb_third].filter(s=>s).join(", ")
+		row.accuracy=[row.accuracy_very,row.accuracy_middle,row.accuracy_not,row.accuracy_na].filter(s=>s).join(", ")
+		// row.end_game_climb_fail=''
+		// row.end_game_position=''
+		// switch(((""+row.climbStatusID)||"0")[0]){
+		// 	case "2":case "3":row.end_game_position='parked';row.end_game_climb_fail=1;break
+		// 	case "4":row.end_game_position='shallow';break
+		// 	case "5":row.end_game_position='deep';break
+		// 	case "6":row.end_game_position='parked';break
+		// }
 		row.defense=row.postDefense
 	})
 	return rows
