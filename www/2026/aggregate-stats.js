@@ -2143,8 +2143,7 @@ function importScouting195(text){
 		row.howScoreNA=row.shoot_na_desc
 		row.noShow=row.no_show
 		row.startingFuel=row.starting_fuel
-		row.climbOptionDoes=row.climb_does
-		row.climbOptionDoesnt=row.climb_doesnt
+		row.climbOption=[row.climbOptionDoes,row.climbOptionDoesnt].filter(s=>s).join(", ")
 		row.teleFuelScore=row.tele_fuel_score
 		row.teleFuelAllianceDump=row.tele_fuel_alliance_dump
 		row.teleFuelNeutralAlliancePass=row.tele_fuel_neutral_alliance_pass
@@ -2169,8 +2168,7 @@ function importScouting195(text){
 		row.teleTrenchDepotOpponentToNeutral=row.tele_trench_depot_opponent_to_neutral
 		row.teleAllianceTime=row.tele_alliance_time
 		row.teleNeutralTime=row.tele_neutral_time
-		row.shiftOne=row.shift_one
-		row.shiftTwo=row.shift_two
+		row.shift=[row.shiftOne,row.shiftTwo].filter(s=>s).join(", ")
 		row.howScoreStationary=row.shoot_stationary_desc
 		row.howScoreMove=row.shoot_move_desc
 		row.howScoreCollect=row.shoot_collecting_desc
