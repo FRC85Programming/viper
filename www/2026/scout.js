@@ -1460,49 +1460,49 @@ $(document).ready(function(){
 		autoCount-=1;
 		if (autoCount < 0) autoCount = 0;
 
-		document.getElementById("autoFuelScore").innerHTML = autoCount;
+		document.getElementById("autoFuelScore").value = autoCount;
 	}
 
 	document.getElementById("autoFuelOne").onclick = function(){
 		autoCount+=1;
 
-		document.getElementById("autoFuelScore").innerHTML = autoCount;
+		document.getElementById("autoFuelScore").value = autoCount;
 	}
 
 	document.getElementById("autoFuelFive").onclick = function(){
 		autoCount+=5;
 
-		document.getElementById("autoFuelScore").innerHTML = autoCount;
+		document.getElementById("autoFuelScore").value = autoCount;
 	}
 
 	document.getElementById("autoFuelEight").onclick = function(){
 		autoCount+=8;
 
-		document.getElementById("autoFuelScore").innerHTML = autoCount;
+		document.getElementById("autoFuelScore").value = autoCount;
 	}
 
 	document.getElementById("teleFuelMinusOne").onclick = function(){
 		teleCount-=1;
 		if (teleCount < 0) teleCount = 0;
 
-		document.getElementById("teleFuelScore").innerHTML = teleCount;
+		document.getElementById("teleFuelScore").value = teleCount;
 	}
 
 	document.getElementById("teleFuelOne").onclick = function(){
 		teleCount+=1;
 
-		document.getElementById("teleFuelScore").innerHTML = teleCount;
+		document.getElementById("teleFuelScore").value = teleCount;
 	}
 
 	document.getElementById("teleFuelFive").onclick = function(){
 		teleCount+=5;
 
-		document.getElementById("teleFuelScore").innerHTML = teleCount;
+		document.getElementById("teleFuelScore").value = teleCount;
 	}
 
 	document.getElementById("teleFuelTen").onclick = function(){
 		teleCount+=10;
 
-		document.getElementById("teleFuelScore").innerHTML = teleCount;
+		document.getElementById("teleFuelScore").value = teleCount;
 	}
 })
