@@ -852,28 +852,28 @@ function countHandler(e){
 	max=parseInt(input.attr('max'))||999999,
 	min=parseInt(input.attr('min'))||0
 	if (parent.find('.disabledOverlay').is(':visible')) return
-	if (clicked){
-		lastClickTimeOnCounter=e.timeStamp
-		var toAdd=1,
-		oldVal=val
-		if(/down/.test(src))toAdd = -1
-		else if(/three/.test(src))toAdd = 3
-		else if(/five/.test(src))toAdd = 5
-		if(dataValue)toAdd=parseInt(dataValue)||0
-		val+=toAdd
-		val = val<min?min:val
-		val = val>max?max:val
-		var change = val-oldVal
-		animateChangeFloater(change, e)
-		inputChanged(input.val(val),change)
-		parent.find('.count').each(countHandler)
-	} else if (!count.is('input')){
-		if(/down/.test(count.attr('src'))){
-			count.css('visibility', val<=min?'hidden':'visible');
-		} else {
-			count.css('visibility', val>=max?'hidden':'visible');
-		}
-	}
+	// if (clicked){
+	// 	lastClickTimeOnCounter=e.timeStamp
+	// 	var toAdd=1,
+	// 	oldVal=val
+	// 	if(/down/.test(src))toAdd = -1
+	// 	else if(/three/.test(src))toAdd = 3
+	// 	else if(/five/.test(src))toAdd = 5
+	// 	if(dataValue)toAdd=parseInt(dataValue)||0
+	// 	val+=toAdd
+	// 	val = val<min?min:val
+	// 	val = val>max?max:val
+	// 	var change = val-oldVal
+	// 	animateChangeFloater(change, e)
+	// 	inputChanged(input.val(val),change)
+	// 	parent.find('.count').each(countHandler)
+	// } else if (!count.is('input')){
+	// 	if(/down/.test(count.attr('src'))){
+	// 		count.css('visibility', val<=min?'hidden':'visible');
+	// 	} else {
+	// 		count.css('visibility', val>=max?'hidden':'visible');
+	// 	}
+	// }
 	return false
 }
 
