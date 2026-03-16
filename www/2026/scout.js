@@ -111,12 +111,12 @@ addI18n({
 	shoot_na_desc:{
 		en:'N/A',
 	},
-	auto_climb_legend:{
+	auto_climb_level:{
 		en:'Did team _TEAMNUM_ climb in auto?',
 	},
-	auto_climb_legend:{
-		en:'Did team _TEAMNUM_ climb in auto?',
-	},
+	// auto_climb_legend:{
+	// 	en:'Did team _TEAMNUM_ climb in auto?',
+	// },
 	climb_does:{
 		en:'Yes',
 	},
