@@ -77,19 +77,19 @@ addI18n({
 		fr:'Tirer tout en collectant',
 		pt:'Atirar enquanto coleta',
 	},
-	climb_legend:{
+	tele_climb_level:{
 		en:'How high did team _TEAMNUM_ climb?',
 	},
-	climb_none:{
+	tele_climb_none:{
 		en:'None',
 	},
-	climb_first:{
+	tele_climb_first:{
 		en:'First bar',
 	},
-	climb_second:{
+	tele_climb_second:{
 		en:'Second bar',
 	},
-	climb_third:{
+	tele_climb_third:{
 		en:'Third bar',
 	},
 	shoot_turret_desc:{
