@@ -493,15 +493,20 @@ function showSelectPitScoutTeam(){
 		h1Key='pit_scouting_select_team_heading'
 		var el = $('#teamList').html(""),
 		withData = getTeamsWithPitData(),
-		showTeams = [
-			...(teamList?teamList.split(/,/).map(s=>parseInt(s)):[]),
-			...(eventTeams||[]),
-			...Object.keys(withData).map(s=>parseInt(s)).filter(Number),
-			...(pitData?Object.keys(pitData).map(s=>parseInt(s)).filter(Number):[]),
-			...getLocalPitTeamsForEvent(),
-			...getCachedEventTeams(),
-		]
-		showTeams = [...new Set(showTeams.filter(Number))].sort((a,b)=>a-b)
+		showTeams = teamList?teamList.split(/,/).map(s=>parseInt(s)):eventTeams
+		if (!showTeams || !showTeams.length){
+			showTeams = Object.keys(withData).map(s=>parseInt(s)).filter(Number)
+		}
+		if ((!showTeams || !showTeams.length) && pitData){
+			showTeams = Object.keys(pitData).map(s=>parseInt(s)).filter(Number)
+		}
+		if (!showTeams || !showTeams.length){
+			showTeams = getLocalPitTeamsForEvent()
+		}
+		if (!showTeams || !showTeams.length){
+			showTeams = getCachedEventTeams()
+		}
+		showTeams = [...new Set((showTeams||[]).filter(Number))].sort((a,b)=>a-b)
 		$('.location-pointer').remove()
 		for (var i=0; i<showTeams.length;i++){
 			var button = $('<button>').text(showTeams[i]).click(showPitScoutingForm)
@@ -1124,9 +1129,8 @@ function getTeamsWithData(){
 function getTeamsWithPitData(){
 	var teams = {}
 	for (var i in localStorage){
-		var m = i.match(/^(?:uploaded_)?20[0-9]{2}[a-zA-Z0-9\-]+_([0-9]+)$/)
-		if (m){
-			var t = parseInt(m[1])
+		if (/^20[0-9]{2}[a-zA-Z0-9\-]+_[0-9]+$/.test(i)){
+			var t = parseInt(i.replace(/.*_/,""))
 			teams[t]=1
 		}
 	}
