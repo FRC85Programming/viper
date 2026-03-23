@@ -1158,6 +1158,13 @@ function pitScoutNext(uploaded){
 	return false
 }
 
+function goSelectPitTeam(){
+	localStorage.setItem("last_scout_action","team")
+	maybeSaveFirst()
+	showSelectPitScoutTeam()
+	return false
+}
+
 function subjectiveScoutNext(uploaded){
 	if (uploaded!="uploaded") localStorage.setItem("last_scout_action","next")
 	storeSubjectiveScouting(uploaded)
@@ -1442,7 +1449,8 @@ $(document).ready(function(){
 		$('body').append($('<img class=location-pointer src=/pointer.png style="position:absolute;width:3em">').css('top',e.pageY).css('left',e.pageX).addClass(name))
 		inputChanged(inp.val(val), `${x}%x${y}%`)
 	})
-	$("#nextBtn,#pitScoutNext,#pitTeamButton,#subjectiveScoutNext,#subjectiveTeamButton").click(goNext)
+	$("#nextBtn,#pitScoutNext,#subjectiveScoutNext,#subjectiveTeamButton").click(goNext)
+	$("#pitTeamButton").click(goSelectPitTeam)
 	$("#matchBtn").click(goChooseMatch)
 	$(".robotBtn").click(goChooseRobot)
 	$(".fieldRotateBtn").click(rotateField)
