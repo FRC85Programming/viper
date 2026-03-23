@@ -480,6 +480,7 @@ function showSelectPitScoutTeam(){
 	Promise.allSettled([
 		promiseEventTeams(),
 		promisePitScouting()
+<<<<<<< HEAD
 	]).then(results=>{
 		var eventTeams = results[0].status=="fulfilled"?results[0].value:[],
 		pitData = results[1].status=="fulfilled"?results[1].value:{}
@@ -487,6 +488,27 @@ function showSelectPitScoutTeam(){
 			cacheEventTeams(eventTeams)
 		}
 		renderPitScoutTeamList(eventTeams, pitData)
+=======
+	]).then(values=>{
+		var [eventTeams, pitData] = values
+		$('.screen,.init-hide').hide()
+		resetInitialValues(pitScouting)
+		setHash(null,null,null,null,teamList)
+		window.scrollTo(0,0)
+		titleKey='pit_scouting_select_team_title'
+		h1Key='pit_scouting_select_team_heading'
+		var el = $('#teamList').html(""),
+		withData = getTeamsWithPitData(),
+		showTeams = teamList?teamList.split(/,/).map(s=>parseInt(s)):eventTeams
+		$('.location-pointer').remove()
+		for (var i=0; i<showTeams.length;i++){
+			var button = $('<button>').text(showTeams[i]).click(showPitScoutingForm)
+			if (withData.hasOwnProperty(showTeams[i])||pitData[showTeams[i]]) button.addClass('stored')
+			el.append(button)
+		}
+		$('#select-team').show()
+		applyTranslations()
+>>>>>>> parent of 1ec6148 (We'll see, Gracie. We'll see....)
 	})
 }
 
