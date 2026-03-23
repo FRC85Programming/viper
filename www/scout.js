@@ -490,13 +490,6 @@ function showSelectPitScoutTeam(){
 		var el = $('#teamList').html(""),
 		withData = getTeamsWithPitData(),
 		showTeams = teamList?teamList.split(/,/).map(s=>parseInt(s)):eventTeams
-		if (!showTeams || !showTeams.length){
-			showTeams = Object.keys(withData).map(s=>parseInt(s)).filter(Number)
-		}
-		if ((!showTeams || !showTeams.length) && pitData){
-			showTeams = Object.keys(pitData).map(s=>parseInt(s)).filter(Number)
-		}
-		showTeams = [...new Set((showTeams||[]).filter(Number))].sort((a,b)=>a-b)
 		$('.location-pointer').remove()
 		for (var i=0; i<showTeams.length;i++){
 			var button = $('<button>').text(showTeams[i]).click(showPitScoutingForm)
