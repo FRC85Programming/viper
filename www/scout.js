@@ -482,9 +482,6 @@ function showSelectPitScoutTeam(){
 	]).then(results=>{
 		var eventTeams = results[0].status=="fulfilled"?results[0].value:[],
 		pitData = results[1].status=="fulfilled"?results[1].value:{}
-		if (eventTeams && eventTeams.length){
-			cacheEventTeams(eventTeams)
-		}
 		$('.screen,.init-hide').hide()
 		resetInitialValues(pitScouting)
 		setHash(null,null,null,null,teamList)
@@ -503,18 +500,12 @@ function showSelectPitScoutTeam(){
 		if (!showTeams || !showTeams.length){
 			showTeams = getLocalPitTeamsForEvent()
 		}
-		if (!showTeams || !showTeams.length){
-			showTeams = getCachedEventTeams()
-		}
 		showTeams = [...new Set((showTeams||[]).filter(Number))].sort((a,b)=>a-b)
 		$('.location-pointer').remove()
 		for (var i=0; i<showTeams.length;i++){
 			var button = $('<button>').text(showTeams[i]).click(showPitScoutingForm)
 			if (withData.hasOwnProperty(showTeams[i])||pitData[showTeams[i]]) button.addClass('stored')
 			el.append(button)
-		}
-		if (!showTeams.length){
-			addManualPitTeamEntry(el)
 		}
 		$('#select-team').show()
 		applyTranslations()
@@ -1147,30 +1138,6 @@ function getLocalPitTeamsForEvent(){
 		if (t) teams[t]=1
 	}
 	return Object.keys(teams).map(t=>parseInt(t))
-}
-
-function getCachedEventTeams(){
-	var key = `${eventId}_teams`,
-	teams = ((localStorage.getItem(key)||"").split(/,/).map(s=>parseInt(s)).filter(Number))
-	return [...new Set(teams)].sort((a,b)=>a-b)
-}
-
-function cacheEventTeams(teams){
-	if (!teams || !teams.length) return
-	localStorage.setItem(`${eventId}_teams`, [...new Set(teams.filter(Number))].sort((a,b)=>a-b).join(","))
-}
-
-function addManualPitTeamEntry(el){
-	var wrap = $('<div class=full>').css('margin', '1em 0'),
-	input = $('<input type=number min=1 step=1 placeholder="Team #">'),
-	button = $('<button type=button>').text("Open team").click(function(){
-		var t = parseInt(input.val())
-		if (!t) return false
-		showPitScoutingForm(t)
-		return false
-	})
-	wrap.append(input).append(" ").append(button)
-	el.append(wrap)
 }
 
 function getTeamsWithSubjectiveData(){
