@@ -476,11 +476,12 @@ $(window).on('hashchange', function(){
 })
 
 function showSelectPitScoutTeam(){
-	Promise.all([
+	Promise.allSettled([
 		promiseEventTeams(),
 		promisePitScouting()
-	]).then(values=>{
-		var [eventTeams, pitData] = values
+	]).then(results=>{
+		var eventTeams = results[0].status=="fulfilled"?results[0].value:[],
+		pitData = results[1].status=="fulfilled"?results[1].value:{}
 		$('.screen,.init-hide').hide()
 		resetInitialValues(pitScouting)
 		setHash(null,null,null,null,teamList)
@@ -495,6 +496,9 @@ function showSelectPitScoutTeam(){
 		}
 		if ((!showTeams || !showTeams.length) && pitData){
 			showTeams = Object.keys(pitData).map(s=>parseInt(s)).filter(Number)
+		}
+		if (!showTeams || !showTeams.length){
+			showTeams = getLocalPitTeamsForEvent()
 		}
 		showTeams = [...new Set((showTeams||[]).filter(Number))].sort((a,b)=>a-b)
 		$('.location-pointer').remove()
@@ -1122,6 +1126,18 @@ function getTeamsWithPitData(){
 		}
 	}
 	return teams
+}
+
+function getLocalPitTeamsForEvent(){
+	var teams = {}
+	for (var i in localStorage){
+		var m = i.match(/^(?:uploaded_)?(.+)_([0-9]+)$/)
+		if (!m) continue
+		if (m[1] !== eventId) continue
+		var t = parseInt(m[2])
+		if (t) teams[t]=1
+	}
+	return Object.keys(teams).map(t=>parseInt(t))
 }
 
 function getTeamsWithSubjectiveData(){
