@@ -65,24 +65,14 @@ function aggregateStats(scout, aggregate, apiScores, subjective, pit, eventStats
 	scout.trench_outpost_alliance_to_neutral = scout.auto_trench_outpost_alliance_to_neutral + scout.tele_trench_outpost_alliance_to_neutral
 	scout.trench_outpost_neutral_to_alliance = scout.auto_trench_outpost_neutral_to_alliance + scout.tele_trench_outpost_neutral_to_alliance
 
-	// scout.auto_tower_score = 0
-	// if (scout.auto_climb_level === "does") scout.auto_tower_score = pointValues.tower_level_1_auto * 2
-	// else if (scout.auto_climb_level === "doesn't") scout.auto_tower_score = pointValues.tower_level_2
-	// // else if (scout.auto_climb_level === 3) scout.auto_tower_score = pointValues.tower_level_3
-	// scout.tele_tower_score = 0
-	// if (scout.tele_climb_level === 1) scout.tele_tower_score = pointValues.tower_level_1_tele
-	// else if (scout.tele_climb_level === 2) scout.tele_tower_score = pointValues.tower_level_2
-	// else if (scout.tele_climb_level === 3) scout.tele_tower_score = pointValues.tower_level_3
-
-	scout.tower_level = 0
-	if (scout.auto_climb_level === "does") scout.tower_level = "does"
-	else if (scout.auto_climb_level === "doesn't") scout.tower_level = "doesn't"
-	scout.tele_climb_level = 0
-	if (scout.tele_climb_level === 0) scout.tele_climb_none = 0
-	if (scout.tele_climb_level === 1) scout.tele_climb_first = 1
-	else if (scout.tele_climb_level === 2) scout.tele_climb_second = 2
-	else if (scout.tele_climb_level === 3) scout.tele_climb_third = 3
-
+	scout.auto_tower_score = 0
+	if (scout.auto_climb_level === "does") scout.auto_tower_score = pointValues.tower_level_1_auto * 2
+	else if (scout.auto_climb_level === "doesn't") scout.auto_tower_score = pointValues.tower_level_2
+	// else if (scout.auto_climb_level === 3) scout.auto_tower_score = pointValues.tower_level_3
+	scout.tele_tower_score = 0
+	if (scout.tele_climb_level === 1) scout.tele_tower_score = pointValues.tower_level_1_tele
+	else if (scout.tele_climb_level === 2) scout.tele_tower_score = pointValues.tower_level_2
+	else if (scout.tele_climb_level === 3) scout.tele_tower_score = pointValues.tower_level_3
 
 	scout.tower_score = scout.auto_tower_score + scout.tele_tower_score
 	scout.auto_score = scout.auto_tower_score + scout.auto_fuel_score
