@@ -906,14 +906,14 @@ addI18n({
 		fr:'Emplacements de tir',
 		pt:'Locais de Tiro',
 	},
-	shooting_locations_legend:{
-		en:'Were there a limited set of locations from which team _TEAMNUM_ could score fuel that could be defended? If so, mark them.',
-		he:'האם היו סט מוגבל של מיקומים מהם צוות _TEAMNUM_ יכול היה לצבור דלק שניתן להגן עליו? אם כן, סמן אותם.',
-		tr:'Takım _TEAMNUM_ savunulabilecek yakıt puanı alabileceği sınırlı bir konum seti var mıydı? Varsa, işaretleyin.',
-		zh_tw:'隊伍_TEAMNUM_是否有一組有限的位置可以得分燃料可以防守?如果是，請標記它們。',
-		fr:'Y avait-il un ensemble limité d\'emplacements à partir desquels l\'équipe _TEAMNUM_ pouvait marquer du carburant qui pouvait être défendu? Si oui, marquez-les.',
-		pt:'Havia um conjunto limitado de locais de onde a equipe _TEAMNUM_ poderia marcar combustível que poderia ser defendido? Se sim, marque-os.',
-	},
+	// shooting_locations_legend:{
+	// 	en:'Were there a limited set of locations from which team _TEAMNUM_ could score fuel that could be defended? If so, mark them.',
+	// 	he:'האם היו סט מוגבל של מיקומים מהם צוות _TEAMNUM_ יכול היה לצבור דלק שניתן להגן עליו? אם כן, סמן אותם.',
+	// 	tr:'Takım _TEAMNUM_ savunulabilecek yakıt puanı alabileceği sınırlı bir konum seti var mıydı? Varsa, işaretleyin.',
+	// 	zh_tw:'隊伍_TEAMNUM_是否有一組有限的位置可以得分燃料可以防守?如果是，請標記它們。',
+	// 	fr:'Y avait-il un ensemble limité d\'emplacements à partir desquels l\'équipe _TEAMNUM_ pouvait marquer du carburant qui pouvait être défendu? Si oui, marquez-les.',
+	// 	pt:'Havia um conjunto limitado de locais de onde a equipe _TEAMNUM_ poderia marcar combustível que poderia ser defendido? Se sim, marque-os.',
+	// },
 	robot_fuel_capacity_question:{
 		en:'What is the maxiumum amount of fuel _TEAMNUM_\'s robot can hold at once?',
 		he:'מהו הכמות המקסימלית של דלק שהרובוט של _TEAMNUM_ יכול להחזיק בבת אחת?',
