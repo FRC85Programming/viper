@@ -476,6 +476,7 @@ $(window).on('hashchange', function(){
 })
 
 function showSelectPitScoutTeam(){
+	renderPitScoutTeamList([], {})
 	Promise.allSettled([
 		promiseEventTeams(),
 		promisePitScouting()
@@ -485,35 +486,40 @@ function showSelectPitScoutTeam(){
 		if (eventTeams && eventTeams.length){
 			cacheEventTeams(eventTeams)
 		}
-		$('.screen,.init-hide').hide()
-		resetInitialValues(pitScouting)
-		setHash(null,null,null,null,teamList)
-		window.scrollTo(0,0)
-		titleKey='pit_scouting_select_team_title'
-		h1Key='pit_scouting_select_team_heading'
-		var el = $('#teamList').html(""),
-		withData = getTeamsWithPitData(),
-		showTeams = [
-			...(teamList?teamList.split(/,/).map(s=>parseInt(s)):[]),
-			...(eventTeams||[]),
-			...Object.keys(withData).map(s=>parseInt(s)).filter(Number),
-			...(pitData?Object.keys(pitData).map(s=>parseInt(s)).filter(Number):[]),
-			...getLocalPitTeamsForEvent(),
-			...getCachedEventTeams(),
-		]
-		showTeams = [...new Set(showTeams.filter(Number))].sort((a,b)=>a-b)
-		$('.location-pointer').remove()
-		for (var i=0; i<showTeams.length;i++){
-			var button = $('<button>').text(showTeams[i]).click(showPitScoutingForm)
-			if (withData.hasOwnProperty(showTeams[i])||pitData[showTeams[i]]) button.addClass('stored')
-			el.append(button)
-		}
-		if (!showTeams.length){
-			addManualPitTeamEntry(el)
-		}
-		$('#select-team').show()
-		applyTranslations()
+		renderPitScoutTeamList(eventTeams, pitData)
 	})
+}
+
+function renderPitScoutTeamList(eventTeams, pitData){
+	$('.screen,.init-hide').hide()
+	resetInitialValues(pitScouting)
+	setHash(null,null,null,null,teamList)
+	window.scrollTo(0,0)
+	titleKey='pit_scouting_select_team_title'
+	h1Key='pit_scouting_select_team_heading'
+	var el = $('#teamList').html(""),
+	withData = getTeamsWithPitData(),
+	showTeams = [
+		...(teamList?teamList.split(/,/).map(s=>parseInt(s)):[]),
+		...(eventTeams||[]),
+		...Object.keys(withData).map(s=>parseInt(s)).filter(Number),
+		...(pitData?Object.keys(pitData).map(s=>parseInt(s)).filter(Number):[]),
+		...getLocalPitTeamsForEvent(),
+		...getCachedEventTeams(),
+	]
+	showTeams = [...new Set(showTeams.filter(Number))].sort((a,b)=>a-b)
+	$('.location-pointer').remove()
+	for (var i=0; i<showTeams.length;i++){
+		var teamNum = showTeams[i],
+		button = $('<button>').text(teamNum).click(showPitScoutingForm)
+		if (hasLocalPitDataForTeam(teamNum) || (pitData && pitData[teamNum])) button.addClass('stored')
+		el.append(button)
+	}
+	if (!showTeams.length){
+		addManualPitTeamEntry(el)
+	}
+	$('#select-team').show()
+	applyTranslations()
 }
 
 function showSelectSubjectiveScoutTeam(){
@@ -1124,9 +1130,10 @@ function getTeamsWithData(){
 function getTeamsWithPitData(){
 	var teams = {}
 	for (var i in localStorage){
-		var m = i.match(/^(?:uploaded_)?20[0-9]{2}[a-zA-Z0-9\-]+_([0-9]+)$/)
+		var m = i.match(/^(?:uploaded_)?(.+)_([0-9]+)$/)
 		if (m){
-			var t = parseInt(m[1])
+			if (m[1] !== eventId) continue
+			var t = parseInt(m[2])
 			teams[t]=1
 		}
 	}
@@ -1143,6 +1150,12 @@ function getLocalPitTeamsForEvent(){
 		if (t) teams[t]=1
 	}
 	return Object.keys(teams).map(t=>parseInt(t))
+}
+
+function hasLocalPitDataForTeam(teamNum){
+	if (!teamNum) return false
+	var key = getPitScoutKey(teamNum)
+	return !!(localStorage.getItem(key) || localStorage.getItem(`uploaded_${key}`))
 }
 
 function getCachedEventTeams(){
