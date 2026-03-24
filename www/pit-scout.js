@@ -575,12 +575,12 @@ async function loadNewContent(url){
 		const html = await response.text();
 		updatePageContent(html, url);
 	} catch (error) {
-		console.error('Error loading new content:', error);
-		window.location,href = url;
+		console.error('Error fetching content:', error);
+		window.location.href = url;
 	}
 }
 function updatePageContent(html, url) {
-	document.getElementById("pit-scout-link").innerHTML = html;
+	document.getElementById('pit-scout-link').innerHTML = html;
 	window.history.pushState({path: url}, '', url);
 }
 window.addEventListener('popstate', function(event) {
