@@ -76,6 +76,9 @@ addI18n({
 		fr:'Auto suivant',
 		zh_tw:'下一個汽車',
 	},
+	human_player_question:{
+		en:'How accurate is the human player at shooting?',
+	},
 	robot_legend:{
 		en:'Robot',
 		pt:'Robô',
