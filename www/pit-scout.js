@@ -79,6 +79,9 @@ addI18n({
 	human_player_question:{
 		en:'How accurate is the human player at shooting?',
 	},
+	human_player_placeholder:{
+		en:'Accuracy, consistency, or other notes about the human player',
+	},
 	robot_legend:{
 		en:'Robot',
 		pt:'Robô',
