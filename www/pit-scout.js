@@ -566,23 +566,3 @@ addI18n({
 		fr:'Inconnu',
 	},
 })
-async function loadNewContent(url){
-	try {
-		const response = await fetch(url);
-		if (!response.ok) {
-			throw new Error('Network response was not ok');
-		}
-		const html = await response.text();
-		updatePageContent(html, url);
-	} catch (error) {
-		console.error('Error loading new content:', error);
-		window.location,href = url;
-	}
-}
-function updatePageContent(html, url) {
-	document.getElementById('pit-scout-link').innerHTML = html;
-	window.history.pushState({path: url}, '', url);
-}
-window.addEventListener('popstate', function(event) {
-	loadNewContent(window.location.pathname);
-});
