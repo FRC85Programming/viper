@@ -580,9 +580,9 @@ async function loadNewContent(url){
 	}
 }
 function updatePageContent(html, url) {
-	document.getElementById('pit-scout-link').innerHTML = html;
+	document.getElementById("pit-scout-link").innerHTML = html;
 	window.history.pushState({path: url}, '', url);
 }
 window.addEventListener('popstate', function(event) {
-	loadNewContent(window.location.href);
+	loadNewContent(window.location.pathname);
 });
