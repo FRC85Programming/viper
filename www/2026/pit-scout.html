@@ -19,7 +19,7 @@
 <script src=/heartbeat.js></script>
 <script src=/local.js></script>
 <link rel=icon type=image/png href=/logo.jpg>
-<link rel=icon type=image/png href=start-area-blue.png>
+<link rel=icon type=image/png href=auto-area-blue.png>
 </head>
 <body>
 <h1></h1>
@@ -29,7 +29,7 @@
 
 <form id=pit-scouting class="sequential-input-series init-hide screen">
 
-	<button type=button id=pitTeamButton data-i18n=back_team_select_button></button>
+	<button id=pitTeamButton data-i18n=back_team_select_button></button>
 
 	<input type=hidden name=event>
 	<input type=hidden name=team>
@@ -45,8 +45,8 @@
 
 		<canvas id=auto-paths></canvas>
 		<div>
-			<button type=button id=auto-path-undo data-i18n=auto_path_undo_button></button>
-			<button type=button id=auto-path-next data-i18n=auto_path_next_button></button>
+			<button id=auto-path-undo data-i18n=auto_path_undo_button></button>
+			<button id=auto-path-next data-i18n=auto_path_next_button></button>
 		</div>
 
 		<input type=hidden class=auto-path name=auto_1_path data-color=red>
@@ -74,7 +74,7 @@
 			<label><input type=checkbox name=climb_first_rung_middle value=1><span data-i18n=robot_climb_first_middle></span></label>
 			<label><input type=checkbox name=climb_first_rung_right value=1><span data-i18n=robot_climb_first_right></span></label><br>
 			<label><input type=checkbox name=climb_no_climb value=1><span data-i18n=robot_climb_no_climb></span></label><br>
-			<label rowspan=1><img class=ladder src=/2026/blewladder.png alt=""></label>
+			<label rowspan=1><img class=ladder src=blewladder.png></label>
 		</p>
 			<!-- <p>
 			<span data-i18n=how_high_climb_question></span><br>
