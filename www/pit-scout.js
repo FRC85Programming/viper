@@ -567,4 +567,4 @@ addI18n({
 	},
 })
 document.getElementById("save").addEventListener("click", function(event){event.preventDefault(); savePitScoutData()})
-document.getElementById("pitTeamButton").addEventListener("click", function(event){event.preventDefault(); returnPitScoutData()})
+document.getElementById("pitTeamButton").addEventListener("click", function(event){event.preventDefault(); savePitScoutData()})
