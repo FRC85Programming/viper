@@ -476,88 +476,29 @@ $(window).on('hashchange', function(){
 })
 
 function showSelectPitScoutTeam(){
-	renderPitScoutTeamList([], {})
-	Promise.allSettled([
+	Promise.all([
 		promiseEventTeams(),
 		promisePitScouting()
-	]).then(results=>{
-		var eventTeams = results[0].status=="fulfilled"?results[0].value:[],
-		pitData = results[1].status=="fulfilled"?results[1].value:{}
-		if (eventTeams && eventTeams.length) cacheEventTeams(eventTeams)
-		renderPitScoutTeamList(eventTeams, pitData)
+	]).then(values=>{
+		var [eventTeams, pitData] = values
+		$('.screen,.init-hide').hide()
+		resetInitialValues(pitScouting)
+		setHash(null,null,null,null,teamList)
+		window.scrollTo(0,0)
+		titleKey='pit_scouting_select_team_title'
+		h1Key='pit_scouting_select_team_heading'
+		var el = $('#teamList').html(""),
+		withData = getTeamsWithPitData(),
+		showTeams = teamList?teamList.split(/,/).map(s=>parseInt(s)):eventTeams
+		$('.location-pointer').remove()
+		for (var i=0; i<showTeams.length;i++){
+			var button = $('<button>').text(showTeams[i]).click(showPitScoutingForm)
+			if (withData.hasOwnProperty(showTeams[i])||pitData[showTeams[i]]) button.addClass('stored')
+			el.append(button)
+		}
+		$('#select-team').show()
+		applyTranslations()
 	})
-}
-
-function renderPitScoutTeamList(eventTeams, pitData){
-	$('.screen,.init-hide').hide()
-	resetInitialValues(pitScouting)
-	setHash(null,null,null,null,teamList)
-	window.scrollTo(0,0)
-	titleKey='pit_scouting_select_team_title'
-	h1Key='pit_scouting_select_team_heading'
-	var el = $('#teamList').html(""),
-	withData = getTeamsWithPitData(),
-	showTeams = [
-		...(teamList?teamList.split(/,/).map(s=>parseInt(s)):[]),
-		...(eventTeams||[]),
-		...Object.keys(withData).map(s=>parseInt(s)).filter(Number),
-		...(pitData?Object.keys(pitData).map(s=>parseInt(s)).filter(Number):[]),
-		...getLocalPitTeamsForEvent(),
-		...getCachedEventTeams(),
-	]
-	showTeams = [...new Set(showTeams.filter(Number))].sort((a,b)=>a-b)
-	$('.location-pointer').remove()
-	for (var i=0; i<showTeams.length;i++){
-		var teamNum = showTeams[i],
-		button = $('<button type=button>').text(teamNum).click(showPitScoutingForm)
-		if (hasLocalPitDataForTeam(teamNum) || (pitData && pitData[teamNum])) button.addClass('stored')
-		el.append(button)
-	}
-	if (!showTeams.length) addManualPitTeamEntry(el)
-	$('#select-team').show()
-	applyTranslations()
-}
-
-function getCachedEventTeams(){
-	var teams = ((localStorage.getItem(`${eventId}_teams`)||"").split(/,/).map(s=>parseInt(s)).filter(Number))
-	return [...new Set(teams)].sort((a,b)=>a-b)
-}
-
-function cacheEventTeams(teams){
-	if (!teams || !teams.length) return
-	localStorage.setItem(`${eventId}_teams`, [...new Set(teams.filter(Number))].sort((a,b)=>a-b).join(","))
-}
-
-function pitScoutEventKeyRegex(){
-	return new RegExp(`^(?:uploaded_)?${eventId.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}_([0-9]+)$`)
-}
-
-function getLocalPitTeamsForEvent(){
-	var teams = {}, re = pitScoutEventKeyRegex()
-	for (var i in localStorage){
-		var m = i.match(re)
-		if (m) teams[parseInt(m[1])]=1
-	}
-	return Object.keys(teams).map(t=>parseInt(t))
-}
-
-function hasLocalPitDataForTeam(teamNum){
-	if (!teamNum) return false
-	var key = getPitScoutKey(teamNum)
-	return !!(localStorage.getItem(key) || localStorage.getItem("uploaded_"+key))
-}
-
-function addManualPitTeamEntry(el){
-	var wrap = $('<div class=full>').css("margin", "1em 0"),
-	input = $('<input type=number min=1 step=1 placeholder="Team #">'),
-	button = $('<button type=button>').text("Open team").click(function(){
-		var t = parseInt(input.val())
-		if (!t) return false
-		showPitScoutingForm(t)
-		return false
-	})
-	wrap.append(input).append(" ").append(button)
-	el.append(wrap)
 }
 
 function showSelectSubjectiveScoutTeam(){
@@ -1166,10 +1107,12 @@ function getTeamsWithData(){
 
 
 function getTeamsWithPitData(){
-	var teams = {}, re = pitScoutEventKeyRegex()
+	var teams = {}
 	for (var i in localStorage){
-		var m = i.match(re)
-		if (m) teams[parseInt(m[1])]=1
+		if (/^20[0-9]{2}[a-zA-Z0-9\-]+_[0-9]+$/.test(i)){
+			var t = parseInt(i.replace(/.*_/,""))
+			teams[t]=1
+		}
 	}
 	return teams
 }
@@ -1188,13 +1131,6 @@ function getTeamsWithSubjectiveData(){
 function pitScoutNext(uploaded){
 	if (uploaded!="uploaded") localStorage.setItem("last_scout_action","next")
 	storePitScouting(uploaded)
-	showSelectPitScoutTeam()
-	return false
-}
-
-function goSelectPitTeam(){
-	localStorage.setItem("last_scout_action","team")
-	maybeSaveFirst()
 	showSelectPitScoutTeam()
 	return false
 }
@@ -1483,8 +1419,7 @@ $(document).ready(function(){
 		$('body').append($('<img class=location-pointer src=/pointer.png style="position:absolute;width:3em">').css('top',e.pageY).css('left',e.pageX).addClass(name))
 		inputChanged(inp.val(val), `${x}%x${y}%`)
 	})
-	$("#nextBtn,#pitScoutNext,#subjectiveScoutNext,#subjectiveTeamButton").click(goNext)
-	$("#pitTeamButton").click(goSelectPitTeam)
+	$("#nextBtn,#pitScoutNext,#pitTeamButton,#subjectiveScoutNext,#subjectiveTeamButton").click(goNext)
 	$("#matchBtn").click(goChooseMatch)
 	$(".robotBtn").click(goChooseRobot)
 	$(".fieldRotateBtn").click(rotateField)
