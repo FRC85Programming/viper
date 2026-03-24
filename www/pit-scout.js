@@ -584,5 +584,5 @@ function updatePageContent(html, url) {
 	window.history.pushState({path: url}, '', url);
 }
 window.addEventListener('popstate', function(event) {
-	loadNewContent(window.location.pathname);
+	loadNewContent(window.location.href);
 });
