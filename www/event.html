@@ -31,9 +31,9 @@
 					<li id=scout-link class=initHid><a class=dependSchedule href="/_YEAR_/scout.html#event=_EVENT_" data-i18n=scout_match_link></a></li>
 					<li id=pit-scout-link class=initHid><a class="dependPit dependSchedule" href="/_YEAR_/pit-scout.html#event=_EVENT_" data-i18n=all_pit_link></a></li>
 					<script>
-						document.getElementById("pit-scout-link").addEventListener("click", function(event){
+						document.getElementById('pit-scout-link').addEventListener('click', function(event){
 							event.preventDefault();
-							const url = this.getAttribute("href");
+							const url = this.getAttribute('href');
 							loadNewContent(url);
 						})
 					</script>
