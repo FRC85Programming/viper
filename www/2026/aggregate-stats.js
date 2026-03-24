@@ -1996,15 +1996,15 @@ var aggregateGraphs={
 		zh_tw:'比賽比分',
 		data:["max_score","score","min_score"],
 	},
-	"Fuel to Target":{
-		graph:"boxplot",
-		tr:'Hedefe Yakıt',
-		pt:'Combustível para o Alvo',
-		fr:'Carburant vers la cible',
-		he:'דלק למטרה',
-		zh_tw:'燃料到目標',
-		data:["fuel_output"],
-	},
+	// "Fuel to Target":{
+	// 	graph:"boxplot",
+	// 	tr:'Hedefe Yakıt',
+	// 	pt:'Combustível para o Alvo',
+	// 	fr:'Carburant vers la cible',
+	// 	he:'דלק למטרה',
+	// 	zh_tw:'燃料到目標',
+	// 	data:["fuel_output"],
+	// },
 	"Game Stage":{
 		graph:"stacked",
 		tr:'Oyun Aşaması',
@@ -2014,15 +2014,15 @@ var aggregateGraphs={
 		zh_tw:'遊戲舞台',
 		data:["auto_score","tele_score"],
 	},
-	"Fuel vs Climb":{
-		graph:"stacked",
-		data:["fuel_score","tower_score"],
-		tr:'Yakıt vs Tırmanış',
-		pt:'Combustível vs Escalada',
-		fr:'Carburant vs Escalade',
-		he:'דלק לעומת טיפוס',
-		zh_tw:'燃料與攀登',
-	},
+	// "Fuel vs Climb":{
+	// 	graph:"stacked",
+	// 	data:["fuel_score","tower_score"],
+	// 	tr:'Yakıt vs Tırmanış',
+	// 	pt:'Combustível vs Escalada',
+	// 	fr:'Carburant vs Escalade',
+	// 	he:'דלק לעומת טיפוס',
+	// 	zh_tw:'燃料與攀登',
+	// },
 }
 
 var matchPredictorSections={
