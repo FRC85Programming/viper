@@ -566,3 +566,72 @@ addI18n({
 		fr:'Inconnu',
 	},
 })
+
+window.onShowPitScouting = window.onShowPitScouting || []
+
+;(function(){
+	"use strict"
+
+	var SECTION_STORAGE_KEY = "pit_active_section"
+
+	function showPitSection(form, sectionId){
+		var sections = form.find(".pit-local-section"),
+		buttons = form.find(".pit-section-tab")
+
+		sections.hide()
+		sections.filter('[data-section-id="' + sectionId + '"]').show()
+
+		buttons.removeClass("active")
+		buttons.filter('[data-section-id="' + sectionId + '"]').addClass("active")
+
+		localStorage.setItem(SECTION_STORAGE_KEY, sectionId)
+	}
+
+	function setupPitSections(){
+		var form = $("#pit-scouting")
+		if (!form.length) return true
+
+		var fieldsets = form.find("fieldset.full")
+		if (fieldsets.length < 3) return true
+
+		if (!form.data("pitSectionsReady")){
+			var teamSection = fieldsets.eq(0),
+			autoSection = fieldsets.eq(1),
+			robotSection = fieldsets.eq(2),
+			notesSection = robotSection.nextAll()
+
+			teamSection.wrap('<div class="pit-local-section" data-section-id="team"></div>')
+			autoSection.wrap('<div class="pit-local-section" data-section-id="auto"></div>')
+			robotSection.wrap('<div class="pit-local-section" data-section-id="robot"></div>')
+			if (notesSection.length){
+				notesSection.wrapAll('<div class="pit-local-section" data-section-id="notes"></div>')
+			}
+
+			var tabs = $(
+				'<div id="pit-section-tabs">' +
+					'<button type="button" class="pit-section-tab" data-section-id="team">Team</button>' +
+					'<button type="button" class="pit-section-tab" data-section-id="auto">Auto</button>' +
+					'<button type="button" class="pit-section-tab" data-section-id="robot">Robot</button>' +
+					'<button type="button" class="pit-section-tab" data-section-id="notes">Notes/Save</button>' +
+				'</div>'
+			)
+			form.find("#pitTeamButton").after(tabs)
+
+			form.on("click", ".pit-section-tab", function(){
+				showPitSection(form, $(this).attr("data-section-id"))
+			})
+
+			form.data("pitSectionsReady", true)
+		}
+
+		var defaultSection = "team",
+		savedSection = localStorage.getItem(SECTION_STORAGE_KEY)
+		if (savedSection && form.find('.pit-local-section[data-section-id="' + savedSection + '"]').length){
+			defaultSection = savedSection
+		}
+		showPitSection(form, defaultSection)
+		return true
+	}
+
+	window.onShowPitScouting.push(setupPitSections)
+})()

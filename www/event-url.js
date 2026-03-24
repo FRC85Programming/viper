@@ -151,7 +151,7 @@ function promiseEventTeams(){
 				teams[eventMatches[i][BOT_POSITIONS[j]]] = 1
 			}
 		}
-		return Object.keys(teams).map(t=>parseInt(t)).sort((a,b)=>{a-b})
+		return Object.keys(teams).map(t=>parseInt(t)).sort((a,b)=>a-b)
 	})
 	return promiseCache.eventTeams
 }
