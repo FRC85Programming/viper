@@ -566,5 +566,3 @@ addI18n({
 		fr:'Inconnu',
 	},
 })
-document.getElementById("save").addEventListener("click", function(event){event.preventDefault(); savePitScoutData()})
-document.getElementById("pitTeamButton").addEventListener("click", function(event){event.preventDefault(); savePitScoutData()})
