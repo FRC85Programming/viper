@@ -340,7 +340,7 @@ function computeLocale(){
 
 function translate(key,context,l){
 	context=Object.assign({},translationContext,context||{})
-	// var g=I18N[key]||(window.statInfo||{})[key]||(window.teamGraphs||{})[key]||(window.aggregateGraphs||{})[key]||(window.matchPredictorSections||{})[key]||{}
+	var g=I18N[key]||(window.statInfo||{})[key]||(window.teamGraphs||{})[key]||(window.aggregateGraphs||{})[key]||(window.matchPredictorSections||{})[key]||{}
 	l||=locale
 	if(l=='qd')return (g.en||g.name||key).replace(/[^ ]/g,'.')
 	while(l){
