@@ -338,24 +338,24 @@ function computeLocale(){
 	return 'en'
 }
 
-// function translate(key,context,l){
-// 	context=Object.assign({},translationContext,context||{})
-// 	var g=I18N[key]||(window.statInfo||{})[key]||(window.teamGraphs||{})[key]||(window.aggregateGraphs||{})[key]||(window.matchPredictorSections||{})[key]||{}
-// 	l||=locale
-// 	if(l=='qd')return (g.en||g.name||key).replace(/[^ ]/g,'.')
-// 	while(l){
-// 		var t=g[l]||(locale=='en'?g.name:'')
-// 		if(t){
-// 			Object.entries(context).forEach(([key,value])=>{
-// 				t=t.replace(`_${key.toUpperCase().replace(/[^A-Z0-9]/g,'')}_`,value)
-// 			})
-// 			t=t.replace(/_[A-Z]+_/g,"")
-// 			return t
-// 		}
-// 		l=l.replace(/[_]?[^_]*$/,"")
-// 	}
-// 	return key
-// }
+function translate(key,context,l){
+	context=Object.assign({},translationContext,context||{})
+	// var g=I18N[key]||(window.statInfo||{})[key]||(window.teamGraphs||{})[key]||(window.aggregateGraphs||{})[key]||(window.matchPredictorSections||{})[key]||{}
+	l||=locale
+	if(l=='qd')return (g.en||g.name||key).replace(/[^ ]/g,'.')
+	while(l){
+		var t=g[l]||(locale=='en'?g.name:'')
+		if(t){
+			Object.entries(context).forEach(([key,value])=>{
+				t=t.replace(`_${key.toUpperCase().replace(/[^A-Z0-9]/g,'')}_`,value)
+			})
+			t=t.replace(/_[A-Z]+_/g,"")
+			return t
+		}
+		l=l.replace(/[_]?[^_]*$/,"")
+	}
+	return key
+}
 
 function getDate(s){
 	if (!s) return ""
