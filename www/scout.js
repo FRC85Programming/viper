@@ -1287,7 +1287,7 @@ function setupButtons(){
 
 function addButtons(div, featured, isFeatured){
 	if (getActiveForm()===scouting){
-		if((featured=='next')==isFeatured) div.append($('<button data-i18n=next_match_button>').click(goNext)).append(" ")
+		// if((featured=='next')==isFeatured) div.append($('<button data-i18n=next_match_button>').click(goNext)).append(" ")
 		if((featured=='upload')==isFeatured) div.append($('<button data-i18n=upload_data_button>').click(goUploadData)).append(" ")
 		if((featured=='qr')==isFeatured) div.append($('<button data-i18n=qr_code_button>').click(showQrCode)).append(" ")
 		if($('#matchBtn').length==0 && !isFeatured) div.append($('<button data-i18n=choose_match_button>').click(goChooseMatch)).append(" ")
