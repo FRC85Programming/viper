@@ -77,7 +77,7 @@ addI18n({
 		zh_tw:'下一個汽車',
 	},
 	human_player_question:{
-		en:'How accurate is the human player at shooting?',
+		en:'How accurate is the human player at shooting? (on a scale from 1-10, 10 being very accurate)',
 	},
 	human_player_placeholder:{
 		en:'Accuracy, consistency, or other notes about the human player',
