@@ -124,7 +124,7 @@ addI18n({
 		en:'No',
 	},
 	fuel_strategy_legend:{
-		en:'What was the main strategy team _TEAMNUM_ used to get fuel into the alliance zone?',
+		en:'What was the MAIN strategy team _TEAMNUM_ used to get fuel into the alliance zone?',
 		he:'מה הייתה האסטרטגיה הראשית של צוות _TEAMNUM_ כדי להכניס דלק לאזור הברית?',
 		tr:'Takım _TEAMNUM_\'un yakıtı ittifak bölgesine sokmak için kullandığı ana strateji nedir?',
 		zh_tw:'隊伍_TEAMNUM_將燃料送入聯盟區的主要策略是什麼?',

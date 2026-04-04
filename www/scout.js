@@ -42,7 +42,7 @@ addI18n({
 		tr:'Tele',
 	},
 	end_game_tab:{
-		en:'End',
+		en:'Post',
 		pt:'Fim',
 		fr:'Fin',
 		zh_tw:'結尾',
