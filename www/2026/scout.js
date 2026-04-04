@@ -1136,7 +1136,7 @@ $(document).ready(function(){
 			var startOffset = 0
 			$(".zone-timer").val("0")
 			if (input.closest('.teleop').length) startOffset = TELE_START_MS
-			else setTimeout(proceedToTele, AUTO_MS)
+			else setTimeout(proceedToTeleBlink, AUTO_MS)
 			matchStartTime = new Date().getTime()-startOffset
 		}
 		return Math.max(0,now-matchStartTime)
@@ -1146,9 +1146,9 @@ $(document).ready(function(){
 		return Math.floor(getGameTimeMS(input)/1000)
 	}
 
-	function proceedToTele(){
-		if($('.auto.tab-content').is(':visible') && matchStartTime>0 && (new Date().getTime()-matchStartTime)>=AUTO_MS) showTab(null, $('.tab[data-content="teleop"]'))
-	}
+	// function proceedToTele(){
+	// 	if($('.auto.tab-content').is(':visible') && matchStartTime>0 && (new Date().getTime()-matchStartTime)>=AUTO_MS) showTab(null, $('.tab[data-content="teleop"]'))
+	// }
 
 	function inputChanged2026(input, change){
 		if(change==0)return
