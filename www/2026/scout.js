@@ -1106,6 +1106,8 @@ $(document).ready(function(){
 	function initScouting2026(){
 		matchStartTime = 0
 		enteredZoneMS = 0
+		scoutTimers={}
+		proceedToTeleBlink()
 		currentZone = 'alliance'
 		var capacity = (pitData[team] || {fuel_capacity:0}).fuel_capacity
 		$('.fuel-capacity').text(capacity)
@@ -1515,7 +1517,7 @@ $(document).ready(function(){
 			newVal = ""+Math.floor((new Date().getTime() - timer.start)/1000)
 			if(oldVal != newVal){
 				animateChangeFloater(newVal,timer.e)
-				inputChanged2025(timer.input,1)
+				inputChanged2026(timer.input,1)
 			}
 			timer.input.val(newVal)
 		})
@@ -1528,7 +1530,7 @@ $(document).ready(function(){
 			delete scoutTimers[name]
 		} else {
 			var val=parseInt(input.val()||"0")
-			inputChanged2025(input,1)
+			inputChanged2026(input,1)
 			scoutTimers[name]={
 				e: e,
 				input: input,
