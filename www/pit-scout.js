@@ -492,6 +492,15 @@ addI18n({
 	fuel_get_question:{
 		en: "How does your robot get Fuel?",
 	},
+	graciously_professional_question:{
+		en: "Is the team graciously professional?",
+	},
+	very_gracious_and_professional:{
+		en: "Yes, the team is very gracious and professional",
+	},
+	not_gracious_nor_professional:{
+		en: "No, the team is not gracious nor professional",
+	},
 	pit_scout_photo_reminder:{
 		en:'If you are also bot photo scouting, don\'t forget to take a picture!',
 		pt:'Se você também estiver explorando fotos de robôs, não se esqueça de tirar uma foto!',

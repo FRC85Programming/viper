@@ -121,10 +121,11 @@
 		<!-- </p>
 			<span data-i18n=human_player_question></span> <div class=full><input type=text size=50 name=hp_accuracy data-i18n-placeholder=human_player_placeholder></div> -->
 
+
+		</p>
 			<p>
 			<span data-i18n=human_player_question></span><br>
 			<label><input type=number min=0 max=100 name=hp_accuracy></label>
-		</p>
 		</p>
 		<p>
 			<span data-i18n=fuel_get_question></span><br>
@@ -186,7 +187,12 @@
 	<span data-i18n=scouter_header></span><br>
 	<span data-i18n=scouter_name_question></span> <div class=full><input type=text size=50 name=scouter data-i18n-placeholder=scouter_name_placeholder></div>
 	<p><textarea name=notes  data-i18n-placeholder=pit_scout_notes_placeholder></textarea></p>
-	<p data-i18n=pit_scout_photo_reminder></p>
+	<p>
+			<span data-i18n=graciously_professional_question></span><br>
+			<label><input type=checkbox name=very_gracious_and_professional value=yes><span data-i18n=yes></span></label>
+			<label><input type=checkbox name=not_gracious_nor_professional value=no><span data-i18n=no></span></label>
+		</p>
+	<!-- <p data-i18n=pit_scout_photo_reminder></p> -->
 
 	<input type=hidden name=created value="">
 	<input type=hidden name=modified value="">
