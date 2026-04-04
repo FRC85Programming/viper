@@ -1112,7 +1112,7 @@ $(document).ready(function(){
 		$('.fuel-capacity-section').toggle(capacity>0)
 	}
 
-	$('.fieldRotateBtn').click(initScouting2026)
+	// $('.fieldRotateBtn').click(initScouting2026)
 
 	function toggleClimbPosition(){
 		var a=parseInt($('input[name="auto_climb_level"]').val()),
@@ -1440,19 +1440,6 @@ $(document).ready(function(){
 		})
 	}
 
-	// This is the stuff for the blinking thing in auto. Check 2025 scout.html for reference
-
-	function proceedToTeleBlink(){
-		var goTele=$('.auto.tab-content').is(':visible') && matchStartTime>0 && (new Date().getTime()-matchStartTime)>=AUTO_MS
-		$('#tele-reminder').toggle(goTele)
-		$('.to-tele').toggleClass('pulse-bg',goTele)
-		if(goTele)setTimeout(proceedToTeleForce,10200)
-	}
-
-	function proceedToTeleForce(){
-		if($('.auto.tab-content').is(':visible') && matchStartTime>0 && (new Date().getTime()-matchStartTime)>=AUTO_MS+10000) showTab(null, $('.tab[data-content="teleop"]'))
-	}
-
 	let autoCount = 0;
 	let teleCount = 0;
 
@@ -1505,4 +1492,50 @@ $(document).ready(function(){
 
 		document.getElementById("teleFuelScore").value = teleCount;
 	}
+
+	// This is the stuff for the blinking thing in auto. Check 2025 scout.html for reference
+
+	function proceedToTeleBlink(){
+		var goTele=$('.auto.tab-content').is(':visible') && matchStartTime>0 && (new Date().getTime()-matchStartTime)>=AUTO_MS
+		$('#tele-reminder').toggle(goTele)
+		$('.to-tele').toggleClass('pulse-bg',goTele)
+		if(goTele)setTimeout(proceedToTeleForce,10200)
+	}
+
+	function proceedToTeleForce(){
+		if($('.auto.tab-content').is(':visible') && matchStartTime>0 && (new Date().getTime()-matchStartTime)>=AUTO_MS+10000) showTab(null, $('.tab[data-content="teleop"]'))
+	}
+
+	var scoutTimers={}
+
+	setInterval(function(){
+		if(matchStartTime==0||(new Date().getTime()-matchStartTime)>MATCH_LENGTH_MS) return
+		Object.values(scoutTimers).forEach(function(timer){
+			var oldVal = timer.input.val(),
+			newVal = ""+Math.floor((new Date().getTime() - timer.start)/1000)
+			if(oldVal != newVal){
+				animateChangeFloater(newVal,timer.e)
+				inputChanged2025(timer.input,1)
+			}
+			timer.input.val(newVal)
+		})
+	},100)
+
+	$('.timer').click(function(e){
+		var input = findInputInEl(findParentFromButton($(this))),
+		name = input.attr('name')
+		if(Object.hasOwn(scoutTimers,name)){
+			delete scoutTimers[name]
+		} else {
+			var val=parseInt(input.val()||"0")
+			inputChanged2025(input,1)
+			scoutTimers[name]={
+				e: e,
+				input: input,
+				start: new Date().getTime()-val*1000
+			}
+			animateChangeFloater("timing…", e)
+		}
+		return false
+	})
 })
