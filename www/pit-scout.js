@@ -90,6 +90,9 @@ addI18n({
 		fr:'Robot',
 		zh_tw:'機器人',
 	},
+	pit_scout_question_reminder:{
+		en:'Feel free to ask any questions you think would be helpful to know about the team or robot that aren\'t already covered by the other questions! <3 - Gracie, A.J, Micah and BOB',
+	},
 	robot_climb_third_left:{
 		en:'Left 3rd',
 	},
