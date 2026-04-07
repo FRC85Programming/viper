@@ -1127,6 +1127,11 @@ $(document).ready(function(){
 		$('#climb-method-fieldset').toggle(t>1)
 	}
 
+	function toggleBrickedMethods(){
+		var brickedValue = $('input[name="bricked"]:checked').val()
+		$('#bricked_legend').toggle(brickedValue !== '')
+	}
+
 	function toggleDefenseMethods(){
 		var defenseValue = $('input[name="defense"]:checked').val()
 		$('#defense-methods').toggle(defenseValue !== '')
