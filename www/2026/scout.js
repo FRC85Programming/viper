@@ -206,6 +206,9 @@ addI18n({
 		fr:'Non',
 		pt:'Não',
 	},
+	bricked_yes:{
+		en:'Yes',
+	},
 	bricked_no_desc:{
 		en:'Didn\'t get disabled.',
 		he:'לא הושבת.',
