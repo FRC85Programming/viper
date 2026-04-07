@@ -202,7 +202,7 @@ addI18n({
 		en:'Far Pass',
 	},
 	bricked_legend:{
-		en:'Was team _TEAMNUM_ disabled? (If the orange light on the robot is not blinking, the robot is disabled.)',
+		en:'Was team _TEAMNUM_ disabled?',
 	},
 	bricked_no:{
 		en:'No',
@@ -216,7 +216,7 @@ addI18n({
 		en:'Yes',
 	},
 	disabled_definition:{
-		en:'If the orange light on the robot is not blinking, the robot is disabled.',
+		en:'Solid orange light on the robot = disabled',
 	},
 	bricked_duration_legend:{
 		en:'How long did team _TEAMNUM_ spend disabled?',
