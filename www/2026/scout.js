@@ -216,7 +216,7 @@ addI18n({
 		en:'Yes',
 	},
 	disabled_definition:{
-		en:'Solid orange light on the robot = disabled',
+		en:'Orange light on robot isn\'t blinking = disabled',
 	},
 	bricked_duration_legend:{
 		en:'How long did team _TEAMNUM_ spend disabled?',
