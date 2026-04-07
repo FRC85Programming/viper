@@ -195,6 +195,12 @@ addI18n({
 		fr:'Est resté dans la zone d\'alliance et a reçu du carburant d\'autres bots.',
 		pt:'Permaneceu na zona de aliança e recebeu combustível de outros bots.',
 	},
+	fuel_alliance_passing_desc:{
+		en:'Did _TEAMNUM_ pass or push fuel to the alliance zone from the opposing zone?',
+	},
+	fuel_alliance_passing_label:{
+		en:'Far Pass',
+	},
 	bricked_legend:{
 		en:'Was team _TEAMNUM_ disabled?',
 	},
@@ -209,90 +215,105 @@ addI18n({
 	bricked_yes:{
 		en:'Yes',
 	},
-	bricked_no_desc:{
-		en:'Didn\'t get disabled.',
-		he:'לא הושבת.',
-		tr:'Devre dışı bırakılmadı.',
-		zh_tw:'未被禁用。',
-		fr:'N\'a pas été désactivée.',
-		pt:'Não foi desabilitada.',
+	bricked_duration_legend:{
+		en:'How long did team _TEAMNUM_ spend disabled?',
 	},
-	bricked_some:{
-		en:'Some',
-		he:'חלק',
-		tr:'Bazı',
-		zh_tw:'某些',
-		fr:'Un peu',
-		pt:'Alguns',
+	bricked_entire_match:{
+		en:'Entire Match',
 	},
-	fuel_alliance_passing_desc:{
-		en:'Did _TEAMNUM_ pass or push fuel to the alliance zone from the opposing zone?',
-	},
-	fuel_alliance_passing_label:{
-		en:'Far Pass',
-	},
-	bricked_some_desc:{
-		en:'Disabled for a short time.',
-		he:'הושבת לזמן קצר.',
-		tr:'Kısa bir süre devre dışı bırakıldı.',
-		zh_tw:'被禁用很短的時間。',
-		fr:'Désactivée pour une courte durée.',
-		pt:'Desabilitada por um curto período.',
-	},
-	bricked_half:{
-		en:'Half',
-		he:'חצי',
-		tr:'Yarısı',
-		zh_tw:'半',
-		fr:'Moitié',
-		pt:'Metade',
-	},
-	bricked_half_desc:{
-		en:'Disabled for about half the match.',
-		he:'הושבת למשך כחצי המשחק.',
-		tr:'Maçın yaklaşık yarısı boyunca devre dışı bırakıldı.',
-		zh_tw:'在比賽的大約一半時間內被禁用。',
-		fr:'Désactivée pendant environ la moitié du match.',
-		pt:'Desabilitada por aproximadamente metade da partida.',
-	},
-	bricked_most:{
-		en:'Most',
-		he:'רוב',
-		tr:'Çoğu',
-		zh_tw:'大部分',
-		fr:'Plupart',
-		pt:'A maioria',
-	},
-	bricked_most_desc:{
-		en:'Disabled for most of the match.',
-		he:'הושבת למרבית המשחק.',
-		tr:'Maçın çoğu süresince devre dışı bırakıldı.',
-		zh_tw:'在大部分比賽時間內被禁用。',
-		fr:'Désactivée pendant la majeure partie du match.',
-		pt:'Desabilitada durante a maior parte da partida.',
-	},
-	bricked_all:{
-		en:'All',
-		he:'הכל',
-		tr:'Tümü',
-		zh_tw:'全部',
-		fr:'Tous',
-		pt:'Tudo',
-	},
-	bricked_all_desc:{
+	bricked_entire_match_desc:{
 		en:'Disabled for the entire match.',
-		he:'הושבת למשך כל המשחק.',
-		tr:'Tüm maç boyunca devre dışı bırakıldı.',
-		zh_tw:'在整場比賽中被禁用。',
-		fr:'Désactivée pendant tout le match.',
-		pt:'Desabilitada durante toda a partida.',
 	},
-	bricked_unsure:{
-		en:'Unsure',
+	bricked_part_of_match:{
+		en:'Part of Match',
 	},
-	bricked_unsure_desc:{
-		en:'Unsure if they were disabled or not.',
+	bricked_part_of_match_desc:{
+		en:'Disabled only for one part of the match.',
 	},
+	bricked_off_and_on_match:{
+		en:'Off and On',
+	},
+	bricked_off_and_on_match_desc:{
+		en:'Got disabled multiple times per match',
+	},
+	// bricked_no_desc:{
+	// 	en:'Didn\'t get disabled.',
+	// 	he:'לא הושבת.',
+	// 	tr:'Devre dışı bırakılmadı.',
+	// 	zh_tw:'未被禁用。',
+	// 	fr:'N\'a pas été désactivée.',
+	// 	pt:'Não foi desabilitada.',
+	// },
+	// bricked_some:{
+	// 	en:'Some',
+	// 	he:'חלק',
+	// 	tr:'Bazı',
+	// 	zh_tw:'某些',
+	// 	fr:'Un peu',
+	// 	pt:'Alguns',
+	// },
+	// bricked_some_desc:{
+	// 	en:'Disabled for a short time.',
+	// 	he:'הושבת לזמן קצר.',
+	// 	tr:'Kısa bir süre devre dışı bırakıldı.',
+	// 	zh_tw:'被禁用很短的時間。',
+	// 	fr:'Désactivée pour une courte durée.',
+	// 	pt:'Desabilitada por um curto período.',
+	// },
+	// bricked_half:{
+	// 	en:'Half',
+	// 	he:'חצי',
+	// 	tr:'Yarısı',
+	// 	zh_tw:'半',
+	// 	fr:'Moitié',
+	// 	pt:'Metade',
+	// },
+	// bricked_half_desc:{
+	// 	en:'Disabled for about half the match.',
+	// 	he:'הושבת למשך כחצי המשחק.',
+	// 	tr:'Maçın yaklaşık yarısı boyunca devre dışı bırakıldı.',
+	// 	zh_tw:'在比賽的大約一半時間內被禁用。',
+	// 	fr:'Désactivée pendant environ la moitié du match.',
+	// 	pt:'Desabilitada por aproximadamente metade da partida.',
+	// },
+	// bricked_most:{
+	// 	en:'Most',
+	// 	he:'רוב',
+	// 	tr:'Çoğu',
+	// 	zh_tw:'大部分',
+	// 	fr:'Plupart',
+	// 	pt:'A maioria',
+	// },
+	// bricked_most_desc:{
+	// 	en:'Disabled for most of the match.',
+	// 	he:'הושבת למרבית המשחק.',
+	// 	tr:'Maçın çoğu süresince devre dışı bırakıldı.',
+	// 	zh_tw:'在大部分比賽時間內被禁用。',
+	// 	fr:'Désactivée pendant la majeure partie du match.',
+	// 	pt:'Desabilitada durante a maior parte da partida.',
+	// },
+	// bricked_all:{
+	// 	en:'All',
+	// 	he:'הכל',
+	// 	tr:'Tümü',
+	// 	zh_tw:'全部',
+	// 	fr:'Tous',
+	// 	pt:'Tudo',
+	// },
+	// bricked_all_desc:{
+	// 	en:'Disabled for the entire match.',
+	// 	he:'הושבת למשך כל המשחק.',
+	// 	tr:'Tüm maç boyunca devre dışı bırakıldı.',
+	// 	zh_tw:'在整場比賽中被禁用。',
+	// 	fr:'Désactivée pendant tout le match.',
+	// 	pt:'Desabilitada durante toda a partida.',
+	// },
+	// bricked_unsure:{
+	// 	en:'Unsure',
+	// },
+	// bricked_unsure_desc:{
+	// 	en:'Unsure if they were disabled or not.',
+	// },
 	defense_legend:{
 		en:'Team _TEAMNUM_ Defense Rating',
 		he:'דירוג הגנה של צוות _TEAMNUM_',
@@ -485,6 +506,9 @@ addI18n({
 		zh_tw:'隊伍_TEAMNUM_防守時使用了哪些方法?',
 		fr:'Quelles méthodes l\'équipe _TEAMNUM_ a-t-elle utilisées pour défendre?',
 		pt:'Quais métodos a equipe _TEAMNUM_ usou ao defender?',
+	},
+	bricked_duration_legend:{
+		en:'How long did team _TEAMNUM_ spend disabled?',
 	},
 	defense_collected:{
 		en:'Collected',
@@ -1102,6 +1126,7 @@ $(document).ready(function(){
 			setTimeout(initialRobotAutoClimbPosition, 0)
 			setTimeout(initialRobotTeleClimbPosition, 0)
 			toggleClimbPosition()
+			toggleBrickedDuration()
 			toggleDefenseMethods()
 		}
 	})
@@ -1127,9 +1152,9 @@ $(document).ready(function(){
 		$('#climb-method-fieldset').toggle(t>1)
 	}
 
-	function toggleBrickedMethods(){
+	function toggleBrickedDuration(){
 		var brickedValue = $('input[name="bricked"]:checked').val()
-		$('#bricked_legend').toggle(brickedValue !== '')
+		$('#bricked-duration').toggle(brickedValue !== '')
 	}
 
 	function toggleDefenseMethods(){
@@ -1161,6 +1186,7 @@ $(document).ready(function(){
 	function inputChanged2026(input, change){
 		if(change==0)return
 		toggleClimbPosition()
+		if(input.attr('name')==='bricked') toggleBrickedDuration()
 		if(input.attr('name')==='defense') toggleDefenseMethods()
 		if(input.closest('.auto,.teleop').length){
 			var order = $('[name="timeline"]'),
