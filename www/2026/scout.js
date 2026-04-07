@@ -1535,7 +1535,7 @@ $(document).ready(function(){
 		var goTele=$('.auto.tab-content').is(':visible') && matchStartTime>0 && (new Date().getTime()-matchStartTime)>=AUTO_MS
 		$('#tele-reminder').toggle(goTele)
 		$('.to-tele').toggleClass('pulse-bg',goTele)
-		if(goTele)setTimeout(proceedToTeleForce,10200)
+		// if(goTele)setTimeout(proceedToTeleForce,10200)
 	}
 
 	function proceedToTeleForce(){
