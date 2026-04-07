@@ -202,7 +202,7 @@ addI18n({
 		en:'Far Pass',
 	},
 	bricked_legend:{
-		en:'Was team _TEAMNUM_ disabled?',
+		en:'Was team _TEAMNUM_ disabled? (If the orange light on the robot is not blinking, the robot is disabled.)',
 	},
 	bricked_no:{
 		en:'No',
