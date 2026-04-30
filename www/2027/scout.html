@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel=stylesheet href=/main.css>
+<link rel=stylesheet href=/local.css>
+<link rel=stylesheet href=/scout.css>
+<link rel=stylesheet href=scout.css>
+<script src=/jquery.min.js></script>
+<script src=/main.js></script>
+<script src=/event-url.js></script>
+<script src=/qrcode.min.js></script>
+<script src=/canvas-path.js></script>
+<script src=/scout.js></script>
+<script src=scout.js></script>
+<script src=/heartbeat.js></script>
+<script src=/local.js></script>
+<!-- <link rel=preload as=image href=field.png>
+<link rel=preload as=image href=field-rotated.png>
+<link rel=preload as=image href=fuel-collect.png>
+<link rel=preload as=image href=fuel-target.png>
+<link rel=preload as=image href=fuel-target-active.png>
+<link rel=preload as=image href=arrow-left.png>
+<link rel=preload as=image href=arrow-right.png>
+<link rel=preload as=image href=start-area-blue.png>
+<link rel=preload as=image href=start-area-red.png>
+<link rel=preload as=image href=climb-area-blue.png>
+<link rel=preload as=image href=climb-area-red.png>
+<link rel=preload as=image href=shooting-locations-blue.png>
+<link rel=preload as=image href=shooting-locations-red.png> -->
+<link rel=icon type=image/png href=/logo.jpg>
+</head>
+
+<body>
+<div id=select-bot class=screen style=display:none>
+	<h1></h1>
+	<h2 data-i18n=choose_pos_heading></h2>
+	<div>
+		<table class=orientLeft><tr>
+			<td class=redTeamBG><button>R1</button></td>
+			<td rowspan=3><img class=bigimg src=field.png></td>
+			<td class=blueTeamBG><button>B3</button></td>
+		</tr><tr>
+			<td class=redTeamBG><button>R2</button></td>
+			<td class=blueTeamBG><button>B2</button></td>
+		</tr><tr>
+			<td class=redTeamBG><button>R3</button></td>
+			<td class=blueTeamBG><button>B1</button></td>
+		</tr></table>
+	</div>
+	<div>
+		<span data-i18n=choose_pos_or></span>
+	</div>
+	<div>
+		<table class=orientRight><tr>
+			<td class=blueTeamBG><button>B1</button></td>
+			<td rowspan=3><img class=bigimg src=field.png></td>
+			<td class=redTeamBG><button>R3</button></td>
+		</tr><tr>
+			<td class=blueTeamBG><button>B2</button></td>
+			<td class=redTeamBG><button>R2</button></td>
+		</tr><tr>
+			<td class=blueTeamBG><button>B3</button></td>
+			<td class=redTeamBG><button>R1</button></td>
+		</tr></table>
+	</div>
+	<button class=showInstructions data-i18n=instructions></button>
+	<iframe class="instructions lightBoxFullContent" src=/scouting-select-bot-instructions.html></iframe>
+</div>
+
+<div id=select-match class=screen style=display:none>
+	<h1></h1>
+	<button class=showInstructions data-i18n=instructions></button>
+	<button class=robotBtn data-i18n=change_robot_button></button>
+	<iframe class="instructions lightBoxFullContent" src=/scouting-select-match-instructions.html></iframe>
+	<div id=match-list></div>
+</div>
+
+<div id=change-team class=screen style=display:none>
+	<h1></h1>
+	<input type=text id=teamChange inputmode=numeric size=4 placeholder=Team#>
+	<button id=teamChangeBtn>Change</button>
+	<button id=teamCancelBtn data-i18n=cancel_button></button>
+</div>
+
+<form id=scouting class=screen style=display:none>
+
+	<div class=tabs>
+		<div class="tab default-tab" data-content=prematch data-i18n=pre_match_tab></div>
+		<div class=tab data-content=auto data-i18n=auto_tab></div>
+		<div class="tab" data-content=teleop data-i18n=tele_tab></div>
+		<div class=tab data-content=end-game data-i18n=end_game_tab></div>
+	</div>
+
+	<div class="prematch tab-content">
+		<h1></h1>
+		<div class="kebab-menu">
+			<button class="kebab-button">⋮</button>
+			<div class="kebab-dropdown">
+				<button id=teamBtn data-i18n=team_correction_button></button>
+				<button id=matchBtn data-i18n=choose_match_button></button>
+				<button class=robotBtn data-i18n=change_robot_button></button>
+				<button class=fieldRotateBtn data-i18n=rotate_field_button></button>
+			</div>
+		</div>
+		<input type=hidden name=event>
+		<input type=hidden name=match>
+		<input type=hidden name=team>
+		<input type=hidden name=timeline id=timeline>
+		<div class="pre-match-layout">
+			<div class="pre-match-left">
+				<h3 data-i18n=starting_position></h3>
+				<div id=start-area class=orient-rotate><div class=robot-position id=robot-starting-position></div></div>
+			</div>
+			<div class="pre-match-right">
+				<div class=brief-instructions>
+			<!--	<p data-i18n=brief_instructions></p>
+					<button class='showInstructions full' data-i18n=full_instructions></button>
+					<iframe class="instructions lightBoxFullContent" src=scouting-instructions.html></iframe> -->
+				</div>
+				<label><input type=checkbox name=noShow value=1><span data-i18n=no_show></span></label>
+				<label><input type=checkbox name=startingFuel value=1><span data-i18n=starting_fuel></span></label>
+				<button class=tab-button data-content=auto data-i18n=proceed_auto_button></button>
+			</div>
+		</div>
+		<input id=auto-start-input type=hidden name=auto_start>
+
+		<!-- <img id=robot-photo src=""> -->
+	</div>
+
+	<div class="auto tab-content">
+		<!--<div class="field-actions orient-rotate">
+			<button class="alliance to-neutral orient-rotate" data-end=alliance data-side=depot data-input=auto_trench_depot_alliance_to_neutral style=right:26%;bottom:5%><img class=orient-rotate src=arrow-left.png></button>
+			<button class="alliance to-neutral orient-rotate" data-end=alliance data-side=depot data-input=auto_bump_depot_alliance_to_neutral style=right:26%;bottom:21%><img class=orient-rotate src=arrow-left.png></button>
+			<button class="alliance to-neutral orient-rotate" data-end=alliance data-side=outpost data-input=auto_bump_outpost_alliance_to_neutral style=right:26%;top:21%><img class=orient-rotate src=arrow-left.png></button>
+			<button class="alliance to-neutral orient-rotate" data-end=alliance data-side=outpost data-input=auto_trench_outpost_alliance_to_neutral style=right:26%;top:5%><img class=orient-rotate src=arrow-left.png></button>
+			<div class="alliance robot" data-end=alliance style=right:13%;top:43%></div>
+			<button class="alliance target target-hub" data-end=alliance data-input=auto_fuel_score style=right:26%;top:42%></button>
+
+			<button class="neutral to-alliance orient-rotate" data-end=alliance data-side=depot  data-input=auto_trench_depot_neutral_to_alliance style=right:26%;bottom:5%><img class=orient-rotate src=arrow-right.png></button>
+			<button class="neutral to-alliance orient-rotate" data-end=alliance data-side=depot data-input=auto_bump_depot_neutral_to_alliance style=right:26%;bottom:21%><img class=orient-rotate src=arrow-right.png></button>
+			<button class="neutral to-alliance orient-rotate" data-end=alliance data-side=outpost data-input=auto_bump_outpost_neutral_to_alliance style=right:26%;top:21%><img class=orient-rotate src=arrow-right.png></button>
+			<button class="neutral to-alliance orient-rotate" data-end=alliance data-side=outpost data-input=auto_trench_outpost_neutral_to_alliance style=right:26%;top:5%><img class=orient-rotate src=arrow-right.png></button>
+			<div class="neutral robot" data-end=alliance style=right:46.5%;top:43%></div>
+			<button class="neutral target target-alliance" data-end=alliance data-input=auto_fuel_neutral_alliance_pass style=right:13%;bottom:7%></button>
+
+			<label class=alliance data-end=alliance data-side=outpost style=right:0%;top:7%><input type=checkbox name=auto_collect_outpost value=1><span><img class=orient-rotate src=fuel-collect.png></span></label>
+			<label class=alliance data-end=alliance data-side=depot style=right:2%;bottom:22%><input type=checkbox name=auto_collect_depot value=1><span><img class=orient-rotate src=fuel-collect.png></span></label>
+
+			<input class="alliance climb count num orient-rotate" data-end=alliance style=right:3%;top:40% type=text value=0 max=1 name=auto_climb_level size=1 readonly>
+		</div>-->
+		<div class=side-by-side>
+			<div class=fuel-container>
+				<button type="button" id=autoFuelMinusOne class="fuel" data-value=-1>-1</button>
+				<button type="button" id=autoFuelOne class="fuel" data-value=1>1</button>
+				<button type="button" id=autoFuelFive class="fuel" data-value=5>5</button>
+				<button type="button" id=autoFuelEight class="fuel" data-value=8>8</button>
+			</div>
+			<table>
+				<tr>
+					<td>Fuel Score</td>
+				</tr>
+				<tr>
+					<td><input class=num type=number id=autoFuelScore name=auto_fuel_score value=0></td>
+				</tr>
+			</table>
+			<div>
+				<span class=fuel-capacity-section>
+					<span data-i18n=fuel_capacity_label></span>
+					<span class=fuel-capacity></span>
+				</span>
+				<!-- <span class=collapse data-content=auto-counters data-i18n=values_button></span>
+				<span class=collapse data-content=auto-timeline data-i18n=timeline_button></span> -->
+			</div>
+		</div>
+			<fieldset class=full id=auto-climb-fieldset>
+				<legend data-i18n=auto_climb_level></legend>
+				<div><label><input type=radio name=climbOption value=does><span data-i18n=climb_does></span></div>
+				<div><label><input type=radio name=climbOption value=doesnt><span data-i18n=climb_doesnt></span></div>
+			</fieldset>
+			<button id=tele-reminder class="to-tele tab-button" data-content=teleop style="right:25%;top:5.5%;aspect-ratio:1.8"><img src=trueLove.png></button>
+		<!-- <div class=side-by-side>
+			<div><button class=undo data-i18n=undo_button></button></div>
+			<div class="teamColorBG team-indicator" data-i18n=pos_team></div>
+			<div><button class=tab-button data-content=teleop data-i18n=proceed_tele_button></button></div>
+		</div> -->
+		<!-- <table id=auto-counters class="collapsable counters-table">
+			<thead><tr><td class=subheader>Count</td><td class=subheader>Description</td></tr></thead>
+			<tbody>
+			<tr>
+				<td><input type=text class=num value=0 name=auto_fuel_score size=4 disabled></td>
+				<td data-i18n=auto_fuel_score></td>
+			</tr>
+			<tr>
+				<td><input type=text class=num value=0 name=auto_fuel_neutral_alliance_pass size=4 disabled></td>
+				<td data-i18n=auto_fuel_neutral_alliance_pass></td>
+			</tr>
+			<tr>
+				<td><input type=text class=num value=0 name=auto_trench_depot_alliance_to_neutral size=2 disabled></td>
+				<td data-i18n=auto_trench_depot_alliance_to_neutral></td>
+			</tr>
+			<tr>
+				<td><input type=text class=num value=0 name=auto_bump_depot_alliance_to_neutral size=2 disabled></td>
+				<td data-i18n=auto_bump_depot_alliance_to_neutral></td>
+			</tr>
+			<tr>
+				<td><input type=text class=num value=0 name=auto_bump_outpost_alliance_to_neutral size=2 disabled></td>
+				<td data-i18n=auto_bump_outpost_alliance_to_neutral></td>
+			</tr>
+			<tr>
+				<td><input type=text class=num value=0 name=auto_trench_outpost_alliance_to_neutral size=2 disabled></td>
+				<td data-i18n=auto_trench_outpost_alliance_to_neutral></td>
+			</tr>
+			<tr>
+				<td><input type=text class=num value=0 name=auto_trench_depot_neutral_to_alliance size=2 disabled></td>
+				<td data-i18n=auto_trench_depot_neutral_to_alliance></td>
+			</tr>
+			<tr>
+				<td><input type=text class=num value=0 name=auto_bump_depot_neutral_to_alliance size=2 disabled></td>
+				<td data-i18n=auto_bump_depot_neutral_to_alliance></td>
+			</tr>
+			<tr>
+				<td><input type=text class=num value=0 name=auto_bump_outpost_neutral_to_alliance size=2 disabled></td>
+				<td data-i18n=auto_bump_outpost_neutral_to_alliance></td>
+			</tr>
+			<tr>
+				<td><input type=text class=num value=0 name=auto_trench_outpost_neutral_to_alliance size=2 disabled></td>
+				<td data-i18n=auto_trench_outpost_neutral_to_alliance></td>
+			</tr>
+			<tr>
+				<td><input type=text class="num zone-timer" value=0 name=auto_alliance_time size=3 disabled></td>
+				<td data-i18n=auto_alliance_time></td>
+			</tr>
+			<tr>
+				<td><input type=text class="num zone-timer" value=0 name=auto_neutral_time size=3 disabled></td>
+				<td data-i18n=auto_neutral_time></td>
+			</tr>
+			</tbody>
+		</table> -->
+
+		<!-- <table id=auto-timeline class="collapsable timeline-table">
+			<thead><tr><td class=subheader data-i18n=timeline_time_header>
+			</td><td class=subheader data-i18n=timeline_action_header>
+			</td><td class=subheader data-i18n=timeline_value_header>
+			</td></tr></thead>
+			<tbody class=timeline></tbody>
+		</table> -->
+	</div>
+
+	<div class="teleop tab-content">
+		<!--<div class="field-actions orient-rotate">
+			<button class="alliance to-neutral orient-rotate" data-end=alliance data-side=depot data-input=tele_trench_depot_alliance_to_neutral style=right:26%;bottom:5%><img class=orient-rotate src=arrow-left.png></button>
+			<button class="alliance to-neutral orient-rotate" data-end=alliance data-side=depot data-input=tele_bump_depot_alliance_to_neutral style=right:26%;bottom:21%><img class=orient-rotate src=arrow-left.png></button>
+			<button class="alliance to-neutral orient-rotate" data-end=alliance data-side=outpost data-input=tele_bump_outpost_alliance_to_neutral style=right:26%;top:21%><img class=orient-rotate src=arrow-left.png></button>
+			<button class="alliance to-neutral orient-rotate" data-end=alliance data-side=outpost data-input=tele_trench_outpost_alliance_to_neutral style=right:26%;top:5%><img class=orient-rotate src=arrow-left.png></button>
+			<div class="alliance robot" data-end=alliance style=right:13%;top:43%></div>
+			<button class="alliance target target-hub" data-end=alliance data-input=tele_fuel_score style=right:26%;top:42%></button>
+			<button class="alliance target target-alliance" data-end=alliance data-input=tele_fuel_alliance_dump style=right:13%;bottom:7%></button>
+			<button class="alliance target" data-end=alliance data-input=tele_fuel_outpost style=right:0%;top:6%></button>
+
+			<button class="neutral to-alliance orient-rotate" data-end=alliance data-side=depot data-input=tele_trench_depot_neutral_to_alliance style=right:26%;bottom:5%><img class=orient-rotate src=arrow-right.png></button>
+			<button class="neutral to-alliance orient-rotate" data-end=alliance data-side=depot data-input=tele_bump_depot_neutral_to_alliance style=right:26%;bottom:21%><img class=orient-rotate src=arrow-right.png></button>
+			<button class="neutral to-alliance orient-rotate" data-end=alliance data-side=outpost data-input=tele_bump_outpost_neutral_to_alliance style=right:26%;top:21%><img class=orient-rotate src=arrow-right.png></button>
+			<button class="neutral to-alliance orient-rotate" data-end=alliance data-side=outpost data-input=tele_trench_outpost_neutral_to_alliance style=right:26%;top:5%><img class=orient-rotate src=arrow-right.png></button>
+			<button class="neutral target target-alliance" data-end=alliance data-input=tele_fuel_neutral_alliance_pass style=right:13%;bottom:7%></button>
+			<div class="neutral robot" data-end=alliance style=right:46.5%;top:43%></div>
+
+			<button class="neutral to-opponent orient-rotate" data-end=opponent data-side=outpost data-input=tele_trench_outpost_neutral_to_opponent style=left:26%;bottom:5%><img class=orient-rotate src=arrow-left.png></button>
+			<button class="neutral to-opponent orient-rotate" data-end=opponent data-side=outpost data-input=tele_bump_outpost_neutral_to_opponent style=left:26%;bottom:21%><img class=orient-rotate src=arrow-left.png></button>
+			<button class="neutral to-opponent orient-rotate" data-end=opponent data-side=depot data-input=tele_bump_depot_neutral_to_opponent style=left:26%;top:21%><img class=orient-rotate src=arrow-left.png></button>
+			<button class="neutral to-opponent orient-rotate" data-end=opponent data-side=depot data-input=tele_trench_depot_neutral_to_opponent style=left:26%;top:5%><img class=orient-rotate src=arrow-left.png></button>
+
+			<button class="opponent to-neutral orient-rotate" data-end=opponent data-side=outpost data-input=tele_trench_outpost_opponent_to_neutral style=left:26%;bottom:5%><img class=orient-rotate src=arrow-right.png></button>
+			<button class="opponent to-neutral orient-rotate" data-end=opponent data-side=outpost data-input=tele_bump_outpost_opponent_to_neutral style=left:26%;bottom:21%><img class=orient-rotate src=arrow-right.png></button>
+			<button class="opponent to-neutral orient-rotate" data-end=opponent data-side=depot data-input=tele_bump_depot_opponent_to_neutral style=left:26%;top:21%><img class=orient-rotate src=arrow-right.png></button>
+			<button class="opponent to-neutral orient-rotate" data-end=opponent data-side=depot data-input=tele_trench_depot_opponent_to_neutral style=left:26%;top:5%><img class=orient-rotate src=arrow-right.png></button>
+			<div class="opponent robot" data-end=opponent style=left:13%;top:43%></div>
+			<button class="opponent target target-alliance" data-end=alliance data-input=tele_fuel_opponent_alliance_pass style=right:13%;bottom:7%></button>
+			<button class="opponent target" data-end=opponent data-input=tele_fuel_opponent_neutral_pass style=right:46.5%;bottom:7%></button>
+
+			<input class="alliance climb count num orient-rotate" data-end=alliance style=right:3%;top:40% type=text value=0 max=3 name=tele_climb_level size=1 readonly>
+		</div>-->
+		<div class=side-by-side>
+			<div class=fuel-container>
+				<button type="button" id="teleFuelMinusOne" class=fuel data-value=-1>-1</button>
+				<button type="button" id="teleFuelOne" class=fuel data-value=1>1</button>
+				<button type="button" id="teleFuelFive" class=fuel data-value=5>5</button>
+				<button type="button" id="teleFuelTen" class=fuel data-value=10>10</button>
+			</div>
+				<table>
+				<tr>
+					<td>Fuel Score</td>
+				</tr>
+				<tr>
+					<td><input class=num type=number id=teleFuelScore name=tele_fuel_score value=0></td>
+				</tr>
+			</table>
+			<div>
+				<span class=fuel-capacity-section>
+					<span data-i18n=fuel_capacity_label></span>
+					<span class=fuel-capacity></span>
+				</span>
+				<!-- <span class=collapse data-content=tele-counters data-i18n=values_button></span>
+				<span class=collapse data-content=tele-timeline data-i18n=timeline_button></span> -->
+			</div>
+		</div>
+		<table id=tele-counters class="collapsable counters-table">
+			<thead><tr><td class=subheader>Count</td><td class=subheader>Description</td></tr></thead>
+			<tbody>
+			<!-- <tr>
+				<td><input type=text class=num value=0 name=teleFuelScore size=4 disabled></td>
+				<td data-i18n=tele_fuel_score></td>
+			</tr> -->
+			<tr>
+				<td><input type=text class=num value=0 name=teleFuelAllianceDump size=4 disabled></td>
+				<td data-i18n=tele_fuel_alliance_dump></td>
+			</tr>
+			<tr>
+				<td><input type=text class=num value=0 name=teleFuelOutpost size=4 disabled></td>
+				<td data-i18n=tele_fuel_outpost></td>
+			</tr>
+			<tr>
+				<td><input type=text class=num value=0 name=teleFuelNeutralAlliancePass size=4 disabled></td>
+				<td data-i18n=tele_fuel_neutral_alliance_pass></td>
+			</tr>
+			<tr>
+				<td><input type=text class=num value=0 name=teleFuelOpponentNeutralPass size=4 disabled></td>
+				<td data-i18n=tele_fuel_opponent_neutral_pass></td>
+			</tr>
+			<tr>
+				<td><input type=text class=num value=0 name=teleFuelOpponentAlliancePass size=4 disabled></td>
+				<td data-i18n=tele_fuel_opponent_alliance_pass></td>
+			</tr>
+			<tr>
+				<td><input type=text class=num value=0 name=teleTrenchDepotAllianceToNeutral size=2 disabled></td>
+				<td data-i18n=tele_trench_depot_alliance_to_neutral></td>
+			</tr>
+			<tr>
+				<td><input type=text class=num value=0 name=teleBumpDepotAllianceToNeutral size=2 disabled></td>
+				<td data-i18n=tele_bump_depot_alliance_to_neutral></td>
+			</tr>
+			<tr>
+				<td><input type=text class=num value=0 name=teleBumpOutpostAllianceToNeutral size=2 disabled></td>
+				<td data-i18n=tele_bump_outpost_alliance_to_neutral></td>
+			</tr>
+			<tr>
+				<td><input type=text class=num value=0 name=teleTrenchOutpostAllianceToNeutral size=2 disabled></td>
+				<td data-i18n=tele_trench_outpost_alliance_to_neutral></td>
+			</tr>
+			<tr>
+				<td><input type=text class=num value=0 name=teleTrenchDepotNeutralToAlliance size=2 disabled></td>
+				<td data-i18n=tele_trench_depot_neutral_to_alliance></td>
+			</tr>
+			<tr>
+				<td><input type=text class=num value=0 name=teleBumpDepotNeutralToAlliance size=2 disabled></td>
+				<td data-i18n=tele_bump_depot_neutral_to_alliance></td>
+			</tr>
+			<tr>
+				<td><input type=text class=num value=0 name=teleBumpOutpostNeutralToAlliance size=2 disabled></td>
+				<td data-i18n=tele_bump_outpost_neutral_to_alliance></td>
+			</tr>
+			<tr>
+				<td><input type=text class=num value=0 name=teleTrenchOutpostNeutralToAlliance size=2 disabled></td>
+				<td data-i18n=tele_trench_outpost_neutral_to_alliance></td>
+			</tr>
+			<tr>
+				<td><input type=text class=num value=0 name=teleTrenchOutpostNeutralToOpponent size=2 disabled></td>
+				<td data-i18n=tele_trench_outpost_neutral_to_opponent></td>
+			</tr>
+			<tr>
+				<td><input type=text class=num value=0 name=teleBumpOutpostNeutralToOpponent size=2 disabled></td>
+				<td data-i18n=tele_bump_outpost_neutral_to_opponent></td>
+			</tr>
+			<tr>
+				<td><input type=text class=num value=0 name=teleBumpDepotNeutralToOpponent size=2 disabled></td>
+				<td data-i18n=tele_bump_depot_neutral_to_opponent></td>
+			</tr>
+			<tr>
+				<td><input type=text class=num value=0 name=teleTrenchDepotNeutralToOpponent size=2 disabled></td>
+				<td data-i18n=tele_trench_depot_neutral_to_opponent></td>
+			</tr>
+			<tr>
+				<td><input type=text class=num value=0 name=teleTrenchOutpostOpponentToNeutral size=2 disabled></td>
+				<td data-i18n=tele_trench_outpost_opponent_to_neutral></td>
+			</tr>
+			<tr>
+				<td><input type=text class=num value=0 name=teleBumpOutpostOpponentToNeutral size=2 disabled></td>
+				<td data-i18n=tele_bump_outpost_opponent_to_neutral></td>
+			</tr>
+			<tr>
+				<td><input type=text class=num value=0 name=teleBumpDepotOpponentToNeutral size=2 disabled></td>
+				<td data-i18n=tele_bump_depot_opponent_to_neutral></td>
+			</tr>
+			<tr>
+				<td><input type=text class=num value=0 name=teleTrenchDepotOpponentToNeutral size=2 disabled></td>
+				<td data-i18n=tele_trench_depot_opponent_to_neutral></td>
+			</tr>
+			<tr>
+				<td><input type=text class="num zone-timer" value=0 name=teleAllianceTime size=3 disabled></td>
+				<td data-i18n=tele_alliance_time></td>
+			</tr>
+			<tr>
+				<td><input type=text class="num zone-timer" value=0 name=teleNeutralTime size=3 disabled></td>
+				<td data-i18n=tele_neutral_time></td>
+			</tr>
+			<!-- <fieldset class=full>
+				<legend data-i18n=shift_legend></legend>
+				Changed the name from Shift to shiftOne
+				<label><input type=radio name=shift value=shiftOne><span data-i18n=shift_one></span></label>
+				<label><input type=radio name=shift value=shiftTwo><span data-i18n=shift_two></span></label>
+			</fieldset> -->
+			<fieldset class=full>
+				<legend data-i18n=demonstrated_capabilities></legend>
+				<label><input type=checkbox name=howScoreStationary value=shootStationary><span data-i18n=shoot_stationary_desc></span></label>
+				<label><input type=checkbox name=howScoreMove value=shootMove><span data-i18n=shoot_move_desc></span></label>
+				<label><input type=checkbox name=howScoreCollect value=shootCollect><span data-i18n=shoot_collecting_desc></span></label>
+				<label><input type=checkbox name=howScoreClimb value=shootClimb><span data-i18n=shoot_climbing_desc></span></label>
+				<label><input type=checkbox name=howScoreNA value=shootNA><span data-i18n=shoot_na_desc></span></label>
+			</fieldset>
+			</tbody>
+		</table>
+
+		<table id=tele-timeline class="collapsable timeline-table">
+			<thead><tr><td class=subheader data-i18n=timeline_time_header>
+			</td><td class=subheader data-i18n=timeline_action_header>
+			</td><td class=subheader data-i18n=timeline_value_header>
+			</td></tr></thead>
+			<tbody class=timeline></tbody>
+		</table>
+	</div>
+
+	<div class="end-game tab-content">
+		<table><tr><td class=subheader data-i18n=end_game_gameplay_header>
+		</td></tr><tr><td>
+			<fieldset class=full id=auto-climb-position-fieldset>
+				<legend data-i18n=auto_climb_legend></legend>
+				<div id=auto-climb-area class=orient-rotate><div id=robot-auto-climb-position></div></div>
+				<input id=auto-climb-position-input type=hidden name=auto_climb_position>
+			</fieldset>
+			<fieldset class=full id=tele-climb-position-fieldset>
+				<legend data-i18n=tele_climb_legend></legend>
+				<div id=tele-climb-area class=orient-rotate><div id=robot-tele-climb-position></div></div>
+				<input id=tele-climb-position-input type=hidden name=tele_climb_position>
+			</fieldset>
+			<fieldset class=full id=climb-method-fieldset>
+				<legend data-i18n=climb_method_legend></legend>
+				<div><label><input type=radio name=climbMethod value=rungs><span data-i18n=climb_method_rungs></span></label> <span data-i18n=climb_method_rungs_desc></span></div>
+				<div><label><input type=radio name=climbMethod value=uprights><span data-i18n=climb_method_uprights></span></label> <span data-i18n=climb_method_uprights_desc></span></div>
+				<div><label><input type=radio name=climbMethod value=flip><span data-i18n=climb_method_flip></span></label> <span data-i18n=climb_method_flip_desc></span></div>
+			</fieldset>
+			<!-- <fieldset class=full id=shooting_locations_fieldset>
+				<legend data-i18n=shooting_locations_legend></legend>
+				<div id=shooting-locations class=orient-rotate></div>
+				<input id=shooting-locations-input type=hidden name=shooting_locations>
+				<button id=shooting-locations-undo class=undo data-i18n=undo_button></button>
+			</fieldset> -->
+			<!-- <fieldset class=full id=all_shooting_locations_fieldset>
+				<legend data-i18n=all_shooting_locations_legend></legend>
+				<div id=all-shooting-locations class=orient-rotate></div>
+				<input id=all-shooting-locations-input type=hidden name=all_shooting_locations>
+				<button id=all-shooting-locations-undo class=undo data-i18n=undo_button></button>
+			</fieldset> -->
+			<fieldset class=full>
+				<legend data-i18n=fuel_strategy_legend></legend>
+				<div><label><input type=radio name=fuelToAlliance value=carried><span data-i18n=fuel_carried_label></span></label> <span data-i18n=fuel_carried_desc></span></div>
+				<div><label><input type=radio name=fuelToAlliance value=pushed><span data-i18n=fuel_pushed_label></span></label> <span data-i18n=fuel_pushed_desc></span></div>
+				<div><label><input type=radio name=fuelToAlliance value=passed><span data-i18n=fuel_passed_label></span></label> <span data-i18n=fuel_passed_desc></span></div>
+				<div><label><input type=radio name=fuelToAlliance value=received><span data-i18n=fuel_received_label></span></label> <span data-i18n=fuel_received_desc></span></div>
+				<div><label><input type=radio name=fuelToAlliance value=alliancePassing><span data-i18n=fuel_alliance_passing_label></span></label> <span data-i18n=fuel_alliance_passing_desc></span></div>
+			</fieldset>
+			<fieldset class=full>
+				<legend data-i18n=bricked_legend></legend>
+				<label><input type=radio name=bricked value=''><span data-i18n=bricked_no></span></label>
+				<label><input type=radio name=bricked value=yes><span data-i18n=bricked_yes></span></label>
+				<span data-i18n=disabled_definition></span>
+			</fieldset>
+			<fieldset id=bricked-duration class=full>
+				<legend data-i18n=bricked_duration_legend></legend>
+				<div><label><input type=radio name=bricked_duration value=entireMatch><span data-i18n=bricked_entire_match></span></label> <span data-i18n=bricked_entire_match_desc></span></div>
+				<div><label><input type=radio name=bricked_duration value=partOfMatch><span data-i18n=bricked_part_of_match></span></label> <span data-i18n=bricked_part_of_match_desc></span></div>
+				<div><label><input type=radio name=bricked_duration value=offAndOnMatch><span data-i18n=bricked_off_and_on_match></span></label> <span data-i18n=bricked_off_and_on_match_desc></span></div>
+			</fieldset>
+			<fieldset class=full>
+				<legend data-i18n=defended_legend></legend>
+				<div><label><input type=radio name=defended value=''><span data-i18n=defended_undefended></span></label> <span data-i18n=defended_undefended_desc></span></div>
+				<div><label><input type=radio name=defended value=turned-tables><span data-i18n=defended_turned_tables></span></label> <span data-i18n=defended_turned_tables_desc></span></div>
+				<div><label><input type=radio name=defended value=unaffected><span data-i18n=defended_unaffected></span></label> <span data-i18n=defended_unaffected_desc></span></div>
+				<div><label><input type=radio name=defended value=slowed><span data-i18n=defended_slowed></span></label> <span data-i18n=defended_slowed_desc></span></div>
+				<div><label><input type=radio name=defended value=slowed-greatly><span data-i18n=defended_slowed_greatly></span></label> <span data-i18n=defended_slowed_greatly_desc></span></div>
+				<div><label><input type=radio name=defended value=non-defendable><span data-i18n=defended_non_defendable></span></label> <span data-i18n=defended_non_defendable_desc></span></div>
+			</fieldset>
+			<fieldset class=full>
+				<legend data-i18n=defense_legend></legend>
+				<label><input type=radio name=defense value=''><span data-i18n=defense_none></span></label>
+				<label><input type=radio name=defense value=bad><span data-i18n=defense_bad></span></label>
+				<label><input type=radio name=defense value=okay><span data-i18n=defense_okay></span></label>
+				<label><input type=radio name=defense value=good><span data-i18n=defense_good></span></label>
+				<label><input type=radio name=defense value=great><span data-i18n=defense_great></span></label>
+			</fieldset>
+			<fieldset id=defense-methods class=full>
+				<legend data-i18n=defense_methods_legend></legend>
+				<div><label><input type=checkbox name=defense_collected value=1><span data-i18n=defense_collected></span></label> <span data-i18n=defense_collected_desc></span></div>
+				<div><label><input type=checkbox name=defense_hit value=1><span data-i18n=defense_hit></span></label> <span data-i18n=defense_hit_desc></span></div>
+				<div><label><input type=checkbox name=defense_blocked value=1><span data-i18n=defense_blocked></span></label> <span data-i18n=defense_blocked_desc></span></div>
+				<div><label><input type=checkbox name=defense_pinned value=1><span data-i18n=defense_pinned></span></label> <span data-i18n=defense_pinned_desc></span></div>
+			</fieldset>
+            <fieldset class=full>
+				<legend data-i18n=tele_climb_level></legend>
+				<label><input type=radio name=climb value=0><span data-i18n=tele_climb_none></span></label>
+				<label><input type=radio name=climb value=1><span data-i18n=tele_climb_first></span></label>
+				<label><input type=radio name=climb value=2><span data-i18n=tele_climb_second></span></label>
+				<label><input type=radio name=climb value=3><span data-i18n=tele_climb_third></span></label>
+			</fieldset>
+			<fieldset class=full>
+				<legend data-i18n=accuracy_legend></legend>
+				<div>
+					<label><input type=radio name=accuracy value=very><span data-i18n=accuracy_very></span></label>
+					<label><input type=radio name=accuracy value=middle><span data-i18n=accuracy_middle></span></label>
+					<label><input type=radio name=accuracy value=not><span data-i18n=accuracy_not></span></label>
+					<label><input type=radio name=accuracy value=na><span data-i18n=accuracy_na></span></label>
+				<!--	<label><input type=radio name=accuracy value=60-100><span data-i18n=accuracy_60_100></span></label> -->
+				</div>
+			</fieldset>
+		</td></tr><tr><td class=subheader data-i18n=scouter_header>
+		</td></tr><tr><td>
+			<fieldset class="left full" id=review-request>
+				<legend data-i18n=review_requested_legend></legend>
+				<div><label><input type=checkbox name=review_requested value=1><span data-i18n=review_requested_button></span></label></div>
+			</fieldset>
+			<fieldset class="left full">
+				<legend data-i18n=scouter_name_question></legend>
+				<input class=full type=text size=50 name=scouter data-i18n-placeholder=scouter_name_placeholder>
+			</fieldset>
+			<fieldset class="left full" id=scouting-comments>
+				<legend data-i18n=comments_question></legend>
+				<textarea class=full name=comments rows=5 data-i18n-placeholder=comments_placeholder></textarea>
+			</fieldset>
+			<input type=hidden name=created value="">
+			<input type=hidden name=modified value="">
+			<fieldset class=full id=nextButtons>
+				<legend data-i18n=save_data_question></legend>
+				<div id=doneButtons></div>
+			</fieldset>
+		</td></tr></table>
+	</div>
+</form>
+</form>
+</body>
+</html>
